@@ -90,3 +90,11 @@ function testDbMysqlComplexQuery()
     $dbMysql->close();
 }
 //testDbMysqlComplexQuery();
+
+function testDbMysqlFetchArrayAll()
+{
+    $dbMysql = new DbMysql('localhost', 'root', '', 'hbData', 'hbData', 'utf8', 0);
+    var_dump($dbMysql->fetch_array_all("article", 'sort ASC'));
+    $dbMysql->close();
+}
+testDbMysqlFetchArrayAll();
