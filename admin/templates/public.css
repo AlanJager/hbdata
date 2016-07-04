@@ -1,4 +1,4 @@
-/* È«¾ÖÍ¨ÓÃ
+/* å…¨å±€é€šç”¨
 ----------------------------------------------- */
 body {
  background-color: #EEEEEE;
@@ -101,7 +101,7 @@ p.cue {
 #vcode {
  cursor: pointer;
 }
-/* Ö÷Ìå¿ò¼Ü
+/* ä¸»ä½“æ¡†æ¶
 ----------------------------------------------- */
 #dcWrap {
  width: 100%;
@@ -175,7 +175,7 @@ p.cue {
  background-color: #FFF;
  padding: 4px 5px;
  color: #999;
- font-size: 12x;
+ font-size: 12px;
  line-height: 20px;
  -webkit-appearance: none;
 }
@@ -191,7 +191,7 @@ p.cue {
  background-color: #FFF;
  padding: 4px 5px;
  color: #999;
- font-size: 12x;
+ font-size: 12px;
  line-height: 20px;
  -webkit-appearance: none;
 }
@@ -200,7 +200,7 @@ p.cue {
  background-color: #FFF;
  padding: 0;
  color: #999;
- font-size: 12x;
+ font-size: 12px;
  line-height: 20px;
  resize: none;
  min-height: 40px;
@@ -302,7 +302,7 @@ select {
  display: block;
  padding: 0 6px;
 }
-/* ¹«¹²¶¥²¿
+/* å…¬å…±é¡¶éƒ¨
 ----------------------------------------------- */
 #head .logo {
  border-right: 1px solid #0065B0;
@@ -353,7 +353,7 @@ select {
 #head .nav .noRight {
  border-right: 0;
 }
-/*- ÏÂÀ­²Ëµ¥ -*/
+/*- ä¸‹æ‹‰èœå• -*/
 #head .nav .M {
  position: relative;
 }
@@ -413,7 +413,7 @@ select {
  background-color: #F9F9F9;
  color: #0072C6;
 }
-/* ¹«¹²¹ÜÀí²Ëµ¥
+/* å…¬å…±ç®¡ç†èœå•
 ----------------------------------------------- */
 #menu {
  margin-right: -1px;
@@ -547,7 +547,7 @@ select {
 #menu li i.download {
  background-position: 13px -959px;
 }
-/* µ±Ç°Î»ÖÃ
+/* å½“å‰ä½ç½®
 ----------------------------------------------- */
 #urHere {
  background-color:#F5F5F5;
@@ -563,7 +563,7 @@ select {
 #urHere b {
  margin: 0 13px;
 }
-/* ¹«¹²Ö÷ÇøÓò
+/* å…¬å…±ä¸»åŒºåŸŸ
 ----------------------------------------------- */
 .mainBox {
  border-left: 1px solid #FFF;
@@ -610,7 +610,7 @@ select {
  padding: 10px;
  margin-bottom: 20px;
 }
-/* Ê×Ò³
+/* é¦–é¡µ
 ----------------------------------------------- */
 #index .indexBox {
  margin-bottom: 20px;
@@ -669,7 +669,7 @@ select {
 #index .help .text {
  line-height: 200%;
 }
-/* µ¥Ò³Ãæ
+/* å•é¡µé¢
 ----------------------------------------------- */
 .page dl {
  border: 1px dotted #CCC;
@@ -706,7 +706,7 @@ select {
 .page dd a {
  color: #999;
 }
-/* Ê×Ò³ÉÌÆ·É¸Ñ¡
+/* é¦–é¡µå•†å“ç­›é€‰
 ----------------------------------------------- */
 .homeSortLeft {
  margin-right: 70px;
@@ -750,7 +750,7 @@ select {
  text-align: right;
  color: #666;
 }
-/* Í¼Æ¬Ä£¿é¹ÜÀí
+/* å›¾ç‰‡æ¨¡å—ç®¡ç†
 ----------------------------------------------- */
 .imgModule form {
  padding:0 7px;
@@ -769,7 +769,7 @@ select {
 .imgModule .formEdit .btn {
  float:right;
 }
-/* ÔÆÖĞĞÄ
+/* äº‘ä¸­å¿ƒ
 ----------------------------------------------- */
 #cloud .filter a {
  margin-right:20px;
@@ -849,7 +849,7 @@ select {
 #cloud .account .guide a {
  color:#60BBFF;
 }
-/* Ä£¿éÀ©Õ¹
+/* æ¨¡å—æ‰©å±•
 ----------------------------------------------- */
 #module .install {
  margin-top:150px;
@@ -898,7 +898,7 @@ select {
 }
 #module .uninstall .list ul li a {
 }
-/* Ä£°åÀ©Õ¹
+/* æ¨¡æ¿æ‰©å±•
 ----------------------------------------------- */
 #theme .enable {
  border-bottom: 1px solid #DDD;
@@ -985,7 +985,7 @@ select {
  float:right;
  color:#999;
 }
-/* ÊÖ»ú°æ
+/* æ‰‹æœºç‰ˆ
 ----------------------------------------------- */
 #subBox {
  background-color:#F5F5F5;
@@ -1028,7 +1028,7 @@ select {
  background-color:#FFF;
  margin-right:-1px;
 }
-/* ÓÃ»§µÇÂ¼
+/* ç”¨æˆ·ç™»å½•
 ----------------------------------------------- */
 #login {
  margin: 0px auto;
@@ -1101,7 +1101,7 @@ select {
 #login .reset .inpLi .inpLogin {
  width: 250px;
 }
-/* ·ÖÒ³
+/* åˆ†é¡µ
 ----------------------------------------------- */
 .pager {
  text-align: right;
@@ -1112,33 +1112,33 @@ select {
  color: #666;
  text-decoration: underline;
 }
-/* ĞÅÏ¢ÌáÊ¾
+/* ä¿¡æ¯æç¤º
 ----------------------------------------------- */
-/*- douMsg -*/
-#douMsg {
+/*- hbdataMsg -*/
+#hbdataMsg {
  background: url(../images/icon_exc_small.gif) no-repeat left top;
  padding: 27px 0 0 70px;
  margin-top: 30px;
 }
-#douMsg h2 {
+#hbdataMsg h2 {
  font-size: 16px;
  font-weight: bold;
  color: #0574C7;
 }
-#douMsg dl {
+#hbdataMsg dl {
  background: url(../images/icon_back_arrow.gif) no-repeat right bottom;
 }
-#douMsg dt {
+#hbdataMsg dt {
  padding: 10px 0 25px 0;
  font-size: 13px;
  color: #999999;
 }
-#douMsg dd {
+#hbdataMsg dd {
  padding: 100px 20px 20px 0;
  font-size: 12px;
  text-align: right;
 }
-#douMsg dd a {
+#hbdataMsg dd a {
  color: #60BBFF;
 }
 /*- outMsg -*/
@@ -1164,7 +1164,7 @@ select {
  padding-left: 25px;
  font-size: 14px;
 }
-/* ¹«¹²ÑùÊ½
+/* å…¬å…±æ ·å¼
 ----------------------------------------------- */
 #maskBox {
  position: relative;
@@ -1207,7 +1207,7 @@ select {
  background: url(../images/icon_picture_big.png) no-repeat left bottom;
 }
 #maskBox #success {
- background: #60BBFF url();
+ background: #60BBFF;
  display: none;
  width: 60px;
  padding: 0 10px;
@@ -1215,8 +1215,8 @@ select {
  color: #FFF;
  font-weight: bold;
 }
-/*- douFrame -*/
-#douFrame .bg {
+/*- hbdataFrame -*/
+#hbdataFrame .bg {
  position: fixed;
  top: 0;
  left: 0;
@@ -1227,21 +1227,21 @@ select {
  filter: alpha(opacity=45);
  opacity:0.45
 }
-#douFrame .frame {
+#hbdataFrame .frame {
  position: absolute;
  z-index: 10000002;
  overflow: hidden;
  padding: 0;
  left:50%;
 }
-#douFrame .frame h2 {
+#hbdataFrame .frame h2 {
  padding: 0 10px;
  background: #0072C6;
  line-height: 32px;
  color: #FFF;
  font-size:14px;
 }
-#douFrame .frame h2 .close {
+#hbdataFrame .frame h2 .close {
  background: url(../images/icon_fork.png) no-repeat;
  width:12px;
  height:12px;
@@ -1250,14 +1250,14 @@ select {
  text-indent:-9999px;
  margin-top:11px;
 }
-#douFrame .details {
+#hbdataFrame .details {
  border: 2px solid #C4C4C4;
  background-color:#FFF;
  width:800px;
  top:100px;
  margin-left:-400px;
 }
-#douFrame .selectBox {
+#hbdataFrame .selectBox {
  border: 2px solid #FFF;
  background-color: #F5F5F5;
  width:400px;
@@ -1266,10 +1266,10 @@ select {
  text-align:center;
  padding:10px 0 30px 0;
 }
-#douFrame .selectBox a {
+#hbdataFrame .selectBox a {
  margin:0 25px;
 }
-/* ¹«¹²µ×²¿
+/* å…¬å…±åº•éƒ¨
 ----------------------------------------------- */
 #footer {
  margin-top: -1px;
