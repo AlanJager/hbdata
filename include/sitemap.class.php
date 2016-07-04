@@ -78,7 +78,7 @@ class SiteMap {
      */
     function array_item() {
         //single page list
-        foreach ($GLOBALS['dou']->get_page_nolevel() as $row) {
+        foreach ($GLOBALS['hbdata']->get_page_nolevel() as $row) {
             $item_array[] = array (
                 "date" => $this->today,
                 "changefreq" => 'weekly',
@@ -92,9 +92,9 @@ class SiteMap {
             $item_array[] = array (
                 "date" => $this->today,
                 "changefreq" => 'hourly',
-                "url" => $GLOBALS['dou']->rewrite_url($module_id . '_category')
+                "url" => $GLOBALS['hbdata']->rewrite_url($module_id . '_category')
             );
-            foreach ($GLOBALS['dou']->get_category_nolevel($module_id . '_category') as $row) {
+            foreach ($GLOBALS['hbdata']->get_category_nolevel($module_id . '_category') as $row) {
                 $item_array[] = array (
                     "date" => $this->today,
                     "changefreq" => 'hourly',
@@ -103,7 +103,7 @@ class SiteMap {
             }
 
             //content list
-            foreach ($GLOBALS['dou']->get_list($module_id, 'ALL') as $row) {
+            foreach ($GLOBALS['hbdata']->get_list($module_id, 'ALL') as $row) {
                 $item_array[] = array (
                     "date" => $row['add_time'],
                     "changefreq" => 'weekly',
@@ -120,7 +120,7 @@ class SiteMap {
                 $item_array[] = array (
                     "date" => $this->today,
                     "changefreq" => 'weekly',
-                    "url" => $GLOBALS['dou']->rewrite_url($module_id)
+                    "url" => $GLOBALS['hbdata']->rewrite_url($module_id)
                 );
             }
         }
