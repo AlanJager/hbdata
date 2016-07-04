@@ -180,42 +180,38 @@ class Action extends Common
                 }
             }
         }
-
         return $is_mobile;
     }
 
     /**
-     * +----------------------------------------------------------
-     * 信息提示
-     * +----------------------------------------------------------
-     * $text 提示的内容
-     * $url 提示后要跳转的网址
-     * $time 多久时间跳转
-     * +----------------------------------------------------------
+     * msg notification
+     * @param $text content information
+     * @param string $url redirect url
+     * @param int $time delay time
      */
     function hbdata_msg($text, $url = '', $time = 3) {
         if (!$text) {
             $text = $GLOBALS['_LANG']['hbdata_msg_success'];
         }
 
-        /* 获取meta和title信息 */
+        //get meta and title information
         $GLOBALS['smarty']->assign('page_title', $GLOBALS['_CFG']['site_title']);
         $GLOBALS['smarty']->assign('keywords', $GLOBALS['_CFG']['site_keywords']);
         $GLOBALS['smarty']->assign('description', $GLOBALS['_CFG']['site_description']);
 
-        /* 初始化导航栏 */
+        //initialize navigation bar
         $data = $this->fetch_array_all($this->table('nav'), 'sort ASC');
         $GLOBALS['smarty']->assign('nav_top_list', $this->get_nav('top'));
         $GLOBALS['smarty']->assign('nav_middle_list', $this->get_nav('middle'));
         $GLOBALS['smarty']->assign('nav_bottom_list', $this->get_nav('bottom'));
 
-        /* 初始化数据 */
+        //initialize data
         $GLOBALS['smarty']->assign('ur_here', $GLOBALS['_LANG']['hbdata_msg']);
         $GLOBALS['smarty']->assign('text', $text);
         $GLOBALS['smarty']->assign('url', $url);
         $GLOBALS['smarty']->assign('time', $time);
 
-        // 根据跳转时间生成跳转提示
+        //generate msg notification base on $time
         $cue = preg_replace('/d%/Ums', $time, $GLOBALS['_LANG']['hbdata_msg_cue']);
         $GLOBALS['smarty']->assign('cue', $cue);
 
