@@ -14,7 +14,7 @@ if (!defined('IN_HBDATA')) {
 }
 /**
  * 系统通用操作
- * @name DbMysql
+ * @name Common
  * @version v1.0
  * @author AlanJager
  */
