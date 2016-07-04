@@ -51,7 +51,7 @@ class DbMysql {
      * @param $prefix
      * @param string $charset
      * @param int $pconnect
-     * @return boolean
+     * @return DbMysql
      */
     function DbMysql($dbhost, $dbuser, $dbpass, $dbname = '', $prefix, $charset = 'utf8', $pconnect = 0)
     {
