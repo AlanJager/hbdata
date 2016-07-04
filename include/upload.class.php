@@ -146,7 +146,7 @@ class Upload {
         $img_info["ext"] = pathinfo($photo, PATHINFO_EXTENSION);
         return $img_info;
     }
-    
+
     /**
      * create thumb graph
      * @param $photo
