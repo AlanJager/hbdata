@@ -5,7 +5,7 @@
  * 版权所有 2016-
  * 网站地址:
  * --------------------------------------------------------------------------------------------------
- * Author: tr3e
+ * Author: AlanJager
  * Release Date: 2016-7-4
  */
 define('IN_HBDATA', true);
@@ -31,7 +31,7 @@ if ($rec == 'default') {
     $sys_info['php_ver'] = PHP_VERSION;
     $sys_info['mysql_ver'] = $hbdata->version();
     $sys_info['gd'] = extension_loaded("gd") ? $_LANG['yes'] : $_LANG['no'];
-    $sys_info['charset'] = strtoupper(hbdata_CHARSET);
+    $sys_info['charset'] = strtoupper(HBDATA_CHARSET);
     $sys_info['build_date'] = date("Y-m-d", $_CFG['build_date']);
     $update_date = unserialize($_CFG['update_date']);
     $sys_info['update'] = $update_date['system']['update'];
@@ -55,7 +55,7 @@ if ($rec == 'default') {
     $smarty->assign('cur', 'index');
     $smarty->assign('page_list', $hbdata->get_page_nolevel());
     $smarty->assign('sys_info', $sys_info);
-    $smarty->assign("log_list", $hbdata->get_admin_log($_SESSION[hbdata_ID]['user_id'], 4));
+    $smarty->assign("log_list", $hbdata->get_admin_log($_SESSION[HBDATA_ID]['user_id'], 4));
     $smarty->assign('localsite', $hbdata->hbdata_localsite());
 
     $smarty->display('index.htm');
