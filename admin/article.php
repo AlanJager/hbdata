@@ -53,7 +53,7 @@ if ($rec == 'default') {
     $keyword = isset($_REQUEST['keyword']) ? trim($_REQUEST['keyword']) : '';
 
     // 筛选条件
-    $where = ' WHERE cat_id IN (' . $cat_id . $dbdata->dbdata_child_id('article_category', $cat_id) . ')';
+    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id('article_category', $cat_id) . ')';
     if ($keyword) {
         $where = $where . " AND title LIKE '%$keyword%'";
         $get = '&keyword=' . $keyword;
@@ -62,12 +62,12 @@ if ($rec == 'default') {
     // 分页
     $page = $check->is_number($_REQUEST['page']) ? $_REQUEST['page'] : 1;
     $page_url = 'article.php' . ($cat_id ? '?cat_id=' . $cat_id : '');
-    $limit = $dbdata->pager('article', 15, $page, $page_url, $where, $get);
+    $limit = $hbdata->pager('article', 15, $page, $page_url, $where, $get);
 
-    $sql = "SELECT id, title, cat_id, image, add_time FROM " . $dbdata->table('article') . $where . " ORDER BY id DESC" . $limit;
-    $query = $dbdata->query($sql);
-    while ($row = $dbdata->fetch_array($query)) {
-        $cat_name = $dbdata->get_one("SELECT cat_name FROM " . $dbdata->table('article_category') . " WHERE cat_id = '$row[cat_id]'");
+    $sql = "SELECT id, title, cat_id, image, add_time FROM " . $hbdata->table('article') . $where . " ORDER BY id DESC" . $limit;
+    $query = $hbdata->query($sql);
+    while ($row = $hbdata->fetch_array($query)) {
+        $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table('article_category') . " WHERE cat_id = '$row[cat_id]'");
         $add_time = date("Y-m-d", $row['add_time']);
 
         $article_list[] = array (
@@ -91,7 +91,7 @@ if ($rec == 'default') {
     $smarty->assign('sort_bg', $sort_bg);
     $smarty->assign('cat_id', $cat_id);
     $smarty->assign('keyword', $keyword);
-    $smarty->assign('article_category', $dbdata->get_category_nolevel('article_category'));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
     $smarty->assign('article_list', $article_list);
 
     $smarty->display('article.htm');
@@ -124,7 +124,7 @@ if ($rec == 'add') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
-    $smarty->assign('article_category', $dbdata->get_category_nolevel('article_category'));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
     $smarty->assign('article', $article);
 
     $smarty->display('article.htm');
@@ -137,7 +137,7 @@ if ($rec == 'add') {
 if ($rec == 'insert') {
 
     if (empty($_POST['title']))
-        $dbdata->dbdata_msg($_LANG['article_name'] . $_LANG['is_empty']);
+        $hbdata->hbdata_msg($_LANG['article_name'] . $_LANG['is_empty']);
 
     // 判断是否有上传图片/上传图片生成
     if ($_FILES['image']['name'] != "") {
@@ -161,11 +161,11 @@ if ($rec == 'insert') {
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'article_add');
 
-    $sql = "INSERT INTO " . $dbdata->table('article') . " (id, cat_id, title, defined, content, image ,keywords, add_time, description)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[title]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]')";
-    $dbdata->query($sql);
+    $sql = "INSERT INTO " . $hbdata->table('article') . " (id, cat_id, title, defined, content, image ,keywords, add_time, description)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[title]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]')";
+    $hbdata->query($sql);
 
-    $dbdata->create_admin_log($_LANG['article_add'] . ': ' . $_POST['title']);
-    $dbdata->dbdata_msg($_LANG['article_add_succes'], 'article.php');
+    $hbdata->create_admin_log($_LANG['article_add'] . ': ' . $_POST['title']);
+    $hbdata->hbdata_msg($_LANG['article_add_succes'], 'article.php');
 
 }
 
@@ -183,8 +183,8 @@ if ($rec == 'edit') {
     // 验证并获取合法的ID
     $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
 
-    $query = $dbdata->select($dbdata->table('article'), '*', '`id` = \'' . $id . '\'');
-    $article = $dbdata->fetch_array($query);
+    $query = $hbdata->select($hbdata->table('article'), '*', '`id` = \'' . $id . '\'');
+    $article = $hbdata->fetch_array($query);
 
     // 格式化自定义参数
     if ($_DEFINED['article'] || $article['defined']) {
@@ -202,7 +202,7 @@ if ($rec == 'edit') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
-    $smarty->assign('article_category', $dbdata->get_category_nolevel('article_category'));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
     $smarty->assign('article', $article);
 
     $smarty->display('article.htm');
@@ -215,7 +215,7 @@ if ($rec == 'edit') {
 if ($rec == 'update') {
 
     if (empty($_POST['title']))
-        $dbdata->dbdata_msg($_LANG['article_name'] . $_LANG['is_empty']);
+        $hbdata->hbdata_msg($_LANG['article_name'] . $_LANG['is_empty']);
 
     // 上传图片生成
     if ($_FILES['image']['name'] != "") {
@@ -236,11 +236,11 @@ if ($rec == 'update') {
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'article_edit');
 
-    $sql = "UPDATE " . $dbdata->table('article') . " SET cat_id = '$_POST[cat_id]', title = '$_POST[title]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]' WHERE id = '$_POST[id]'";
-    $dbdata->query($sql);
+    $sql = "UPDATE " . $hbdata->table('article') . " SET cat_id = '$_POST[cat_id]', title = '$_POST[title]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]' WHERE id = '$_POST[id]'";
+    $hbdata->query($sql);
 
-    $dbdata->create_admin_log($_LANG['article_edit'] . ': ' . $_POST['title']);
-    $dbdata->dbdata_msg($_LANG['article_edit_succes'], 'article.php');
+    $hbdata->create_admin_log($_LANG['article_edit'] . ': ' . $_POST['title']);
+    $hbdata->hbdata_msg($_LANG['article_edit_succes'], 'article.php');
 
 }
 
@@ -252,7 +252,7 @@ if ($rec == 'sort') {
     $_SESSION['if_sort'] = $_SESSION['if_sort'] ? false : true;
 
     // 跳转到上一页面
-    $dbdata->dbdata_header($_SERVER['HTTP_REFERER']);
+    $hbdata->hbdata_header($_SERVER['HTTP_REFERER']);
 
 }
 
@@ -262,13 +262,13 @@ if ($rec == 'sort') {
 if ($rec == 'set_sort') {
 
     // 验证并获取合法的ID
-    $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $dbdata->dbdata_msg($_LANG['illegal'], 'article.php');
+    $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'article.php');
 
-    $max_sort = $dbdata->get_one("SELECT sort FROM " . $dbdata->table('article') . " ORDER BY sort DESC");
+    $max_sort = $hbdata->get_one("SELECT sort FROM " . $hbdata->table('article') . " ORDER BY sort DESC");
     $new_sort = $max_sort + 1;
-    $dbdata->query("UPDATE " . $dbdata->table('article') . " SET sort = '$new_sort' WHERE id = '$id'");
+    $hbdata->query("UPDATE " . $hbdata->table('article') . " SET sort = '$new_sort' WHERE id = '$id'");
 
-    $dbdata->dbdata_header($_SERVER['HTTP_REFERER']);
+    $hbdata->hbdata_header($_SERVER['HTTP_REFERER']);
 
 }
 
@@ -278,11 +278,11 @@ if ($rec == 'set_sort') {
 if ($rec == 'del_sort') {
 
     // 验证并获取合法的ID
-    $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $dbdata->dbdata_msg($_LANG['illegal'], 'article.php');
+    $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'article.php');
 
-    $dbdata->query("UPDATE " . $dbdata->table('article') . " SET sort = '' WHERE id = '$id'");
+    $hbdata->query("UPDATE " . $hbdata->table('article') . " SET sort = '' WHERE id = '$id'");
 
-    $dbdata->dbdata_header($_SERVER['HTTP_REFERER']);
+    $hbdata->hbdata_header($_SERVER['HTTP_REFERER']);
 
 }
 
@@ -292,19 +292,19 @@ if ($rec == 'del_sort') {
 if ($rec == 'del') {
 
     // 验证并获取合法的ID
-    $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $dbdata->dbdata_msg($_LANG['illegal'], 'article.php');
-    $title = $dbdata->get_one("SELECT title FROM " . $dbdata->table('article') . " WHERE id = '$id'");
+    $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'article.php');
+    $title = $hbdata->get_one("SELECT title FROM " . $hbdata->table('article') . " WHERE id = '$id'");
 
     if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
         // 删除相应商品图片
-        $image = $dbdata->get_one("SELECT image FROM " . $dbdata->table('article') . " WHERE id = '$id'");
-        $dbdata->del_image($image);
+        $image = $hbdata->get_one("SELECT image FROM " . $hbdata->table('article') . " WHERE id = '$id'");
+        $hbdata->del_image($image);
 
-        $dbdata->create_admin_log($_LANG['article_del'] . ': ' . $title);
-        $dbdata->delete($dbdata->table('article'), "id = $id", 'article.php');
+        $hbdata->create_admin_log($_LANG['article_del'] . ': ' . $title);
+        $hbdata->delete($hbdata->table('article'), "id = $id", 'article.php');
     } else {
         $_LANG['del_check'] = preg_replace('/d%/Ums', $title, $_LANG['del_check']);
-        $dbdata->dbdata_msg($_LANG['del_check'], 'article.php', '', '30', "article.php?rec=del&id=$id");
+        $hbdata->hbdata_msg($_LANG['del_check'], 'article.php', '', '30', "article.php?rec=del&id=$id");
     }
 
 }
@@ -317,15 +317,15 @@ if ($rec == 'action') {
     if (is_array($_POST['checkbox'])) {
         if ($_POST['action'] == 'del_all') {
             // 批量文章删除
-            $dbdata->del_all('article', $_POST['checkbox'], 'id', 'image');
+            $hbdata->del_all('article', $_POST['checkbox'], 'id', 'image');
         } elseif ($_POST['action'] == 'category_move') {
             // 批量移动分类
-            $dbdata->category_move('article', $_POST['checkbox'], $_POST['new_cat_id']);
+            $hbdata->category_move('article', $_POST['checkbox'], $_POST['new_cat_id']);
         } else {
-            $dbdata->dbdata_msg($_LANG['select_empty']);
+            $hbdata->hbdata_msg($_LANG['select_empty']);
         }
     } else {
-        $dbdata->dbdata_msg($_LANG['article_select_empty']);
+        $hbdata->hbdata_msg($_LANG['article_select_empty']);
     }
 
 }
@@ -337,9 +337,9 @@ if ($rec == 'action') {
 function get_sort_article()
 {
     $limit = $GLOBALS['_DISPLAY']['home_article'] ? ' LIMIT ' . $GLOBALS['_DISPLAY']['home_article'] : '';
-    $sql = "SELECT id, title FROM " . $GLOBALS['dbdata']->table('article') . " WHERE sort > 0 ORDER BY sort DESC" . $limit;
-    $query = $GLOBALS['dbdata']->query($sql);
-    while ($row = $GLOBALS['dbdata']->fetch_array($query)) {
+    $sql = "SELECT id, title FROM " . $GLOBALS['hbdata']->table('article') . " WHERE sort > 0 ORDER BY sort DESC" . $limit;
+    $query = $GLOBALS['hbdata']->query($sql);
+    while ($row = $GLOBALS['hbdata']->fetch_array($query)) {
         $sort[] = array (
             "id" => $row['id'],
             "title" => $row['title']
