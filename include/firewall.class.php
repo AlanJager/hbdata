@@ -114,7 +114,7 @@ class Firewall
         }
         return $value;
     }
-    
+
     /**
      * set token
      * @param $id
@@ -125,15 +125,13 @@ class Firewall
         $n = rand(1, 24);
         return $_SESSION[DOU_ID]['token'][$id] = substr($token, $n, 8);
     }
-
+    
     /**
-     * +----------------------------------------------------------
-     * 验证令牌
-     * +----------------------------------------------------------
-     * $token 一次性令牌
-     * $id 令牌ID
-     * $boolean 是否直接返回布尔值
-     * +----------------------------------------------------------
+     * verify token
+     * @param $token
+     * @param $id
+     * @param bool $boolean
+     * @return bool
      */
     function check_token($token, $id, $boolean = false) {
         if (isset($_SESSION[HBDATA_ID]['token'][$id]) && $token == $_SESSION[HBDATA_ID]['token'][$id]) {
