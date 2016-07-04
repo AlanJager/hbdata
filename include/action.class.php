@@ -119,44 +119,37 @@ class Action extends Common
     }
 
     /**
-     * +----------------------------------------------------------
-     * 标题
-     * +----------------------------------------------------------
-     * $module 模块名称
-     * $class 分类ID或模块子栏目
-     * $title 信息标题
-     * +----------------------------------------------------------
+     * page title
+     * @param $module
+     * @param string $class
+     * @param string $title
+     * @return string
      */
     function page_title($module, $class = '', $title = '') {
-        // 如果是单页面，则只执行这一句
+        // if single page execute this
         if ($module == 'page') {
             $titles = $title . ' | ';
         } elseif ($module) {
-            // 模块名称
+            // module name
             $main = $GLOBALS['_LANG'][$module] . ' | ';
-
-            // 如果存在分类
+            // if different classification exists
             if ($class) {
                 $cat_name = is_numeric($class) ? $this->get_one("SELECT cat_name FROM " . $this->table($module) . " WHERE cat_id = '$class'") : $GLOBALS['_LANG'][$class];
                 $cat_name = $cat_name . ' | ';
             }
-
-            // 如果存在标题
+            // if has title
             if ($title)
                 $title = $title . ' | ';
-
             $titles = $title . $cat_name . $main;
         }
-
         $page_title = ($titles ? $titles . $GLOBALS['_CFG']['site_name'] : $GLOBALS['_CFG']['site_title']) . ' - Powered by hbdata';
 
         return $page_title;
     }
 
     /**
-     * +----------------------------------------------------------
-     * 判断是否是移动客户端
-     * +----------------------------------------------------------
+     * terminal type
+     * @return bool
      */
     function is_mobile() {
         static $is_mobile;
@@ -168,7 +161,7 @@ class Action extends Common
         if (empty($user_agent)) {
             $is_mobile = false;
         } else {
-            // 移动端UA关键字
+            // mobile user access
             $mobile_agents = array (
                 'Mobile',
                 'Android',
