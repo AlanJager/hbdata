@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$page_title}</title>
+    <meta name="Copyright" content="HbData Design." />
+    <link href="templates/public.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        {literal}function refreshimage() {
+            var cap = document.getElementById('vcode');
+            cap.src = cap.src + '?';
+        }{/literal}
+    </script>
+</head>
+<body>
+<div id="login">
+    <div class="dologo"></div>
+    <!-- {if $rec eq 'default'} -->
+    <form action="login.php?rec=login" method="post">
+        <ul>
+            <li class="inpLi"><b>{$lang.login_user_name}：</b><input type="text" name="user_name" class="inpLogin"></li>
+            <li class="inpLi"><b>{$lang.login_password}：</b><input type="password" name="password" class="inpLogin"></li>
+            <!-- {if $site.captcha} -->
+            <li class="captchaPic">
+                <div class="inpLi"><b>{$lang.login_captcha}：</b><input type="text" name="captcha" class="captcha"></div>
+                <img id="vcode" src="../captcha.php" alt="{$lang.captcha}" border="1" onClick="refreshimage()" title="{$lang.login_captcha_refresh}">
+            </li>
+            <!-- {/if} -->
+            <li class="sub"><input type="submit" name="submit" class="btn" value="{$lang.login_submit}"></li>
+            <li class="action"><a href="login.php?rec=password_reset">{$lang.login_password_forget}？</a> <em class="separator">|</em> <a href="{$site.root_url}">{$lang.login_back}</a></li>
+        </ul>
+    </form>
+    <!-- {/if} -->
+    <!-- {if $rec eq 'password_reset'} -->
+    <form action="login.php?rec=password_reset_post" method="post">
+        <ul class="reset">
+            <!-- {if $action eq 'default'} -->
+            <li class="inpLi"><b>{$lang.login_user_name}：</b><input type="text" name="user_name" class="inpLogin"></li>
+            <li class="inpLi"><b>{$lang.login_email}：</b><input type="text" name="email" class="inpLogin"></li>
+            <li class="sub">
+                <input type="hidden" name="token" value="{$token}" />
+                <input type="submit" name="submit" class="btn" value="{$lang.login_password_reset}">
+            </li>
+            <!-- {elseif $action eq 'reset'} -->
+            <li class="inpLi"><b>{$lang.manager_new_password}：</b><input type="password" name="password" class="inpLogin"></li>
+            <li class="inpLi"><b>{$lang.manager_new_password_confirm}：</b><input type="password" name="password_confirm" class="inpLogin"></li>
+            <li class="sub">
+                <input type="hidden" name="user_id" value="{$user_id}" />
+                <input type="hidden" name="code" value="{$code}" />
+                <input type="hidden" name="action" value="reset" />
+                <input type="hidden" name="token" value="{$token}" />
+                <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}">
+            </li>
+            <!-- {/if} -->
+            <li class="action"><a href="login.php">{$lang.login_submit}</a> <em class="separator">|</em> <a href="{$site.root_url}">{$lang.login_back}</a></li>
+        </ul>
+    </form>
+    <!-- {/if} -->
+</div>
+</body>
+</html>
