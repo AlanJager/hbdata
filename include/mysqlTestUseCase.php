@@ -15,6 +15,7 @@
  */
 define('IN_HBDATA', true);
 require (dirname(__FILE__) . '/mysql.class.php');
+require (dirname(__FILE__) . '/util.php');
 
 function testDbMysqlConnect()
 {
@@ -94,7 +95,7 @@ function testDbMysqlComplexQuery()
 function testDbMysqlFetchArrayAll()
 {
     $dbMysql = new DbMysql('localhost', 'root', '', 'hbData', 'hbData', 'utf8', 0);
-    var_dump($dbMysql->fetch_array_all("article", 'sort ASC'));
+    arrayDump($dbMysql->fetch_array_all("article", 'sort ASC'));
     $dbMysql->close();
 }
-testDbMysqlFetchArrayAll();
+//testDbMysqlFetchArrayAll();
