@@ -1,0 +1,30 @@
+/* 留言板
+----------------------------------------------- */
+#guestBook .book {
+    border: 1px dotted #CCCCCC;
+    background-color: #F9F9F9;
+}
+#guestBook .book dt {
+    font-weight: bold;
+    color: #555;
+    font-size: 16px;
+    padding: 10px;
+}
+#guestBook .book dd {
+    padding: 10px;
+    color: #666;
+}
+#guestBook .book p {
+    background-color: #60BBFF;
+    color: #FFF;
+    padding: 10px;
+}
+#guestBook .book p b {
+    margin-right: 35px;
+}
+#guestBook .reply {
+    margin-top: 30px;
+}
+#guestBook .replySubmit {
+    margin-top: 30px;
+}
