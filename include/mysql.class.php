@@ -67,6 +67,7 @@ class DbMysql {
 
     /**
      * connect to mysql
+     * @return boolean
      */
     function connect()
     {
@@ -92,9 +93,97 @@ class DbMysql {
         }
 
         if (mysql_select_db($this->dbname, $this->hbData_link) === false) {
-            $this->error("NO THIS DBNAME:" . $this->dbname);
+            $this->error("NO THIS DBNAME: " . $this->dbname);
             return false;
         }
+        return true;
     }
 
+    /**
+     * get version info of the server
+     * @return version
+     */
+    function version()
+    {
+        if (empty($this->version)) {
+            $this->version = mysql_get_server_info($this->hbData_link);
+        }
+        return $this->version;
+    }
+
+    /**
+     * execute sql
+     * @param string $sql
+     * @return array $query
+     */
+    function query($sql) {
+        $this->sql = $sql;
+        $query = mysql_query($this->sql, $this->hbData_link);
+        return $query;
+    }
+
+    /**
+     * return err message and stop the app
+     * @param string $msg
+     * @return string $msg
+     */
+    function error($msg = '')
+    {
+        $msg = $msg ? "HbDataPHP Error: $msg" : '<b>MySQL server error report</b><br>' . $this->error_msg;
+        exit($msg);
+    }
+
+    /**
+     * return last affected rows
+     * @return int
+     */
+    function affected_rows()
+    {
+        return mysql_affected_rows();
+    }
+
+    /**
+     * return a certain column start at a certain row
+     * @param int $row
+     * @param string $field
+     * @return string
+     */
+    function result($row = 0)
+    {
+        return @ mysql_result($this->result, $row);
+    }
+
+    /**
+     * use the return value of query to count rows of the result set
+     * @param $query
+     * @return int
+     */
+    function num_rows($query) {
+        return @ mysql_num_rows($query);
+    }
+
+    /**
+     * use the return value of query to count columns of the result set
+     * @param $query
+     * @return int
+     */
+    function num_fields($query) {
+        return mysql_num_fields($query);
+    }
+
+    /**
+     * free the cache of the query set
+     * @return int
+     */
+    function free_result() {
+        return mysql_free_result($this->result);
+    }
+
+    /**
+     * get last operated id
+     * @return int
+     */
+    function insert_id() {
+        return mysql_insert_id();
+    }
 }
