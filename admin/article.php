@@ -39,10 +39,11 @@ if (!file_exists(ROOT_PATH.$images_dir)) {
 $smarty->assign('rec', $rec);
 $smarty->assign('cur', 'article');
 
+/**
+ * 文章列表
+ */
 if ($rec == 'default') {
-    /**
-     * 文章列表
-     */
+
     $smarty->assign('ur_here', $_LANG['article']);
     $smarty->assign('action_link', array (
         'text' => $_LANG['article_add'],
@@ -97,10 +98,13 @@ if ($rec == 'default') {
 
     $smarty->display('article.htm');
 
-} elseif ($rec == 'add') {
-    /**
-     *文章添加
-     */
+}
+
+/**
+ *文章添加
+ */
+if ($rec == 'add') {
+
     $smarty->assign('ur_here', $_LANG['article_add']);
     $smarty->assign('action_link', array (
         'text' => $_LANG['article'],
@@ -127,10 +131,13 @@ if ($rec == 'default') {
 
     $smarty->display('article.htm');
 
-} elseif ($rec == 'insert') {
-    /**
-     *文章插入
-     */
+}
+
+/**
+ *文章插入
+ */
+if ($rec == 'insert') {
+
     if (empty($_POST['title']))
         $dbdata->dbdata_msg($_LANG['article_name'] . $_LANG['is_empty']);
 
@@ -162,10 +169,13 @@ if ($rec == 'default') {
     $dbdata->create_admin_log($_LANG['article_add'] . ': ' . $_POST['title']);
     $dbdata->dbdata_msg($_LANG['article_add_succes'], 'article.php');
 
-}elseif ($rec == 'edit') {
-    /**
-     *文章编辑
-     */
+}
+
+/**
+ *文章编辑
+ */
+if ($rec == 'edit') {
+
     $smarty->assign('ur_here', $_LANG['article_edit']);
     $smarty->assign('action_link', array (
         'text' => $_LANG['article'],
@@ -199,10 +209,13 @@ if ($rec == 'default') {
 
     $smarty->display('article.htm');
 
-}elseif ($rec == 'update') {
-    /**文章更新
-     *
-     */
+}
+
+/**
+ * 文章更新
+ */
+if ($rec == 'update') {
+
     if (empty($_POST['title']))
         $dbdata->dbdata_msg($_LANG['article_name'] . $_LANG['is_empty']);
 
@@ -231,19 +244,25 @@ if ($rec == 'default') {
     $dbdata->create_admin_log($_LANG['article_edit'] . ': ' . $_POST['title']);
     $dbdata->dbdata_msg($_LANG['article_edit_succes'], 'article.php');
 
-} elseif ($rec == 'sort') {
-    /**
-     *首页商品筛选
-     */
+}
+
+/**
+ *首页商品筛选
+ */
+if ($rec == 'sort') {
+
     $_SESSION['if_sort'] = $_SESSION['if_sort'] ? false : true;
 
     // 跳转到上一页面
     $dbdata->dbdata_header($_SERVER['HTTP_REFERER']);
 
-} elseif ($rec == 'set_sort') {
-    /**
-     *设为首页显示商品
-     */
+}
+
+/**
+ *设为首页显示商品
+ */
+if ($rec == 'set_sort') {
+
     // 验证并获取合法的ID
     $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $dbdata->dbdata_msg($_LANG['illegal'], 'article.php');
 
@@ -253,10 +272,13 @@ if ($rec == 'default') {
 
     $dbdata->dbdata_header($_SERVER['HTTP_REFERER']);
 
-}elseif ($rec == 'del_sort') {
-    /**
-     *取消首页显示商品
-     */
+}
+
+/**
+ *取消首页显示商品
+ */
+if ($rec == 'del_sort') {
+
     // 验证并获取合法的ID
     $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $dbdata->dbdata_msg($_LANG['illegal'], 'article.php');
 
@@ -264,10 +286,13 @@ if ($rec == 'default') {
 
     $dbdata->dbdata_header($_SERVER['HTTP_REFERER']);
 
-}elseif ($rec == 'del') {
-    /**
-     *文章删除
-     */
+}
+
+/**
+ *文章删除
+ */
+if ($rec == 'del') {
+
     // 验证并获取合法的ID
     $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $dbdata->dbdata_msg($_LANG['illegal'], 'article.php');
     $title = $dbdata->get_one("SELECT title FROM " . $dbdata->table('article') . " WHERE id = '$id'");
@@ -284,10 +309,13 @@ if ($rec == 'default') {
         $dbdata->dbdata_msg($_LANG['del_check'], 'article.php', '', '30', "article.php?rec=del&id=$id");
     }
 
-}elseif ($rec == 'action') {
-    /**
-     *批量选择操作
-     */
+}
+
+/**
+ *批量选择操作
+ */
+if ($rec == 'action') {
+
     if (is_array($_POST['checkbox'])) {
         if ($_POST['action'] == 'del_all') {
             // 批量文章删除

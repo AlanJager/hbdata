@@ -22,10 +22,10 @@ $rec = $check->is_rec($_REQUEST['rec']) ? $_REQUEST['rec'] : 'default';
 $smarty->assign('rec', $rec);
 $smarty->assign('cur', 'article_category');
 
+/**
+ * 分类列表
+ */
 if ($rec == 'default'){
-    /**
-     * 分类列表
-     */
 
     $smarty->assign('ur_here', $_LANG['article_category']);
     $smarty->assign('action_link', array (
@@ -38,10 +38,13 @@ if ($rec == 'default'){
 
     $smarty->display('article_category.htm');
 
-} elseif ($rec == 'add'){
-    /**
-     *分类添加
-     */
+}
+
+/**
+ *分类添加
+ */
+if ($rec == 'add'){
+
     $smarty->assign('ur_here', $_LANG['article_category_add']);
     $smarty->assign('action_link', array (
         'text' => $_LANG['article_category'],
@@ -57,10 +60,13 @@ if ($rec == 'default'){
 
     $smarty->display('article_category.htm');
 
-} elseif ($rec == 'insert'){
-    /**
-     *
-     */
+}
+
+/**
+ *分类插入
+ */
+if ($rec == 'insert'){
+
     if (empty($_POST['cat_name']))
         $hbdata->hbdata_msg($_LANG['article_category_name'] . $_LANG['is_empty']);
 
@@ -79,10 +85,13 @@ if ($rec == 'default'){
     $hbdata->create_admin_log($_LANG['article_category_add'] . ': ' . $_POST['cat_name']);
     $hbdata->hbdata_msg($_LANG['article_category_add_succes'], 'article_category.php');
 
-} elseif ($rec == 'edit'){
-    /**
-     *分类编辑
-     */
+}
+
+/**
+ *分类编辑
+ */
+if ($rec == 'edit'){
+
     $smarty->assign('ur_here', $_LANG['article_category_edit']);
     $smarty->assign('action_link', array (
         'text' => $_LANG['article_category'],
@@ -104,10 +113,13 @@ if ($rec == 'default'){
 
     $smarty->display('article_category.htm');
 
-} elseif($rec == 'update'){
-    /**
-     *
-     */
+}
+
+/**
+ *分类更新
+ */
+if($rec == 'update'){
+
     if (empty($_POST['cat_name']))
         $hbdata->hbdata_msg($_LANG['article_category_name'] . $_LANG['is_empty']);
 
@@ -126,10 +138,13 @@ if ($rec == 'default'){
     $hbdata->create_admin_log($_LANG['article_category_edit'] . ': ' . $_POST['cat_name']);
     $hbdata->hbdata_msg($_LANG['article_category_edit_succes'], 'article_category.php');
 
-} elseif($rec == 'del'){
-    /**
-     *分类删除
-     */
+}
+
+/**
+ *分类删除
+ */
+if($rec == 'del'){
+
     $cat_id = $check->is_number($_REQUEST['cat_id']) ? $_REQUEST['cat_id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'article_category.php');
     $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table('article_category') . " WHERE cat_id = '$cat_id'");
     $is_parent = $hbdata->get_one("SELECT id FROM " . $hbdata->table('article') . " WHERE cat_id = '$cat_id'") . $hbdata->get_one("SELECT cat_id FROM " . $hbdata->table('article_category') . " WHERE parent_id = '$cat_id'");
