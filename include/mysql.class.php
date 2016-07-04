@@ -327,5 +327,115 @@ class DbMysql {
             return true;
     }
 
-    
+    /**
+     * use condition to get record
+     * @param $table
+     * @param string $columnName
+     * @param string $condition
+     * @param string $debug
+     * @return array
+     */
+    function select($table, $columnName = "*", $condition = '', $debug = '')
+    {
+        $condition = $condition ? ' Where ' . $condition : NULL;
+        if ($debug) {
+            echo "SELECT $columnName FROM $table $condition";
+        } else {
+            $query = $this->query("SELECT $columnName FROM $table $condition");
+            return $query;
+        }
+    }
+
+    /**
+     * delete value by condition
+     * @param $table
+     * @param $condition
+     * @param string $url
+     */
+    function delete($table, $condition, $url = '')
+    {
+        if ($this->query("DELETE FROM $table WHERE $condition")) {
+            if (!empty($url)) {
+                $GLOBALS['dou']->dou_msg($GLOBALS['_LANG']['del_succes'], $url);
+            }
+        }
+    }
+
+    /**
+     * escaping special characters
+     * @param $string
+     * @return string
+     */
+    function escape_string($string)
+    {
+        if (PHP_VERSION >= '4.3') {
+            return mysql_real_escape_string($string);
+        } else {
+            return mysql_escape_string($string);
+        }
+    }
+
+    /**
+     * get all the query set into array
+     * @param $table
+     * @param string $order_by
+     * @return array
+     */
+    function fetch_array_all($table, $order_by = '')
+    {
+        $order_by = $order_by ? " ORDER BY " . $order_by : '';
+        $query = $this->query("SELECT * FROM " . $table . $order_by);
+        while ($row = $this->fetch_assoc($query)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    /**
+     * offer the func for database import
+     * @param $sql
+     * @return bool
+     */
+    function fn_execute($sql)
+    {
+        $sqls = $this->fn_split($sql);
+        if (is_array($sqls)) {
+            foreach ($sqls as $sql) {
+                if (trim($sql) != '')
+                    $this->query($sql);
+            }
+        } else {
+            $this->query($sqls);
+        }
+        return true;
+    }
+
+    /**
+     * offer func for split query result
+     * @param $sql
+     * @return array
+     */
+    function fn_split($sql)
+    {
+        if ($this->version() > '4.1' && $this->sqlcharset)
+            $sql = preg_replace("/TYPE=(InnoDB|MyISAM)( DEFAULT CHARSET=[^; ]+)?/", "TYPE=\\1 DEFAULT CHARSET=" . $this->sqlcharset, $sql);
+
+        $sql = str_replace("\r", "\n", $sql);
+        $ret = array ();
+        $num = 0;
+        $queriesarray = explode(";\n", trim($sql));
+        unset($sql);
+        foreach ($queriesarray as $query) {
+            $ret[$num] = '';
+            $queries = explode("\n", trim($query));
+            $queries = array_filter($queries);
+            foreach ($queries as $query) {
+                $str1 = substr($query, 0, 1);
+                if ($str1 != '#' && $str1 != '-')
+                    $ret[$num] .= $query;
+            }
+            $num++;
+        }
+        return ($ret);
+    }
 }
