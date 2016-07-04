@@ -14,7 +14,7 @@ if (!defined('IN_HBDATA')) {
 
 /**
  * 系统操作
- * @name DbMysql
+ * @name Action
  * @version v1.0
  * @author AlanJager
  */
