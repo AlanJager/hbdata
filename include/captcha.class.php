@@ -33,4 +33,18 @@ class Captcha
         $this->captcha_width = $captcha_width;
         $this->captcha_height = $captcha_height;
     }
+
+    /**
+     * create string for captcha
+     * @return string
+     */
+    function create_word() {
+        // set random char between the range
+        $chars = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+        $word = '';
+        for($i = 0; $i < 4; $i++)
+            $word .= $chars[mt_rand(0, strlen($chars) - 1)];
+
+        return $word;
+    }
 }
