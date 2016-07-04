@@ -384,7 +384,7 @@ class DbMysql {
     function fetch_array_all($table, $order_by = '')
     {
         $order_by = $order_by ? " ORDER BY " . $order_by : '';
-        $query = $this->query("SELECT * FROM " . $table . $order_by);
+        $query = $this->query("SELECT * FROM `" . trim($this->table($table)) . "`" . $order_by);
         while ($row = $this->fetch_assoc($query)) {
             $data[] = $row;
         }
