@@ -45,10 +45,10 @@ class Firewall
 
         return $value;
     }
-    
+
     /**
      * escape character change operation
-     * before use addslashes should make sure magic_quotes_gpc is close, if not the input escape characters will include
+     * before use addslashes should make sure magic_quotes_gpc is close, if not the input special words will include
      * '/' due to the two times operation to escape characters
      * if server open magic magic_quotes_gpc defaultly post, get , cookie will add more escape characters
      */
@@ -62,10 +62,10 @@ class Firewall
     }
 
     /**
-     * +----------------------------------------------------------
-     * 递归方式的对变量中的特殊字符进行转义
-     * 使用addslashes转义会为引号加上反斜杠，但写入数据库时MYSQL会自动将反斜杠去掉
-     * +----------------------------------------------------------
+     * use recursion to make special words into escape characters
+     * use addslashes will add '\' for input value, before store into database delete it
+     * @param $value
+     * @return array|string
      */
     function addslashes_deep($value) {
         if (empty($value)) {
@@ -90,9 +90,9 @@ class Firewall
     }
 
     /**
-     * +----------------------------------------------------------
-     * 递归方式的对变量中的特殊字符去除转义
-     * +----------------------------------------------------------
+     * use recursion to make special words into escape characters
+     * @param $value
+     * @return array|string
      */
     function stripslashes_deep($value) {
         if (empty($value)) {
@@ -114,13 +114,11 @@ class Firewall
         }
         return $value;
     }
-
+    
     /**
-     * +----------------------------------------------------------
-     * 设置令牌
-     * +----------------------------------------------------------
-     * $id 令牌ID
-     * +----------------------------------------------------------
+     * set token
+     * @param $id
+     * @return string
      */
     function set_token($id) {
         $token = md5(uniqid(rand(), true));
