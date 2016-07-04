@@ -16,7 +16,8 @@ if(!defined('IN_HBDATA')){
 class Backup
 {
     var $sqlcharset;
-    function Backup($sqlcharset) {
+    function Backup($sqlcharset)
+    {
         $this->sqlcharset = $sqlcharset;
     }
 
@@ -28,7 +29,8 @@ class Backup
      * @param int $currsize
      * @return mixed|string
      */
-    function sql_dumptable($table, $vol_size, $startfrom = 0, $currsize = 0) {
+    function sql_dumptable($table, $vol_size, $startfrom = 0, $currsize = 0)
+    {
         global $startrow;
 
         $allow_max_size = intval(@ ini_get('upload_max_filesize')); // 单位M
@@ -81,7 +83,8 @@ class Backup
      * @param $filename
      * @return string
      */
-    function fileext($filename) {
+    function fileext($filename)
+    {
         return trim(substr(strrchr($filename, '.'), 1));
     }
 
@@ -90,7 +93,8 @@ class Backup
      * @param $file_name
      * @return bool
      */
-    function is_backup_file($file_name) {
+    function is_backup_file($file_name)
+    {
         if (preg_match("/^[a-zA-Z0-9_]+.sql$/", $file_name)) {
             return true;
         }
