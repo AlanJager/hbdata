@@ -67,62 +67,54 @@ class Action extends Common
     }
 
     /**
-     * +----------------------------------------------------------
-     * 高亮当前菜单
-     * +----------------------------------------------------------
-     * $module 模块名称
-     * $id 当前要判断的ID
-     * $current_module 当前模块名称，例如在获取导航菜单时就会涉及到不同的模块
-     * $current_id 当前的ID
-     * +----------------------------------------------------------
+     * highlight cur menu
+     * @param $module
+     * @param $id
+     * @param $current_module
+     * @param string $current_id
+     * @param string $current_parent_id
+     * @return bool
      */
     function hbdata_current($module, $id, $current_module, $current_id = '', $current_parent_id = '') {
-        if (($id == $current_id || $id == $current_parent_id) && $module == $current_module) {
+        if (($id == $current_id || $id == $current_parent_id) && $module == $current_module)
             return true;
-        } elseif (!$id && $module == $current_module) {
+        elseif (!$id && $module == $current_module)
             return true;
-        }
     }
 
     /**
-     * +----------------------------------------------------------
-     * 当前位置
-     * +----------------------------------------------------------
-     * $module 模块名称
-     * $class 分类ID或模块子栏目
-     * $title 信息标题
-     * +----------------------------------------------------------
+     * cur position of the user
+     * @param $module
+     * @param string $class
+     * @param string $title
+     * @return string
      */
     function ur_here($module, $class = '', $title = '') {
         if ($module == 'page') {
-            // 如果是单页面，则只显示单页面名称
+            // if single page show the name of it
             $ur_here = $title;
         } elseif (!$class) {
-            // 模块主页
+            // module index
             $ur_here = $GLOBALS['_LANG'][$module];
         } else {
-            // 模块名称
+            // module name
             $main = '<a href=' . $this->rewrite_url($module) . '>' . $GLOBALS['_LANG'][$module] . '</a>';
-
-            // 如果存在分类
+            // if different classification exists
             if ($class) {
                 $cat_name = is_numeric($class) ? $this->get_one("SELECT cat_name FROM " . $this->table($module) . " WHERE cat_id = '$class'") : $GLOBALS['_LANG'][$class];
-
-                // 如果存在标题
-                if ($title) {
+                // if has title
+                if ($title)
                     $category = '<b>></b><a href=' . $this->rewrite_url($module, $class) . '>' . $cat_name . '</a>';
-                } else {
+                else
                     $category = "<b>></b>$cat_name";
-                }
             }
 
-            // 如果存在标题
+            // if has title
             if ($title)
                 $title = '<b>></b>' . $title;
 
             $ur_here = $main . $category . $title;
         }
-
         return $ur_here;
     }
 
