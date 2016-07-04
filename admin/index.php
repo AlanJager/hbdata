@@ -51,7 +51,6 @@ if ($rec == 'default') {
     $sys_info['folder_exists'] = $warning;
 
     // 赋值给模板
-    $smarty->assign('hbdata_api', $hbdata->hbdata_api());
     $smarty->assign('cur', 'index');
     $smarty->assign('page_list', $hbdata->get_page_nolevel());
     $smarty->assign('sys_info', $sys_info);
