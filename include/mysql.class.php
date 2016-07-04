@@ -27,7 +27,7 @@ class DbMysql {
     // 数据库用户名密码
     private $dbname;
     // 数据库名
-    private $hbData_link;
+    private $hbdata_link;
     // 数据库连接标识
     private $prefix;
     // 数据库前缀
@@ -72,12 +72,12 @@ class DbMysql {
     function connect()
     {
         if ($this->pconnect) {
-            if (!$this->hbData_link = @mysql_pconnect($this->dbhost, $this->dbuser, $this->dbpass)) {
+            if (!$this->hbdata_link = @mysql_pconnect($this->dbhost, $this->dbuser, $this->dbpass)) {
                 $this->error('Can not pconnect to mysql server');
                 return false;
             }
         } else {
-            if (!$this->hbData_link = @mysql_connect($this->dbhost, $this->dbuser, $this->dbpass, true)) {
+            if (!$this->hbdata_link = @mysql_connect($this->dbhost, $this->dbuser, $this->dbpass, true)) {
                 $this->error('Can not connect to mysql server');
                 return false;
             }
@@ -92,7 +92,7 @@ class DbMysql {
             }
         }
 
-        if (mysql_select_db($this->dbname, $this->hbData_link) === false) {
+        if (mysql_select_db($this->dbname, $this->hbdata_link) === false) {
             $this->error("NO THIS DBNAME: " . $this->dbname);
             return false;
         }
@@ -106,7 +106,7 @@ class DbMysql {
     function version()
     {
         if (empty($this->version)) {
-            $this->version = mysql_get_server_info($this->hbData_link);
+            $this->version = mysql_get_server_info($this->hbdata_link);
         }
         return $this->version;
     }
@@ -118,7 +118,8 @@ class DbMysql {
      */
     function query($sql) {
         $this->sql = $sql;
-        $query = mysql_query($this->sql, $this->hbData_link);
+        $query = mysql_query($this->sql, $this->hbdata_link);
+        $this->result = $query;
         return $query;
     }
 
@@ -129,7 +130,7 @@ class DbMysql {
      */
     function error($msg = '')
     {
-        $msg = $msg ? "HbDataPHP Error: $msg" : '<b>MySQL server error report</b><br>' . $this->error_msg;
+        $msg = $msg ? "hbdataPHP Error: $msg" : '<b>MySQL server error report</b><br>' . $this->error_msg;
         exit($msg);
     }
 
@@ -158,7 +159,8 @@ class DbMysql {
      * @param $query
      * @return int
      */
-    function num_rows($query) {
+    function num_rows($query)
+    {
         return @ mysql_num_rows($query);
     }
 
@@ -167,7 +169,8 @@ class DbMysql {
      * @param $query
      * @return int
      */
-    function num_fields($query) {
+    function num_fields($query)
+    {
         return mysql_num_fields($query);
     }
 
@@ -175,7 +178,8 @@ class DbMysql {
      * free the cache of the query set
      * @return int
      */
-    function free_result() {
+    function free_result()
+    {
         return mysql_free_result($this->result);
     }
 
@@ -183,7 +187,145 @@ class DbMysql {
      * get last operated id
      * @return int
      */
-    function insert_id() {
+    function insert_id()
+    {
         return mysql_insert_id();
     }
+
+    /**
+     * get next increment id
+     * @param $table
+     * @return mixed
+     */
+    function auto_id($table)
+    {
+        return $this->get_one("SELECT auto_increment FROM information_schema.`TABLES` WHERE  TABLE_SCHEMA='" . $this->dbname . "' AND TABLE_NAME = '" . trim($this->table($table)) . "'");
+    }
+
+    /**
+     * count
+     * @param $sql
+     * @param bool $limited
+     * @return bool|string
+     */
+    function get_one($sql, $limited = false)
+    {
+        if ($limited == true)
+            $sql = trim($sql . ' LIMIT 1');
+
+        $res = $this->query($sql);
+        if ($res !== false) {
+            $row = mysql_fetch_row($res);
+            if ($row !== false)
+                return $row[0];
+            else
+                return '';
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * return a table name with prefix
+     * @param $str
+     * @return string
+     */
+    function table($str)
+    {
+        return $this->prefix . $str;
+    }
+
+    /**
+     * make query result into a array
+     * @param $query
+     * @return array
+     */
+    function fetch_row($query)
+    {
+        return mysql_fetch_row($query);
+    }
+
+    /**
+     * make query result into a key => value array
+     * @param $query
+     * @return array
+     */
+    function fetch_assoc($query)
+    {
+        return mysql_fetch_assoc($query);
+    }
+
+    /**
+     * make query result into a key => value array and also a int value for the row the one record map
+     * @param $query
+     * @return array
+     */
+    function fetch_array($query)
+    {
+        return mysql_fetch_array($query);
+    }
+
+    /**
+     * close database connection
+     * @return bool
+     */
+    function close()
+    {
+        return mysql_close($this->hbdata_link);
+    }
+
+    /**
+     * get all records
+     * @return bool
+     */
+    function select_all($table)
+    {
+        return $this->query("SELECT * FROM " . "`" . $table . "`");
+    }
+
+    /**
+     * if table exists
+     * @return bool
+     */
+    function table_exist($table)
+    {
+        if($this->num_rows($this->query("SHOW TABLES LIKE '" . $this->table($table) . "'")) == 1)
+        {
+            return true;
+        }
+    }
+
+    /**
+     * if field exist in table
+     * @param string $table
+     * @param string $field
+     * @return bool
+     */
+    function field_exist($table, $field)
+    {
+        $sql = "SHOW COLUMNS FROM `" . $this->table($table) . "`";
+        $query = $this->query($sql);
+        while($row = mysql_fetch_array($query, MYSQL_ASSOC))
+            $array[] = $row['Field'];
+        if (in_array($field, $array))
+            return true;
+    }
+
+    /**
+     * if duplicate value exists
+     * @param $table
+     * @param $field
+     * @param $value
+     * @param string $where
+     * @return bool
+     */
+    function value_exist($table, $field, $value, $where = '')
+    {
+        $sql = "SELECT $field FROM `" . $this->table($table) . "` WHERE $field = '$value'" . $where;
+        $number = $this->num_rows($this->query($sql));
+        if ($number > 0)
+            return true;
+    }
+
+    
 }
