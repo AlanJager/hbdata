@@ -35,7 +35,6 @@ class Action extends Common
         foreach ((array) $data as $value) {
             // use $parent_id and $type to filter parent navigation bar
             if ($value['parent_id'] == $parent_id && $value['type'] == $type) {
-                // 如果是自定义链接则$value['guide']值链接地址，如果是内部导航则值是栏目ID
                 // customize url use $value['guide'] as url address, if content navigation should use cat_id
                 if ($value['module'] == 'nav') {
                     if (strpos($value['guide'], 'http://') === 0 || strpos($value['guide'], 'https://') === 0) {
@@ -44,7 +43,6 @@ class Action extends Common
                         $value['target'] = true;
                     } else {
                         $value['url'] = ROOT_URL . $value['guide'];
-                        // 系统会比对自定义链接是否包含在当前URL里，如果包含则高亮菜单，如果不需要此功能，请注释掉下面那行代码
                         // if customize url content in cur url, highlight it if do not need just annotation it
                         $value['cur'] = strpos($_SERVER['REQUEST_URI'], $value['guide']);
                     }

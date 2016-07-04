@@ -125,7 +125,7 @@ class Firewall
         $n = rand(1, 24);
         return $_SESSION[DOU_ID]['token'][$id] = substr($token, $n, 8);
     }
-    
+
     /**
      * verify token
      * @param $token
@@ -153,16 +153,14 @@ class Firewall
     }
 
     /**
-     * +----------------------------------------------------------
-     * 获取合法的分类ID或者栏目ID
-     * +----------------------------------------------------------
-     * $module 模块名称及数据表名
-     * $id 分类ID或者栏目ID
-     * $unique_id 伪静态别名
-     * +----------------------------------------------------------
+     * get legal category ID or module ID
+     * @param $module
+     * @param string $id
+     * @param string $unique_id
+     * @return int|string
      */
     function get_legal_id($module, $id = '', $unique_id = '') {
-        // 如果有设置则验证合法性，验证通过的情况包括为空和赋值合法，分类页允许ID为空，详细页（包括单页面）不允许ID为空
+        //if set, should be verify. And empty or legal value is allowed, classification page ID could be empty, single(detail) couldn't be empty
         if ((isset($id) && !$GLOBALS['check']->is_number($id)) || (isset($unique_id) && !$GLOBALS['check']->is_unique_id($unique_id)))
             return -1;
 
@@ -171,7 +169,7 @@ class Firewall
                 $get_id = $GLOBALS['hbdata']->get_one("SELECT id FROM " . $GLOBALS['hbdata']->table($module) . " WHERE unique_id = '$unique_id'");
             } else {
                 if (isset($id)) {
-                    if ($id === '0') return 0; // 分类页允许ID为0
+                    if ($id === '0') return 0; // classification page ID could be 0
                     $system_unique_id = $GLOBALS['hbdata']->get_one("SELECT c.unique_id FROM " . $GLOBALS['hbdata']->table($module . '_category') .  " AS c LEFT JOIN " . $GLOBALS['hbdata']->table($module) . " AS i ON id = '$id' WHERE c.cat_id = i.cat_id");
                     $get_id = $system_unique_id == $unique_id ? $id : '';
                 } else {
@@ -181,19 +179,18 @@ class Firewall
         } else {
             if (isset($id)) {
                 if (strpos($module, 'category')) {
-                    if ($id === '0') return 0; // 分类页允许ID为0
+                    if ($id === '0') return 0; // classification page ID could be 0
                     $get_id = $GLOBALS['hbdata']->get_one("SELECT cat_id FROM " . $GLOBALS['hbdata']->table($module) . " WHERE cat_id = '$id'");
                 } else {
                     $get_id = $GLOBALS['hbdata']->get_one("SELECT id FROM " . $GLOBALS['hbdata']->table($module) . " WHERE id = '$id'");
                 }
             } else {
-                // $unique_id和$id都没设置只可能为分类主页或者是详细页没有输入id
+                // if either unique_id and id not set, means main page or classification main page do not has id
                 return strpos($module, 'category') ? 0 : -1;
             }
         }
 
         $legal_id = $get_id ? $get_id : -1;
-
         return $legal_id;
     }
 }
