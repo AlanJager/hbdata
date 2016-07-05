@@ -60,7 +60,7 @@ function selectcheckbox(form) {
 function get_cloud_list(unique_id, get, localsite) {
     $.ajax({
         type: 'GET',
-        url: 'http://cloud.hbdataco.com/extend&rec=client',
+        url: 'http://cloud.TODO.com/extend&rec=client',
         data: {'unique_id':unique_id, 'get':get, 'localsite':localsite},
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
@@ -80,7 +80,7 @@ function get_cloud_list(unique_id, get, localsite) {
 function cloud_update_number(localsite) {
     $.ajax({
         type: 'GET',
-        url: 'http://cloud.hbdataco.com/extend&rec=cloud_update_number',
+        url: 'http://cloud.TODO.com/extend&rec=cloud_update_number',
         data: {'localsite':localsite},
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
