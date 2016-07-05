@@ -4,6 +4,9 @@ _ide_helper.php
 .idea
 /cache
 data/config.php
+data/system.hbdata
+
+
 # User-specific stuff:
 .idea/workspace.xml
 .idea/tasks.xml
