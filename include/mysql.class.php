@@ -232,7 +232,7 @@ class DbMysql {
      */
     function table($str)
     {
-        return $this->prefix . $str;
+        return "`" . $this->prefix . $str . "`";
     }
 
     /**
@@ -280,7 +280,7 @@ class DbMysql {
      */
     function select_all($table)
     {
-        return $this->query("SELECT * FROM " . "`" . $table . "`");
+        return $this->query("SELECT * FROM " . $table);
     }
 
     /**
@@ -289,7 +289,7 @@ class DbMysql {
      */
     function table_exist($table)
     {
-        if($this->num_rows($this->query("SHOW TABLES LIKE '" . $this->table($table) . "'")) == 1)
+        if($this->num_rows($this->query("SHOW TABLES LIKE '" . trim($this->table($table), "`") . "'")) == 1)
         {
             return true;
         }
@@ -384,7 +384,7 @@ class DbMysql {
     function fetch_array_all($table, $order_by = '')
     {
         $order_by = $order_by ? " ORDER BY " . $order_by : '';
-        $query = $this->query("SELECT * FROM `" . trim($this->table($table)) . "`" . $order_by);
+        $query = $this->query("SELECT * FROM ". $table . $order_by);
         while ($row = $this->fetch_assoc($query)) {
             $data[] = $row;
         }

@@ -95,7 +95,7 @@ function testDbMysqlComplexQuery()
 function testDbMysqlFetchArrayAll()
 {
     $dbMysql = new DbMysql('localhost', 'root', '', 'hbData', 'hbData', 'utf8', 0);
-    arrayDump($dbMysql->fetch_array_all("article", 'sort ASC'));
+    arrayDump($dbMysql->fetch_array_all($dbMysql->table("article"), 'sort ASC'));
     $dbMysql->close();
 }
-//testDbMysqlFetchArrayAll();
+testDbMysqlFetchArrayAll();
