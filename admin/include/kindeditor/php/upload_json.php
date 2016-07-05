@@ -6,7 +6,7 @@
  * 如果您确定直接使用本程序，使用之前请仔细确认相关安全设置。
  *
  */
-define('IN_DOUCO', true);
+define('IN_HBDATA', true);
 
 require (dirname(__FILE__) . '/init.php');
 
