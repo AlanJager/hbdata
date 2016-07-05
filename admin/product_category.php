@@ -30,7 +30,7 @@ if ($rec == 'default') {
     ));
 
     // 赋值给模板
-    $smarty->assign('article_category', $dou->get_category_nolevel('article_category'));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
 
     $smarty->display('article_category.htm');
 }
@@ -50,7 +50,7 @@ if ($rec == 'add') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
-    $smarty->assign('article_category', $dou->get_category_nolevel('article_category'));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
 
     $smarty->display('article_category.htm');
 }
@@ -60,22 +60,22 @@ if ($rec == 'add') {
  */
 if ($rec == 'insert') {
     if (empty($_POST['cat_name']))
-        $dou->dou_msg($_LANG['article_category_name'] . $_LANG['is_empty']);
+        $hbdata->hbdata_msg($_LANG['article_category_name'] . $_LANG['is_empty']);
 
     if (!$check->is_unique_id($_POST['unique_id']))
-        $dou->dou_msg($_LANG['unique_id_wrong']);
+        $hbdata->hbdata_msg($_LANG['unique_id_wrong']);
 
-    if ($dou->value_exist('article_category', 'unique_id', $_POST['unique_id']))
-        $dou->dou_msg($_LANG['unique_id_existed']);
+    if ($hbdata->value_exist('article_category', 'unique_id', $_POST['unique_id']))
+        $hbdata->hbdata_msg($_LANG['unique_id_existed']);
 
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'article_category_add');
 
-    $sql = "INSERT INTO " . $dou->table('article_category') . " (cat_id, unique_id, parent_id, cat_name, keywords, description, sort)" . " VALUES (NULL, '$_POST[unique_id]', '$_POST[parent_id]', '$_POST[cat_name]', '$_POST[keywords]', '$_POST[description]', '$_POST[sort]')";
-    $dou->query($sql);
+    $sql = "INSERT INTO " . $hbdata->table('article_category') . " (cat_id, unique_id, parent_id, cat_name, keywords, description, sort)" . " VALUES (NULL, '$_POST[unique_id]', '$_POST[parent_id]', '$_POST[cat_name]', '$_POST[keywords]', '$_POST[description]', '$_POST[sort]')";
+    $hbdata->query($sql);
 
-    $dou->create_admin_log($_LANG['article_category_add'] . ': ' . $_POST['cat_name']);
-    $dou->dou_msg($_LANG['article_category_add_succes'], 'article_category.php');
+    $hbdata->create_admin_log($_LANG['article_category_add'] . ': ' . $_POST['cat_name']);
+    $hbdata->hbdata_msg($_LANG['article_category_add_succes'], 'article_category.php');
 }
 
 /**
@@ -90,15 +90,15 @@ if ($rec == 'edit') {
 
     // 获取分类信息
     $cat_id = $check->is_number($_REQUEST['cat_id']) ? $_REQUEST['cat_id'] : '';
-    $query = $dou->select($dou->table('article_category'), '*', '`cat_id` = \'' . $cat_id . '\'');
-    $cat_info = $dou->fetch_array($query);
+    $query = $hbdata->select($hbdata->table('article_category'), '*', '`cat_id` = \'' . $cat_id . '\'');
+    $cat_info = $hbdata->fetch_array($query);
 
     // CSRF防御令牌生成
     $smarty->assign('token', $firewall->set_token('article_category_edit'));
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
-    $smarty->assign('article_category', $dou->get_category_nolevel('article_category', '0', '0', $cat_id));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category', '0', '0', $cat_id));
     $smarty->assign('cat_info', $cat_info);
 
     $smarty->display('article_category.htm');
@@ -109,42 +109,42 @@ if ($rec == 'edit') {
  */
 if ($rec == 'update') {
     if (empty($_POST['cat_name']))
-        $dou->dou_msg($_LANG['article_category_name'] . $_LANG['is_empty']);
+        $hbdata->hbdata_msg($_LANG['article_category_name'] . $_LANG['is_empty']);
 
     if (!$check->is_unique_id($_POST['unique_id']))
-        $dou->dou_msg($_LANG['unique_id_wrong']);
+        $hbdata->hbdata_msg($_LANG['unique_id_wrong']);
 
-    if ($dou->value_exist('article_category', 'unique_id', $_POST['unique_id'], "AND cat_id != '$_POST[cat_id]'"))
-        $dou->dou_msg($_LANG['unique_id_existed']);
+    if ($hbdata->value_exist('article_category', 'unique_id', $_POST['unique_id'], "AND cat_id != '$_POST[cat_id]'"))
+        $hbdata->hbdata_msg($_LANG['unique_id_existed']);
 
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'article_category_edit');
 
-    $sql = "update " . $dou->table('article_category') . " SET cat_name = '$_POST[cat_name]', unique_id = '$_POST[unique_id]', parent_id = '$_POST[parent_id]', keywords = '$_POST[keywords]' ,description = '$_POST[description]', sort = '$_POST[sort]' WHERE cat_id = '$_POST[cat_id]'";
-    $dou->query($sql);
+    $sql = "update " . $hbdata->table('article_category') . " SET cat_name = '$_POST[cat_name]', unique_id = '$_POST[unique_id]', parent_id = '$_POST[parent_id]', keywords = '$_POST[keywords]' ,description = '$_POST[description]', sort = '$_POST[sort]' WHERE cat_id = '$_POST[cat_id]'";
+    $hbdata->query($sql);
 
-    $dou->create_admin_log($_LANG['article_category_edit'] . ': ' . $_POST['cat_name']);
-    $dou->dou_msg($_LANG['article_category_edit_succes'], 'article_category.php');
+    $hbdata->create_admin_log($_LANG['article_category_edit'] . ': ' . $_POST['cat_name']);
+    $hbdata->hbdata_msg($_LANG['article_category_edit_succes'], 'article_category.php');
 }
 
 /**
  * 分类删除
  */
 if ($rec == 'del') {
-    $cat_id = $check->is_number($_REQUEST['cat_id']) ? $_REQUEST['cat_id'] : $dou->dou_msg($_LANG['illegal'], 'article_category.php');
-    $cat_name = $dou->get_one("SELECT cat_name FROM " . $dou->table('article_category') . " WHERE cat_id = '$cat_id'");
-    $is_parent = $dou->get_one("SELECT id FROM " . $dou->table('article') . " WHERE cat_id = '$cat_id'") . $dou->get_one("SELECT cat_id FROM " . $dou->table('article_category') . " WHERE parent_id = '$cat_id'");
+    $cat_id = $check->is_number($_REQUEST['cat_id']) ? $_REQUEST['cat_id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'article_category.php');
+    $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table('article_category') . " WHERE cat_id = '$cat_id'");
+    $is_parent = $hbdata->get_one("SELECT id FROM " . $hbdata->table('article') . " WHERE cat_id = '$cat_id'") . $hbdata->get_one("SELECT cat_id FROM " . $hbdata->table('article_category') . " WHERE parent_id = '$cat_id'");
 
     if ($is_parent) {
         $_LANG['article_category_del_is_parent'] = preg_replace('/d%/Ums', $cat_name, $_LANG['article_category_del_is_parent']);
-        $dou->dou_msg($_LANG['article_category_del_is_parent'], 'article_category.php', '', '3');
+        $hbdata->hbdata_msg($_LANG['article_category_del_is_parent'], 'article_category.php', '', '3');
     } else {
         if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
-            $dou->create_admin_log($_LANG['article_category_del'] . ': ' . $cat_name);
-            $dou->delete($dou->table('article_category'), "cat_id = $cat_id", 'article_category.php');
+            $hbdata->create_admin_log($_LANG['article_category_del'] . ': ' . $cat_name);
+            $hbdata->delete($hbdata->table('article_category'), "cat_id = $cat_id", 'article_category.php');
         } else {
             $_LANG['del_check'] = preg_replace('/d%/Ums', $cat_name, $_LANG['del_check']);
-            $dou->dou_msg($_LANG['del_check'], 'article_category.php', '', '30', "article_category.php?rec=del&cat_id=$cat_id");
+            $hbdata->hbdata_msg($_LANG['del_check'], 'article_category.php', '', '30', "article_category.php?rec=del&cat_id=$cat_id");
         }
     }
 }
