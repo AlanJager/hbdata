@@ -262,7 +262,7 @@ class Smarty_Compiler extends Smarty {
         reset($this->_folded_blocks);
 
         /* replace special blocks by "{php}" */
-        /* douco modify for douphp */
+        /* modify for hbdataphp */
         $source_content = preg_replace_callback($search, array("self","callback_source"), $source_content);
 
         /* Gather all template tags. */
@@ -2335,7 +2335,7 @@ class Smarty_Compiler extends Smarty {
     }
     
     /**
-     * douco modify for douphp
+     * modify for hbdataphp
      */
     function callback_source($matches)
     {

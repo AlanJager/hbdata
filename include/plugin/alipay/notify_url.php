@@ -14,13 +14,13 @@
  * 该页面调试工具请使用写文本函数logResult，该函数已被默认关闭，见alipay_notify_class.php中的函数verifyNotify
  * 如果没有收到该页面返回的 success 信息，支付宝会在24小时内按一定的时间策略重发通知
  */
-define('IN_DOUCO', true);
+define('IN_HBDATA', true);
 
 require ('../../init.php');
 
 // 引入和实例化订单功能
 include_once (ROOT_PATH . 'include/order.class.php');
-$dou_order = new Order();
+$hbdata_order = new Order();
 
 // 实例化插件
 require_once("work.plugin.php");
@@ -48,9 +48,9 @@ if($verify_result) {//验证成功
 
 
     if($_POST['trade_status'] == 'TRADE_FINISHED') {
-        $dou_order->change_status($out_trade_no, 1);
+        $hbdata_order->change_status($out_trade_no, 1);
     } else if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
-        $dou_order->change_status($out_trade_no, 1);
+        $hbdata_order->change_status($out_trade_no, 1);
     }
 
     //——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
