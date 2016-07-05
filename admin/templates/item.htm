@@ -46,7 +46,7 @@
                     {$sort_bg}
                 </ul>
                 <ul class="homeSortList">
-                    <!-- {foreach from=$sort name=sort item=article} -->
+                    <!-- {foreach from=$sort name=sort item=item} -->
                     <li>
                         <em>{$item.title}</em>
                         <a href="item.php?rec=del_sort&id={$item.id}&module={$module}" title="{$lang.sort_cancel}">X</a>
@@ -66,22 +66,22 @@
                         <th width="80" align="center">{$lang.add_time}</th>
                         <th width="80" align="center">{$lang.handler}</th>
                     </tr>
-                    <!-- {foreach from=$article_list item=article} -->
+                     <!--{foreach from=$item_list item=item}-->
                     <tr>
-                        <td align="center"><input type="checkbox" name="checkbox[]" value="{$article.id}" /></td>
+                        <td align="center"><input type="checkbox" name="checkbox[]" value="{$item.id}" /></td>
                         <td align="center">{$item.id}</td>
-                        <td><a href="item.php?rec=edit&id={$item.id}&module={$module}">{$item.title}</a>{if $item.image} <a href="../{$item.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a><!-- {/if} --></td>
-                        <td align="center"><!-- {if $article.cat_name} --><a href="item.php?cat_id={$item.cat_id}&module={$module}">{$item.cat_name}</a><!-- {else} -->{$lang.uncategorized}<!-- {/if} --></td>
+                        <td><a href="article.php?rec=edit&id={$article.id}">{$item.title}</a><!-- {if $item.image} --> <a href="../{$item.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a><!-- {/if} --></td>
+                        <td align="center"><!-- {if $item.cat_name} --><a href="item.php?cat_id={$item.cat_id}">{$item.cat_name}</a><!-- {else} -->{$lang.uncategorized}<!-- {/if} --></td>
                         <td align="center">{$item.add_time}</td>
                         <td align="center">
                             <!-- {if $if_sort} -->
-                            <a href="item.php?rec=set_sort&id={$item.id}&module={$module}">{$lang.sort_btn}</a>
+                            <a href="item.php?rec=set_sort&id={$item.id}">{$lang.sort_btn}</a>
                             <!-- {else} -->
-                            <a href="item.php?rec=edit&id={$item.id}&module={$module}">{$lang.edit}</a> | <a href="item.php?rec=del&id={$item.id}">{$lang.del}</a>
+                            <a href="item.php?rec=edit&id={$item.id}">{$lang.edit}</a> | <a href="item.php?rec=del&id={$item.id}">{$lang.del}</a>
                             <!-- {/if} -->
                         </td>
                     </tr>
-                    <!-- {/foreach} -->
+                     <!--{/foreach}-->
                 </table>
                 <div class="action">
                     <select name="action" onchange="hbdataAction()">

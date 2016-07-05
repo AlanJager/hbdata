@@ -54,7 +54,7 @@ if ($rec == 'default') {
     $keyword = isset($_REQUEST['keyword']) ? trim($_REQUEST['keyword']) : '';
 
     // 筛选条件
-    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id($hbdata->table($module_name . '_category'), $cat_id) . ')';
+    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id($module_name . '_category', $cat_id) . ')';
     if ($keyword) {
         $where = $where . " AND title LIKE '%$keyword%'";
         $get = '&keyword=' . $keyword;
@@ -69,10 +69,7 @@ if ($rec == 'default') {
 
     $query = $hbdata->query($sql);
 
-    echo "<pre>";
-    echo var_dump($hbdata->field_exist($hbdata->table($module_name), 'image'));
-    echo "</pre>";
-    if($hbdata->field_exist($hbdata->table($module_name), 'image')){
+    if($hbdata->field_exist($hbdata->table($module_name), "image")){
         while ($row = $hbdata->fetch_array($query)) {
             $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module_name . '_category') . " WHERE cat_id = '$row[cat_id]'");
             $add_time = date("Y-m-d", $row['add_time']);
@@ -101,7 +98,6 @@ if ($rec == 'default') {
             );
         }
     }
-
 
     // 首页显示文章数量限制框
     //TODO
@@ -141,7 +137,7 @@ if ($rec == 'add') {
             $defined_article .= $row . "：\n";
         }
         $item['defined'] = trim($defined_article);
-        $item['defined_count'] = count(explode("\n", $article['defined'])) * 2;
+        $item['defined_count'] = count(explode("\n", $item['defined'])) * 2;
     }
 
     // CSRF防御令牌生成
@@ -202,13 +198,13 @@ if ($rec == 'edit') {
     $smarty->assign('ur_here', $_LANG['article_edit']);
     $smarty->assign('action_link', array (
         'text' => $_LANG['article'],
-        'href' => 'article.php'
+        'href' => 'item.php?module=' . $module_name
     ));
 
     // 验证并获取合法的ID
     $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
 
-    $query = $hbdata->select($hbdata->table('article'), '*', '`id` = \'' . $id . '\'');
+    $query = $hbdata->select($hbdata->table($module_name), '*', '`id` = \'' . $id . '\'');
     $item = $hbdata->fetch_array($query);
 
     // 格式化自定义参数
@@ -218,8 +214,8 @@ if ($rec == 'edit') {
             $defined_article .= $row . "：\n";
         }
         // 如果文章中已经写入自定义参数则调用已有的
-        $item['defined'] = $article['defined'] ? str_replace(",", "\n", $article['defined']) : trim($defined_article);
-        $item['defined_count'] = count(explode("\n", $article['defined'])) * 2;
+        $item['defined'] = $item['defined'] ? str_replace(",", "\n", $item['defined']) : trim($defined_article);
+        $item['defined_count'] = count(explode("\n", $item['defined'])) * 2;
     }
 
     // CSRF防御令牌生成
@@ -230,7 +226,7 @@ if ($rec == 'edit') {
     $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
     $smarty->assign('item', $item);
 
-    $smarty->display('article.htm');
+    $smarty->display('item.htm');
 
 }
 
@@ -261,11 +257,11 @@ if ($rec == 'update') {
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'article_edit');
 
-    $sql = "UPDATE " . $hbdata->table('article') . " SET cat_id = '$_POST[cat_id]', title = '$_POST[title]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]' WHERE id = '$_POST[id]'";
+    $sql = "UPDATE " . $hbdata->table($module_name) . " SET cat_id = '$_POST[cat_id]', title = '$_POST[title]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]' WHERE id = '$_POST[id]'";
     $hbdata->query($sql);
 
     $hbdata->create_admin_log($_LANG['article_edit'] . ': ' . $_POST['title']);
-    $hbdata->hbdata_msg($_LANG['article_edit_succes'], 'article.php');
+    $hbdata->hbdata_msg($_LANG['article_edit_succes'], 'item.php?=' . $module_name);
 
 }
 
@@ -287,11 +283,11 @@ if ($rec == 'sort') {
 if ($rec == 'set_sort') {
 
     // 验证并获取合法的ID
-    $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'article.php');
+    $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'item.php?=' . $module_name);
 
-    $max_sort = $hbdata->get_one("SELECT sort FROM " . $hbdata->table('article') . " ORDER BY sort DESC");
+    $max_sort = $hbdata->get_one("SELECT sort FROM " . $hbdata->table($module_name) . " ORDER BY sort DESC");
     $new_sort = $max_sort + 1;
-    $hbdata->query("UPDATE " . $hbdata->table('article') . " SET sort = '$new_sort' WHERE id = '$id'");
+    $hbdata->query("UPDATE " . $hbdata->table($module_name) . " SET sort = '$new_sort' WHERE id = '$id'");
 
     $hbdata->hbdata_header($_SERVER['HTTP_REFERER']);
 
@@ -303,9 +299,9 @@ if ($rec == 'set_sort') {
 if ($rec == 'del_sort') {
 
     // 验证并获取合法的ID
-    $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'article.php');
+    $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'item.php?=' . $module_name);
 
-    $hbdata->query("UPDATE " . $hbdata->table('article') . " SET sort = '' WHERE id = '$id'");
+    $hbdata->query("UPDATE " . $hbdata->table($module_name) . " SET sort = '' WHERE id = '$id'");
 
     $hbdata->hbdata_header($_SERVER['HTTP_REFERER']);
 
@@ -322,11 +318,11 @@ if ($rec == 'del') {
 
     if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
         // 删除相应商品图片
-        $image = $hbdata->get_one("SELECT image FROM " . $hbdata->table('article') . " WHERE id = '$id'");
+        $image = $hbdata->get_one("SELECT image FROM " . $hbdata->table($module_name) . " WHERE id = '$id'");
         $hbdata->del_image($image);
 
         $hbdata->create_admin_log($_LANG['article_del'] . ': ' . $title);
-        $hbdata->delete($hbdata->table('article'), "id = $id", 'article.php');
+        $hbdata->delete($hbdata->table($module_name), "id = $id", 'article.php');
     } else {
         $_LANG['del_check'] = preg_replace('/d%/Ums', $title, $_LANG['del_check']);
         $hbdata->hbdata_msg($_LANG['del_check'], 'article.php', '', '30', "article.php?rec=del&id=$id");
@@ -345,7 +341,7 @@ if ($rec == 'action') {
             $hbdata->del_all('article', $_POST['checkbox'], 'id', 'image');
         } elseif ($_POST['action'] == 'category_move') {
             // 批量移动分类
-            $hbdata->category_move('article', $_POST['checkbox'], $_POST['new_cat_id']);
+            $hbdata->category_move($module_name, $_POST['checkbox'], $_POST['new_cat_id']);
         } else {
             $hbdata->hbdata_msg($_LANG['select_empty']);
         }

@@ -51,7 +51,7 @@ class Common extends DbMysql
      */
     function hbdata_child_id($table, $parent_id = 0, &$child_id = '')
     {
-        $data = $this->fetch_array_all($table, 'sort ASC');
+        $data = $this->fetch_array_all($this->table($table), 'sort ASC');
 //        return $data;
         foreach ((array) $data as $value) {
             if ($value['parent_id'] == $parent_id) {
