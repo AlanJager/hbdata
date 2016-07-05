@@ -56,7 +56,6 @@ class Common extends DbMysql
         foreach ((array) $data as $value) {
             if ($value['parent_id'] == $parent_id) {
                 $child_id .= ',' . $value['cat_id'];
-                echo $child_id;
                 $this->hbdata_child_id($table, $value['cat_id'], $child_id);
             }
         }

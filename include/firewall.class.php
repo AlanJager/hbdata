@@ -153,7 +153,7 @@ class Firewall
     }
 
     /**
-     * get legal category ID or module ID
+     * test if category ID id legal for a module
      * @param $module
      * @param string $id
      * @param string $unique_id
@@ -192,5 +192,15 @@ class Firewall
 
         $legal_id = $get_id ? $get_id : -1;
         return $legal_id;
+    }
+
+    /**
+     * test if module name legal
+     * @param $get_legal_module_name
+     * @return mixed
+     */
+    function get_legal_module_name($get_legal_module_name)
+    {
+        return $get_legal_module_name;
     }
 }
