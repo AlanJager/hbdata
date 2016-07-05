@@ -1,0 +1,17 @@
++-----------------------------------------------------------------------------
+| ¸´ÖÆÒÔÏÂ´úÂëµ½ÄãµÄÅäÖÃÎÄ¼þÖÐ¶ÔÓ¦Ö÷»úÀï¼ÓÈë¾Í¿É£¬Ò»°ã¼Óµ½PHPÅäÖÃµÄÄÇ¶ÎÉÏÃæ
+| Èç¹ûÏµÍ³°²×°ÔÚ¶þ¼¶Ä¿Â¼£¬ÔòÐèÐÞ¸ÄÒÔÏÂ
+| location / ¸ÄÎª location /douphp/
+| rewrite ^/ ¸ÄÎª rewrite ^/douphp/ ºÍ /*** last ¸ÄÎª /douphp/*** last
++-----------------------------------------------------------------------------
+
+location / {
+ if (!-e $request_filename) {
+  rewrite ^/m/index\.html$     /m/index.php last;
+  rewrite ^/m/sitemap\.xml$    /m/sitemap.php last;
+  rewrite ^/m/(.*)$     /m/include/route.php?route=$1 last;
+  rewrite ^/index\.html$     /index.php last;
+  rewrite ^/sitemap\.xml$    /sitemap.php last;
+  rewrite ^/(.*)$     /include/route.php?route=$1 last;
+ }
+}
