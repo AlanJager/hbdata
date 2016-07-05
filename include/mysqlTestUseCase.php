@@ -98,4 +98,4 @@ function testDbMysqlFetchArrayAll()
     arrayDump($dbMysql->fetch_array_all($dbMysql->table("article"), 'sort ASC'));
     $dbMysql->close();
 }
-testDbMysqlFetchArrayAll();
+//testDbMysqlFetchArrayAll();

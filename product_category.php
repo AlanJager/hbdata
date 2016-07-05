@@ -19,7 +19,7 @@ if ($cat_id == -1) {
 } else {
     $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id('product_category', $cat_id) . ')';
 }
-    
+
 // 获取分页信息
 $page = $check->is_number($_REQUEST['page']) ? trim($_REQUEST['page']) : 1;
 $limit = $hbdata->pager('product', ($_DISPLAY['product'] ? $_DISPLAY['product'] : 10), $page, $hbdata->rewrite_url('product_category', $cat_id), $where);
