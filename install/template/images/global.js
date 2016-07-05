@@ -4,7 +4,7 @@
  * 表单提交
  +----------------------------------------------------------
  */
-function habataSubmit(form_id) {
+function hbdataSubmit(form_id) {
 	   var formParam = $("#"+form_id).serialize(); //序列化表格内容为字符串
     
     $.ajax({
