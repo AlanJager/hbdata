@@ -18,7 +18,7 @@
             <!-- {if $rec eq 'default'} 文章列表 -->
             <h3><a href="{$action_link.href}" class="actionBtn add">{$action_link.text}</a>{$ur_here}</h3>
             <div class="filter">
-                <form action="article.php" method="post">
+                <form action="item.php?module={$module_name}" method="post">
                     <select name="cat_id">
                         <option value="0">{$lang.uncategorized}</option>
                         <!-- {foreach from=$article_category item=cate} -->
@@ -34,9 +34,9 @@
                 </form>
     <span>
     <!-- {if $if_sort} -->
-    <a class="btnGray" href="article.php?rec=sort">{$lang.sort_close}</a>
+    <a class="btnGray" href="item.php?rec=sort&module={$module_name}">{$lang.sort_close}</a>
         <!-- {else} -->
-    <a class="btnGray" href="article.php?rec=sort">{$lang.sort_article}</a>
+    <a class="btnGray" href="item.php?rec=sort&module={$module_name}">{$lang.sort_article}</a>
         <!-- {/if} -->
     </span>
             </div>
@@ -48,15 +48,15 @@
                 <ul class="homeSortList">
                     <!-- {foreach from=$sort name=sort item=article} -->
                     <li>
-                        <em>{$module.title}</em>
-                        <a href="article.php?rec=del_sort&id={$module.id}" title="{$lang.sort_cancel}">X</a>
+                        <em>{$item.title}</em>
+                        <a href="item.php?rec=del_sort&id={$item.id}&module={$module}" title="{$lang.sort_cancel}">X</a>
                     </li>
                     <!-- {/foreach} -->
                 </ul>
             </div>
             <!-- {/if} -->
             <div id="list"{if $if_sort} class="homeSortLeft"{/if}>
-            <form name="action" method="post" action="article.php?rec=action">
+            <form name="action" method="post" action="item.php?rec=action&module={$module_name}">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
                         <th width="22" align="center"><input name='chkall' type='checkbox' id='chkall' onclick='selectcheckbox(this.form)' value='check'></th>
@@ -68,16 +68,16 @@
                     </tr>
                     <!-- {foreach from=$article_list item=article} -->
                     <tr>
-                        <td align="center"><input type="checkbox" name="checkbox[]" value="{$module.id}" /></td>
-                        <td align="center">{$module.id}</td>
-                        <td><a href="article.php?rec=edit&id={$module.id}">{$module.title}</a><!-- {if $article.image} --> <a href="../{$module.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a><!-- {/if} --></td>
-                        <td align="center"><!-- {if $article.cat_name} --><a href="item.php?cat_id={$module.cat_id}&module={$module_name}">{$module.cat_name}</a><!-- {else} -->{$lang.uncategorized}<!-- {/if} --></td>
-                        <td align="center">{$module.add_time}</td>
+                        <td align="center"><input type="checkbox" name="checkbox[]" value="{$article.id}" /></td>
+                        <td align="center">{$item.id}</td>
+                        <td><a href="item.php?rec=edit&id={$item.id}&module={$module}">{$item.title}</a>{if $item.image} <a href="../{$item.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a><!-- {/if} --></td>
+                        <td align="center"><!-- {if $article.cat_name} --><a href="item.php?cat_id={$item.cat_id}&module={$module}">{$item.cat_name}</a><!-- {else} -->{$lang.uncategorized}<!-- {/if} --></td>
+                        <td align="center">{$item.add_time}</td>
                         <td align="center">
                             <!-- {if $if_sort} -->
-                            <a href="article.php?rec=set_sort&id={$module.id}">{$lang.sort_btn}</a>
+                            <a href="item.php?rec=set_sort&id={$item.id}&module={$module}">{$lang.sort_btn}</a>
                             <!-- {else} -->
-                            <a href="article.php?rec=edit&id={$module.id}">{$lang.edit}</a> | <a href="item.php?rec=del&id={$module.id}&module={$module_name}">{$lang.del}</a>
+                            <a href="item.php?rec=edit&id={$item.id}&module={$module}">{$lang.edit}</a> | <a href="item.php?rec=del&id={$item.id}">{$lang.del}</a>
                             <!-- {/if} -->
                         </td>
                     </tr>
@@ -108,12 +108,12 @@
         <!-- {/if} -->
         <!-- {if $rec eq 'add' || $rec eq 'edit'} 文章添加或编辑 -->
         <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
-        <form action="article.php?rec={$form_action}" method="post" enctype="multipart/form-data">
+        <form action="item.php?rec={$form_action}&module={$module}" method="post" enctype="multipart/form-data">
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <tr>
                     <td width="90" align="right">{$lang.article_name}</td>
                     <td>
-                        <input type="text" name="title" value="{$module.title}" size="80" class="inpMain" />
+                        <input type="text" name="title" value="{$item.title}" size="80" class="inpMain" />
                     </td>
                 </tr>
                 <tr>
@@ -135,7 +135,7 @@
                 <tr>
                     <td align="right" valign="top">{$lang.article_defined}</td>
                     <td>
-                        <textarea name="defined" id="defined" cols="50" class="textAreaAuto" style="height:{$$module.defined_count}0px">{$module.defined}</textarea>
+                        <textarea name="defined" id="defined" cols="50" class="textAreaAuto" style="height:{$item.defined_count}0px">{$item.defined}</textarea>
                         <script type="text/javascript">
                             {literal}
                             $("#defined").autoTextarea({maxHeight:300});
@@ -159,33 +159,33 @@
                             {/literal}
                         </script>
                         <!-- /KindEditor -->
-                        <textarea id="content" name="content" style="width:780px;height:400px;" class="textArea">{$module.content}</textarea>
+                        <textarea id="content" name="content" style="width:780px;height:400px;" class="textArea">{$item.content}</textarea>
                     </td>
                 </tr>
                 <tr>
                     <td align="right">{$lang.thumb}</td>
                     <td>
                         <input type="file" name="image" size="38" class="inpFlie" />
-                        {if $module.image}<a href="../{$module.image}" target="_blank"><img src="images/icon_yes.png"></a>{else}<img src="images/icon_no.png">{/if}</td>
+                        {if $item.image}<a href="../{$item.image}" target="_blank"><img src="images/icon_yes.png"></a>{else}<img src="images/icon_no.png">{/if}</td>
                 </tr>
                 <tr>
                     <td align="right">{$lang.keywords}</td>
                     <td>
-                        <input type="text" name="keywords" value="{$module.keywords}" size="114" class="inpMain" />
+                        <input type="text" name="keywords" value="{$item.keywords}" size="114" class="inpMain" />
                     </td>
                 </tr>
                 <tr>
                     <td align="right">{$lang.description}</td>
                     <td>
-                        <textarea name="description" cols="115" rows="3" class="textArea" />{$module.description}</textarea>
+                        <textarea name="description" cols="115" rows="3" class="textArea" />{$item.description}</textarea>
                     </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
                         <input type="hidden" name="token" value="{$token}" />
-                        <input type="hidden" name="image" value="{$module.image}">
-                        <input type="hidden" name="id" value="{$module.id}">
+                        <input type="hidden" name="image" value="{$item.image}">
+                        <input type="hidden" name="id" value="{$item.id}">
                         <input name="submit" class="btn" type="submit" value="{$lang.btn_submit}" />
                     </td>
                 </tr>

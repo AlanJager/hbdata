@@ -303,7 +303,7 @@ class DbMysql {
      */
     function field_exist($table, $field)
     {
-        $sql = "SHOW COLUMNS FROM `" . $this->table($table) . "`";
+        $sql = "SHOW COLUMNS FROM " . $table;
         $query = $this->query($sql);
         while($row = mysql_fetch_array($query, MYSQL_ASSOC))
             $array[] = $row['Field'];

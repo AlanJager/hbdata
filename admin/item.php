@@ -69,6 +69,9 @@ if ($rec == 'default') {
 
     $query = $hbdata->query($sql);
 
+    echo "<pre>";
+    echo var_dump($hbdata->field_exist($hbdata->table($module_name), 'image'));
+    echo "</pre>";
     if($hbdata->field_exist($hbdata->table($module_name), 'image')){
         while ($row = $hbdata->fetch_array($query)) {
             $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module_name . '_category') . " WHERE cat_id = '$row[cat_id]'");
@@ -86,6 +89,7 @@ if ($rec == 'default') {
     } else {
         while ($row = $hbdata->fetch_array($query)) {
             $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module_name . '_category') . " WHERE cat_id = '$row[cat_id]'");
+
             $add_time = date("Y-m-d", $row['add_time']);
 
             $item_list[] = array (
@@ -105,15 +109,15 @@ if ($rec == 'default') {
         $sort_bg .= "<li><em></em></li>";
     }
 
-
     // 赋值给模板
     $smarty->assign('if_sort', $_SESSION['if_sort']);
     $smarty->assign('sort', get_sort($module_name));
     $smarty->assign('sort_bg', $sort_bg);
     $smarty->assign('cat_id', $cat_id);
     $smarty->assign('keyword', $keyword);
-    $smarty->assign($module_name . '_category', $hbdata->get_category_nolevel($module_name . '_category'));
+    $smarty->assign('module_category', $hbdata->get_category_nolevel($module_name . '_category'));
     $smarty->assign('item_list', $item_list);
+    $smarty->assign('module_name', $module_name);
 
     $smarty->display('item.htm');
 
@@ -136,8 +140,8 @@ if ($rec == 'add') {
         foreach ($defined as $row) {
             $defined_article .= $row . "：\n";
         }
-        $article['defined'] = trim($defined_article);
-        $article['defined_count'] = count(explode("\n", $article['defined'])) * 2;
+        $item['defined'] = trim($defined_article);
+        $item['defined_count'] = count(explode("\n", $article['defined'])) * 2;
     }
 
     // CSRF防御令牌生成
@@ -145,8 +149,8 @@ if ($rec == 'add') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
-    $smarty->assign($module_name . '_category', $hbdata->get_category_nolevel($module_name . '_category'));
-    $smarty->assign('module', $module_name);
+    $smarty->assign('module_category', $hbdata->get_category_nolevel($module_name . '_category'));
+    $smarty->assign('item', $item);
 
     $smarty->display('item.htm');
 
@@ -205,7 +209,7 @@ if ($rec == 'edit') {
     $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
 
     $query = $hbdata->select($hbdata->table('article'), '*', '`id` = \'' . $id . '\'');
-    $article = $hbdata->fetch_array($query);
+    $item = $hbdata->fetch_array($query);
 
     // 格式化自定义参数
     if ($_DEFINED['article'] || $article['defined']) {
@@ -214,8 +218,8 @@ if ($rec == 'edit') {
             $defined_article .= $row . "：\n";
         }
         // 如果文章中已经写入自定义参数则调用已有的
-        $article['defined'] = $article['defined'] ? str_replace(",", "\n", $article['defined']) : trim($defined_article);
-        $article['defined_count'] = count(explode("\n", $article['defined'])) * 2;
+        $item['defined'] = $article['defined'] ? str_replace(",", "\n", $article['defined']) : trim($defined_article);
+        $item['defined_count'] = count(explode("\n", $article['defined'])) * 2;
     }
 
     // CSRF防御令牌生成
@@ -224,7 +228,7 @@ if ($rec == 'edit') {
     // 赋值给模板
     $smarty->assign('form_action', 'update');
     $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
-    $smarty->assign('article', $article);
+    $smarty->assign('item', $item);
 
     $smarty->display('article.htm');
 
