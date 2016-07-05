@@ -14,16 +14,16 @@
 $dbhost   = "localhost";
 
 // database name
-$dbname   = "hbData";
+$dbname   = "data";
 
 // database username
 $dbuser   = "root";
 
 // database password
-$dbpass   = "";
+$dbpass   = "root";
 
 // table prefix
-$prefix   = "hbdata_";
+$prefix   = "hb_";
 
 // charset
 define('HBDATA_CHARSET','utf-8');
