@@ -8,9 +8,8 @@
  * Author: AlanJager
  * Release Date: 2016-7-4
  */
-if (!defined('IN_HBDATA')) {
-    die('Accident occured, please try again.');
-}
+
+define('IN_HBDATA', true);
 
 require (dirname(__FILE__) . '/include/init.php');
 
