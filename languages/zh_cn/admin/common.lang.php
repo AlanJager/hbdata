@@ -114,7 +114,7 @@ $_LANG['top_manager_edit'] = '编辑我的个人资料';
 $_LANG['top_logout'] = '退出';
 $_LANG['menu_home'] = '管理首页';
 $_LANG['menu_page'] = '单页面管理';
-$_LANG['footer_copyright'] = '版权所有 © 2013-2015 漳州豆壳网络科技有限公司，并保留所有权利。';
+$_LANG['footer_copyright'] = '版权所有 © 2016 北京宏宝数据科技有限公司，并保留所有权利。';
 
 // 系统警示
 $_LANG['warning_install_exists'] = '您还没有删除 install 文件夹，出于安全的考虑，我们建议您删除 install 文件夹。';
