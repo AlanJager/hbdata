@@ -204,8 +204,8 @@ $_LANG['mail_username'] = '发件邮箱';
 $_LANG['mail_password'] = '发件邮箱密码';
 
 // 系统设置提示
-$_LANG['rewrite_cue'] = '需要Rewrite支持，启用前请重命名根目录和"' . M_PATH . '"目录下 "d%.txt" 文件为 "d%"，如果不存在请手动下载伪静态规则 <a href="http://down.hbdataco.com/rewrite.rar" target="_blank">点击下载</a>';
-$_LANG['rewrite_cue_nginx'] = 'URL重写需要Rewrite支持，在启用前请将根目录下 "nginx.txt" 里的伪静态规则添加至您的Nginx服务器，如果不存在请手动下载伪静态规则 <a href="http://down.hbdataco.com/rewrite.rar" target="_blank">点击下载</a>';
+$_LANG['rewrite_cue'] = '需要Rewrite支持，启用前请重命名根目录和"' . M_PATH . '"目录下 "d%.txt" 文件为 "d%"，如果不存在请手动配置伪静态规则 ';
+$_LANG['rewrite_cue_nginx'] = 'URL重写需要Rewrite支持，在启用前请将根目录下 "nginx.txt" 里的伪静态规则添加至您的Nginx服务器，如果不存在请手动配置伪静态规则 ';
 $_LANG['rewrite_cue_other'] = '暂无与您的服务器匹配的伪静态规则，请至hbdataPHP论坛反馈';
 $_LANG['guestbook_check_chinese_cue'] = '强制用户留言时必须输入中文，可以有效抵御英文广告信息';
 $_LANG['qq_cue'] = '多个客服的QQ号码请以半角逗号（,）分隔，如果需要设定昵称则在号码后跟 /昵称。';
