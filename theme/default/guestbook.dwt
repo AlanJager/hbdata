@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="{$keywords}" />
+    <meta name="description" content="{$description}" />
+    <meta name="generator" content="HbDataPHP v1.0" />
+    <title>{$page_title}</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="guestbook.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="images/jquery.min.js"></script>
+    <script type="text/javascript" src="images/global.js"></script>
+</head>
+<body>
+<div id="wrapper"> {include file="inc/header.tpl"}
+    <div class="wrap mb"> {include file="inc/ur_here.tpl"}
+        <div id="guestBook">
+            <!-- {if $guestbook} -->
+            <h2>{$lang.guestbook}</h2>
+            <div class="bookList">
+                <!-- {foreach from=$guestbook item=guestbook} -->
+                <dl>
+                    <dt>{$lang.guestbook_title}：{$guestbook.title} <b>{$guestbook.add_time}</b></dt>
+                    <dd><em>{$lang.guestbook_content}：</em><span>{$guestbook.content}</span></dd>
+                    <!-- {if $guestbook.reply} -->
+                    <p><em>{$lang.guestbook_reply}：</em><span>{$guestbook.reply}</span><b>{$guestbook.reply_time}</b></p>
+                    <!-- {/if} -->
+                </dl>
+                <!-- {/foreach} -->
+                {include file="inc/pager.tpl"} </div>
+            <!-- {/if} -->
+            <h2>{$lang.guestbook_add}</h2>
+            <div class="bookAdd">
+                <form id="bookAdd" action="{$insert_url}" method="post">
+                    <dl>
+                        <dt>{$lang.guestbook_title}：</dt>
+                        <dd>
+                            <input type="text" name="title" size="80" class="textInput" />
+                            <p id="title" class="cue"></p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>{$lang.guestbook_name}：</dt>
+                        <dd>
+                            <input type="text" name="name" size="55" class="textInput" />
+                            <p id="name" class="cue"></p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>{$lang.guestbook_contact_type}：</dt>
+                        <dd>
+                            <select name="contact_type" class="select">
+                                <option value="">{$lang.select}</option>
+                                {$option}
+                            </select>
+                            <input type="text" name="contact" size="60" class="textInput" />
+                            <p id="contact" class="cue"></p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>{$lang.guestbook_content}：</dt>
+                        <dd>
+                            <textarea name="content" cols="90" rows="5" class="textArea" /></textarea>
+                            <p id="content" class="cue"></p>
+                        </dd>
+                    </dl>
+                    <!-- {if $site.captcha} -->
+                    <dl>
+                        <dt>{$lang.captcha}：</dt>
+                        <dd>
+                            <input type="text" name="captcha" class="textArea captcha" size="10">
+                            <img id="vcode" src="{$site.root_url}captcha.php" alt="{$lang.captcha}" border="1" onClick="refreshimage()" title="{$lang.captcha_refresh}">
+                            <p id="captcha" class="cue"></p>
+                        </dd>
+                    </dl>
+                    <!-- {/if} -->
+                    <input type="hidden" name="token" value="{$token}" />
+                    <dl class="submit">
+                        <input type="button" class="btn" value="{$lang.btn_submit}" onclick="hbdataSubmit('bookAdd')"/>
+                    </dl>
+                </form>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    {include file="inc/footer.tpl"} </div>
+</body>
+</html>

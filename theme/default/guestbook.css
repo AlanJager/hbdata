@@ -1,0 +1,99 @@
+/* 留言板
+----------------------------------------------- */
+#guestBook {
+    padding: 20px 0;
+}
+#guestBook h2 {
+    color: #555;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+/* bookList */
+#guestBook .bookList {
+    margin-bottom: 30px;
+    line-height: 180%;
+    font-size: 13px;
+}
+#guestBook .bookList dl {
+    margin-bottom: 15px;
+}
+#guestBook .bookList dt {
+    color: #999;
+    margin-bottom: 3px;
+}
+#guestBook .bookList dt b {
+    color: #999;
+    margin-left: 20px;
+}
+#guestBook .bookList dd {
+    color: #666;
+    overflow: hidden;
+    zoom: 1;
+}
+#guestBook .bookList dd em {
+    float: left;
+    width: 70px;
+}
+#guestBook .bookList dd span {
+    float: right;
+    width: 910px;
+    text-align: left;
+}
+#guestBook .bookList p {
+    color: #0072C6;
+    margin-top: 5px;
+    overflow: hidden;
+    zoom: 1;
+}
+#guestBook .bookList p em {
+    float: left;
+    width: 70px;
+}
+#guestBook .bookList p span {
+    float: left;
+    width: 800px;
+}
+#guestBook .bookList p b {
+    color: #999;
+    float: right;
+}
+#guestBook .bookList .pager {
+    text-align: left;
+}
+/* bookList */
+#guestBook .bookAdd {
+    line-height: 180%;
+    font-size: 13px;
+}
+#guestBook .bookAdd dl {
+    overflow: hidden;
+    zoom: 1;
+    margin-bottom: 15px;
+}
+#guestBook .bookAdd dl dt, #guestBook .bookAdd dl dd {
+    float: left;
+}
+#guestBook .bookAdd dl dt {
+    width: 70px;
+    text-align: right;
+    line-height: 30px;
+}
+#guestBook .bookAdd .select {
+    height: 28px;
+}
+#guestBook .bookAdd dl.cue {
+    margin: -8px 0 10px 60px;
+    color: #999;
+}
+#guestBook .bookAdd dl.submit {
+    margin: 20px 0 0 70px;
+}
+#guestBook .bookAdd dd b {
+    display: block;
+    padding: 2px 0 2px 3px;
+    border: 1px solid #fec600;
+    color: #666;
+    background-color: #fbf8e9;
+    line-height: 16px;
+}
