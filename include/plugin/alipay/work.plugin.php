@@ -14,7 +14,7 @@ if (!defined('IN_HBDATA')) {
 
 /**
  * 支付宝插件功能
- * @name Action
+ * @name Plugin
  * @version v1.0
  * @author AlanJager
  */
@@ -69,7 +69,7 @@ class Plugin {
 
         return $alipay_config;
     }
-    
+
     function parameter() {
         // 获取插件配置信息
         $plugin = $GLOBALS['hbdata']->get_plugin($this->plugin_id);
