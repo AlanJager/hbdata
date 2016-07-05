@@ -356,7 +356,7 @@ class DbMysql {
     {
         if ($this->query("DELETE FROM $table WHERE $condition")) {
             if (!empty($url)) {
-                $GLOBALS['dou']->dou_msg($GLOBALS['_LANG']['del_succes'], $url);
+                $GLOBALS['hbdata']->hbdata_msg($GLOBALS['_LANG']['del_succes'], $url);
             }
         }
     }

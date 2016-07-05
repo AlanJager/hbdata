@@ -123,7 +123,7 @@ class Firewall
     function set_token($id) {
         $token = md5(uniqid(rand(), true));
         $n = rand(1, 24);
-        return $_SESSION[DOU_ID]['token'][$id] = substr($token, $n, 8);
+        return $_SESSION[HBDATA_ID]['token'][$id] = substr($token, $n, 8);
     }
 
     /**
@@ -142,7 +142,7 @@ class Firewall
             if ($boolean) return false; // 是否直接返回布尔值
             if (strpos(HBDATA_ID, 'hbdata_') !== false) {
                 $GLOBALS['hbdata']->hbdata_msg($GLOBALS['_LANG']['illegal'], ROOT_URL);
-            } elseif (strpos(DOU_ID, 'mobile_')) {
+            } elseif (strpos(HBDATA_ID, 'mobile_')) {
                 $GLOBALS['hbdata']->hbdata_msg($GLOBALS['_LANG']['illegal'], M_URL);
             } else {
                 header('Content-type: text/html; charset=' . HBDATA_CHARSET);

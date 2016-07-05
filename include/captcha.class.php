@@ -56,7 +56,7 @@ class Captcha
         $word = $this->create_word();
 
         //get captcha into session
-        $_SESSION['captcha'] = md5($word . DOU_SHELL);
+        $_SESSION['captcha'] = md5($word . HBDATA_SHELL);
 
         //draw basic background
         $im = imagecreatetruecolor($this->captcha_width, $this->captcha_height);

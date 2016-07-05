@@ -10,7 +10,7 @@
  *
  * Date: 2016-7-4
  */
-if (!defined('IN_DOUCO')) {
+if (!defined('IN_HBDATA')) {
     die('Hacking attempt');
 }
 
