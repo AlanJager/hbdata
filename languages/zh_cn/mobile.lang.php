@@ -20,4 +20,4 @@ $_LANG['m_guestbook_content'] = '请输入留言内容';
 $_LANG['m_captcha'] = '请输入验证码';
 
 // 手机版提示
-$_LANG['m_dou_msg_cue'] = "如果您不做出选择，将在 d% 秒后跳转到上一页面";
+$_LANG['m_hbdata_msg_cue'] = "如果您不做出选择，将在 d% 秒后跳转到上一页面";
