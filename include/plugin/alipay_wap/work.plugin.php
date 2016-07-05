@@ -55,7 +55,7 @@ class Plugin {
      */
     function alipay_config() {
         // 获取插件配置信息
-        $plugin = $GLOBALS['dou']->get_plugin($this->plugin_id);
+        $plugin = $GLOBALS['hbdata']->get_plugin($this->plugin_id);
 
         // 合作身份者id，以2088开头的16位纯数字
         $alipay_config['partner']  = $plugin['config']['partner'];
@@ -92,7 +92,7 @@ class Plugin {
      */
     function parameter() {
         // 获取插件配置信息
-        $plugin = $GLOBALS['dou']->get_plugin($this->plugin_id);
+        $plugin = $GLOBALS['hbdata']->get_plugin($this->plugin_id);
 
         $parameter['service'] = "alipay.wap.create.direct.pay.by.user";
 
