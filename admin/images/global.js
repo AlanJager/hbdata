@@ -28,7 +28,7 @@ function refreshimage() {
  * 无组件刷新局部内容
  +----------------------------------------------------------
  */
-function dou_callback(page, name, value, target) {
+function hbdata_callback(page, name, value, target) {
     $.ajax({
         type: 'GET',
         url: page,
@@ -60,7 +60,7 @@ function selectcheckbox(form) {
 function get_cloud_list(unique_id, get, localsite) {
     $.ajax({
         type: 'GET',
-        url: 'http://cloud.douco.com/extend&rec=client',
+        url: 'http://cloud.hbdataco.com/extend&rec=client',
         data: {'unique_id':unique_id, 'get':get, 'localsite':localsite},
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
@@ -80,7 +80,7 @@ function get_cloud_list(unique_id, get, localsite) {
 function cloud_update_number(localsite) {
     $.ajax({
         type: 'GET',
-        url: 'http://cloud.douco.com/extend&rec=cloud_update_number',
+        url: 'http://cloud.hbdataco.com/extend&rec=cloud_update_number',
         data: {'localsite':localsite},
         dataType: 'jsonp',
         jsonp: 'jsoncallback',
@@ -108,7 +108,7 @@ function change_update_number(update, patch, module, plugin, theme, mobile) {
  * 弹出窗口
  +----------------------------------------------------------
  */
-function douFrame(name, frame, url ) {
+function hbdataFrame(name, frame, url ) {
     $.ajax({
         type: 'POST',
         url: url,
@@ -125,7 +125,7 @@ function douFrame(name, frame, url ) {
  * 显示和隐藏
  +----------------------------------------------------------
  */
-function douDisplay(target, action) {
+function hbdataDisplay(target, action) {
     var traget = document.getElementById(target);
     if (action == 'show') {
         traget.style.display = 'block';
@@ -139,7 +139,7 @@ function douDisplay(target, action) {
  * 清空对象内HTML
  +----------------------------------------------------------
  */
-function douRemove(target) {
+function hbdataRemove(target) {
     var obj = document.getElementById(target);
     obj.parentNode.removeChild(obj);
 }
