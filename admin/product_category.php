@@ -11,281 +11,141 @@
 define('IN_HBDATA', true);
 
 require (dirname(__FILE__) . '/include/init.php');
-require (ROOT_PATH . ADMIN_PATH . '/include/backup.class.php');
 
 // rec操作项的初始化
 $rec = $check->is_rec($_REQUEST['rec']) ? $_REQUEST['rec'] : 'default';
 
-// 初始化
-$sqlcharset = str_replace('-', '', HBDATA_CHARSET);
-$backup = new Backup($sqlcharset);
-@ set_time_limit(0);
-
 // 赋值给模板
 $smarty->assign('rec', $rec);
-$smarty->assign('cur', 'backup');
+$smarty->assign('cur', 'article_category');
 
 /**
- * 数据备份
+ * 分类列表
  */
 if ($rec == 'default') {
-    $smarty->assign('ur_here', $_LANG['backup']);
+    $smarty->assign('ur_here', $_LANG['article_category']);
     $smarty->assign('action_link', array (
-        'text' => $_LANG['backup_restore'],
-        'href' => 'backup.php?rec=restore'
+        'text' => $_LANG['article_category_add'],
+        'href' => 'article_category.php?rec=add'
     ));
 
-    $query = $hbdata->query("SHOW TABLE STATUS LIKE '" . $prefix . "%'");
-    while ($table = $hbdata->fetch_array($query)) {
-        $table['checked'] = $table['Engine'] == 'MyISAM' ? ' ' : 'disabled';
-        $totalsize += $table['Data_length'] + $table['Index_length'];
+    // 赋值给模板
+    $smarty->assign('article_category', $dou->get_category_nolevel('article_category'));
 
-        if ($table['Data_length'] > 10240) {
-            $table['Data_length'] = ceil($table['Data_length'] / 1024) . "KB";
-        }
-        $tables[] = $table;
-    }
-    $totalsize = ceil($totalsize / 1024);
+    $smarty->display('article_category.htm');
+}
 
-    // 根据时间生成备份文件名
-    $file_name = 'D' . date('Ymd') . 'T' . date('His');
+/**
+ * 分类添加
+ */
+if ($rec == 'add') {
+    $smarty->assign('ur_here', $_LANG['article_category_add']);
+    $smarty->assign('action_link', array (
+        'text' => $_LANG['article_category'],
+        'href' => 'article_category.php'
+    ));
 
     // CSRF防御令牌生成
-    $smarty->assign('token', $firewall->set_token('backup'));
+    $smarty->assign('token', $firewall->set_token('article_category_add'));
 
-    // 初始化数据
-    $smarty->assign('tables', $tables);
-    $smarty->assign('totalsize', $totalsize);
-    $smarty->assign('file_name', $file_name);
+    // 赋值给模板
+    $smarty->assign('form_action', 'insert');
+    $smarty->assign('article_category', $dou->get_category_nolevel('article_category'));
 
-    $smarty->display('backup.htm');
+    $smarty->display('article_category.htm');
 }
 
 /**
- * 将备份写入SQL文件
+ * 分类插入
  */
-if ($rec == 'backup') {
-    $fileid = isset($_REQUEST['fileid']) ? $_REQUEST['fileid'] : 1;
-    $tables = $_REQUEST['tables'];
+if ($rec == 'insert') {
+    if (empty($_POST['cat_name']))
+        $dou->dou_msg($_LANG['article_category_name'] . $_LANG['is_empty']);
 
-    // 每个分卷文件大小
-    $vol_size = $_REQUEST['vol_size'];
+    if (!$check->is_unique_id($_POST['unique_id']))
+        $dou->dou_msg($_LANG['unique_id_wrong']);
 
-    // 所选数据库大小
-    $totalsize = $_REQUEST['totalsize'];
-
-    // 备份文件名
-    $file_name = $_REQUEST['file_name'];
-
-    // 判断备份文件名是否规范
-    if (!$backup->is_backup_file($file_name . '.sql'))
-        $hbdata->hbdata_msg($_LANG['backup_file_name_not_valid'], 'backup.php');
+    if ($dou->value_exist('article_category', 'unique_id', $_POST['unique_id']))
+        $dou->dou_msg($_LANG['unique_id_existed']);
 
     // CSRF防御令牌验证
-    $firewall->check_token($_REQUEST['token'], 'backup');
-    // 当有分卷备份时重新激活token
-    $_SESSION[HBDATA_ID]['token']['backup'] = $_REQUEST['token'];
+    $firewall->check_token($_POST['token'], 'article_category_add');
 
-    if ($fileid == 1 && $tables) {
-        if (!isset($tables) || !is_array($tables)) {
-            $hbdata->hbdata_msg($_LANG['backup_no_select'], 'backup.php');
-        }
-        $cache_file = ROOT_PATH . 'data/backup/tables.php';
-        $content = "<?php\r\n";
-        $content .= "\$data = " . var_export($tables, true) . ";\r\n";
-        $content .= "?>";
-        file_put_contents($cache_file, $content, LOCK_EX);
-    } else {
-        include ROOT_PATH . 'data/backup/tables.php';
-        $tables = $data;
-        if (!$tables) {
-            $hbdata->hbdata_msg($_LANG['backup_no_select'], 'backup.php');
-        }
-    }
+    $sql = "INSERT INTO " . $dou->table('article_category') . " (cat_id, unique_id, parent_id, cat_name, keywords, description, sort)" . " VALUES (NULL, '$_POST[unique_id]', '$_POST[parent_id]', '$_POST[cat_name]', '$_POST[keywords]', '$_POST[description]', '$_POST[sort]')";
+    $dou->query($sql);
 
-    if ($hbdata->version() > '4.1' && $sqlcharset) {
-        $hbdata->query("SET NAMES '" . $sqlcharset . "';\n\n");
-    }
-
-    $sqldump = '';
-    $tableid = isset($_REQUEST['tableid']) ? $_REQUEST['tableid'] - 1 : 0;
-    $startfrom = isset($_REQUEST['startfrom']) ? intval($_REQUEST['startfrom']) : 0;
-    $tablenumber = count($tables);
-
-    for($i = $tableid; $i < $tablenumber && strlen($sqldump) < $vol_size * 1024; $i++) {
-        $sqldump .= $backup->sql_dumptable($tables[$i], $vol_size, $startfrom, strlen($sqldump));
-        $startfrom = 0;
-    }
-
-    if (trim($sqldump)) {
-        $sqldump = "-- HbDataPHP v1.x SQL Dump Program\n" . "-- " . ROOT_URL . "\n" . "-- \n" . "-- DATE : " . date('Y-m-d H:i:s') . "\n" . "-- MYSQL SERVER VERSION : " . $hbdata->version() . "\n" . "-- PHP VERSION : " . PHP_VERSION . "\n" . "-- HbDataPHP VERSION : " . $_CFG['hbdataphp_version'] . "\n\n" . $sqldump;
-
-        $tableid = $i;
-
-        if ($vol_size > $totalsize) {
-            $sql_file_name = $file_name . '.sql';
-        } else {
-            $sql_file_name = $file_name . '_' . $fileid . '.sql';
-        }
-
-        $fileid++;
-
-        $bakfile = ROOT_PATH . '/data/backup/' . $sql_file_name;
-
-        //判断路径
-        if (!is_writable(ROOT_PATH . '/data/backup/'))
-            $hbdata->hbdata_msg($_LANG['backup_no_save'], 'backup.php');
-
-        file_put_contents($bakfile, $sqldump);
-        @ chmod($bakfile, 0777);
-
-        $hbdata->create_admin_log($_LANG['backup'] . ': ' . $sql_file_name);
-
-        $_LANG['backup_file_success'] = preg_replace('/d%/Ums', $sql_file_name, $_LANG['backup_file_success']);
-        $hbdata->hbdata_msg($_LANG['backup_file_success'], 'backup.php?rec=' . $rec . '&vol_size=' . $vol_size . '&totalsize=' . $totalsize . '&file_name=' . $file_name . '&token=' . $_REQUEST['token'] . '&tableid=' . $tableid . '&fileid=' . $fileid . '&startfrom=' . $startrow, '', 1);
-    } else {
-        @ unlink(ROOT_PATH . 'data/backup/tables.php');
-        unset($_SESSION[HBDATA_ID]['token']['backup']);
-        $hbdata->hbdata_msg($_LANG['backup_success'], 'backup.php?rec=restore');
-    }
+    $dou->create_admin_log($_LANG['article_category_add'] . ': ' . $_POST['cat_name']);
+    $dou->dou_msg($_LANG['article_category_add_succes'], 'article_category.php');
 }
 
 /**
- * 恢复备份列表
+ * 分类编辑
  */
-if ($rec == 'restore') {
-    $smarty->assign('ur_here', $_LANG['backup_restore']);
+if ($rec == 'edit') {
+    $smarty->assign('ur_here', $_LANG['article_category_edit']);
     $smarty->assign('action_link', array (
-        'text' => $_LANG['backup'],
-        'href' => 'backup.php'
+        'text' => $_LANG['article_category'],
+        'href' => 'article_category.php'
     ));
 
-    $sqlfiles = glob(ROOT_PATH . 'data/backup/*.sql');
+    // 获取分类信息
+    $cat_id = $check->is_number($_REQUEST['cat_id']) ? $_REQUEST['cat_id'] : '';
+    $query = $dou->select($dou->table('article_category'), '*', '`cat_id` = \'' . $cat_id . '\'');
+    $cat_info = $dou->fetch_array($query);
 
-    if (is_array($sqlfiles)) {
-        $prepre = '';
-        $info = $infos = array ();
-        foreach ($sqlfiles as $id => $sqlfile) {
-            if (strpos(basename($sqlfile), '.sql')) {
-                $sql_file_name = $info['sql_file_name'] = basename($sqlfile);
-                if (filesize($sqlfile) < 1048576) {
-                    $info['filesize'] = round(filesize($sqlfile) / 1024, 2) . "K";
-                } else {
-                    $info['filesize'] = round(filesize($sqlfile) / (1024 * 1024), 2) . "M";
-                }
-                $info['maketime'] = date('Y-m-d H:i:s', filemtime($sqlfile));
+    // CSRF防御令牌生成
+    $smarty->assign('token', $firewall->set_token('article_category_edit'));
 
-                if (preg_match('/_([0-9])+\.sql$/', $sql_file_name, $match)) {
-                    $info['number'] = $match[1];
-                } else {
-                    $info['number'] = '';
-                }
-                $prepre = $info['pre'];
-                $infos[] = $info;
-            }
-        }
-        $smarty->assign('infos', $infos);
-    }
+    // 赋值给模板
+    $smarty->assign('form_action', 'update');
+    $smarty->assign('article_category', $dou->get_category_nolevel('article_category', '0', '0', $cat_id));
+    $smarty->assign('cat_info', $cat_info);
 
-    $smarty->display('backup.htm');
+    $smarty->display('article_category.htm');
 }
 
 /**
- * 恢复备份
+ * 分类更新
  */
-if ($rec == 'import') {
-    // 验证并获取合法的备份文件名
-    $sql_file_name = $backup->is_backup_file($_REQUEST['sql_file_name']) ? $_REQUEST['sql_file_name'] : $hbdata->hbdata_msg($_LANG['backup_file_name_not_valid'], 'backup.php');
+if ($rec == 'update') {
+    if (empty($_POST['cat_name']))
+        $dou->dou_msg($_LANG['article_category_name'] . $_LANG['is_empty']);
 
-    // 判断备份文件名是否是分卷的格式
-    preg_match('/(.*)_([0-9])+\.sql$/', $sql_file_name, $match);
+    if (!$check->is_unique_id($_POST['unique_id']))
+        $dou->dou_msg($_LANG['unique_id_wrong']);
 
-    // 判断是否有分卷
-    if ($match) {
-        $fileid = $_REQUEST['fileid'] ? $_REQUEST['fileid'] : 1;
-        $sql_file_name = $match['1'] . "_" . $fileid . ".sql";
-    }
+    if ($dou->value_exist('article_category', 'unique_id', $_POST['unique_id'], "AND cat_id != '$_POST[cat_id]'"))
+        $dou->dou_msg($_LANG['unique_id_existed']);
 
-    $restore_now = preg_replace('/d%/Ums', $sql_file_name, $_LANG['backup_restore_now']);
+    // CSRF防御令牌验证
+    $firewall->check_token($_POST['token'], 'article_category_edit');
 
-    $file_path = ROOT_PATH . 'data/backup/' . $sql_file_name;
+    $sql = "update " . $dou->table('article_category') . " SET cat_name = '$_POST[cat_name]', unique_id = '$_POST[unique_id]', parent_id = '$_POST[parent_id]', keywords = '$_POST[keywords]' ,description = '$_POST[description]', sort = '$_POST[sort]' WHERE cat_id = '$_POST[cat_id]'";
+    $dou->query($sql);
 
-    // 判断是否有分卷
-    if ($match) {
-        // 判断SQL文件是否存在
-        if (file_exists($file_path)) {
-            $sql = file_get_contents($file_path);
-            $hbdata->fn_execute($sql);
-
-            $fileid++;
-            $hbdata->hbdata_msg($restore_now, "backup.php?rec=" . $rec . "&sql_file_name=" . $sql_file_name . "&fileid=" . $fileid);
-        } else {
-            // 递增查找分卷直到无后续分卷，则结束查找并且将恢复操作设定为完成
-            $hbdata->create_admin_log($_LANG['backup_restore'] . ': ' . $sql_file_name);
-            $hbdata->hbdata_msg($_LANG['backup_restore_success'], 'backup.php?rec=restore');
-        }
-    } else {
-        $sql = file_get_contents($file_path);
-        $hbdata->fn_execute($sql);
-
-        $hbdata->create_admin_log($_LANG['backup_restore'] . ': ' . $sql_file_name);
-        $hbdata->hbdata_msg($_LANG['backup_restore_success'], 'backup.php?rec=restore');
-    }
+    $dou->create_admin_log($_LANG['article_category_edit'] . ': ' . $_POST['cat_name']);
+    $dou->dou_msg($_LANG['article_category_edit_succes'], 'article_category.php');
 }
 
 /**
- * 备份删除
+ * 分类删除
  */
 if ($rec == 'del') {
-    // 验证并获取合法的备份文件名
-    $sql_file_name = $backup->is_backup_file($_REQUEST['sql_file_name']) ? $_REQUEST['sql_file_name'] : $hbdata->hbdata_msg($_LANG['backup_file_name_not_valid'], 'backup.php');
+    $cat_id = $check->is_number($_REQUEST['cat_id']) ? $_REQUEST['cat_id'] : $dou->dou_msg($_LANG['illegal'], 'article_category.php');
+    $cat_name = $dou->get_one("SELECT cat_name FROM " . $dou->table('article_category') . " WHERE cat_id = '$cat_id'");
+    $is_parent = $dou->get_one("SELECT id FROM " . $dou->table('article') . " WHERE cat_id = '$cat_id'") . $dou->get_one("SELECT cat_id FROM " . $dou->table('article_category') . " WHERE parent_id = '$cat_id'");
 
-    if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
-        if (file_exists(ROOT_PATH . 'data/backup/' . $sql_file_name)) {
-            @unlink(ROOT_PATH . 'data/backup/' . $sql_file_name);
-        }
-
-        preg_match('/(.*)_([0-9])+\.sql$/', $sql_file_name, $match);
-
-        // 如果存在分卷则将分卷删除
-        if ($match) {
-            $sqlfiles = glob(ROOT_PATH . 'data/backup/' . $match['1'] . '_*.sql');
-
-            $sql_file_name .= ' ' . $_LANG['backup_vol_include'] . ' : ';
-
-            foreach ($sqlfiles as $id => $sqlfile) {
-                if (file_exists(ROOT_PATH . 'data/backup/' . basename($sqlfile))) {
-                    @unlink(ROOT_PATH . 'data/backup/' . basename($sqlfile));
-                }
-
-                $sql_file_name .= basename($sqlfile) . ',';
-            }
-        }
-
-        $hbdata->create_admin_log($_LANG['backup_del'] . ': ' . $sql_file_name);
-        $hbdata->hbdata_msg(preg_replace('/d%/Ums', $sql_file_name, $_LANG['backup_del_success']), 'backup.php?rec=restore');
+    if ($is_parent) {
+        $_LANG['article_category_del_is_parent'] = preg_replace('/d%/Ums', $cat_name, $_LANG['article_category_del_is_parent']);
+        $dou->dou_msg($_LANG['article_category_del_is_parent'], 'article_category.php', '', '3');
     } else {
-        $_LANG['del_check'] = preg_replace('/d%/Ums', $sql_file_name, $_LANG['del_check']);
-        $hbdata->hbdata_msg($_LANG['del_check'], 'backup.php?rec=restore', '', '30', "backup.php?rec=del&sql_file_name=$sql_file_name");
-    }
-}
-
-/**
- * 备份下载
- */
-if ($rec == 'down') {
-    // 验证并获取合法的备份文件名
-    $sql_file_name = $backup->is_backup_file($_REQUEST['sql_file_name']) ? $_REQUEST['sql_file_name'] : $hbdata->hbdata_msg($_LANG['backup_file_name_not_valid'], 'backup.php');
-
-    ob_clean();
-    if ($fp = @ fopen(ROOT_PATH . 'data/backup/' . $sql_file_name, 'r')) {
-        header("Content-type: application/zip");
-        header("Content-Disposition: attachment; filename=" . $sql_file_name);
-        header("Accept-Ranges: bytes");
-        header("Content-Length:" . filesize(ROOT_PATH . 'data/backup/' . $sql_file_name));
-        header('Content-transfer-encoding: binary');
-        while (!@ feof($fp))
-            echo fread($fp, 10240);
+        if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
+            $dou->create_admin_log($_LANG['article_category_del'] . ': ' . $cat_name);
+            $dou->delete($dou->table('article_category'), "cat_id = $cat_id", 'article_category.php');
+        } else {
+            $_LANG['del_check'] = preg_replace('/d%/Ums', $cat_name, $_LANG['del_check']);
+            $dou->dou_msg($_LANG['del_check'], 'article_category.php', '', '30', "article_category.php?rec=del&cat_id=$cat_id");
+        }
     }
 }
 
