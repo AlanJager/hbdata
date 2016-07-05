@@ -14,7 +14,7 @@
 $dbhost   = "localhost";
 
 // database name
-$dbname   = "data";
+$dbname   = "hbdata";
 
 // database username
 $dbuser   = "root";
@@ -23,7 +23,7 @@ $dbuser   = "root";
 $dbpass   = "root";
 
 // table prefix
-$prefix   = "hb_";
+$prefix   = "hbdata_";
 
 // charset
 define('HBDATA_CHARSET','utf-8');

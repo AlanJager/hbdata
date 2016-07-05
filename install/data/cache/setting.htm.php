@@ -102,7 +102,7 @@
                 <input type="button" class="btnGray" value="<?php echo $this->_tpl_vars['lang']['back']; ?>
 " onclick="location.href='index.php?step=check'"/>
                 <input type="button" class="btn" value="<?php echo $this->_tpl_vars['lang']['setting_submit']; ?>
-" onclick="habataSubmit('install')">
+" onclick="hbdataSubmit('install')">
             </p>
         </form>
     </div>
