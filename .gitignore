@@ -3,8 +3,8 @@ _ide_helper.php
 .DS_Store
 .idea
 /cache
-data/config.php
-data/system.hbdata
+/data/config.php
+/data/system.hbdata
 
 
 # User-specific stuff:
