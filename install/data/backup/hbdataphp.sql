@@ -131,7 +131,7 @@ INSERT INTO hbdata_config VALUES('update_number','a:6:{s:6:\"update\";s:1:\"0\";
 INSERT INTO hbdata_config VALUES('update_date','a:3:{s:6:\"system\";a:2:{s:6:\"update\";i:20160502;s:5:\"patch\";i:20160502;}s:6:\"module\";a:2:{s:7:\"article\";i:20160502;s:7:\"product\";i:20160502;}s:5:\"theme\";a:0:{}}','hidden','','','104');
 INSERT INTO hbdata_config VALUES('cloud_account','','hidden','','','105');
 INSERT INTO hbdata_config VALUES('hash_code','166d0de32dafdef9ab26e10130dd115b','hidden','','','106');
-INSERT INTO hbdata_config VALUES('hbdataphp_version','v1.3 Release 20160502','hidden','','','107');
+INSERT INTO hbdata_config VALUES('hbdataphp_version','v1.0 Release 20160705','hidden','','','107');
 
 DROP TABLE IF EXISTS `hbdata_nav`;
 CREATE TABLE `hbdata_nav` (
