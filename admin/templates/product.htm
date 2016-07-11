@@ -66,6 +66,7 @@
                         <th width="150" align="center">{$lang.product_category}</th>
                         <th width="80" align="center">{$lang.add_time}</th>
                         <th width="80" align="center">{$lang.handler}</th>
+                        <th width="80" align="center">{$lang.show_price}</th>
                     </tr>
                      {foreach from=$product_list item=product} 
                     <tr>
@@ -81,6 +82,7 @@
                             <a href="product.php?rec=edit&id={$product.id}">{$lang.edit}</a> | <a href="product.php?rec=del&id={$product.id}">{$lang.del}</a>
                              {/if} 
                         </td>
+                        <td width="80" align="center">{$product.show_price}</td>
                     </tr>
                      {/foreach} 
                 </table>
@@ -135,7 +137,8 @@
                 <tr>
                     <td align="right">{$lang.product_price}</td>
                     <td>
-                        <input type="text" name="price" value="{if $product.price}{$product.price}{else}0{/if}" size="40" class="inpMain" />
+                        <input type="text" name="price" value="{if $product.price}{$product.price}{else}0{/if}" size="40" class="inpMain" />&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" name="show_price" value="{product.show_price}" checked/>{$lang.show_price}
                     </td>
                 </tr>
                  {if $product.defined} 

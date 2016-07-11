@@ -20,6 +20,7 @@ $_LANG['record_id'] = '编号';
 $_LANG['all'] = '全部';
 $_LANG['add_time'] = '添加日期';
 $_LANG['handler'] = '操作';
+$_LANG['show_price'] = '显示价格';
 $_LANG['number'] = '数量';
 $_LANG['view'] = '查看';
 $_LANG['edit'] = '编辑';

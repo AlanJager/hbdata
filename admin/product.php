@@ -58,18 +58,25 @@ if ($rec == 'default') {
     $page_url = 'product.php' . ($cat_id ? '?cat_id=' . $cat_id : '');
     $limit = $hbdata->pager('product', 15, $page, $page_url, $where, $get);
 
-    $sql = "SELECT id, name, cat_id, add_time FROM " . $hbdata->table('product') . $where . " ORDER BY id DESC" . $limit;
+    $sql = "SELECT id, name, cat_id, add_time, show_price FROM " . $hbdata->table('product') . $where . " ORDER BY id DESC" . $limit;
     $query = $hbdata->query($sql);
     while ($row = $hbdata->fetch_array($query)) {
         $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table('product_category') . " WHERE cat_id = '$row[cat_id]'");
         $add_time = date("Y-m-d", $row['add_time']);
+        if($row['show_price'] == true){
+            $showprice = '是';
+        }
+        else{
+            $showprice = '否';
+        }
 
         $product_list[] = array (
             "id" => $row['id'],
             "cat_id" => $row['cat_id'],
             "cat_name" => $cat_name,
             "name" => $row['name'],
-            "add_time" => $add_time
+            "add_time" => $add_time,
+            "show_price" => $showprice
         );
     }
 
