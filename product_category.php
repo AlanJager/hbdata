@@ -42,7 +42,12 @@ while ($row = $hbdata->fetch_array($query)) {
     $thumb = ROOT_URL . $image[0] . "_thumb." . $image[1];
 
     // 格式化价格
-    $price = $row['price'] > 0 ? $hbdata->price_format($row['price']) : $_LANG['price_discuss'];
+    if($row['show'] == true){
+        $price = $row['price'] > 0 ? $hbdata->price_format($row['price']) : $_LANG['price_discuss'];
+    }
+    else{
+        $price = "    ";
+    }
 
     $product_list[] = array (
         "id" => $row['id'],
