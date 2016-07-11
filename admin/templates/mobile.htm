@@ -24,7 +24,7 @@
             </div>
             <div id="sMain">
                 <div class="mainBox" style="{$workspace.height}">
-                    <!-- {if $rec eq 'system'} 手机版设置 开始 -->
+                     {if $rec eq 'system'} 手机版设置 开始 
                     <h3>{$ur_here}</h3>
                     <div class="system">
                         <form action="mobile.php?rec=system&act=update" method="post" enctype="multipart/form-data">
@@ -33,55 +33,55 @@
                                     <th width="141">{$lang.input_name}</th>
                                     <th>{$lang.input_value}</th>
                                 </tr>
-                                <!-- {foreach from=$cfg_list_main item=cfg_list} -->
-                                <!-- {if $cfg_list.type eq 'array'} -->
-                                <!-- {foreach from=$cfg_list.value item=cfg} -->
+                                 {foreach from=$cfg_list_main item=cfg_list} 
+                                 {if $cfg_list.type eq 'array'} 
+                                 {foreach from=$cfg_list.value item=cfg} 
                                 <tr>
                                     <td align="right">{$cfg.lang}</td>
                                     <td>
                                         <input type="text" name="{$cfg.name}" value="{$cfg.value}" size="80" class="inpMain" />
-                                        <!-- {if $cfg.cue} -->
+                                         {if $cfg.cue} 
                                         <p class="cue">{$cfg.cue}</p>
-                                        <!-- {/if} -->
+                                         {/if} 
                                     </td>
                                 </tr>
-                                <!-- {/foreach} -->
-                                <!-- {else} -->
+                                 {/foreach} 
+                                 {else} 
                                 <tr>
                                     <td align="right">{$cfg_list.lang}</td>
                                     <td>
-                                        <!-- {if $cfg_list.type eq 'radio'} -->
+                                         {if $cfg_list.type eq 'radio'} 
                                         <label for="{$cfg_list.name}_0">
                                             <input type="radio" name="{$cfg_list.name}" id="{$cfg_list.name}_0" value="0"{if $cfg_list.value eq '0'} checked="true"{/if}>
                                             {$lang.no}</label>
                                         <label for="{$cfg_list.name}_1">
                                             <input type="radio" name="{$cfg_list.name}" id="{$cfg_list.name}_1" value="1"{if $cfg_list.value eq '1'} checked="true"{/if}>
                                             {$lang.yes}</label>
-                                        <!-- {elseif $cfg_list.type eq 'select'} -->
+                                         {elseif $cfg_list.type eq 'select'} 
                                         <select name="{$cfg_list.name}">
-                                            <!-- {foreach from=$cfg_list.box key=name item=value} -->
+                                             {foreach from=$cfg_list.box key=name item=value} 
                                             <option value="{$value}"{if $cfg_list.value eq $value} selected{/if}>{$value}</option>
-                                            <!-- {/foreach} -->
+                                             {/foreach} 
                                         </select>
-                                        <!-- {elseif $cfg_list.type eq 'file'} -->
+                                         {elseif $cfg_list.type eq 'file'} 
                                         <input type="file" name="{$cfg_list.name}" size="18" />
                                         {if $cfg_list.value}<a href="../{$cfg_list.value}" target="_blank"><img src="images/icon_yes.png"></a>{else}<img src="images/icon_no.png">{/if}
-                                        <!-- {elseif $cfg_list.type eq 'textarea'} -->
+                                         {elseif $cfg_list.type eq 'textarea'} 
                                         <textarea name="{$cfg_list.name}" cols="70" rows="5" class="textArea" />{$cfg_list.value}</textarea>
-                                        <!-- {else} -->
+                                         {else} 
                                         <input type="text" name="{$cfg_list.name}" value="{$cfg_list.value}" size="80" class="inpMain" />
-                                        <!-- {/if} -->
-                                        <!-- {if $cfg_list.cue} -->
-                                        <!-- {if $cfg_list.type eq 'radio' || $cfg_list.type eq 'select'} -->
+                                         {/if} 
+                                         {if $cfg_list.cue} 
+                                         {if $cfg_list.type eq 'radio' || $cfg_list.type eq 'select'} 
                                         <span class="cue ml">{$cfg_list.cue}</span>
-                                        <!-- {else} -->
+                                         {else} 
                                         <p class="cue">{$cfg_list.cue}</p>
-                                        <!-- {/if} -->
-                                        <!-- {/if} -->
+                                         {/if} 
+                                         {/if} 
                                     </td>
                                 </tr>
-                                <!-- {/if} -->
-                                <!-- {/foreach} -->
+                                 {/if} 
+                                 {/foreach} 
                                 <tr>
                                     <td width="131"></td>
                                     <td>
@@ -92,10 +92,10 @@
                             </table>
                         </form>
                     </div>
-                    <!-- {/if} 手机版设置 结束 -->
-                    <!-- {if $rec eq 'nav'} 手机版导航 开始 -->
+                     {/if} 手机版设置 结束 
+                     {if $rec eq 'nav'} 手机版导航 开始 
                     <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
-                    <!-- {if $act eq 'default'} 导航列表 -->
+                     {if $act eq 'default'} 导航列表 
                     <table width="100%" border="0" cellpadding="10" cellspacing="0" class="tableBasic">
                         <tr>
                             <th width="113" align="center">{$lang.nav_name}</th>
@@ -103,17 +103,17 @@
                             <th width="80" align="center">{$lang.sort}</th>
                             <th width="120" align="center">{$lang.handler}</th>
                         </tr>
-                        <!-- {foreach from=$nav_list item=nav_list} -->
+                         {foreach from=$nav_list item=nav_list} 
                         <tr>
                             <td>{$nav_list.mark} {$nav_list.nav_name}</td>
                             <td>{$nav_list.guide}</td>
                             <td align="center">{$nav_list.sort}</td>
                             <td align="center"><a href="mobile.php?rec=nav&act=edit&id={$nav_list.id}">{$lang.edit}</a> | <a href="mobile.php?rec=nav&act=del&id={$nav_list.id}">{$lang.del}</a></td>
                         </tr>
-                        <!-- {/foreach} -->
+                         {/foreach} 
                     </table>
-                    <!-- {/if} -->
-                    <!-- {if $act eq 'add'} 导航添加 -->
+                     {/if} 
+                     {if $act eq 'add'} 导航添加 
                     <script type="text/javascript">
                         {literal}
                         $(function(){ $(".idTabs").idTabs(); });
@@ -133,9 +133,9 @@
                                             <td>
                                                 <select name="nav_menu" onchange="change('nav_name', this)">
                                                     <option value="">{$lang.nav_menu}</option>
-                                                    <!-- {foreach from=$catalog item=catalog} -->
+                                                     {foreach from=$catalog item=catalog} 
                                                     <option value="{$catalog.module},{$catalog.guide}"{if $catalog.cur} selected="selected"{/if} title="{$catalog.name}">{$catalog.mark} {$catalog.name}</option>
-                                                    <!-- {/foreach} -->
+                                                     {/foreach} 
                                                 </select>
                                             </td>
                                         </tr>
@@ -195,26 +195,26 @@
                             </div>
                         </div>
                     </div>
-                    <!-- {/if} -->
-                    <!-- {if $act eq 'edit'} 导航编辑 -->
+                     {/if} 
+                     {if $act eq 'edit'} 导航编辑 
                     <form action="mobile.php?rec=nav&act=update" method="post">
                         <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                             <tr>
                                 <th colspan="2">&nbsp;</th>
                             </tr>
-                            <!-- {if $nav_info.module neq 'nav'} -->
+                             {if $nav_info.module neq 'nav'} 
                             <tr>
                                 <td width="80" height="35" align="right">{$lang.nav_system}</td>
                                 <td>
                                     <select name="nav_menu" onchange="change('nav_name', this)">
                                         <option value="">{$lang.nav_menu}</option>
-                                        <!-- {foreach from=$catalog item=catalog} -->
+                                         {foreach from=$catalog item=catalog} 
                                         <option value="{$catalog.module},{$catalog.guide}"{if $catalog.cur} selected="selected"{/if} title="{$catalog.name}">{$catalog.mark} {$catalog.name}</option>
-                                        <!-- {/foreach} -->
+                                         {/foreach} 
                                     </select>
                                 </td>
                             </tr>
-                            <!-- {/if} -->
+                             {/if} 
                             <tr>
                                 <td width="80" height="35" align="right">{$lang.nav_name}</td>
                                 <td>
@@ -224,12 +224,12 @@
                             <tr>
                                 <td height="35" align="right">{$lang.nav_link}</td>
                                 <td>
-                                    <!-- {if $nav_info.module eq 'nav'} -->
+                                     {if $nav_info.module eq 'nav'} 
                                     <input type="text" name="guide" value="{$nav_info.url}" size="60" class="inpMain" />
-                                    <!-- {else} -->
+                                     {else} 
                                     <input type="text" name="guide_no" value="{$nav_info.url}" size="60" readOnly="true" class="inpMain" />
                                     <b class="cue">{$lang.nav_not_modify}</b>
-                                    <!-- {/if} -->
+                                     {/if} 
                                 </td>
                             </tr>
                             <tr>
@@ -248,9 +248,9 @@
                             </tr>
                         </table>
                     </form>
-                    <!-- {/if} -->
-                    <!-- {/if} 手机版导航 结束 -->
-                    <!-- {if $rec eq 'show'} 手机版幻灯 开始 -->
+                     {/if} 
+                     {/if} 手机版导航 结束 
+                     {if $rec eq 'show'} 手机版幻灯 开始 
                     <h3>{$ur_here}</h3>
                     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic imgModule">
                         <tr>
@@ -278,11 +278,11 @@
                                             <input type="text" name="sort" value="{if $show.sort}{$show.sort}{else}50{/if}" size="20" class="inpMain" /></td>
                                     </tr>
                                     <tr>
-                                        <td><!-- {if $show} -->
+                                        <td> {if $show} 
                                             <a href="mobile.php?rec=show" class="btnGray">{$lang.cancel}</a>
                                             <input type="hidden" name="id" value="{$show.id}">
                                             <input type="hidden" name="show_img" value="{$show.show_img}">
-                                            <!-- {/if} -->
+                                             {/if} 
                                             <input type="hidden" name="token" value="{$token}" />
                                             <input name="submit" class="btn" type="submit" value="{$lang.btn_submit}" /></td>
                                     </tr>
@@ -295,26 +295,26 @@
                                     <td width="50" align="center">{$lang.sort}</td>
                                     <td width="80" align="center">{$lang.handler}</td>
                                 </tr>
-                                <!-- {foreach from=$show_list item=show_list} -->
+                                 {foreach from=$show_list item=show_list} 
                                 <tr{if $show_list.id eq $id} class="active"{/if}>
                                 <td><a href="{$show_list.show_img}" target="_blank"><img src="{$show_list.thumb}" width="100" /></a></td>
                                 <td>{$show_list.show_name}</td>
                                 <td align="center">{$show_list.sort}</td>
                                 <td align="center"><a href="mobile.php?rec=show&act=edit&id={$show_list.id}">{$lang.edit}</a> | <a href="mobile.php?rec=show&act=del&id={$show_list.id}">{$lang.del}</a></td>
                                 </tr>
-                                <!-- {/foreach} -->
+                                 {/foreach} 
                             </table></td>
                         </tr>
                     </table>
-                    <!-- {/if} 手机版幻灯 结束 -->
-                    <!-- {if $rec eq 'theme'} 手机版模板 开始 -->
+                     {/if} 手机版幻灯 结束 
+                     {if $rec eq 'theme'} 手机版模板 开始 
                     <div id="theme">
                         <h3>{$ur_here}</h3>
                         <ul class="tab">
                             <li><a href="mobile.php?rec=theme"{if $act eq 'default'} class="selected"{/if}>{$lang.theme_list}</a></li>
                             <li><a href="mobile.php?rec=theme&act=install"{if $act eq 'install'} class="selected"{/if}>{$lang.theme_install}{if $unum.theme}<span class="unum"><span>{$unum.theme}</span></span>{/if}</a></li>
                         </ul>
-                        <!-- {if $act eq 'default'} -->
+                         {if $act eq 'default'} 
                         <div class="enable">
                             <h2>{$lang.theme_enabled}</h2>
                             <p><img src="{$theme_enable.image}" width="170" height="230"></p>
@@ -327,25 +327,25 @@
                         </div>
                         <div class="themeList">
                             <h2>{$lang.theme_installed}</h2>
-                            <!-- {foreach from=$theme_list item=theme} -->
+                             {foreach from=$theme_list item=theme} 
                             <dl class="mobile">
                                 <p><a href="mobile.php?rec=theme&act=enable&unique_id={$theme.unique_id}"><img src="{$theme.image}" width="170" height="230"></a></p>
                                 <dt>{$theme.theme_name} {$theme_enable.version}</dt>
                                 <dd>{$lang.author}：<a href="{$theme.author_uri}" target="_blank">{$theme.author}</a></dd>
                                 <dd class="btnList"><a href="mobile.php?rec=theme&act=del&unique_id={$theme.unique_id}" class="del">{$lang.del}</a> <span><a href="mobile.php?rec=theme&act=enable&unique_id={$theme.unique_id}">{$lang.enabled}</a> <a href="javascript:void(0)" >{$lang.theme_preview}</a></span></dd>
                             </dl>
-                            <!-- {/foreach} -->
+                             {/foreach} 
                         </div>
-                        <!-- {/if} -->
-                        <!-- {if $act eq 'install'} -->
+                         {/if} 
+                         {if $act eq 'install'} 
                         <div class="selector"></div>
                         <div class="cloudList themeList">
                         </div>
                         <script type="text/javascript">get_cloud_list('mobile', '{$get}', '{$localsite}')</script>
                         <div class="pager"></div>
-                        <!-- {/if} -->
+                         {/if} 
                     </div>
-                    <!-- {/if} 手机版模板 结束 -->
+                     {/if} 手机版模板 结束 
                 </div>
             </div>
         </div>

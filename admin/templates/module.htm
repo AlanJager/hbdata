@@ -20,14 +20,14 @@
                 <li><a href="module.php?rec=local"{if $rec eq 'local'} class="selected"{/if}>{$lang.module_local}</a></li>
                 <li><a href="module.php?rec=uninstall"{if $rec eq 'uninstall'} class="selected"{/if}>{$lang.module_uninstall}</a></li>
             </ul>
-            <!-- {if $rec eq 'default'} 模块扩展 -->
+             {if $rec eq 'default'} 模块扩展 
             <div class="selector"></div>
             <div class="cloudList">
             </div>
             <script type="text/javascript">get_cloud_list('module', '{$get}', '{$localsite}')</script>
             <div class="pager"></div>
-            <!-- {/if} -->
-            <!-- {if $rec eq 'local'} 本地安装 -->
+             {/if} 
+             {if $rec eq 'local'} 本地安装 
             <div class="install">
                 <h2>{$lang.module_local_cue}</h2>
                 <form action="module.php?rec=install" method="post" enctype="multipart/form-data">
@@ -36,20 +36,20 @@
                     <input name="submit" class="btn" type="submit" value="现在安装" />
                 </form>
             </div>
-            <!-- {/if} -->
-            <!-- {if $rec eq 'uninstall'} 卸载模块 -->
+             {/if} 
+             {if $rec eq 'uninstall'} 卸载模块 
             <div class="uninstall">
                 <div class="handbook">{$lang.module_uninstall_cue}</div>
                 <div class="list">
                     <h2>{$lang.module_uninstall_list}</h2>
                     <ul>
-                        <!-- {foreach from=$uninstall_list item=module} -->
+                         {foreach from=$uninstall_list item=module} 
                         <li><em>{$module}</em><a href="module.php?rec=del&token={$token}&extend_id={$module}">{$lang.module_uninstall_btn}</a></li>
-                        <!-- {/foreach} -->
+                         {/foreach} 
                     </ul>
                 </div>
             </div>
-            <!-- {/if} -->
+             {/if} 
         </div>
     </div>
     {include file="footer.htm"}

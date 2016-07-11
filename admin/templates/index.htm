@@ -13,17 +13,17 @@
     <div id="dcLeft">{include file="menu.htm"}</div>
     <div id="dcMain"> {include file="ur_here.htm"}
         <div id="index" class="mainBox" style="padding-top:18px;{$workspace.height}">
-            <!-- {foreach from=$sys_info.folder_exists item=warning} -->
+             {foreach from=$sys_info.folder_exists item=warning} 
             <div class="warning">{$warning}</div>
-            <!-- {/foreach} -->
+             {/foreach} 
             <div id="hbdataApi"></div>
-            <!-- {if $rec eq 'default'} 管理首页 -->
+             {if $rec eq 'default'} 管理首页 
             <div class="indexBox">
                 <div class="boxTitle">{$lang.title_page}</div>
                 <ul class="ipage">
-                    <!-- {foreach from=$page_list item=page_list} -->
+                     {foreach from=$page_list item=page_list} 
                     <a href="page.php?rec=edit&id={$page_list.id}"{if $page_list.level gt 0} class="child{$page_list.level}"{/if}>{$page_list.page_name}</a>
-                    <!-- {/foreach} -->
+                     {/foreach} 
                     <div class="clear"></div>
                 </ul>
             </div>
@@ -48,14 +48,14 @@
                                     </tr>
                                     <tr>
                                         <td>{$lang.rewrite}：</td>
-                                        <td><strong><!-- {if $site.rewrite} -->{$lang.open}<!-- {else} -->{$lang.close}<a href="system.php" class="cueRed ml">{$lang.open_cue}</a>
-                                            <!-- {/if} --></strong></td>
+                                        <td><strong> {if $site.rewrite} {$lang.open} {else} {$lang.close}<a href="system.php" class="cueRed ml">{$lang.open_cue}</a>
+                                             {/if} </strong></td>
                                         <td>{$lang.charset}：</td>
                                         <td><strong>{$sys_info.charset}</strong></td>
                                     </tr>
                                     <tr>
                                         <td>{$lang.if_sitemap}：</td>
-                                        <td><strong><!-- {if $site.sitemap} -->{$lang.open}<!-- {else} -->{$lang.close}<!-- {/if} --></strong></td>
+                                        <td><strong> {if $site.sitemap} {$lang.open} {else} {$lang.close} {/if} </strong></td>
                                         <td>{$lang.site_theme}：</td>
                                         <td><strong>{$site.site_theme}</strong></td>
                                     </tr>
@@ -78,12 +78,12 @@
                                         <th width="45%">{$lang.manager_log_ip}</th>
                                         <th width="55%">{$lang.manager_log_create_time}</th>
                                     </tr>
-                                    <!-- {foreach from=$log_list item=log_list} -->
+                                     {foreach from=$log_list item=log_list} 
                                     <tr>
                                         <td align="center">{$log_list.ip}</td>
                                         <td align="center">{$log_list.create_time}</td>
                                     </tr>
-                                    <!-- {/foreach} -->
+                                     {/foreach} 
                                 </table>
                             </ul>
                         </div>
@@ -136,7 +136,7 @@
                     </table>
                 </ul>
             </div>
-            <!-- {/if} -->
+             {/if} 
         </div>
     </div>
     {include file="footer.htm"} </div>

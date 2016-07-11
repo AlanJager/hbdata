@@ -15,46 +15,46 @@
     <div id="dcMain">
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
-            <!-- {if $rec eq 'default'} 文章列表 -->
+             {if $rec eq 'default'} 文章列表 
             <h3><a href="{$action_link.href}" class="actionBtn add">{$action_link.text}</a>{$ur_here}</h3>
             <div class="filter">
                 <form action="article.php" method="post">
                     <select name="cat_id">
                         <option value="0">{$lang.uncategorized}</option>
-                        <!-- {foreach from=$article_category item=cate} -->
-                        <!-- {if $cate.cat_id eq $cat_id} -->
+                         {foreach from=$article_category item=cate} 
+                         {if $cate.cat_id eq $cat_id} 
                         <option value="{$cate.cat_id}" selected="selected">{$cate.mark} {$cate.cat_name}</option>
-                        <!-- {else} -->
+                         {else} 
                         <option value="{$cate.cat_id}">{$cate.mark} {$cate.cat_name}</option>
-                        <!-- {/if} -->
-                        <!-- {/foreach} -->
+                         {/if} 
+                         {/foreach} 
                     </select>
                     <input name="keyword" type="text" class="inpMain" value="{$keyword}" size="20" />
                     <input name="submit" class="btnGray" type="submit" value="{$lang.btn_filter}" />
                 </form>
     <span>
-    <!-- {if $if_sort} -->
+     {if $if_sort} 
     <a class="btnGray" href="article.php?rec=sort">{$lang.sort_close}</a>
-        <!-- {else} -->
+         {else} 
     <a class="btnGray" href="article.php?rec=sort">{$lang.sort_article}</a>
-        <!-- {/if} -->
+         {/if} 
     </span>
             </div>
-            <!-- {if $if_sort} -->
+             {if $if_sort} 
             <div class="homeSortRight">
                 <ul class="homeSortBg">
                     {$sort_bg}
                 </ul>
                 <ul class="homeSortList">
-                    <!-- {foreach from=$sort name=sort item=article} -->
+                     {foreach from=$sort name=sort item=article} 
                     <li>
                         <em>{$article.title}</em>
                         <a href="article.php?rec=del_sort&id={$article.id}" title="{$lang.sort_cancel}">X</a>
                     </li>
-                    <!-- {/foreach} -->
+                     {/foreach} 
                 </ul>
             </div>
-            <!-- {/if} -->
+             {/if} 
             <div id="list"{if $if_sort} class="homeSortLeft"{/if}>
             <form name="action" method="post" action="article.php?rec=action">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
@@ -66,22 +66,22 @@
                         <th width="80" align="center">{$lang.add_time}</th>
                         <th width="80" align="center">{$lang.handler}</th>
                     </tr>
-                    <!-- {foreach from=$article_list item=article} -->
+                     {foreach from=$article_list item=article} 
                     <tr>
                         <td align="center"><input type="checkbox" name="checkbox[]" value="{$article.id}" /></td>
                         <td align="center">{$article.id}</td>
-                        <td><a href="article.php?rec=edit&id={$article.id}">{$article.title}</a><!-- {if $article.image} --> <a href="../{$article.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a><!-- {/if} --></td>
-                        <td align="center"><!-- {if $article.cat_name} --><a href="article.php?cat_id={$article.cat_id}">{$article.cat_name}</a><!-- {else} -->{$lang.uncategorized}<!-- {/if} --></td>
+                        <td><a href="article.php?rec=edit&id={$article.id}">{$article.title}</a> {if $article.image}  <a href="../{$article.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a> {/if} </td>
+                        <td align="center"> {if $article.cat_name} <a href="article.php?cat_id={$article.cat_id}">{$article.cat_name}</a> {else} {$lang.uncategorized} {/if} </td>
                         <td align="center">{$article.add_time}</td>
                         <td align="center">
-                            <!-- {if $if_sort} -->
+                             {if $if_sort} 
                             <a href="article.php?rec=set_sort&id={$article.id}">{$lang.sort_btn}</a>
-                            <!-- {else} -->
+                             {else} 
                             <a href="article.php?rec=edit&id={$article.id}">{$lang.edit}</a> | <a href="article.php?rec=del&id={$article.id}">{$lang.del}</a>
-                            <!-- {/if} -->
+                             {/if} 
                         </td>
                     </tr>
-                    <!-- {/foreach} -->
+                     {/foreach} 
                 </table>
                 <div class="action">
                     <select name="action" onchange="hbdataAction()">
@@ -91,13 +91,13 @@
                     </select>
                     <select name="new_cat_id" style="display:none">
                         <option value="0">{$lang.uncategorized}</option>
-                        <!-- {foreach from=$article_category item=cate} -->
-                        <!-- {if $cate.cat_id eq $cat_id} -->
+                         {foreach from=$article_category item=cate} 
+                         {if $cate.cat_id eq $cat_id} 
                         <option value="{$cate.cat_id}" selected="selected">{$cate.mark} {$cate.cat_name}</option>
-                        <!-- {else} -->
+                         {else} 
                         <option value="{$cate.cat_id}">{$cate.mark} {$cate.cat_name}</option>
-                        <!-- {/if} -->
-                        <!-- {/foreach} -->
+                         {/if} 
+                         {/foreach} 
                     </select>
                     <input name="submit" class="btn" type="submit" value="{$lang.btn_execute}" />
                 </div>
@@ -105,8 +105,8 @@
         </div>
         <div class="clear"></div>
         {include file="pager.htm"}
-        <!-- {/if} -->
-        <!-- {if $rec eq 'add' || $rec eq 'edit'} 文章添加或编辑 -->
+         {/if} 
+         {if $rec eq 'add' || $rec eq 'edit'} 文章添加或编辑 
         <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
         <form action="article.php?rec={$form_action}" method="post" enctype="multipart/form-data">
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
@@ -121,17 +121,17 @@
                     <td>
                         <select name="cat_id">
                             <option value="0">{$lang.uncategorized}</option>
-                            <!-- {foreach from=$article_category item=cate} -->
-                            <!-- {if $cate.cat_id eq $article.cat_id} -->
+                             {foreach from=$article_category item=cate} 
+                             {if $cate.cat_id eq $article.cat_id} 
                             <option value="{$cate.cat_id}" selected="selected">{$cate.mark} {$cate.cat_name}</option>
-                            <!-- {else} -->
+                             {else} 
                             <option value="{$cate.cat_id}">{$cate.mark} {$cate.cat_name}</option>
-                            <!-- {/if} -->
-                            <!-- {/foreach} -->
+                             {/if} 
+                             {/foreach} 
                         </select>
                     </td>
                 </tr>
-                <!-- {if $article.defined} -->
+                 {if $article.defined} 
                 <tr>
                     <td align="right" valign="top">{$lang.article_defined}</td>
                     <td>
@@ -143,11 +143,11 @@
                         </script>
                     </td>
                 </tr>
-                <!-- {/if} -->
+                 {/if} 
                 <tr>
                     <td align="right" valign="top">{$lang.article_content}</td>
                     <td>
-                        <!-- KindEditor -->
+                         KindEditor 
                         <script charset="utf-8" src="include/kindeditor/kindeditor.js"></script>
                         <script charset="utf-8" src="include/kindeditor/lang/zh_CN.js"></script>
                         <script>
@@ -158,7 +158,7 @@
                             });
                             {/literal}
                         </script>
-                        <!-- /KindEditor -->
+                         /KindEditor 
                         <textarea id="content" name="content" style="width:780px;height:400px;" class="textArea">{$article.content}</textarea>
                     </td>
                 </tr>
@@ -191,12 +191,12 @@
                 </tr>
             </table>
         </form>
-        <!-- {/if} -->
+         {/if} 
     </div>
 </div>
 {include file="footer.htm"}
 </div>
-<!-- {if $rec eq 'default'} 文章列表 -->
+ {if $rec eq 'default'} 文章列表 
 <script type="text/javascript">
     {literal}
     onload = function()
@@ -212,6 +212,6 @@
     }
     {/literal}
 </script>
-<!-- {/if} -->
+ {/if} 
 </body>
 </html>

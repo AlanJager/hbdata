@@ -14,7 +14,7 @@
     <div id="dcMain">
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
-            <!-- {if $rec eq 'default'} 分类列表 -->
+             {if $rec eq 'default'} 分类列表 
             <h3><a href="{$action_link.href}" class="actionBtn add">{$action_link.text}</a>{$ur_here}</h3>
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <tr>
@@ -24,7 +24,7 @@
                     <th width="60" align="center">{$lang.sort}</th>
                     <th width="80" align="center">{$lang.handler}</th>
                 </tr>
-                <!-- {foreach from=$product_category item=cate} -->
+                 {foreach from=$product_category item=cate} 
                 <tr>
                     <td align="left">{$cate.mark} <a href="product.php?cat_id={$cate.cat_id}">{$cate.cat_name}</a></td>
                     <td>{$cate.unique_id}</td>
@@ -32,10 +32,10 @@
                     <td align="center">{$cate.sort}</td>
                     <td align="center"><a href="product_category.php?rec=edit&cat_id={$cate.cat_id}">{$lang.edit}</a> | <a href="product_category.php?rec=del&cat_id={$cate.cat_id}">{$lang.del}</a></td>
                 </tr>
-                <!-- {/foreach} -->
+                 {/foreach} 
             </table>
-            <!-- {/if} -->
-            <!-- {if $rec eq 'add' || $rec eq 'edit'} 分类添加或编辑 -->
+             {/if} 
+             {if $rec eq 'add' || $rec eq 'edit'} 分类添加或编辑 
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
             <form action="product_category.php?rec={$form_action}" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
@@ -56,13 +56,13 @@
                         <td>
                             <select name="parent_id">
                                 <option value="0">{$lang.empty}</option>
-                                <!-- {foreach from=$product_category item=cate} -->
-                                <!-- {if $cate.cat_id eq $cat_info.parent_id} -->
+                                 {foreach from=$product_category item=cate} 
+                                 {if $cate.cat_id eq $cat_info.parent_id} 
                                 <option value="{$cate.cat_id}" selected="selected">{$cate.mark} {$cate.cat_name}</option>
-                                <!-- {else} -->
+                                 {else} 
                                 <option value="{$cate.cat_id}">{$cate.mark} {$cate.cat_name}</option>
-                                <!-- {/if} -->
-                                <!-- {/foreach} -->
+                                 {/if} 
+                                 {/foreach} 
                             </select>
                         </td>
                     </tr>
@@ -94,7 +94,7 @@
                     </tr>
                 </table>
             </form>
-            <!-- {/if} -->
+             {/if} 
         </div>
     </div>
     {include file="footer.htm"}

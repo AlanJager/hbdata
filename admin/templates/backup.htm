@@ -15,7 +15,7 @@
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
-            <!-- {if $rec eq 'default'} 数据备份 -->
+             {if $rec eq 'default'} 数据备份 
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <form name="myform" method="post" action="backup.php?rec=backup">
                     <tr>
@@ -29,7 +29,7 @@
                         <th align="center">{$lang.backup_index_length}</th>
                         <th align="center">{$lang.backup_data_free}</th>
                     </tr>
-                    <!-- {foreach from=$tables item=tables} -->
+                     {foreach from=$tables item=tables} 
                     <tr>
                         <td align="center"><input type=checkbox name=tables[] value={$tables.Name} checked></td>
                         <td align="left">{$tables.Name}</td>
@@ -39,7 +39,7 @@
                         <td align="center">{$tables.Index_length}</td>
                         <td align="center">{$tables.Data_free}</td>
                     </tr>
-                    <!-- {/foreach} -->
+                     {/foreach} 
                     <tr>
                         <td colspan="7" align="right">{$lang.backup_total_size} {$totalsize} KB </td>
                     </tr>
@@ -61,8 +61,8 @@
                     </tr>
                 </form>
             </table>
-            <!--{/if}-->
-            <!-- {if $rec eq 'restore'} 恢复备份 -->
+            {/if}
+             {if $rec eq 'restore'} 恢复备份 
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <tr>
                     <th width="" align="left">{$lang.backup_sql_file_name}</th>
@@ -70,16 +70,16 @@
                     <th width="160">{$lang.backup_sql_maketime}</th>
                     <th width="140">{$lang.handler}</th>
                 </tr>
-                <!-- {foreach from=$infos item=file} -->
-                <tr<!-- {if $file.number gt 1} --> class="child"<!-- {/if} -->>
+                 {foreach from=$infos item=file} 
+                <tr {if $file.number gt 1}  class="child" {/if} >
                 <td align="left">{$file.sql_file_name}</td>
                 <td align="center">{$file.filesize}</td>
                 <td align="center">{$file.maketime}</td>
-                <td align="center"><!-- {if $file.number le 1} --><a href="backup.php?rec=import&sql_file_name={$file.sql_file_name}">{$lang.backup_sql_pre}</a> | <a href=backup.php?rec=down&sql_file_name={$file.sql_file_name}>{$lang.down}</a> | <a href=backup.php?rec=del&sql_file_name={$file.sql_file_name}>{$lang.del}</a><!-- {/if} --></td>
+                <td align="center"> {if $file.number le 1} <a href="backup.php?rec=import&sql_file_name={$file.sql_file_name}">{$lang.backup_sql_pre}</a> | <a href=backup.php?rec=down&sql_file_name={$file.sql_file_name}>{$lang.down}</a> | <a href=backup.php?rec=del&sql_file_name={$file.sql_file_name}>{$lang.del}</a> {/if} </td>
                 </tr>
-                <!-- {/foreach} -->
+                 {/foreach} 
             </table>
-            <!--{/if}-->
+            {/if}
         </div>
     </div>
     {include file="footer.htm"}

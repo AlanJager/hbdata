@@ -15,33 +15,33 @@
 <body>
 <div id="login">
     <div class="dologo"></div>
-    <!-- {if $rec eq 'default'} -->
+     {if $rec eq 'default'} 
     <form action="login.php?rec=login" method="post">
         <ul>
             <li class="inpLi"><b>{$lang.login_user_name}：</b><input type="text" name="user_name" class="inpLogin"></li>
             <li class="inpLi"><b>{$lang.login_password}：</b><input type="password" name="password" class="inpLogin"></li>
-            <!-- {if $site.captcha} -->
+             {if $site.captcha} 
             <li class="captchaPic">
                 <div class="inpLi"><b>{$lang.login_captcha}：</b><input type="text" name="captcha" class="captcha"></div>
                 <img id="vcode" src="../captcha.php" alt="{$lang.captcha}" border="1" onClick="refreshimage()" title="{$lang.login_captcha_refresh}">
             </li>
-            <!-- {/if} -->
+             {/if} 
             <li class="sub"><input type="submit" name="submit" class="btn" value="{$lang.login_submit}"></li>
             <li class="action"><a href="login.php?rec=password_reset">{$lang.login_password_forget}？</a> <em class="separator">|</em> <a href="{$site.root_url}">{$lang.login_back}</a></li>
         </ul>
     </form>
-    <!-- {/if} -->
-    <!-- {if $rec eq 'password_reset'} -->
+     {/if} 
+     {if $rec eq 'password_reset'} 
     <form action="login.php?rec=password_reset_post" method="post">
         <ul class="reset">
-            <!-- {if $action eq 'default'} -->
+             {if $action eq 'default'} 
             <li class="inpLi"><b>{$lang.login_user_name}：</b><input type="text" name="user_name" class="inpLogin"></li>
             <li class="inpLi"><b>{$lang.login_email}：</b><input type="text" name="email" class="inpLogin"></li>
             <li class="sub">
                 <input type="hidden" name="token" value="{$token}" />
                 <input type="submit" name="submit" class="btn" value="{$lang.login_password_reset}">
             </li>
-            <!-- {elseif $action eq 'reset'} -->
+             {elseif $action eq 'reset'} 
             <li class="inpLi"><b>{$lang.manager_new_password}：</b><input type="password" name="password" class="inpLogin"></li>
             <li class="inpLi"><b>{$lang.manager_new_password_confirm}：</b><input type="password" name="password_confirm" class="inpLogin"></li>
             <li class="sub">
@@ -51,11 +51,11 @@
                 <input type="hidden" name="token" value="{$token}" />
                 <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}">
             </li>
-            <!-- {/if} -->
+             {/if} 
             <li class="action"><a href="login.php">{$lang.login_submit}</a> <em class="separator">|</em> <a href="{$site.root_url}">{$lang.login_back}</a></li>
         </ul>
     </form>
-    <!-- {/if} -->
+     {/if} 
 </div>
 </body>
 </html>

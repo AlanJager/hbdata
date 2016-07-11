@@ -15,17 +15,17 @@
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
-            <!-- {if $rec eq 'default'} 单页面列表 -->
+             {if $rec eq 'default'} 单页面列表 
             <div class="page">
-                <!-- {foreach from=$page_list item=page_list} -->
+                 {foreach from=$page_list item=page_list} 
                 <dl{if $page_list.level gt 0} class="child{$page_list.level}"{/if}>
                 <dt><strong>{$page_list.page_name}</strong><p>{$page_list.unique_id}</p></dt>
                 <dd><a href="page.php?rec=edit&id={$page_list.id}">{$lang.edit}</a> | <a href="page.php?rec=del&id={$page_list.id}">{$lang.del}</a></dd>
                 </dl>
-                <!-- {/foreach} -->
+                 {/foreach} 
             </div>
-            <!-- {/if} -->
-            <!-- {if $rec eq 'add' || $rec eq 'edit'} 单页面添加或编辑 -->
+             {/if} 
+             {if $rec eq 'add' || $rec eq 'edit'} 单页面添加或编辑 
             <form action="page.php?rec={$form_action}" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
@@ -45,20 +45,20 @@
                         <td>
                             <select name="parent_id">
                                 <option value="0">{$lang.empty}</option>
-                                <!-- {foreach from=$page_list item=list} -->
-                                <!-- {if $list.id eq $page.parent_id} -->
+                                 {foreach from=$page_list item=list} 
+                                 {if $list.id eq $page.parent_id} 
                                 <option value="{$list.id}" selected="selected">{$list.mark} {$list.page_name}</option>
-                                <!-- {else} -->
+                                 {else} 
                                 <option value="{$list.id}">{$list.mark} {$list.page_name}</option>
-                                <!-- {/if} -->
-                                <!-- {/foreach} -->
+                                 {/if} 
+                                 {/foreach} 
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td align="right">{$lang.page_content}</td>
                         <td>
-                            <!-- KindEditor -->
+                             KindEditor 
                             <script charset="utf-8" src="include/kindeditor/kindeditor.js"></script>
                             <script charset="utf-8" src="include/kindeditor/lang/zh_CN.js"></script>
                             <script>
@@ -69,7 +69,7 @@
                                 });
                                 {/literal}
                             </script>
-                            <!-- /KindEditor -->
+                             /KindEditor 
                             <textarea id="content" name="content" style="width:780px;height:400px;" class="textArea">{$page.content}</textarea>
                         </td>
                     </tr>
@@ -95,7 +95,7 @@
                     </tr>
                 </table>
             </form>
-            <!-- {/if} -->
+             {/if} 
         </div>
     </div>
     {include file="footer.htm"}

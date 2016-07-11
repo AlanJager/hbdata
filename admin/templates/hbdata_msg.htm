@@ -2,14 +2,14 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- {if $url} -->
+    {if $url} 
     <meta http-equiv="refresh" content="{$time}; URL={$url}" />
-    <!-- {/if} -->
+    {/if} 
     <title>{$lang.home}{if $ur_here} - {$lang.msg} {/if}</title>
     <meta name="Copyright" content="HbData Design." />
     <link href="templates/public.css" rel="stylesheet" type="text/css">
     {include file="javascript.htm"}
-    <!-- {if !$url} -->
+    {if !$url} 
     <script type="text/javascript">
         {literal}
         function go()
@@ -19,10 +19,10 @@
         setTimeout("go()",3000);
         {/literal}
     </script>
-    <!-- {/if} -->
+    {/if} 
 </head>
 <body>
-<!-- {if $out neq 'out'} -->
+<!-- {if $out neq 'out'} 
 <div id="dcWrap">
     {include file="header.htm"}
     <div id="dcLeft">{include file="menu.htm"}</div>
@@ -34,9 +34,9 @@
                 <h2>{$text}</h2>
                 <dl>
                     <dt>{$cue}</dt>
-                    <!-- {if $check} -->
+                    {if $check} 
                     <p><form action="{$check}" method="post"><input name="confirm" class="btn" type="submit" value="{$lang.del_confirm}" /></form></p>
-                    <!-- {/if} -->
+                    {/if} 
                     <dd><a href="{if $url}{$url}{else}javascript:history.go(-1);{/if}">{$lang.hbdata_msg_back}</a></dd>
                 </dl>
             </div>
@@ -44,7 +44,7 @@
     </div>
     {include file="footer.htm"}
 </div>
-<!-- {else} -->
+<!-- {else} 
 <div id="outMsg">
     <h2>{$text}</h2>
     <dl>
@@ -52,6 +52,6 @@
         <dd><a href="{if $url}{$url}{else}javascript:history.go(-1);{/if}">{$lang.hbdata_msg_back}</a></dd>
     </dl>
 </div>
-<!-- {/if} -->
+<!-- {/if} 
 </body>
 </html>

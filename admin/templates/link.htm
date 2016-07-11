@@ -57,8 +57,8 @@
                                     <td width="50" align="center">{$lang.sort}</td>
                                     <td width="80" align="center">{$lang.handler}</td>
                                 </tr>
-                                <!-- {foreach from=$link_list item=link_list} -->
-                                <!-- {if $link_list.id eq $id} -->
+                                 {foreach from=$link_list item=link_list} 
+                                 {if $link_list.id eq $id} 
                                 <tr>
                                     <td height="30" colspan="3"><strong>{$lang.link_edit}</strong></td>
                                 </tr>
@@ -94,14 +94,14 @@
                                         </table>
                                     </td>
                                 </tr>
-                                <!-- {else} -->
+                                 {else} 
                                 <tr>
                                     <td>{$link_list.link_name}</td>
                                     <td align="center">{$link_list.sort}</td>
                                     <td align="center"><a href="link.php?rec=edit&id={$link_list.id}">{$lang.edit}</a> | <a href="link.php?rec=del&id={$link_list.id}">{$lang.del}</a></td>
                                 </tr>
-                                <!-- {/if} -->
-                                <!-- {/foreach} -->
+                                 {/if} 
+                                 {/foreach} 
                             </form>
                         </table>
                     </td>

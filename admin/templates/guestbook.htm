@@ -13,7 +13,7 @@
     <div id="dcLeft">{include file="menu.htm"}</div>
     <div id="dcMain"> {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
-            <!-- {if $rec eq 'default'} 留言列表 -->
+             {if $rec eq 'default'} 留言列表 
             <h3>{$ur_here}</h3>
             <div id="list">
                 <form name="del" method="post" action="guestbook.php?rec=del_all">
@@ -25,7 +25,7 @@
                             <th width="80" align="center">{$lang.add_time}</th>
                             <th width="60" align="center">{$lang.if_show}</th>
                         </tr>
-                        <!-- {foreach from=$book_list item=guestbook} -->
+                         {foreach from=$book_list item=guestbook} 
                         <tr {if $guestbook.if_read eq '0'}class="unread"{/if}>
                         <td align="center"><input type="checkbox" name="checkbox[]" value="{$guestbook.id}" /></td>
                         <td><a href="guestbook.php?rec=read&id={$guestbook.id}">{$guestbook.title}</a></td>
@@ -33,15 +33,15 @@
                         <td align="center">{$guestbook.add_time}</td>
                         <td align="center">{$guestbook.if_show}</td>
                         </tr>
-                        <!-- {/foreach} -->
+                         {/foreach} 
                     </table>
                     <div class="action"><input name="submit" class="btn" type="submit" value="{$lang.del}" /></div>
                 </form>
             </div>
             <div class="clear"></div>
             {include file="pager.htm"}
-            <!-- {/if} -->
-            <!-- {if $rec eq 'read'} 留言查看与回复 -->
+             {/if} 
+             {if $rec eq 'read'} 留言查看与回复 
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
             <div id="guestBook">
                 <dl class="book">
@@ -49,9 +49,9 @@
                     <dd>{$guestbook.content}</dd>
                     <p><b>{$lang.guestbook_name}：{$guestbook.name}</b><b>{$lang.guestbook_contact_type}（{$guestbook.contact_type}）：{$guestbook.contact}</b><b>{$lang.add_time}：{$guestbook.add_time}</b></p>
                 </dl>
-                <!-- {if $reply.content} -->
+                 {if $reply.content} 
                 <dl class="reply"><b>{$lang.guestbook_admin_reply}[{$reply.add_time}]：</b> {$reply.content}</dl>
-                <!-- {else} -->
+                 {else} 
                 <dl class="replySubmit">
                     <form action="guestbook.php?rec=reply" method="post">
                         <textarea name="content" cols="90" rows="5" class="textArea" id="content"></textarea>
@@ -61,9 +61,9 @@
                         <input name="submit" class="btn" type="submit" value="{$lang.guestbook_reply}" />
                     </form>
                 </dl>
-                <!-- {/if} -->
+                 {/if} 
             </div>
-            <!-- {/if} -->
+             {/if} 
         </div>
     </div>
     {include file="footer.htm"} </div>

@@ -46,11 +46,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <!-- {if $show} -->
+                                     {if $show} 
                                     <a href="show.php" class="btnGray">{$lang.cancel}</a>
                                     <input type="hidden" name="id" value="{$show.id}">
                                     <input type="hidden" name="show_img" value="{$show.show_img}">
-                                    <!-- {/if} -->
+                                     {/if} 
                                     <input type="hidden" name="token" value="{$token}" />
                                     <input name="submit" class="btn" type="submit" value="{$lang.btn_submit}" />
                                 </td>
@@ -66,14 +66,14 @@
                                 <td width="50" align="center">{$lang.sort}</td>
                                 <td width="80" align="center">{$lang.handler}</td>
                             </tr>
-                            <!-- {foreach from=$show_list item=show_list} -->
+                             {foreach from=$show_list item=show_list} 
                             <tr{if $show_list.id eq $id} class="active"{/if}>
                             <td><a href="{$show_list.show_img}" target="_blank"><img src="{$show_list.thumb}" width="100" /></a></td>
                             <td>{$show_list.show_name}</td>
                             <td align="center">{$show_list.sort}</td>
                             <td align="center"><a href="show.php?rec=edit&id={$show_list.id}">{$lang.edit}</a> | <a href="show.php?rec=del&id={$show_list.id}">{$lang.del}</a></td>
                             </tr>
-                            <!-- {/foreach} -->
+                             {/foreach} 
                         </table>
                     </td>
                 </tr>

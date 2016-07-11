@@ -16,7 +16,7 @@
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
-            <!-- {if $rec eq 'default'} 导航列表 -->
+             {if $rec eq 'default'} 导航列表 
             <div class="navList">
                 <ul class="tab">
                     <li><a href="nav.php"{if $type eq 'middle'} class="selected"{/if}>{$lang.nav_type_middle}</a></li>
@@ -30,18 +30,18 @@
                         <th width="80" align="center">{$lang.sort}</th>
                         <th width="120" align="center">{$lang.handler}</th>
                     </tr>
-                    <!-- {foreach from=$nav_list item=nav_list} -->
+                     {foreach from=$nav_list item=nav_list} 
                     <tr>
                         <td>{$nav_list.mark} {$nav_list.nav_name}</td>
                         <td>{$nav_list.guide}</td>
                         <td align="center">{$nav_list.sort}</td>
                         <td align="center"><a href="nav.php?rec=edit&id={$nav_list.id}">{$lang.edit}</a> | <a href="nav.php?rec=del&id={$nav_list.id}">{$lang.del}</a></td>
                     </tr>
-                    <!-- {/foreach} -->
+                     {/foreach} 
                 </table>
             </div>
-            <!-- {/if} -->
-            <!-- {if $rec eq 'add'} 导航添加 -->
+             {/if} 
+             {if $rec eq 'add'} 导航添加 
             <script type="text/javascript">
                 {literal}
                 $(function(){ $(".idTabs").idTabs(); });
@@ -61,9 +61,9 @@
                                     <td>
                                         <select name="nav_menu" onchange="change('nav_name', this)">
                                             <option value="">{$lang.nav_menu}</option>
-                                            <!-- {foreach from=$catalog item=catalog} -->
+                                             {foreach from=$catalog item=catalog} 
                                             <option value="{$catalog.module},{$catalog.guide}"{if $catalog.cur} selected="selected"{/if} title="{$catalog.name}">{$catalog.mark} {$catalog.name}</option>
-                                            <!-- {/foreach} -->
+                                             {/foreach} 
                                         </select>
                                     </td>
                                 </tr>
@@ -92,9 +92,9 @@
                                     <td id="parent">
                                         <select name="parent_id">
                                             <option value="0">{$lang.empty}</option>
-                                            <!-- {foreach from=$nav_list item=list} -->
+                                             {foreach from=$nav_list item=list} 
                                             <option value="{$list.id}">{$list.mark} {$list.nav_name}</option>
-                                            <!-- {/foreach} -->
+                                             {/foreach} 
                                         </select>
                                     </td>
                                 </tr>
@@ -148,9 +148,9 @@
                                     <td id="parent_external">
                                         <select name="parent_id">
                                             <option value="0">{$lang.empty}</option>
-                                            <!-- {foreach from=$nav_list item=list} -->
+                                             {foreach from=$nav_list item=list} 
                                             <option value="{$list.id}">{$list.mark} {$list.nav_name}</option>
-                                            <!-- {/foreach} -->
+                                             {/foreach} 
                                         </select>
                                     </td>
                                 </tr>
@@ -173,26 +173,26 @@
                     </div>
                 </div>
             </div>
-            <!-- {/if} -->
-            <!-- {if $rec eq 'edit'} 导航编辑 -->
+             {/if} 
+             {if $rec eq 'edit'} 导航编辑 
             <form action="nav.php?rec=update" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
                         <th colspan="2">&nbsp;</th>
                     </tr>
-                    <!-- {if $nav_info.module neq 'nav'} -->
+                     {if $nav_info.module neq 'nav'} 
                     <tr>
                         <td width="80" height="35" align="right">{$lang.nav_system}</td>
                         <td>
                             <select name="nav_menu" onchange="change('nav_name', this)">
                                 <option value="">{$lang.nav_menu}</option>
-                                <!-- {foreach from=$catalog item=catalog} -->
+                                 {foreach from=$catalog item=catalog} 
                                 <option value="{$catalog.module},{$catalog.guide}"{if $catalog.cur} selected="selected"{/if} title="{$catalog.name}">{$catalog.mark} {$catalog.name}</option>
-                                <!-- {/foreach} -->
+                                 {/foreach} 
                             </select>
                         </td>
                     </tr>
-                    <!-- {/if} -->
+                     {/if} 
                     <tr>
                         <td width="80" height="35" align="right">{$lang.nav_name}</td>
                         <td>
@@ -213,12 +213,12 @@
                     <tr>
                         <td height="35" align="right">{$lang.nav_link}</td>
                         <td>
-                            <!-- {if $nav_info.module eq 'nav'} -->
+                             {if $nav_info.module eq 'nav'} 
                             <input type="text" name="guide" value="{$nav_info.url}" size="60" class="inpMain" />
-                            <!-- {else} -->
+                             {else} 
                             <input type="text" name="guide_no" value="{$nav_info.url}" size="60" readOnly="true" class="inpMain" />
                             <b class="cue">{$lang.nav_not_modify}</b>
-                            <!-- {/if} -->
+                             {/if} 
                         </td>
                     </tr>
                     <tr>
@@ -226,9 +226,9 @@
                         <td id="parent">
                             <select name="parent_id">
                                 <option value="0">{$lang.empty}</option>
-                                <!-- {foreach from=$nav_list item=nav_list} -->
-                                <option value="{$nav_list.id}"<!-- {if $nav_list.id eq $nav_info.parent_id} --> selected<!-- {/if} -->>{$nav_list.mark} {$nav_list.nav_name}</option>
-                                <!-- {/foreach} -->
+                                 {foreach from=$nav_list item=nav_list} 
+                                <option value="{$nav_list.id}" {if $nav_list.id eq $nav_info.parent_id}  selected {/if} >{$nav_list.mark} {$nav_list.nav_name}</option>
+                                 {/foreach} 
                             </select>
                         </td>
                     </tr>
@@ -248,7 +248,7 @@
                     </tr>
                 </table>
             </form>
-            <!-- {/if} -->
+             {/if} 
         </div>
     </div>
     {include file="footer.htm"}
