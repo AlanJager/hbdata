@@ -67,7 +67,7 @@ elseif ($rec == 'insert') {
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'page_add');
 
-    $sql = "INSERT INTO " . $hbdata->table('page') . " (id, unique_id, parent_id, page_name, content ,keywords, description)" . " VALUES (NULL, '$_POST[unique_id]', '$_POST[parent_id]', '$_POST[page_name]', '$_POST[content]', '$_POST[keywords]', '$_POST[description]')";
+    $sql = "INSERT INTO " . $hbdata->table('page') . " (id, unique_id, parent_id, page_name, content ,keywords, description,sort)" . " VALUES (NULL, '$_POST[unique_id]', '$_POST[parent_id]', '$_POST[page_name]', '$_POST[content]', '$_POST[keywords]', '$_POST[description]', '$_POST[sort]')";
     $hbdata->query($sql);
 
     $hbdata->create_admin_log($_LANG['page_add'] . ': ' . $_POST[page_name]);
@@ -114,7 +114,7 @@ elseif ($rec == 'update') {
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'page_edit');
 
-    $sql = "UPDATE " . $hbdata->table('page') . " SET unique_id = '$_POST[unique_id]', parent_id = '$_POST[parent_id]', page_name = '$_POST[page_name]', content = '$_POST[content]', keywords = '$_POST[keywords]', description = '$_POST[description]' WHERE id = '$_POST[id]'";
+    $sql = "UPDATE " . $hbdata->table('page') . " SET unique_id = '$_POST[unique_id]', parent_id = '$_POST[parent_id]', page_name = '$_POST[page_name]', content = '$_POST[content]', keywords = '$_POST[keywords]', description = '$_POST[description]',sort = '$_POST[sort]' WHERE id = '$_POST[id]'";
     $hbdata->query($sql);
 
     $hbdata->create_admin_log($_LANG['page_edit'] . ': ' . $_POST['page_name']);
