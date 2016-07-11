@@ -251,7 +251,7 @@ class Common extends DbMysql
             $config['qq'] = $this->hbdata_qq($config['qq']);
         }
         $config['root_url'] = ROOT_URL;
-        $config['m_url'] = M_URL;
+        //$config['m_url'] = M_URL;
         return $config;
     }
 
