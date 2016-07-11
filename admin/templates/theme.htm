@@ -19,7 +19,7 @@
                 <li><a href="theme.php"{if $rec eq 'default'} class="selected"{/if}>{$lang.theme_list}</a></li>
                 <li><a href="theme.php?rec=install"{if $rec eq 'install'} class="selected"{/if}>{$lang.theme_install}{if $unum.theme}<span class="unum"><span>{$unum.theme}</span></span>{/if}</a></li>
             </ul>
-            <!-- {if $rec eq 'default'} -->
+             {if $rec eq 'default'} 
             <div class="enable">
                 <h2>{$lang.theme_enabled}</h2>
                 <p><img src="{$theme_enable.image}" width="280" height="175"></p>
@@ -32,23 +32,23 @@
             </div>
             <div class="themeList">
                 <h2>{$lang.theme_installed}</h2>
-                <!-- {foreach from=$theme_list item=theme} -->
+                 {foreach from=$theme_list item=theme} 
                 <dl>
                     <p><a href="theme.php?rec=enable&unique_id={$theme.unique_id}"><img src="{$theme.image}" width="280" height="175"></a></p>
                     <dt>{$theme.theme_name} {$theme_enable.version}</dt>
                     <dd>{$lang.author}：<a href="{$theme.author_uri}" target="_blank">{$theme.author}</a></dd>
                     <dd class="btnList"><a href="theme.php?rec=del&unique_id={$theme.unique_id}" class="del">{$lang.del}</a> <span><a href="theme.php?rec=enable&unique_id={$theme.unique_id}">{$lang.enabled}</a> <a href="javascript:void(0)" >{$lang.theme_preview}</a></span></dd>
                 </dl>
-                <!-- {/foreach} -->
+                 {/foreach} 
             </div>
-            <!-- {/if} -->
-            <!-- {if $rec eq 'install'} 安装模板 -->
+             {/if} 
+             {if $rec eq 'install'} 安装模板 
             <div class="selector"></div>
             <div class="cloudList themeList">
             </div>
             <script type="text/javascript">get_cloud_list('theme', '{$get}', '{$localsite}')</script>
             <div class="pager"></div>
-            <!-- {/if} -->
+             {/if} 
         </div>
     </div>
     {include file="footer.htm"}
