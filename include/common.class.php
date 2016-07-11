@@ -222,8 +222,10 @@ class Common extends DbMysql
      * @param string $mark
      * @return array
      */
-    function get_category_nolevel($table, $parent_id = 0, $level = 0, $current_id = '', &$category_nolevel = array(), $mark = '-') {
-        $data = $this->fetch_array_all($this->table($table), 'sort ASC');
+    function get_category_nolevel($category_table, $parent_id = 0, $level = 0, $current_id = '', &$category_nolevel = array(), $mark = '-') {
+        $category = explode('_', $category_table)[0];
+        $table = explode('_', $category_table)[1];
+        $data = $this->fetch_array_all_by_category($this->table($table), $category, 'sort ASC');
         foreach ((array) $data as $value) {
             if ($value['parent_id'] == $parent_id && $value['cat_id'] != $current_id) {
                 $value['url'] = $this->rewrite_url($table, $value['cat_id']);

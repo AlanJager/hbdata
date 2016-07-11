@@ -392,6 +392,22 @@ class DbMysql {
     }
 
     /**
+     * 根据分类获取某一分类下的所有内容
+     * @param $table
+     * @param $category
+     * @param string $order_by
+     * @return mixed
+     */
+    function fetch_array_all_by_category($table, $category, $order_by = ''){
+        $order_by = $order_by ? "' ORDER BY " . $order_by : '';
+        $query = $this->query("SELECT * FROM ". $table . " WHERE category='" . $category . $order_by);
+        while ($row = $this->fetch_assoc($query)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    /**
      * offer the func for database import
      * @param $sql
      * @return bool
