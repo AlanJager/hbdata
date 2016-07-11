@@ -21,11 +21,11 @@
                     <h1>{$product.name}</h1>
                     <ul>
                         <li class="productPrice">{$lang.price}：<em class="price">{$product.price}</em></li>
-                        <!-- {foreach from=$defined name=defined item=defined} -->
+                         {foreach from=$defined name=defined item=defined} 
                         <li>{$defined.arr}：{$defined.value}</li>
-                        <!-- {/foreach} -->
+                         {/foreach} 
                     </ul>
-                    <!-- {if $open.order} -->
+                     {if $open.order} 
                     <dl class="btnBuy">
                         <form action="{$site.root_url}order.php?rec=insert" method="post">
                             <input type="hidden" name="product_id" value="{$product.id}" />
@@ -33,12 +33,12 @@
                             <input type="submit" name="submit" class="addToCart" value="{$lang.order_addtocart}" />
                         </form>
                     </dl>
-                    <!-- {else} -->
+                     {else} 
                     <dl class="btnAsk">
                         <dt>{$lang.product_buy}：</dt>
-                        <dd><!-- {foreach from=$site.qq name=qq item=qq} --><!-- {if $smarty.foreach.qq.first} --><a href="http://wpa.qq.com/msgrd?v=3&amp;uin={if is_array($qq)}{$qq.number}{else}{$qq}{/if}&amp;site=qq&amp;menu=yes" target="_blank"><img src="images/online_qq.jpg" /></a><!-- {/if} --><!-- {/foreach} --> <a href="mailto:{$site.email}"><img src="images/online_email.jpg" /></a></dd>
+                        <dd> {foreach from=$site.qq name=qq item=qq}  {if $smarty.foreach.qq.first} <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={if is_array($qq)}{$qq.number}{else}{$qq}{/if}&amp;site=qq&amp;menu=yes" target="_blank"><img src="images/online_qq.jpg" /></a> {/if}  {/foreach}  <a href="mailto:{$site.email}"><img src="images/online_email.jpg" /></a></dd>
                     </dl>
-                    <!-- {/if} -->
+                     {/if} 
                 </div>
                 <div class="clear"></div>
                 <div class="productContent">

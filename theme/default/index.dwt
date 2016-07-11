@@ -15,20 +15,20 @@
 <div id="wrapper"> {include file="inc/header.tpl"}
     <div id="index" class="wrap mb"> {include file="inc/slide_show.tpl"}
         <div id="indexLeft">
-            <!-- {if $open.product} -->
+             {if $open.product} 
             {include file="inc/recommend_product.tpl"}
-            <!-- {/if} -->
+             {/if} 
             {include file="inc/about.tpl"} </div>
         <div id="indexRight">
-            <!-- {if $open.article} -->
+             {if $open.article} 
             {include file="inc/recommend_article.tpl"}
-            <!-- {/if} -->
+             {/if} 
             {include file="inc/contact.tpl"} </div>
         <div class="clear"></div>
     </div>
-    <!-- {if $open.link} -->
+     {if $open.link} 
     {include file="inc/link.tpl"}
-    <!-- {/if} -->
+     {/if} 
     {include file="inc/online_service.tpl"}
     {include file="inc/footer.tpl"} </div>
 </body>

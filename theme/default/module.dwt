@@ -18,9 +18,9 @@
             <div id="module">
                 <h1>{$module.title}</h1>
                 <div class="info">{$lang.add_time}：{$module.add_time} {$lang.click}：{$article.click}
-                    <!-- {if $defined} -->
-                    <!-- {foreach from=$defined name=defined item=defined} --> {$defined.arr}：{$defined.value}<!-- {/foreach} -->
-                    <!-- {/if} -->
+                     {if $defined} 
+                     {foreach from=$defined name=defined item=defined}  {$defined.arr}：{$defined.value} {/foreach} 
+                     {/if} 
                 </div>
                 <div class="content"> {$module.content} </div>
                 <div class="lift"> {if $lift.previous}<span>{$lang.article_previous}：<a href="{$lift.previous.url}">{$lift.previous.title}</a></span>{/if}

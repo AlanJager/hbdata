@@ -15,20 +15,20 @@
 <div id="wrapper"> {include file="inc/header.tpl"}
     <div class="wrap mb"> {include file="inc/ur_here.tpl"}
         <div id="guestBook">
-            <!-- {if $guestbook} -->
+             {if $guestbook} 
             <h2>{$lang.guestbook}</h2>
             <div class="bookList">
-                <!-- {foreach from=$guestbook item=guestbook} -->
+                 {foreach from=$guestbook item=guestbook} 
                 <dl>
                     <dt>{$lang.guestbook_title}：{$guestbook.title} <b>{$guestbook.add_time}</b></dt>
                     <dd><em>{$lang.guestbook_content}：</em><span>{$guestbook.content}</span></dd>
-                    <!-- {if $guestbook.reply} -->
+                     {if $guestbook.reply} 
                     <p><em>{$lang.guestbook_reply}：</em><span>{$guestbook.reply}</span><b>{$guestbook.reply_time}</b></p>
-                    <!-- {/if} -->
+                     {/if} 
                 </dl>
-                <!-- {/foreach} -->
+                 {/foreach} 
                 {include file="inc/pager.tpl"} </div>
-            <!-- {/if} -->
+             {/if} 
             <h2>{$lang.guestbook_add}</h2>
             <div class="bookAdd">
                 <form id="bookAdd" action="{$insert_url}" method="post">
@@ -64,7 +64,7 @@
                             <p id="content" class="cue"></p>
                         </dd>
                     </dl>
-                    <!-- {if $site.captcha} -->
+                     {if $site.captcha} 
                     <dl>
                         <dt>{$lang.captcha}：</dt>
                         <dd>
@@ -73,7 +73,7 @@
                             <p id="captcha" class="cue"></p>
                         </dd>
                     </dl>
-                    <!-- {/if} -->
+                     {/if} 
                     <input type="hidden" name="token" value="{$token}" />
                     <dl class="submit">
                         <input type="button" class="btn" value="{$lang.btn_submit}" onclick="hbdataSubmit('bookAdd')"/>

@@ -14,17 +14,17 @@
 <div id="wrapper"> {include file="inc/header.tpl"}
     <div class="wrap mb">
         <div id="pageLeft">
-            <!-- {if $search_module eq 'product'} -->
+             {if $search_module eq 'product'} 
             {include file="inc/product_tree.tpl"}
-            <!-- {else} -->
+             {else} 
             {include file="inc/article_tree.tpl"}
-            <!-- {/if} -->
+             {/if} 
         </div>
         <div id="pageIn"> {include file="inc/ur_here.tpl"}
-            <!-- {if $search_module eq 'product'} -->
+             {if $search_module eq 'product'} 
             <div class="productList">
-                <!-- {foreach from=$search_list name=product_list item=product} -->
-                <dl<!-- {if $smarty.foreach.product_list.last} --> class="last"<!-- {/if} -->>
+                 {foreach from=$search_list name=product_list item=product} 
+                <dl {if $smarty.foreach.product_list.last}  class="last" {/if} >
                 <dt><a href="{$product.url}"><img src="{$product.thumb}" alt="{$product.name}" width="158" height="158" /></a></dt>
                 <dd>
                     <p class="name"><a href="{$product.url}" title="{$product.name}">{$product.name}</a></p>
@@ -33,26 +33,26 @@
                     <p><a href="{$product.url}" class="btn">{$lang.product_buy}</a></p>
                 </dd>
                 </dl>
-                <!-- {/foreach} -->
+                 {/foreach} 
                 <div class="clear"></div>
             </div>
-            <!-- {else} -->
+             {else} 
             <div id="articleList">
-                <!-- {foreach from=$search_list name=article_list item=article} -->
-                <dl<!-- {if $smarty.foreach.article_list.last} --> class="last"<!-- {/if} -->>
+                 {foreach from=$search_list name=article_list item=article} 
+                <dl {if $smarty.foreach.article_list.last}  class="last" {/if} >
                 <div class="numDate"> <em>{$article.click}</em>
                     <p>{$article.add_time}</p>
                 </div>
                 <dt><a href="{$article.url}">{$article.title}</a></dt>
-                <dd><!-- {if $article.image} -->
+                <dd> {if $article.image} 
                     <p class="img"><img src="{$article.image}" height="42"></p>
-                    <!-- {/if} -->
+                     {/if} 
                     <p class="desc">{$article.description|truncate:96:"..."}</p>
                 </dd>
                 </dl>
-                <!-- {/foreach} -->
+                 {/foreach} 
             </div>
-            <!-- {/if} -->
+             {/if} 
             {include file="inc/pager.tpl"} </div>
         <div class="clear"></div>
     </div>
