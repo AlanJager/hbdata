@@ -3,15 +3,15 @@
     <h3>{$lang.about_tree}</h3>
     <ul>
         <li{if $top_cur} class="cur"{/if}><a href="{$top.url}">{$top.page_name}</a></li>
-        <!-- {foreach from=$page_list item=list} -->
+         {foreach from=$page_list item=list} 
         <li{if $list.cur} class="cur"{/if}><a href="{$list.url}">{$list.page_name}</a></li>
-        <!-- {if $list.child} -->
+         {if $list.child} 
         <ul>
-            <!-- {foreach from=$list.child item=child} -->
+             {foreach from=$list.child item=child} 
             <li{if $child.cur} class="cur"{/if}>-<a href="{$child.url}">{$child.page_name}</a></li>
-            <!-- {/foreach} -->
+             {/foreach} 
         </ul>
-        <!-- {/if} -->
-        <!--{/foreach}-->
+         {/if} 
+        {/foreach}
     </ul>
 </div>
