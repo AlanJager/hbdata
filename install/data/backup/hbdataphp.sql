@@ -315,3 +315,24 @@ INSERT INTO hbdata_show VALUES('6','手机版广告图片02','http://m.baidu.com
 INSERT INTO hbdata_show VALUES('7','手机版广告图片03','http://m.baidu.com','data/slide/m/slide3.jpg','mobile','30');
 INSERT INTO hbdata_show VALUES('8','手机版广告图片04','http://m.baidu.com','data/slide/m/slide4.jpg','mobile','40');
 
+DROP TABLE IF EXISTS `hbdata_category`;
+CREATE TABLE `hbdata_category` (
+  `cat_id` smallint(5) NOT NULL auto_increment,
+  `unique_id` varchar(30) NOT NULL default '',
+  `cat_name` varchar(255) NOT NULL default '',
+  `keywords` varchar(255) NOT NULL default '',
+  `description` varchar(255) NOT NULL default '',
+  `parent_id` smallint(5) NOT NULL default '0',
+  `sort` tinyint(1) unsigned NOT NULL default '50',
+  `category` varchar(50) NOT NULL default '',
+  PRIMARY KEY  (`cat_id`)
+)ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO hbdata_category VALUES('1','company','公司动态','公司动态','公司的最新新闻在此发布','0','10','article');
+INSERT INTO hbdata_category VALUES('2','industry','行业新闻','行业新闻','最新行业资讯','0','20','article');
+INSERT INTO hbdata_category VALUES('3','digital','电子数码','ipad,iphone,三星','电子产品销售','0','10','product');
+INSERT INTO hbdata_category VALUES('4','home','家居百货','家居用品,沙发桌椅,生活周边','家居百货产品销售','0','20','product');
+INSERT INTO hbdata_category VALUES('5','baby','母婴用品','奶粉,营养辅食,尿裤湿巾,喂养用品,洗护用','母婴用品销售','0','30','product');
+INSERT INTO hbdata_category VALUES('6','phone','智能手机','iphone,blackberry','智能手机销售','3','50','product');
+INSERT INTO hbdata_category VALUES('7','tabletpc','平板电脑','ipad','平板电脑销售','3','50','product');
+
