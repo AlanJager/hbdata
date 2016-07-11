@@ -33,8 +33,6 @@ class DbMysql {
     // 数据库前缀
     private $charset;
     // 数据库编码，GBK,UTF8,gb2312
-    private $pconnect;
-    // 持久链接,1为开启,0为关闭
     private $sql;
     // sql执行语句
     private $result;
@@ -50,10 +48,9 @@ class DbMysql {
      * @param string $dbname
      * @param $prefix
      * @param string $charset
-     * @param int $pconnect
      * @return DbMysql
      */
-    function DbMysql($dbhost, $dbuser, $dbpass, $dbname = '', $prefix, $charset = 'utf8', $pconnect = 0)
+    function DbMysql($dbhost, $dbuser, $dbpass, $dbname = '', $prefix, $charset = 'utf8')
     {
         $this->dbhost = $dbhost;
         $this->dbuser = $dbuser;
@@ -61,7 +58,6 @@ class DbMysql {
         $this->dbname = $dbname;
         $this->prefix = $prefix;
         $this->charset = strtolower(str_replace('-', '', $charset));
-        $this->pconnect = $pconnect;
         $this->connect();
     }
 
@@ -71,17 +67,12 @@ class DbMysql {
      */
     function connect()
     {
-        if ($this->pconnect) {
-            if (!$this->hbdata_link = @mysql_pconnect($this->dbhost, $this->dbuser, $this->dbpass)) {
-                $this->error('Can not pconnect to mysql server');
-                return false;
-            }
-        } else {
-            if (!$this->hbdata_link = @mysql_connect($this->dbhost, $this->dbuser, $this->dbpass, true)) {
-                $this->error('Can not connect to mysql server');
-                return false;
-            }
+
+        if (!$this->hbdata_link = @mysqli_connect($this->dbhost, $this->dbuser, $this->dbpass, $this->dbname)) {
+            $this->error('Can not connect to mysql server');
+            return false;
         }
+
         if ($this->version() > '4.1') {
             if ($this->charset) {
                 $this->query("SET character_set_connection=" . $this->charset . ", character_set_results=" . $this->charset .
@@ -92,7 +83,7 @@ class DbMysql {
             }
         }
 
-        if (mysql_select_db($this->dbname, $this->hbdata_link) === false) {
+        if (mysqli_select_db($this->hbdata_link, $this->dbname) === false) {
             $this->error("NO THIS DBNAME: " . $this->dbname);
             return false;
         }
@@ -106,7 +97,7 @@ class DbMysql {
     function version()
     {
         if (empty($this->version)) {
-            $this->version = mysql_get_server_info($this->hbdata_link);
+            $this->version = mysqli_get_server_info($this->hbdata_link);
         }
         return $this->version;
     }
@@ -118,7 +109,7 @@ class DbMysql {
      */
     function query($sql) {
         $this->sql = $sql;
-        $query = mysql_query($this->sql, $this->hbdata_link);
+        $query = mysqli_query($this->hbdata_link, $this->sql);
         $this->result = $query;
         return $query;
     }
@@ -140,7 +131,7 @@ class DbMysql {
      */
     function affected_rows()
     {
-        return mysql_affected_rows();
+        return mysqli_affected_rows($this->hbdata_link);
     }
 
     /**
@@ -151,7 +142,26 @@ class DbMysql {
      */
     function result($row = 0)
     {
-        return @ mysql_result($this->result, $row);
+        return @ mysqli_result($this->result, $row);
+    }
+
+    /**
+     * 实现一个mysql_result
+     * @param $res
+     * @param int $row
+     * @param int $col
+     * @return bool
+     */
+    function mysqli_result($res,$row=0,$col=0){
+        $numrows = mysqli_num_rows($res);
+        if ($numrows && $row <= ($numrows-1) && $row >=0){
+            mysqli_data_seek($res,$row);
+            $resrow = (is_numeric($col)) ? mysqli_fetch_row($res) : mysqli_fetch_assoc($res);
+            if (isset($resrow[$col])){
+                return $resrow[$col];
+            }
+        }
+        return false;
     }
 
     /**
@@ -161,7 +171,7 @@ class DbMysql {
      */
     function num_rows($query)
     {
-        return @ mysql_num_rows($query);
+        return @ mysqli_num_rows($query);
     }
 
     /**
@@ -171,17 +181,9 @@ class DbMysql {
      */
     function num_fields($query)
     {
-        return mysql_num_fields($query);
+        return mysqli_num_fields($query);
     }
 
-    /**
-     * free the cache of the query set
-     * @return int
-     */
-    function free_result()
-    {
-        return mysql_free_result($this->result);
-    }
 
     /**
      * get last operated id
@@ -189,7 +191,7 @@ class DbMysql {
      */
     function insert_id()
     {
-        return mysql_insert_id();
+        return mysqli_insert_id($this->hbdata_link);
     }
 
     /**
@@ -215,7 +217,7 @@ class DbMysql {
 
         $res = $this->query($sql);
         if ($res !== false) {
-            $row = mysql_fetch_row($res);
+            $row = mysqli_fetch_row($res);
             if ($row !== false)
                 return $row[0];
             else
@@ -242,7 +244,7 @@ class DbMysql {
      */
     function fetch_row($query)
     {
-        return mysql_fetch_row($query);
+        return mysqli_fetch_row($query);
     }
 
     /**
@@ -252,7 +254,7 @@ class DbMysql {
      */
     function fetch_assoc($query)
     {
-        return mysql_fetch_assoc($query);
+        return mysqli_fetch_assoc($query);
     }
 
     /**
@@ -262,7 +264,7 @@ class DbMysql {
      */
     function fetch_array($query)
     {
-        return mysql_fetch_array($query);
+        return mysqli_fetch_array($query);
     }
 
     /**
@@ -271,7 +273,7 @@ class DbMysql {
      */
     function close()
     {
-        return mysql_close($this->hbdata_link);
+        return mysqli_close($this->hbdata_link);
     }
 
     /**
@@ -305,7 +307,7 @@ class DbMysql {
     {
         $sql = "SHOW COLUMNS FROM " . $table;
         $query = $this->query($sql);
-        while($row = mysql_fetch_array($query, MYSQL_ASSOC))
+        while($row = mysqli_fetch_array($query, MYSQL_ASSOC))
             $array[] = $row['Field'];
         if (in_array($field, $array))
             return true;
@@ -369,9 +371,9 @@ class DbMysql {
     function escape_string($string)
     {
         if (PHP_VERSION >= '4.3') {
-            return mysql_real_escape_string($string);
+            return mysqli_real_escape_string($this->hbdata_link, $string);
         } else {
-            return mysql_escape_string($string);
+            return mysqli_escape_string($this->hbdata_link, $string);
         }
     }
 
@@ -399,8 +401,8 @@ class DbMysql {
      * @return mixed
      */
     function fetch_array_all_by_category($table, $category, $order_by = ''){
-        $order_by = $order_by ? "' ORDER BY " . $order_by : '';
-        $query = $this->query("SELECT * FROM ". $table . " WHERE category='" . $category . $order_by);
+        $order_by = $order_by ? " ORDER BY " . $order_by : '';
+        $query = $this->query("SELECT * FROM " . $table . " WHERE category='$category'"  . $order_by);
         while ($row = $this->fetch_assoc($query)) {
             $data[] = $row;
         }
