@@ -138,7 +138,7 @@
                     <td align="right">{$lang.product_price}</td>
                     <td>
                         <input type="text" name="price" value="{if $product.price}{$product.price}{else}0{/if}" size="40" class="inpMain" />&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="checkbox" name="show_price" value="{product.show_price}" checked/>{$lang.show_price}
+                        <input type="checkbox" name="show_price" value="{$product.show_price}" checked/>{$lang.show_price}
                     </td>
                 </tr>
                  {if $product.defined} 
