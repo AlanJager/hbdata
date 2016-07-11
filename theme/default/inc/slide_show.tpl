@@ -1,9 +1,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <div class="slideShow">
     <ul class="slides">
-        <!-- {foreach from=$show_list name=show item=show} -->
+         {foreach from=$show_list name=show item=show} 
         <li><a href="{$show.show_link}" target="_blank" style="background-image:url({$show.show_img})"></a></li>
-        <!-- {/foreach} -->
+         {/foreach} 
     </ul>
 </div>
 <script type="text/javascript">

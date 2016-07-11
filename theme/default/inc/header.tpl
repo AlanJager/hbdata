@@ -1,29 +1,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <div id="top">
     <div class="wrap">
-        <!-- {if $open.user} -->
+         {if $open.user} 
         <ul class="userTop">
-            <!-- {if $user} -->
+             {if $user} 
             <a href="{$url.user}">{$user.user_name}，{$lang.user_welcom_top}</a><s></s><a href="{$url.logout}">{$lang.user_logout}</a>
-            <!-- {else} -->
+             {else} 
             <a href="{$url.login}">{$lang.user_login_nav}</a><s></s><a href="{$url.register}">{$lang.user_register_nav}</a>
-            <!-- {/if} -->
+             {/if} 
         </ul>
-        <!-- {/if} -->
+         {/if} 
         <ul class="topNav">
-            <!-- {foreach from=$nav_top_list item=nav} -->
-            <!-- {if $nav.child} -->
+             {foreach from=$nav_top_list item=nav} 
+             {if $nav.child} 
             <li class="parent"><a href="{$nav.url}">{$nav.nav_name}<s></s></a>
                 <ul>
-                    <!-- {foreach from=$nav.child item=child} -->
+                     {foreach from=$nav.child item=child} 
                     <li><a href="{$child.url}">{$child.nav_name}</a></li>
-                    <!-- {/foreach} -->
+                     {/foreach} 
                 </ul>
             </li>
-            <!-- {else} -->
+             {else} 
             <li><a href="{$nav.url}"{if $nav.target} target="_blank"{/if}>{$nav.nav_name}</a><s></s></li>
-            <!-- {/if} -->
-            <!-- {/foreach} -->
+             {/if} 
+             {/foreach} 
             <li><a href="javascript:AddFavorite('{$site.root_url}', '{$site.site_name}')">{$lang.add_favorite}</a></li>
         </ul>
     </div>
@@ -47,25 +47,25 @@
 <div id="mainNav">
     <ul class="wrap">
         <li{if $index.cur} class="cur"{/if}><a href="{$site.root_url}" class="first">{$lang.home}</a></li>
-        <!-- {foreach from=$nav_middle_list name=nav_middle_list item=nav} -->
+         {foreach from=$nav_middle_list name=nav_middle_list item=nav} 
         <li{if $nav.cur} class="cur hover"{/if}><a href="{$nav.url}"{if $smarty.foreach.nav_middle_list.iteration eq 7} class="last"{/if}{if $nav.target} target="_blank"{/if}>{$nav.nav_name}</a>
-            <!-- {if $nav.child} -->
+             {if $nav.child} 
             <ul>
-                <!-- {foreach from=$nav.child item=child} -->
+                 {foreach from=$nav.child item=child} 
                 <li><a href="{$child.url}"{if $child.child} class="parent"{/if}>{$child.nav_name}</a>
-                    <!-- {if $child.child} -->
+                     {if $child.child} 
                     <ul>
-                        <!-- {foreach from=$child.child item=children} -->
+                         {foreach from=$child.child item=children} 
                         <li><a href="{$children.url}">{$children.nav_name}</a></li>
-                        <!-- {/foreach} -->
+                         {/foreach} 
                     </ul>
-                    <!-- {/if} -->
+                     {/if} 
                 </li>
-                <!-- {/foreach} -->
+                 {/foreach} 
             </ul>
-            <!-- {/if} -->
+             {/if} 
         </li>
-        <!-- {/foreach} -->
+         {/foreach} 
         <div class="clear"></div>
     </ul>
 </div>

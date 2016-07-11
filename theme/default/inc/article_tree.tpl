@@ -2,16 +2,16 @@
 <div class="treeBox">
     <h3>{$lang.article_tree}</h3>
     <ul>
-        <!-- {foreach from=$article_category item=cate} 一级分类 -->
+         {foreach from=$article_category item=cate} 一级分类 
         <li{if $cate.cur} class="cur"{/if}><a href="{$cate.url}">{$cate.cat_name}</a></li>
-        <!-- {if $cate.child} -->
+         {if $cate.child} 
         <ul>
-            <!-- {foreach from=$cate.child item=child} 二级分类 -->
+             {foreach from=$cate.child item=child} 二级分类 
             <li{if $child.cur} class="cur"{/if}>-<a href="{$child.url}">{$child.cat_name}</a></li>
-            <!-- {/foreach} -->
+             {/foreach} 
         </ul>
-        <!-- {/if} -->
-        <!--{/foreach}-->
+         {/if} 
+        {/foreach}
     </ul>
     <ul class="search">
         <div class="searchBox">
