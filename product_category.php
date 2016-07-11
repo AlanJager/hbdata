@@ -27,7 +27,7 @@ $limit = $hbdata->pager('product', ($_DISPLAY['product'] ? $_DISPLAY['product'] 
 /**
  * 获取产品列表
  */
-$sql = "SELECT id, cat_id, name, price, content, image, add_time, description FROM " . $hbdata->table('product') . $where . " ORDER BY id DESC" . $limit;
+$sql = "SELECT id, cat_id, name, price, content, image, add_time, description, show_price FROM " . $hbdata->table('product') . $where . " ORDER BY id DESC" . $limit;
 $query = $hbdata->query($sql);
 
 while ($row = $hbdata->fetch_array($query)) {
@@ -42,7 +42,7 @@ while ($row = $hbdata->fetch_array($query)) {
     $thumb = ROOT_URL . $image[0] . "_thumb." . $image[1];
 
     // 格式化价格
-    if($row['show'] == true){
+    if($row['show_price'] == true){
         $price = $row['price'] > 0 ? $hbdata->price_format($row['price']) : $_LANG['price_discuss'];
     }
     else{
