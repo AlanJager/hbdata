@@ -13,13 +13,6 @@ define('IN_HBDATA', true);
 
 require (dirname(__FILE__).'/include/init.php');
 
-//rec 操作项的初始化
-$rec = $check->is_rec($_REQUEST['rec']) ? $_REQUEST['rec'] : 'default';
-
-//赋值给模板
-$smarty->assign('rec', $rec);
-$smarty->assign('cur', 'article_category');
-
 //获得module
 $module = $_REQUEST['module'];
 
@@ -28,6 +21,16 @@ $module = $_REQUEST['module'];
 if (!$check->is_module($module, $hbdata->read_system())){
     echo '404';die;
 }
+
+//rec 操作项的初始化
+$rec = $check->is_rec($_REQUEST['rec']) ? $_REQUEST['rec'] : 'default';
+
+//赋值给模板
+$smarty->assign('rec', $rec);
+$smarty->assign('module', $module);
+$smarty->assign('cur', $module.'_category');
+
+
 
 
 
