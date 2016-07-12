@@ -82,6 +82,7 @@ $_LANG['mail_send_fail'] = '邮件发送失败，请重试';
 $_LANG['login'] = 'hbdata 管理中心';
 $_LANG['login_action'] = '管理员登录';
 $_LANG['login_user_name'] = '用户名';
+$_LANG['user_name'] = '用户名';
 $_LANG['login_email'] = 'E-mail';
 $_LANG['login_password'] = '密码';
 $_LANG['login_captcha'] = '验证码';
@@ -293,20 +294,6 @@ $_LANG['manager_log_user_id'] = '操作者';
 $_LANG['manager_log_action'] = '操作记录';
 $_LANG['manager_log_ip'] = 'IP地址';
 
-// 云账户设置
-$_LANG['cloud_account'] = '设置云账户';
-$_LANG['cloud_account_cue'] = '您的云账户没有设置，或者设置不正确，请检查';
-$_LANG['cloud_account_user'] = '云账户用户名';
-$_LANG['cloud_account_password'] = '云账户密码';
-$_LANG['cloud_account_success'] = '设置云账户成功';
-$_LANG['cloud_account_register'] = '立即注册';
-$_LANG['cloud_account_register_0'] = '没有账户？';
-$_LANG['cloud_account_seted'] = '已经设置云账户';
-$_LANG['cloud_account_reset'] = '重新设置';
-$_LANG['cloud_account_user_wrong'] = '云账户用户名应为有邮箱账号，您输入格式不正确或者为空';
-$_LANG['cloud_account_password_wrong'] = '云账户密码输入不正确';
-$_LANG['cloud_account_clean'] = '清空云账户';
-$_LANG['cloud_account_clean_success'] = '清空云账户成功';
 
 // 数据备份
 $_LANG['backup'] = '数据备份';
@@ -361,3 +348,6 @@ $_LANG['hbdata_msg'] = '信息提示';
 $_LANG['hbdata_msg_cue'] = "如果您不做出选择，将在 d% 秒后跳转到上一个链接地址。";
 $_LANG['hbdata_msg_back'] = '返回上一页';
 $_LANG['hbdata_msg_success'] = '操作已成功';
+
+//分类名称
+$_LANG['category_name'] = '分类名称';

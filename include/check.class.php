@@ -207,4 +207,17 @@ class Check
             return true;
         }
     }
+
+    /**
+     * 验证是否为系统开启的模块
+     * @param $module
+     * @param $setting
+     * @return bool
+     */
+    function is_module($module, $setting){
+        if(in_array($module, $setting['column_module'])){
+            return true;
+        }
+        return false;
+    }
 }

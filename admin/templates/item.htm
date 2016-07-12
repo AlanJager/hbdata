@@ -15,13 +15,13 @@
     <div id="dcMain">
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
-             {if $rec eq 'default'} 文章列表 
+             {if $rec eq 'default'} 文章列表TODO
             <h3><a href="{$action_link.href}" class="actionBtn add">{$action_link.text}</a>{$ur_here}</h3>
             <div class="filter">
-                <form action="item.php?module={$module_name}" method="post">
+                <form action="item.php?module={$cur}" method="post">
                     <select name="cat_id">
                         <option value="0">{$lang.uncategorized}</option>
-                         {foreach from=$article_category item=cate} 
+                         {foreach from=$item_category item=cate}
                          {if $cate.cat_id eq $cat_id} 
                         <option value="{$cate.cat_id}" selected="selected">{$cate.mark} {$cate.cat_name}</option>
                          {else} 
@@ -33,11 +33,14 @@
                     <input name="submit" class="btnGray" type="submit" value="{$lang.btn_filter}" />
                 </form>
     <span>
-     {if $if_sort} 
-    <a class="btnGray" href="item.php?rec=sort&module={$module_name}">{$lang.sort_close}</a>
-         {else} 
-    <a class="btnGray" href="item.php?rec=sort&module={$module_name}">{$lang.sort_article}</a>
-         {/if} 
+        {if $cur eq 'product'}
+        <a class="btnGray" href="item.php?module={$cur}&rec=re_thumb">{$lang.product_thumb}</a>
+        {/if}
+        {if $if_sort}
+        <a class="btnGray" href="item.php?module={$cur}&rec=sort">{$lang.sort_close}</a>
+        {else}
+        <a class="btnGray" href="item.php?module={$cur}&rec=sort">{$lang.sort_article}</a>
+        {/if}
     </span>
             </div>
              {if $if_sort} 
@@ -49,14 +52,14 @@
                      {foreach from=$sort name=sort item=item} 
                     <li>
                         <em>{$item.title}</em>
-                        <a href="item.php?rec=del_sort&id={$item.id}&module={$module}" title="{$lang.sort_cancel}">X</a>
+                        <a href="item.php?module={$cur}&rec=del_sort&id={$item.id}" title="{$lang.sort_cancel}">X</a>
                     </li>
                      {/foreach} 
                 </ul>
             </div>
              {/if} 
             <div id="list"{if $if_sort} class="homeSortLeft"{/if}>
-            <form name="action" method="post" action="item.php?rec=action&module={$module_name}">
+            <form name="action" method="post" action="item.php?module={$cur}&rec=action">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
                         <th width="22" align="center"><input name='chkall' type='checkbox' id='chkall' onclick='selectcheckbox(this.form)' value='check'></th>
@@ -70,14 +73,14 @@
                     <tr>
                         <td align="center"><input type="checkbox" name="checkbox[]" value="{$item.id}" /></td>
                         <td align="center">{$item.id}</td>
-                        <td><a href="article.php?rec=edit&id={$article.id}">{$item.title}</a> {if $item.image}  <a href="../{$item.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a> {/if} </td>
-                        <td align="center"> {if $item.cat_name} <a href="item.php?cat_id={$item.cat_id}">{$item.cat_name}</a> {else} {$lang.uncategorized} {/if} </td>
+                        <td><a href="item.php?module={$cur}&rec=edit&id={$article.id}">{$item.title}</a> {if $item.image}  <a href="../{$item.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a> {/if} </td>
+                        <td align="center"> {if $item.cat_name} <a href="item.php?module={$cur}&cat_id={$item.cat_id}">{$item.cat_name}</a> {else} {$lang.uncategorized} {/if} </td>
                         <td align="center">{$item.add_time}</td>
                         <td align="center">
                              {if $if_sort} 
-                            <a href="item.php?rec=set_sort&id={$item.id}">{$lang.sort_btn}</a>
+                            <a href="item.php?module={$cur}&rec=set_sort&id={$item.id}">{$lang.sort_btn}</a>
                              {else} 
-                            <a href="item.php?rec=edit&id={$item.id}">{$lang.edit}</a> | <a href="item.php?rec=del&id={$item.id}">{$lang.del}</a>
+                            <a href="item.php?module={$cur}&rec=edit&id={$item.id}">{$lang.edit}</a> | <a href="item.php?module={$cur}&rec=del&id={$item.id}">{$lang.del}</a>
                              {/if} 
                         </td>
                     </tr>
@@ -91,7 +94,7 @@
                     </select>
                     <select name="new_cat_id" style="display:none">
                         <option value="0">{$lang.uncategorized}</option>
-                         {foreach from=$article_category item=cate} 
+                         {foreach from=$item_category item=cate}
                          {if $cate.cat_id eq $cat_id} 
                         <option value="{$cate.cat_id}" selected="selected">{$cate.mark} {$cate.cat_name}</option>
                          {else} 
@@ -106,9 +109,9 @@
         <div class="clear"></div>
         {include file="pager.htm"}
          {/if} 
-         {if $rec eq 'add' || $rec eq 'edit'} 文章添加或编辑 
+         {if $rec eq 'add' || $rec eq 'edit'} 文章添加或编辑TODO
         <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
-        <form action="item.php?rec={$form_action}&module={$module}" method="post" enctype="multipart/form-data">
+        <form action="item.php?module={$cur}&rec={$form_action}" method="post" enctype="multipart/form-data">
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <tr>
                     <td width="90" align="right">{$lang.article_name}</td>
@@ -121,7 +124,7 @@
                     <td>
                         <select name="cat_id">
                             <option value="0">{$lang.uncategorized}</option>
-                             {foreach from=$article_category item=cate} 
+                             {foreach from=$item_category item=cate}
                              {if $cate.cat_id eq $article.cat_id} 
                             <option value="{$cate.cat_id}" selected="selected">{$cate.mark} {$cate.cat_name}</option>
                              {else} 
@@ -191,12 +194,32 @@
                 </tr>
             </table>
         </form>
-         {/if} 
+         {/if}
+        {if $rec eq 're_thumb'}
+        <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
+        <script type="text/javascript">
+            {literal}
+            function mask(i) {
+                document.getElementById('mask').innerHTML += i;
+                document.getElementById('mask').scrollTop = 100000000;
+            }
+            function success() {
+                var d=document.getElementById('success');
+                d.style.display="block";
+            }
+            {/literal}
+        </script>
+        <dl id="maskBox">
+            <dt><em>{$mask.count}</em> {if !$mask.confirm} <form action="item.php?module={$cur}&rec=re_thumb" method="post"><input name="confirm" class="btn" type="submit" value="{$lang.product_thumb_start}" /></form> {/if} </dt>
+            <dd class="maskBg">{$mask.bg}<i id="success">{$lang.product_thumb_succes}</i></dd>
+            <dd id="mask"></dd>
+        </dl>
+        {/if}
     </div>
 </div>
 {include file="footer.htm"}
 </div>
- {if $rec eq 'default'} 文章列表 
+ {if $rec eq 'default'} {$cur}列表
 <script type="text/javascript">
     {literal}
     onload = function()
