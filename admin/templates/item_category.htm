@@ -26,18 +26,18 @@
                 </tr>
                 {foreach from=$item_category item=cate}
                 <tr>
-                    <td align="left">{$cate.mark} <a href="item_category.php?module={$cur}&cat_id={$cate.cat_id}">{$cate.cat_name}</a></td>
+                    <td align="left">{$cate.mark} <a href="item_category.php?module={$module}&cat_id={$cate.cat_id}">{$cate.cat_name}</a></td>
                     <td>{$cate.unique_id}</td>
                     <td>{$cate.description}</td>
                     <td align="center">{$cate.sort}</td>
-                    <td align="center"><a href="item_category.php?module={$module}&rec=edit&cat_id={$cate.cat_id}">{$lang.edit}</a> | <a href="item_category.php?module={$cur}&rec=del&cat_id={$cate.cat_id}">{$lang.del}</a></td>
+                    <td align="center"><a href="item_category.php?module={$module}&rec=edit&cat_id={$cate.cat_id}">{$lang.edit}</a> | <a href="item_category.php?module={$module}&rec=del&cat_id={$cate.cat_id}">{$lang.del}</a></td>
                 </tr>
                 {/foreach}
             </table>
             {/if}
             {if $rec eq 'add' || $rec eq 'edit'} 分类添加或编辑
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
-            <form action="item_category.php?module={$cur}&rec={$form_action}" method="post">
+            <form action="item_category.php?module={$module}&rec={$form_action}" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
                         <td width="80" align="right">{$lang.category_name}</td>
