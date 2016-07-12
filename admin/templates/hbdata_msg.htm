@@ -22,7 +22,7 @@
     {/if} 
 </head>
 <body>
-<!-- {if $out neq 'out'} 
+{if $out neq 'out'}
 <div id="dcWrap">
     {include file="header.htm"}
     <div id="dcLeft">{include file="menu.htm"}</div>
@@ -44,7 +44,7 @@
     </div>
     {include file="footer.htm"}
 </div>
-<!-- {else} 
+{else}
 <div id="outMsg">
     <h2>{$text}</h2>
     <dl>
@@ -52,6 +52,6 @@
         <dd><a href="{if $url}{$url}{else}javascript:history.go(-1);{/if}">{$lang.hbdata_msg_back}</a></dd>
     </dl>
 </div>
-<!-- {/if} 
+{/if}
 </body>
 </html>
