@@ -20,8 +20,8 @@
      {/if} 
      {foreach from=$workspace.menu_column item=menu} 
     <ul>
-        <li {if $cur eq $menu.name_category} class="cur" {/if} ><a href="{$menu.name_category}.php"><i class="{$menu.name}Cat"></i><em>{$menu.lang_category}</em></a></li>
-        <li {if $cur eq $menu.name} class="cur" {/if} ><a href="{$menu.name}.php"><i class="{$menu.name}"></i><em>{$menu.lang}</em></a></li>
+        <li {if $cur eq $menu.name_category} class="cur" {/if} ><a href="item_category.php?module={$menu.name}"><i class="{$menu.name}Cat"></i><em>{$menu.lang_category}</em></a></li>
+        <li {if $cur eq $menu.name} class="cur" {/if} ><a href="item.php?module={$menu.name}"><i class="{$menu.name}"></i><em>{$menu.lang}</em></a></li>
     </ul>
      {/foreach} 
      {if $workspace.menu_single} 
