@@ -89,12 +89,13 @@ class SiteMap {
         //category module
         foreach ($GLOBALS['_MODULE']['column'] as $module_id) {
             //category
+            //可能有问题，修改了get_category_nolevel函数
             $item_array[] = array (
                 "date" => $this->today,
                 "changefreq" => 'hourly',
                 "url" => $GLOBALS['hbdata']->rewrite_url($module_id . '_category')
             );
-            foreach ($GLOBALS['hbdata']->get_category_nolevel($module_id . '_category') as $row) {
+            foreach ($GLOBALS['hbdata']->get_category_nolevel($module_id, 'category') as $row) {
                 $item_array[] = array (
                     "date" => $this->today,
                     "changefreq" => 'hourly',

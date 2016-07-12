@@ -215,6 +215,7 @@ class Common extends DbMysql
     /**
      * get goods sorts without layers and save to one dimension array using $mark to diff them
      * @param $table
+     * @param $category
      * @param int $parent_id
      * @param int $level
      * @param string $current_id
@@ -222,16 +223,14 @@ class Common extends DbMysql
      * @param string $mark
      * @return array
      */
-    function get_category_nolevel($category_table, $parent_id = 0, $level = 0, $current_id = '', &$category_nolevel = array(), $mark = '-') {
-        $category = explode('_', $category_table)[0];
-        $table = explode('_', $category_table)[1];
+    function get_category_nolevel($category, $table, $parent_id = 0, $level = 0, $current_id = '', &$category_nolevel = array(), $mark = '-') {
         $data = $this->fetch_array_all_by_category($this->table($table), $category, 'sort ASC');
         foreach ((array) $data as $value) {
             if ($value['parent_id'] == $parent_id && $value['cat_id'] != $current_id) {
                 $value['url'] = $this->rewrite_url($table, $value['cat_id']);
                 $value['mark'] = str_repeat($mark, $level);
                 $category_nolevel[] = $value;
-                $this->get_category_nolevel($table, $value['cat_id'], $level + 1, $current_id, $category_nolevel);
+                $this->get_category_nolevel($category, $table, $value['cat_id'], $level + 1, $current_id, $category_nolevel);
             }
         }
 

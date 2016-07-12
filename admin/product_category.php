@@ -30,7 +30,7 @@ if ($rec == 'default') {
     ));
 
     // 赋值给模板
-    $smarty->assign('product_category', $hbdata->get_category_nolevel('product_category'));
+    $smarty->assign('product_category', $hbdata->get_category_nolevel('product', 'category'));
 
     $smarty->display('product_category.htm');
 }
@@ -50,7 +50,7 @@ if ($rec == 'add') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
-    $smarty->assign('product_category', $hbdata->get_category_nolevel('product_category'));
+    $smarty->assign('product_category', $hbdata->get_category_nolevel('product','category'));
 
     $smarty->display('product_category.htm');
 }
@@ -98,7 +98,7 @@ if ($rec == 'edit') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
-    $smarty->assign('product_category', $hbdata->get_category_nolevel('product_category', '0', '0', $cat_id));
+    $smarty->assign('product_category', $hbdata->get_category_nolevel('product', 'category', '0', '0', $cat_id));
     $smarty->assign('cat_info', $cat_info);
 
     $smarty->display('product_category.htm');

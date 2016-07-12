@@ -256,7 +256,7 @@ class Action extends Common
                 "cur" => ($module == $module_id . '_category' && $id == 0) ? true : false,
                 "guide" => 0
             );
-            foreach ($this->get_category_nolevel($module_id . '_category') as $row) {
+            foreach ($this->get_category_nolevel($module_id , 'category') as $row) {
                 $catalog[] = array (
                     "name" => $row['cat_name'],
                     "module" => $module_id . '_category',

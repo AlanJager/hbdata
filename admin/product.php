@@ -91,7 +91,7 @@ if ($rec == 'default') {
     $smarty->assign('sort_bg', $sort_bg);
     $smarty->assign('cat_id', $cat_id);
     $smarty->assign('keyword', $keyword);
-    $smarty->assign('product_category', $hbdata->get_category_nolevel('product_category'));
+    $smarty->assign('product_category', $hbdata->get_category_nolevel('product', 'category'));
     $smarty->assign('product_list', $product_list);
 
     $smarty->display('product.htm');
@@ -122,7 +122,7 @@ elseif ($rec == 'add') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
-    $smarty->assign('product_category', $hbdata->get_category_nolevel('product_category'));
+    $smarty->assign('product_category', $hbdata->get_category_nolevel('product', 'category'));
     $smarty->assign('product', $product);
 
     $smarty->display('product.htm');
@@ -199,7 +199,7 @@ if ($rec == 'edit') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
-    $smarty->assign('product_category', $hbdata->get_category_nolevel('product_category'));
+    $smarty->assign('product_category', $hbdata->get_category_nolevel('product', 'category'));
     $smarty->assign('product', $product);
     $smarty->assign('showprice', $showprice);
 

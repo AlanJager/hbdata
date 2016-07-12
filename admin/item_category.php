@@ -46,7 +46,7 @@ if ($rec == 'default'){
     ));
 
     // 赋值给模板
-    $smarty->assign('item_category', $hbdata->get_category_nolevel($module.'_category'));
+    $smarty->assign('item_category', $hbdata->get_category_nolevel($module , 'category'));
 
     $smarty->display('item_category.htm');
 
@@ -68,7 +68,7 @@ if ($rec == 'add'){
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
-    $smarty->assign('item_category', $hbdata->get_category_nolevel($module.'_category'));
+    $smarty->assign('item_category', $hbdata->get_category_nolevel($module , 'category'));
 
     $smarty->display('item_category.htm');
 
@@ -91,7 +91,7 @@ if ($rec == 'insert'){
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], $module.'_category_add');
 
-    $sql = "INSERT INTO " . $hbdata->table($module.'_category') . " (cat_id, unique_id, parent_id, cat_name, keywords, description, sort)" . " VALUES (NULL, '$_POST[unique_id]', '$_POST[parent_id]', '$_POST[cat_name]', '$_POST[keywords]', '$_POST[description]', '$_POST[sort]')";
+    $sql = "INSERT INTO " . $hbdata->table('category') . " (cat_id, unique_id, parent_id, cat_name, keywords, description, sort, category)" . " VALUES (NULL, '$_POST[unique_id]', '$_POST[parent_id]', '$_POST[cat_name]', '$_POST[keywords]', '$_POST[description]', '$_POST[sort]', '$module')";
     $hbdata->query($sql);
 
     $hbdata->create_admin_log($_LANG[$module.'_category_add'] . ': ' . $_POST['cat_name']);
@@ -112,7 +112,7 @@ if ($rec == 'edit'){
 
     // 获取分类信息
     $cat_id = $check->is_number($_REQUEST['cat_id']) ? $_REQUEST['cat_id'] : '';
-    $query = $hbdata->select($hbdata->table($module.'_category'), '*', '`cat_id` = \'' . $cat_id . '\'');
+    $query = $hbdata->select($hbdata->table('category'), '*', '`cat_id` = \'' . $cat_id . '\'');
     $cat_info = $hbdata->fetch_array($query);
 
     // CSRF防御令牌生成
@@ -120,7 +120,7 @@ if ($rec == 'edit'){
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
-    $smarty->assign($module.'_category', $hbdata->get_category_nolevel($module.'_category', '0', '0', $cat_id));
+    $smarty->assign($module.'_category', $hbdata->get_category_nolevel($module , 'category', '0', '0', $cat_id));
     $smarty->assign('cat_info', $cat_info);
 
     $smarty->display('item_category.htm');
@@ -144,7 +144,7 @@ if($rec == 'update'){
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], $module.'_category_edit');
 
-    $sql = "update " . $hbdata->table($module.'_category') . " SET cat_name = '$_POST[cat_name]', unique_id = '$_POST[unique_id]', parent_id = '$_POST[parent_id]', keywords = '$_POST[keywords]' ,description = '$_POST[description]', sort = '$_POST[sort]' WHERE cat_id = '$_POST[cat_id]'";
+    $sql = "update " . $hbdata->table('category') . " SET cat_name = '$_POST[cat_name]', unique_id = '$_POST[unique_id]', parent_id = '$_POST[parent_id]', keywords = '$_POST[keywords]' ,description = '$_POST[description]', sort = '$_POST[sort]' WHERE cat_id = '$_POST[cat_id]'";
     $hbdata->query($sql);
 
     $hbdata->create_admin_log($_LANG[$module.'_category_edit'] . ': ' . $_POST['cat_name']);
@@ -167,7 +167,7 @@ if($rec == 'del'){
     } else {
         if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
             $hbdata->create_admin_log($_LANG[$module.'_category_del'] . ': ' . $cat_name);
-            $hbdata->delete($hbdata->table($module.'_category'), "cat_id = $cat_id", 'item_category.php?module='.$module);
+            $hbdata->delete($hbdata->table('category'), "cat_id = $cat_id", 'item_category.php?module='.$module);
         } else {
             $_LANG['del_check'] = preg_replace('/d%/Ums', $cat_name, $_LANG['del_check']);
             $hbdata->hbdata_msg($_LANG['del_check'], 'item_category.php?module='.$module, '', '30', "item_category.php?module=".$module."&rec=del&cat_id=$cat_id");

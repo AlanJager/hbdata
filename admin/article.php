@@ -93,7 +93,7 @@ if ($rec == 'default') {
     $smarty->assign('sort_bg', $sort_bg);
     $smarty->assign('cat_id', $cat_id);
     $smarty->assign('keyword', $keyword);
-    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article', 'category'));
     $smarty->assign('article_list', $article_list);
 
     $smarty->display('article.htm');
@@ -126,7 +126,7 @@ if ($rec == 'add') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
-    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article', 'category'));
     $smarty->assign('article', $article);
 
     $smarty->display('article.htm');
@@ -204,7 +204,7 @@ if ($rec == 'edit') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
-    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article', 'category'));
     $smarty->assign('article', $article);
 
     $smarty->display('article.htm');

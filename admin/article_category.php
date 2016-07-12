@@ -32,7 +32,7 @@ if ($rec == 'default'){
     ));
 
     // 赋值给模板
-    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article', 'category'));
 
     $smarty->display('article_category.htm');
 
@@ -54,7 +54,7 @@ if ($rec == 'add'){
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
-    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category'));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article', 'category'));
 
     $smarty->display('article_category.htm');
 
@@ -106,7 +106,7 @@ if ($rec == 'edit'){
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
-    $smarty->assign('article_category', $hbdata->get_category_nolevel('article_category', '0', '0', $cat_id));
+    $smarty->assign('article_category', $hbdata->get_category_nolevel('article', 'category', '0', '0', $cat_id));
     $smarty->assign('cat_info', $cat_info);
 
     $smarty->display('article_category.htm');
