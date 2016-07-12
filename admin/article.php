@@ -85,9 +85,7 @@ if ($rec == 'default') {
     for($i = 1; $i <= $_CFG['home_display_article']; $i++) {
         $sort_bg .= "<li><em></em></li>";
     }
-    echo "<pre>";
-    echo var_dump($article_list);
-    echo "</pre>";
+
     // 赋值给模板
     $smarty->assign('if_sort', $_SESSION['if_sort']);
     $smarty->assign('sort', get_sort_article());
