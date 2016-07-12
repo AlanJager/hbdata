@@ -61,8 +61,7 @@ if ($rec == 'default') {
     $keyword = isset($_REQUEST['keyword']) ? trim($_REQUEST['keyword']) : '';
 
     // 筛选条件
-    //TODO 更改为查询category表
-    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id($module . '_category', $cat_id) . ')';
+    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id('category', $cat_id) . ')';
     if ($keyword) {
         $where = $where . " AND title LIKE '%$keyword%'";
         $get = '&keyword=' . $keyword;
@@ -79,8 +78,8 @@ if ($rec == 'default') {
         $sql = "SELECT id, name, cat_id, add_time, show_price FROM " . $hbdata->table($module) . $where . " ORDER BY id DESC" . $limit;
         $query = $hbdata->query($sql);
         while ($row = $hbdata->fetch_array($query)) {
-            //TODO 更改为查询category表
-            $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module . '_category') . " WHERE cat_id = '$row[cat_id]'");
+
+            $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table('category') . " WHERE cat_id = '$row[cat_id]'");
             $add_time = date("Y-m-d", $row['add_time']);
             if($row['show_price'] == true){
                 $showprice = '是';
@@ -104,8 +103,8 @@ if ($rec == 'default') {
 
         if($hbdata->field_exist($hbdata->table($module), "image")){
             while ($row = $hbdata->fetch_array($query)) {
-                //TODO 更改为查询category表
-                $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module . '_category') . " WHERE cat_id = '$row[cat_id]'");
+
+                $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table('category') . " WHERE cat_id = '$row[cat_id]'");
                 $add_time = date("Y-m-d", $row['add_time']);
 
                 $item_list[] = array (
@@ -120,8 +119,8 @@ if ($rec == 'default') {
             }
         } else {
             while ($row = $hbdata->fetch_array($query)) {
-                //TODO 更改为查询category表
-                $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module . '_category') . " WHERE cat_id = '$row[cat_id]'");
+
+                $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table('category') . " WHERE cat_id = '$row[cat_id]'");
 
                 $add_time = date("Y-m-d", $row['add_time']);
 
