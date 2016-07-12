@@ -70,44 +70,72 @@ if ($rec == 'default') {
 
     // 分页
     $page = $check->is_number($_REQUEST['page']) ? $_REQUEST['page'] : 1;
-    $page_url = $module . '.php' . ($cat_id ? '?cat_id=' . $cat_id : '');
+    $page_url = 'item.php?module=' . $module . ($cat_id ? '?cat_id=' . $cat_id : '');
     $limit = $hbdata->pager($module, 15, $page, $page_url, $where, $get);
 
-    $sql = "SELECT id, title, cat_id, image, add_time FROM " . $hbdata->table($module) . $where . " ORDER BY id DESC" . $limit;
 
-    $query = $hbdata->query($sql);
-
-    if($hbdata->field_exist($hbdata->table($module), "image")){
+    //如果查询的是产品
+    if($module == 'product'){
+        $sql = "SELECT id, name, cat_id, add_time, show_price FROM " . $hbdata->table($module) . $where . " ORDER BY id DESC" . $limit;
+        $query = $hbdata->query($sql);
         while ($row = $hbdata->fetch_array($query)) {
             //TODO 更改为查询category表
             $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module . '_category') . " WHERE cat_id = '$row[cat_id]'");
             $add_time = date("Y-m-d", $row['add_time']);
+            if($row['show_price'] == true){
+                $showprice = '是';
+            }
+            else{
+                $showprice = '否';
+            }
 
             $item_list[] = array (
                 "id" => $row['id'],
                 "cat_id" => $row['cat_id'],
                 "cat_name" => $cat_name,
-                "title" => $row['title'],
-                "image" => $row['image'],
-                "add_time" => $add_time
+                "name" => $row['name'],
+                "add_time" => $add_time,
+                "show_price" => $showprice
             );
         }
     } else {
-        while ($row = $hbdata->fetch_array($query)) {
-            //TODO 更改为查询category表
-            $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module . '_category') . " WHERE cat_id = '$row[cat_id]'");
+        $sql = "SELECT id, title, cat_id, image, add_time FROM " . $hbdata->table($module) . $where . " ORDER BY id DESC" . $limit;
+        $query = $hbdata->query($sql);
 
-            $add_time = date("Y-m-d", $row['add_time']);
+        if($hbdata->field_exist($hbdata->table($module), "image")){
+            while ($row = $hbdata->fetch_array($query)) {
+                //TODO 更改为查询category表
+                $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module . '_category') . " WHERE cat_id = '$row[cat_id]'");
+                $add_time = date("Y-m-d", $row['add_time']);
 
-            $item_list[] = array (
-                "id" => $row['id'],
-                "cat_id" => $row['cat_id'],
-                "cat_name" => $cat_name,
-                "title" => $row['title'],
-                "add_time" => $add_time
-            );
+                $item_list[] = array (
+                    "id" => $row['id'],
+                    "cat_id" => $row['cat_id'],
+                    "cat_name" => $cat_name,
+                    "title" => $row['title'],
+                    "image" => $row['image'],
+                    "add_time" => $add_time
+                );
+            }
+        } else {
+            while ($row = $hbdata->fetch_array($query)) {
+                //TODO 更改为查询category表
+                $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module . '_category') . " WHERE cat_id = '$row[cat_id]'");
+
+                $add_time = date("Y-m-d", $row['add_time']);
+
+                $item_list[] = array (
+                    "id" => $row['id'],
+                    "cat_id" => $row['cat_id'],
+                    "cat_name" => $cat_name,
+                    "title" => $row['title'],
+                    "add_time" => $add_time
+                );
+            }
         }
     }
+
+
 
     // 首页显示文章数量限制框
     //TODO
@@ -139,7 +167,7 @@ if ($rec == 'add') {
         'href' => 'item.php?module=' . $module
     ));
 
-    // 格式化自定义参数，并存到数组$article，文章编辑页面中调用文章详情也是用数组$article，
+    // 格式化自定义参数，并存到数组$item，文章编辑页面中调用文章详情也是用数组$item，
     if ($_DEFINED[$module]) {
         $defined = explode(',', $_DEFINED[$module]);
         foreach ($defined as $row) {
@@ -167,31 +195,31 @@ if ($rec == 'add') {
 if ($rec == 'insert') {
 
     //如果插入的是商品
-    if($module == 'product'){
+    if ($module == 'product') {
         if (empty($_POST['name']))
-            $hbdata->hbdata_msg($_LANG['product_name'] . $_LANG['is_empty']);
+            $hbdata->hbdata_msg($_LANG[$module . '_name'] . $_LANG['is_empty']);
         if (!$check->is_price($_POST['price'] = trim($_POST['price'])))
             $hbdata->hbdata_msg($_LANG['price_wrong']);
 
-        // 上传图片生成
-        if ($_FILES['image']['name'] != "") {
-            $image = $hbdata->get_one("SELECT image FROM " . $hbdata->table($module) . " WHERE id = '$_POST[id]'");
-
-            // 分析商品图片名称
-            if ($image) {
-                $basename = addslashes(basename($image));
-                $file_name = substr($basename, 0, strrpos($basename, '.'));
-            } else {
-                $file_name = $_POST['id'];
-            }
-
-            $upfile = $img->upload_image('image', $file_name); // 上传的文件域
+        // 判断是否有上传图片/上传图片生成
+        if ($_FILES['image']['name'] != '') {
+            $upfile = $img->upload_image('image', $hbdata->auto_id($module)); // 上传的文件域
             $file = $images_dir . $upfile;
             $img->make_thumb($upfile, $_CFG['thumb_width'], $_CFG['thumb_height']);
-
-            $up_file = ", image='$file'";
         }
-    }else{
+        $add_time = time();
+
+        // 格式化自定义参数
+        $_POST['defined'] = str_replace("\r\n", ',', $_POST['defined']);
+        $show_price = $_POST['show_price'];
+
+
+        // CSRF防御令牌验证
+        $firewall->check_token($_POST['token'], $module . '_add');
+
+        $sql = "INSERT INTO " . $hbdata->table($module) . " (id, cat_id, name, price, defined, content, image ,keywords, add_time, description,show_price)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[name]', '$_POST[price]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]', '$show_price[0]')";
+        $hbdata->query($sql);
+    } else {
         if (empty($_POST[$module]))
             $hbdata->hbdata_msg($_LANG[$module . '_name'] . $_LANG['is_empty']);
 
@@ -210,16 +238,16 @@ if ($rec == 'insert') {
         }
 
         $add_time = time();
+
+        // 格式化自定义参数
+        $_POST['defined'] = str_replace("\r\n", ',', $_POST['defined']);
+
+        // CSRF防御令牌验证
+        $firewall->check_token($_POST['token'], $module . '_add');
+
+        $sql = "INSERT INTO " . $hbdata->table($module) . " (id, cat_id, title, defined, content, image ,keywords, add_time, description)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[title]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]')";
+        $hbdata->query($sql);
     }
-
-    // 格式化自定义参数
-    $_POST['defined'] = str_replace("\r\n", ',', $_POST['defined']);
-
-    // CSRF防御令牌验证
-    $firewall->check_token($_POST['token'], $module . '_add');
-
-    $sql = "INSERT INTO " . $hbdata->table($module) . " (id, cat_id, title, defined, content, image ,keywords, add_time, description)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[title]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]')";
-    $hbdata->query($sql);
 
     $hbdata->create_admin_log($_LANG[$module . '_add'] . ': ' . $_POST['title']);
     $hbdata->hbdata_msg($_LANG[$module . '_add_succes'], 'item.php?module=' . $module);
@@ -254,12 +282,18 @@ if ($rec == 'edit') {
         $item['defined_count'] = count(explode("\n", $item['defined'])) * 2;
     }
 
+    //如果为产品页面，则还需要输出是否显示价格
+    if ($module == 'product') {
+        $show_price = ($item['show_price'] == true) ? "checked" : "";
+        $smarty->assign('showprice', $show_price);
+    }
+
     // CSRF防御令牌生成
     $smarty->assign('token', $firewall->set_token($module . '_edit'));
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
-    $smarty->assign($module . '_category', $hbdata->get_category_nolevel($module . '_category'));
+    $smarty->assign('item_category', $hbdata->get_category_nolevel($module . '_category'));
     $smarty->assign('item', $item);
 
     $smarty->display('item.htm');
@@ -271,15 +305,24 @@ if ($rec == 'edit') {
  */
 if ($rec == 'update') {
 
-    if (empty($_POST[$module]))
-        $hbdata->hbdata_msg($_LANG[$module . '_name'] . $_LANG['is_empty']);
+    //不同分类检测不同
+    if ($module == 'product') {
+        if (empty($_POST['name']))
+            $hbdata->hbdata_msg($_LANG['product_name'] . $_LANG['is_empty']);
+        if (!$check->is_price($_POST['price'] = trim($_POST['price'])))
+            $hbdata->hbdata_msg($_LANG['price_wrong']);
+    } else {
+        if (empty($_POST['title']))
+            $hbdata->hbdata_msg($_LANG['article_name'] . $_LANG['is_empty']);
+    }
+
 
     // 上传图片生成
     if ($_FILES['image']['name'] != "") {
 
         //如果插入的是产品
         if($module == 'product'){
-            $image = $hbdata->get_one("SELECT image FROM " . $hbdata->table('product') . " WHERE id = '$_POST[id]'");
+            $image = $hbdata->get_one("SELECT image FROM " . $hbdata->table($module) . " WHERE id = '$_POST[id]'");
 
             // 分析商品图片名称
             if ($image) {
@@ -313,7 +356,14 @@ if ($rec == 'update') {
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], $module . '_edit');
 
-    $sql = "UPDATE " . $hbdata->table($module) . " SET cat_id = '$_POST[cat_id]', title = '$_POST[title]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]' WHERE id = '$_POST[id]'";
+
+    //如果更新的是产品
+    if ($module == 'product'){
+        $show_price = ($_POST['show_price'][0] == 1) ? 1 : 0;
+        $sql = "UPDATE " . $hbdata->table($module) . " SET cat_id = '$_POST[cat_id]', name = '$_POST[name]', price = '$_POST[price]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]',show_price = $show_price WHERE id = '$_POST[id]'";
+    } else {
+        $sql = "UPDATE " . $hbdata->table($module) . " SET cat_id = '$_POST[cat_id]', title = '$_POST[title]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]' WHERE id = '$_POST[id]'";
+    }
     $hbdata->query($sql);
 
     $hbdata->create_admin_log($_LANG[$module . '_edit'] . ': ' . $_POST['title']);
@@ -328,15 +378,15 @@ if ($rec == 're_thumb') {
     
     //只有产品才能重新生成图片
     if($module == 'product'){
-        $smarty->assign('ur_here', $_LANG['product_thumb']);
+        $smarty->assign('ur_here', $_LANG[$module . '_thumb']);
         $smarty->assign('action_link', array (
-            'text' => $_LANG['product'],
-            'href' => 'item.php?module=product'
+            'text' => $_LANG[$module],
+            'href' => 'item.php?module=' . $module
         ));
 
-        $sql = "SELECT id, image FROM " . $hbdata->table('product') . "ORDER BY id ASC";
+        $sql = "SELECT id, image FROM " . $hbdata->table($module) . "ORDER BY id ASC";
         $count = mysql_num_rows($query = $hbdata->query($sql));
-        $mask['count'] = preg_replace('/d%/Ums', $count, $_LANG['product_thumb_count']);
+        $mask['count'] = preg_replace('/d%/Ums', $count, $_LANG[$module . '_thumb_count']);
         $mask_tag = '<i></i>';
         $mask['confirm'] = $_POST['confirm'];
 
@@ -344,7 +394,7 @@ if ($rec == 're_thumb') {
             $mask['bg'] .= $mask_tag;
 
         $smarty->assign('mask', $mask);
-        $smarty->display('product.htm');
+        $smarty->display('item.htm');
 
         if (isset($_POST['confirm'])) {
             echo ' ';
@@ -410,18 +460,26 @@ if ($rec == 'del') {
 
     // 验证并获取合法的ID
     $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'item.php?module=' . $module);
-    $title = $hbdata->get_one("SELECT title FROM " . $hbdata->table($module) . " WHERE id = '$id'");
 
+    //如果是删除产品
+    if ($module == 'product') {
+        $item_name = $hbdata->get_one("SELECT name FROM " . $hbdata->table($module) . " WHERE id = '$id'");
+    } else {
+        $item_name = $hbdata->get_one("SELECT title FROM " . $hbdata->table($module) . " WHERE id = '$id'");
+    }
+    
     if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
         // 删除相应商品图片
         $image = $hbdata->get_one("SELECT image FROM " . $hbdata->table($module) . " WHERE id = '$id'");
         $hbdata->del_image($image);
 
-        $hbdata->create_admin_log($_LANG[$module . '_del'] . ': ' . $title);
+        
+        $hbdata->create_admin_log($_LANG[$module . '_del'] . ': ' . $item_name);
+        
         $hbdata->delete($hbdata->table($module), "id = $id", 'item.php?module=' . $module);
     } else {
-        $_LANG['del_check'] = preg_replace('/d%/Ums', $title, $_LANG['del_check']);
-        $hbdata->hbdata_msg($_LANG['del_check'], 'item.php?module=' . $module, '', '30', "article.php?module='$module'&rec=del&id='$id'");
+        $_LANG['del_check'] = preg_replace('/d%/Ums', $item_name, $_LANG['del_check']);
+        $hbdata->hbdata_msg($_LANG['del_check'], 'item.php?module=' . $module, '', '30', "item.php?module='$module'&rec=del&id='$id'");
     }
 
 }
@@ -448,20 +506,37 @@ if ($rec == 'action') {
 }
 
 /**
- * 获取首页显示商品
+ * 获取首页显示
  * @return array
  */
 function get_sort($module)
 {
     $limit = $GLOBALS['_DISPLAY']['home_' . $module] ? ' LIMIT ' . $GLOBALS['_DISPLAY']['home_' . $module] : '';
-    $sql = "SELECT id, title FROM " . $GLOBALS['hbdata']->table($module) . " WHERE sort > 0 ORDER BY sort DESC" . $limit;
-    $query = $GLOBALS['hbdata']->query($sql);
-    while ($row = $GLOBALS['hbdata']->fetch_array($query)) {
-        $sort[] = array (
-            "id" => $row['id'],
-            "title" => $row['title']
-        );
+    
+    //如果是获取商品
+    if ($module == 'product') {
+        $sql = "SELECT id, name, image FROM " . $GLOBALS['hbdata']->table($module) . " WHERE sort > 0 ORDER BY sort DESC" . $limit;
+        $query = $GLOBALS['hbdata']->query($sql);
+        while ($row = $GLOBALS['hbdata']->fetch_array($query)) {
+            $image = ROOT_URL . $row['image'];
+
+            $sort[] = array (
+                "id" => $row['id'],
+                "name" => $row['name'],
+                "image" => $image
+            );
+        }
+    } else {
+        $sql = "SELECT id, title FROM " . $GLOBALS['hbdata']->table($module) . " WHERE sort > 0 ORDER BY sort DESC" . $limit;
+        $query = $GLOBALS['hbdata']->query($sql);
+        while ($row = $GLOBALS['hbdata']->fetch_array($query)) {
+            $sort[] = array (
+                "id" => $row['id'],
+                "title" => $row['title']
+            );
+        }
     }
+
 
     return $sort;
 }

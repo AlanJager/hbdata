@@ -68,12 +68,19 @@
                         <th width="150" align="center">{$module_name}{$lang.category}</th>
                         <th width="80" align="center">{$lang.add_time}</th>
                         <th width="80" align="center">{$lang.handler}</th>
+                        {if $cur eq 'product'}
+                        <th width="80" align="center">{$lang.show_price}</th>
+                        {/if}
                     </tr>
                      {foreach from=$item_list item=item}
                     <tr>
                         <td align="center"><input type="checkbox" name="checkbox[]" value="{$item.id}" /></td>
                         <td align="center">{$item.id}</td>
+                        {if $cur eq 'product'}
+                        <td><a href="item.php?module={$cur}&rec=edit&id={$item.id}">{$item.name}</a></td>
+                        {else}
                         <td><a href="item.php?module={$cur}&rec=edit&id={$item.id}">{$item.title}</a> {if $item.image}  <a href="../{$item.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a> {/if} </td>
+                        {/if}
                         <td align="center"> {if $item.cat_name} <a href="item.php?module={$cur}&cat_id={$item.cat_id}">{$item.cat_name}</a> {else} {$lang.uncategorized} {/if} </td>
                         <td align="center">{$item.add_time}</td>
                         <td align="center">
@@ -83,6 +90,9 @@
                             <a href="item.php?module={$cur}&rec=edit&id={$item.id}">{$lang.edit}</a> | <a href="item.php?module={$cur}&rec=del&id={$item.id}">{$lang.del}</a>
                              {/if} 
                         </td>
+                        {if $cur eq 'product'}
+                        <td width="80" align="center">{$item.show_price}</td>
+                        {/if}
                     </tr>
                      {/foreach}
                 </table>
@@ -116,7 +126,11 @@
                 <tr>
                     <td width="90" align="right">{$module_name}{$lang.name}</td>
                     <td>
+                        {if $cur eq 'product'}
+                        <input type="text" name="name" value="{$item.name}" size="80" class="inpMain" />
+                        {else}
                         <input type="text" name="title" value="{$item.title}" size="80" class="inpMain" />
+                        {/if}
                     </td>
                 </tr>
                 <tr>
@@ -134,6 +148,15 @@
                         </select>
                     </td>
                 </tr>
+                {if $cur eq 'product'}
+                <tr>
+                    <td align="right">{$lang.product_price}</td>
+                    <td>
+                        <input type="text" name="price" value="{if $item.price}{$item.price}{else}0{/if}" size="40" class="inpMain" />&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" name="show_price" value="1" {if $rec eq 'add'}checked {else}{$showprice}{/if}/>{$lang.show_price}
+                    </td>
+                </tr>
+                {/if}
                  {if $item.defined}
                 <tr>
                     <td align="right" valign="top">{$lang.defined}</td>
