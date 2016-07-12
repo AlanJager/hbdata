@@ -64,6 +64,7 @@
                         <th align="left">{$lang.article_name}</th>
                         <th width="150" align="center">{$lang.article_category}</th>
                         <th width="80" align="center">{$lang.add_time}</th>
+                        <th width="60" align="center">{$lang.sort}</th>
                         <th width="80" align="center">{$lang.handler}</th>
                     </tr>
                      {foreach from=$article_list item=article} 
@@ -73,6 +74,7 @@
                         <td><a href="article.php?rec=edit&id={$article.id}">{$article.title}</a> {if $article.image}  <a href="../{$article.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a> {/if} </td>
                         <td align="center"> {if $article.cat_name} <a href="article.php?cat_id={$article.cat_id}">{$article.cat_name}</a> {else} {$lang.uncategorized} {/if} </td>
                         <td align="center">{$article.add_time}</td>
+                        <td align="center">{$article.sort}</td>
                         <td align="center">
                              {if $if_sort} 
                             <a href="article.php?rec=set_sort&id={$article.id}">{$lang.sort_btn}</a>
@@ -178,6 +180,12 @@
                     <td align="right">{$lang.description}</td>
                     <td>
                         <textarea name="description" cols="115" rows="3" class="textArea" />{$article.description}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">{$lang.sort}</td>
+                    <td>
+                        <input type="text" name="sort" value="{if $article.sort}{$article.sort}{else}0{/if}" size="5" class="inpMain" />
                     </td>
                 </tr>
                 <tr>

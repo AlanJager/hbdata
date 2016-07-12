@@ -25,7 +25,7 @@ $page = $check->is_number($_REQUEST['page']) ? trim($_REQUEST['page']) : 1;
 $limit = $hbdata->pager('article', ($_DISPLAY['article'] ? $_DISPLAY['article'] : 10), $page, $hbdata->rewrite_url('article_category', $cat_id), $where);
 
 /* 获取文章列表 */
-$sql = "SELECT id, title, content, image, cat_id, add_time, click, description FROM " . $hbdata->table('article') . $where . " ORDER BY id DESC" . $limit;
+$sql = "SELECT id, title, content, image, cat_id, add_time, click, description, sort FROM " . $hbdata->table('article') . $where . " ORDER BY sort ASC" . $limit;
 $query = $hbdata->query($sql);
 
 while ($row = $hbdata->fetch_array($query)) {

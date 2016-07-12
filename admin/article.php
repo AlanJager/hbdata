@@ -65,7 +65,7 @@ if ($rec == 'default') {
     $page_url = 'article.php' . ($cat_id ? '?cat_id=' . $cat_id : '');
     $limit = $hbdata->pager('article', 15, $page, $page_url, $where, $get);
 
-    $sql = "SELECT id, title, cat_id, image, add_time FROM " . $hbdata->table('article') . $where . " ORDER BY id DESC" . $limit;
+    $sql = "SELECT id, title, cat_id, image, add_time , sort FROM " . $hbdata->table('article') . $where . " ORDER BY id DESC" . $limit;
     $query = $hbdata->query($sql);
     while ($row = $hbdata->fetch_array($query)) {
         $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table('article_category') . " WHERE cat_id = '$row[cat_id]'");
@@ -77,7 +77,8 @@ if ($rec == 'default') {
             "cat_name" => $cat_name,
             "title" => $row['title'],
             "image" => $row['image'],
-            "add_time" => $add_time
+            "add_time" => $add_time,
+            "sort" =>$row['sort']
         );
     }
 
@@ -85,9 +86,7 @@ if ($rec == 'default') {
     for($i = 1; $i <= $_CFG['home_display_article']; $i++) {
         $sort_bg .= "<li><em></em></li>";
     }
-    echo "<pre>";
-    echo var_dump($article_list);
-    echo "</pre>";
+
     // 赋值给模板
     $smarty->assign('if_sort', $_SESSION['if_sort']);
     $smarty->assign('sort', get_sort_article());
@@ -164,7 +163,7 @@ if ($rec == 'insert') {
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'article_add');
 
-    $sql = "INSERT INTO " . $hbdata->table('article') . " (id, cat_id, title, defined, content, image ,keywords, add_time, description)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[title]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]')";
+    $sql = "INSERT INTO " . $hbdata->table('article') . " (id, cat_id, title, defined, content, image ,keywords, add_time, description, sort)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[title]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]', '$_POST[sort]')";
     $hbdata->query($sql);
 
     $hbdata->create_admin_log($_LANG['article_add'] . ': ' . $_POST['title']);
@@ -239,7 +238,7 @@ if ($rec == 'update') {
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'article_edit');
 
-    $sql = "UPDATE " . $hbdata->table('article') . " SET cat_id = '$_POST[cat_id]', title = '$_POST[title]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]' WHERE id = '$_POST[id]'";
+    $sql = "UPDATE " . $hbdata->table('article') . " SET cat_id = '$_POST[cat_id]', title = '$_POST[title]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]', sort = '$_POST[sort]' WHERE id = '$_POST[id]'";
     $hbdata->query($sql);
 
     $hbdata->create_admin_log($_LANG['article_edit'] . ': ' . $_POST['title']);
