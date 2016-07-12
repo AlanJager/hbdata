@@ -138,10 +138,10 @@
                     <td align="right">{$lang.product_price}</td>
                     <td>
                         <input type="text" name="price" value="{if $product.price}{$product.price}{else}0{/if}" size="40" class="inpMain" />&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="checkbox" name="show_price" value="{$product.show_price}" checked/>{$lang.show_price}
+                        <input type="checkbox" name="show_price" value="1" {if $rec eq 'add'}checked {else}{$showprice}/>{$lang.show_price}
                     </td>
                 </tr>
-                 {if $product.defined} 
+                 {if $product.defined}
                 <tr>
                     <td align="right" valign="top">{$lang.product_defined}</td>
                     <td>
@@ -153,11 +153,11 @@
                         </script>
                     </td>
                 </tr>
-                 {/if} 
+                 {/if}
                 <tr>
                     <td align="right" valign="top">{$lang.product_content}</td>
                     <td>
-                         KindEditor 
+                         KindEditor
                         <script charset="utf-8" src="include/kindeditor/kindeditor.js"></script>
                         <script charset="utf-8" src="include/kindeditor/lang/zh_CN.js"></script>
                         <script>
@@ -168,7 +168,7 @@
                             });
                             {/literal}
                         </script>
-                         /KindEditor 
+                         /KindEditor
                         <textarea id="content" name="content" style="width:780px;height:400px;" class="textArea">{$product.content}</textarea>
                     </td>
                 </tr>

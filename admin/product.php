@@ -146,11 +146,13 @@ elseif ($rec == 'insert') {
 
     // 格式化自定义参数
     $_POST['defined'] = str_replace("\r\n", ',', $_POST['defined']);
+    $show_price = $_POST['show_price'];
+
 
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'product_add');
 
-    $sql = "INSERT INTO " . $hbdata->table('product') . " (id, cat_id, name, price, defined, content, image ,keywords, add_time, description)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[name]', '$_POST[price]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]')";
+    $sql = "INSERT INTO " . $hbdata->table('product') . " (id, cat_id, name, price, defined, content, image ,keywords, add_time, description, show_price)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[name]', '$_POST[price]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]', '$show_price[0]')";
     $hbdata->query($sql);
 
     $hbdata->create_admin_log($_LANG['product_add'] . ': ' . $_POST['name']);
@@ -186,11 +188,20 @@ if ($rec == 'edit') {
 
     // CSRF防御令牌生成
     $smarty->assign('token', $firewall->set_token('product_edit'));
+    
+    //格式化参数
+    if($product['show_price'] == true){
+        $showprice = "checked";
+    }
+    else{
+        $showprice = "";
+    }
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
     $smarty->assign('product_category', $hbdata->get_category_nolevel('product_category'));
     $smarty->assign('product', $product);
+    $smarty->assign('showprice', $showprice);
 
     $smarty->display('product.htm');
 }
