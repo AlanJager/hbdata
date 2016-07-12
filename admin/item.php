@@ -99,7 +99,7 @@ if ($rec == 'default') {
             );
         }
     } else {
-        $sql = "SELECT id, title, cat_id, image, add_time FROM " . $hbdata->table($module) . $where . " ORDER BY id DESC" . $limit;
+        $sql = "SELECT id, title, cat_id, image, add_time , sort FROM " . $hbdata->table('article') . $where . " ORDER BY id DESC" . $limit;
         $query = $hbdata->query($sql);
 
         if($hbdata->field_exist($hbdata->table($module), "image")){
@@ -114,7 +114,8 @@ if ($rec == 'default') {
                     "cat_name" => $cat_name,
                     "title" => $row['title'],
                     "image" => $row['image'],
-                    "add_time" => $add_time
+                    "add_time" => $add_time,
+                    "sort" =>$row['sort']
                 );
             }
         } else {
@@ -245,7 +246,7 @@ if ($rec == 'insert') {
         // CSRF防御令牌验证
         $firewall->check_token($_POST['token'], $module . '_add');
 
-        $sql = "INSERT INTO " . $hbdata->table($module) . " (id, cat_id, title, defined, content, image ,keywords, add_time, description)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[title]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]')";
+        $sql = "INSERT INTO " . $hbdata->table('article') . " (id, cat_id, title, defined, content, image ,keywords, add_time, description, sort)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[title]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]', '$_POST[sort]')";
         $hbdata->query($sql);
     }
 
@@ -362,7 +363,7 @@ if ($rec == 'update') {
         $show_price = ($_POST['show_price'][0] == 1) ? 1 : 0;
         $sql = "UPDATE " . $hbdata->table($module) . " SET cat_id = '$_POST[cat_id]', name = '$_POST[name]', price = '$_POST[price]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]',show_price = $show_price WHERE id = '$_POST[id]'";
     } else {
-        $sql = "UPDATE " . $hbdata->table($module) . " SET cat_id = '$_POST[cat_id]', title = '$_POST[title]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]' WHERE id = '$_POST[id]'";
+        $sql = "UPDATE " . $hbdata->table('article') . " SET cat_id = '$_POST[cat_id]', title = '$_POST[title]', defined = '$_POST[defined]' ,content = '$_POST[content]'" . $up_file . ", keywords = '$_POST[keywords]', description = '$_POST[description]', sort = '$_POST[sort]' WHERE id = '$_POST[id]'";
     }
     $hbdata->query($sql);
 

@@ -67,6 +67,9 @@
                         <th align="left">{$module_name}{$lang.name}</th>
                         <th width="150" align="center">{$module_name}{$lang.category}</th>
                         <th width="80" align="center">{$lang.add_time}</th>
+                        {if cur neq 'product'}
+                        <th width="60" align="center">{$lang.sort}</th>
+                        {/if}
                         <th width="80" align="center">{$lang.handler}</th>
                         {if $cur eq 'product'}
                         <th width="80" align="center">{$lang.show_price}</th>
@@ -83,6 +86,9 @@
                         {/if}
                         <td align="center"> {if $item.cat_name} <a href="item.php?module={$cur}&cat_id={$item.cat_id}">{$item.cat_name}</a> {else} {$lang.uncategorized} {/if} </td>
                         <td align="center">{$item.add_time}</td>
+                        {if cur neq 'product'}
+                        <td align="center">{$item.sort}</td>
+                        {/if}
                         <td align="center">
                              {if $if_sort} 
                             <a href="item.php?module={$cur}&rec=set_sort&id={$item.id}">{$lang.sort_btn}</a>
@@ -206,6 +212,14 @@
                         <textarea name="description" cols="115" rows="3" class="textArea" />{$item.description}</textarea>
                     </td>
                 </tr>
+                {if cur neq 'product'}
+                <tr>
+                    <td align="right">{$lang.sort}</td>
+                    <td>
+                        <input type="text" name="sort" value="{if $item.sort}{$item.sort}{else}0{/if}" size="5" class="inpMain" />
+                    </td>
+                </tr>
+                {/if}
                 <tr>
                     <td></td>
                     <td>
