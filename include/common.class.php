@@ -344,7 +344,7 @@ class Common extends DbMysql
     function get_page_list($parent_id = 0, $current_id = '')
     {
         $page_list = array ();
-        $data = $this->fetch_array_all($this->table('page'), 'id ASC');
+        $data = $this->fetch_array_all($this->table('page'), 'sort ASC');
         foreach ((array) $data as $value) {
             // $parent_id将在嵌套函数中随之变化
             if ($value['parent_id'] == $parent_id) {
