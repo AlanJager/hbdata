@@ -57,6 +57,7 @@ while ($row = $hbdata->fetch_array($query)) {
         "thumb" => $thumb,
         "add_time" => $add_time,
         "description" => $description,
+        "show_price" => $row['show_price'],
         "url" => $url
     );
 }

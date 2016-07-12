@@ -22,7 +22,7 @@
                 <dd>
                     <p class="name"><a href="{$product.url}" title="{$product.name}">{$product.name}</a></p>
                     <p class="brief">{$product.description|truncate:50:"..."}</p>
-                    <p class="price">{$lang.price}：{$product.price}</p>
+                    <p class="price">{if $product.show_price == true}{$lang.price}：{$product.price}{else}{/if}</p>
                     <p><a href="{$product.url}" class="btn">{$lang.product_buy}</a></p>
                 </dd>
                 </dl>
