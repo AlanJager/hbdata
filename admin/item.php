@@ -110,7 +110,7 @@ if ($rec == 'default') {
 
     // 首页显示文章数量限制框
     //TODO
-    for($i = 1; $i <= $_CFG['home_display_article']; $i++) {
+    for($i = 1; $i <= $_CFG['home_display_' . $module]; $i++) {
         $sort_bg .= "<li><em></em></li>";
     }
 
@@ -120,9 +120,8 @@ if ($rec == 'default') {
     $smarty->assign('sort_bg', $sort_bg);
     $smarty->assign('cat_id', $cat_id);
     $smarty->assign('keyword', $keyword);
-    $smarty->assign('module_category', $hbdata->get_category_nolevel($module . '_category'));
+    $smarty->assign('item_category', $hbdata->get_category_nolevel($module . '_category'));
     $smarty->assign('item_list', $item_list);
-    $smarty->assign('module_name', $module);
 
     $smarty->display('item.htm');
 
@@ -325,34 +324,39 @@ if ($rec == 'update') {
  * 重新生成产品图片
  */
 if ($rec == 're_thumb') {
-    $smarty->assign('ur_here', $_LANG['product_thumb']);
-    $smarty->assign('action_link', array (
-        'text' => $_LANG['product'],
-        'href' => 'product.php'
-    ));
+    
+    //只有产品才能重新生成图片
+    if($module == 'product'){
+        $smarty->assign('ur_here', $_LANG['product_thumb']);
+        $smarty->assign('action_link', array (
+            'text' => $_LANG['product'],
+            'href' => 'item.php?module=product'
+        ));
 
-    $sql = "SELECT id, image FROM " . $hbdata->table('product') . "ORDER BY id ASC";
-    $count = mysql_num_rows($query = $hbdata->query($sql));
-    $mask['count'] = preg_replace('/d%/Ums', $count, $_LANG['product_thumb_count']);
-    $mask_tag = '<i></i>';
-    $mask['confirm'] = $_POST['confirm'];
+        $sql = "SELECT id, image FROM " . $hbdata->table('product') . "ORDER BY id ASC";
+        $count = mysql_num_rows($query = $hbdata->query($sql));
+        $mask['count'] = preg_replace('/d%/Ums', $count, $_LANG['product_thumb_count']);
+        $mask_tag = '<i></i>';
+        $mask['confirm'] = $_POST['confirm'];
 
-    for($i = 1; $i <= $count; $i++)
-        $mask['bg'] .= $mask_tag;
+        for($i = 1; $i <= $count; $i++)
+            $mask['bg'] .= $mask_tag;
 
-    $smarty->assign('mask', $mask);
-    $smarty->display('product.htm');
+        $smarty->assign('mask', $mask);
+        $smarty->display('product.htm');
 
-    if (isset($_POST['confirm'])) {
-        echo ' ';
-        while ($row = $hbdata->fetch_array($query)) {
-            $img->make_thumb(basename($row['image']), $_CFG['thumb_width'], $_CFG['thumb_height']);
-            echo "<script type=\"text/javascript\">mask('" . $mask_tag . "');</script>";
-            flush();
-            ob_flush();
+        if (isset($_POST['confirm'])) {
+            echo ' ';
+            while ($row = $hbdata->fetch_array($query)) {
+                $img->make_thumb(basename($row['image']), $_CFG['thumb_width'], $_CFG['thumb_height']);
+                echo "<script type=\"text/javascript\">mask('" . $mask_tag . "');</script>";
+                flush();
+                ob_flush();
+            }
+            echo "<script type=\"text/javascript\">success();</script>\n</body>\n</html>";
         }
-        echo "<script type=\"text/javascript\">success();</script>\n</body>\n</html>";
     }
+    
 }
 
 
