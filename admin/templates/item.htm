@@ -39,7 +39,7 @@
         {if $if_sort}
         <a class="btnGray" href="item.php?module={$cur}&rec=sort">{$lang.sort_close}</a>
         {else}
-        <a class="btnGray" href="item.php?module={$cur}&rec=sort">{$lang.sort_article}</a>
+        <a class="btnGray" href="item.php?module={$cur}&rec=sort">{$lang.sort_item}{$module_name}</a>
         {/if}
     </span>
             </div>
@@ -64,8 +64,8 @@
                     <tr>
                         <th width="22" align="center"><input name='chkall' type='checkbox' id='chkall' onclick='selectcheckbox(this.form)' value='check'></th>
                         <th width="40" align="center">{$lang.record_id}</th>
-                        <th align="left">{$lang.article_name}</th>
-                        <th width="150" align="center">{$lang.article_category}</th>
+                        <th align="left">{$module_name}{$lang.name}</th>
+                        <th width="150" align="center">{$module_name}{$lang.category}</th>
                         <th width="80" align="center">{$lang.add_time}</th>
                         <th width="80" align="center">{$lang.handler}</th>
                     </tr>
@@ -73,7 +73,7 @@
                     <tr>
                         <td align="center"><input type="checkbox" name="checkbox[]" value="{$item.id}" /></td>
                         <td align="center">{$item.id}</td>
-                        <td><a href="item.php?module={$cur}&rec=edit&id={$article.id}">{$item.title}</a> {if $item.image}  <a href="../{$item.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a> {/if} </td>
+                        <td><a href="item.php?module={$cur}&rec=edit&id={$item.id}">{$item.title}</a> {if $item.image}  <a href="../{$item.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a> {/if} </td>
                         <td align="center"> {if $item.cat_name} <a href="item.php?module={$cur}&cat_id={$item.cat_id}">{$item.cat_name}</a> {else} {$lang.uncategorized} {/if} </td>
                         <td align="center">{$item.add_time}</td>
                         <td align="center">
@@ -114,18 +114,18 @@
         <form action="item.php?module={$cur}&rec={$form_action}" method="post" enctype="multipart/form-data">
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <tr>
-                    <td width="90" align="right">{$lang.article_name}</td>
+                    <td width="90" align="right">{$module_name}{$lang.name}</td>
                     <td>
                         <input type="text" name="title" value="{$item.title}" size="80" class="inpMain" />
                     </td>
                 </tr>
                 <tr>
-                    <td align="right">{$lang.article_category}</td>
+                    <td align="right">{$module_name}{$lang.category}</td>
                     <td>
                         <select name="cat_id">
                             <option value="0">{$lang.uncategorized}</option>
                              {foreach from=$item_category item=cate}
-                             {if $cate.cat_id eq $article.cat_id} 
+                             {if $cate.cat_id eq $item.cat_id}
                             <option value="{$cate.cat_id}" selected="selected">{$cate.mark} {$cate.cat_name}</option>
                              {else} 
                             <option value="{$cate.cat_id}">{$cate.mark} {$cate.cat_name}</option>
@@ -134,9 +134,9 @@
                         </select>
                     </td>
                 </tr>
-                 {if $article.defined} 
+                 {if $item.defined}
                 <tr>
-                    <td align="right" valign="top">{$lang.article_defined}</td>
+                    <td align="right" valign="top">{$lang.defined}</td>
                     <td>
                         <textarea name="defined" id="defined" cols="50" class="textAreaAuto" style="height:{$item.defined_count}0px">{$item.defined}</textarea>
                         <script type="text/javascript">
@@ -148,7 +148,7 @@
                 </tr>
                  {/if} 
                 <tr>
-                    <td align="right" valign="top">{$lang.article_content}</td>
+                    <td align="right" valign="top">{$module_name}{$lang.content}</td>
                     <td>
                          KindEditor 
                         <script charset="utf-8" src="include/kindeditor/kindeditor.js"></script>

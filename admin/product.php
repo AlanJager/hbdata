@@ -132,7 +132,7 @@ elseif ($rec == 'add') {
  */
 elseif ($rec == 'insert') {
     if (empty($_POST['name']))
-        $hbdata->hbdata_msg($_LANG['name'] . $_LANG['is_empty']);
+        $hbdata->hbdata_msg($_LANG['product_name'] . $_LANG['is_empty']);
     if (!$check->is_price($_POST['price'] = trim($_POST['price'])))
         $hbdata->hbdata_msg($_LANG['price_wrong']);
 
@@ -211,7 +211,7 @@ if ($rec == 'edit') {
  */
 elseif ($rec == 'update') {
     if (empty($_POST['name']))
-        $hbdata->hbdata_msg($_LANG['name'] . $_LANG['is_empty']);
+        $hbdata->hbdata_msg($_LANG['product_name'] . $_LANG['is_empty']);
     if (!$check->is_price($_POST['price'] = trim($_POST['price'])))
         $hbdata->hbdata_msg($_LANG['price_wrong']);
 

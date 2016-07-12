@@ -43,6 +43,7 @@ if (!file_exists(ROOT_PATH.$images_dir)) {
 // 赋值给模板
 $smarty->assign('rec', $rec);
 $smarty->assign('cur', $module);
+$smarty->assign('module_name', $_LANG['top_add_' . $module]);
 
 /**
  * 文章列表
@@ -168,7 +169,7 @@ if ($rec == 'insert') {
     //如果插入的是商品
     if($module == 'product'){
         if (empty($_POST['name']))
-            $hbdata->hbdata_msg($_LANG['name'] . $_LANG['is_empty']);
+            $hbdata->hbdata_msg($_LANG['product_name'] . $_LANG['is_empty']);
         if (!$check->is_price($_POST['price'] = trim($_POST['price'])))
             $hbdata->hbdata_msg($_LANG['price_wrong']);
 

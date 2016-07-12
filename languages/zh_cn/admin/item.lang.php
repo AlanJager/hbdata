@@ -12,7 +12,10 @@
 //通用模块语言包
 
 $_LANG['sort_item'] = '开始筛选首页';
-
+$_LANG['name'] = '名称';
+$_LANG['category'] = '分类';
+$_LANG['defined'] = '自定义属性';
+$_LANG['content'] = '描述';
 
 //分类名称
 $_LANG['category_name'] = '分类名称';
