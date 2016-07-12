@@ -18,7 +18,7 @@
              {if $rec eq 'default'} 单页面列表
             <div class="page">
                  {foreach from=$page_list item=page_list} 
-                <dl{if $page_list.level gt 0} class="child{$page_list.level}"{/if}>
+                <dl {if $page_list.level gt 0} class="child{$page_list.level}"{/if}>
                 <dt><strong>{$page_list.page_name}</strong><p>{$page_list.unique_id}</p></dt>
                 <dd><a href="page.php?rec=edit&id={$page_list.id}">{$lang.edit}</a> | <a href="page.php?rec=del&id={$page_list.id}">{$lang.del}</a></dd>
                 </dl>

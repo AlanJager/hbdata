@@ -75,7 +75,7 @@ class Action extends Common
      * @param $action_list
      * @return array
      */
-    function admin_check($user_id, $shell, $action_list = ALL)
+    function admin_check($user_id, $shell)
     {
         if (!defined('NO_CHECK')) {
             if ($row = $this->admin_state($user_id, $shell)) {
