@@ -523,24 +523,6 @@ class Action extends Common
         exit();
     }
 
-    function add_module($module_name, $module){
-        echo "hello";
-        /*$module_file = file(ROOT_PATH . 'data/system.hbdata');
-        foreach ((array)$module_file as $line) {
-            $line = trim($line);
-            echo $line;
-            if (strpos($line, '//') !== 0) {
-                $arr = explode(':', $line);
-                $setting[$arr[0]] = explode(',', $arr[1]);
-            }
-        }
-//        foreach ($setting as $key => $value){
-//            echo $key;
-//        }*/
-        return;
-    }
-
-    /*
     function edit_module($module_name,$action,$module_old){
         if($action == 'del') {
             $file = file(ROOT_PATH . 'data/system.hbdata');
@@ -579,7 +561,7 @@ class Action extends Common
         }
     }
 }
-    */
+
     function create_table($module_name){
         $sql="DROP TABLE IF EXISTS $this->table($module_name)";
         $this->query($sql);
@@ -599,5 +581,4 @@ class Action extends Common
       ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8";
         $this->query($sql);
     }
-}
 ?>
