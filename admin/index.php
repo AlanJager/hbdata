@@ -12,6 +12,11 @@ define('IN_HBDATA', true);
 
 require (dirname(__FILE__) . '/include/init.php');
 
+//权限判断
+require ('auth.php');
+
+
+
 // rec操作项的初始化
 $rec = $check->is_rec($_REQUEST['rec']) ? $_REQUEST['rec'] : 'default';
 
