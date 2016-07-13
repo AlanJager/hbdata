@@ -25,6 +25,6 @@ try{
 
 
 if(!$auth){
-    $hbdata->hbdata_msg($_LANG['auth_failed'], 'index.php', '', 5);
+    $hbdata->hbdata_msg($_LANG['auth_failed'], 'index.php', '', 2);
 }
 ?>

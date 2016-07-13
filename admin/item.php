@@ -20,7 +20,7 @@ $module = $_REQUEST['module'];
 //检测是否为正确的module。
 //如果错误，则返回404
 if (!$check->is_module($module, $hbdata->read_system())){
-    echo '404';die;
+    $hbdata->hbdata_msg($_LANG['no_module'], 'index.php', '', 2);
 }
 
 //rec 操作项的初始化
