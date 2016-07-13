@@ -14,7 +14,7 @@ $user_id = $_USER['user_id'];
 //获取REQUEST_URL
 $request_url = $_SERVER['REQUEST_URI'];
 //获取权限名称
-$perm_title = strstr($request_url, 'admin');
+$perm_title = $hbdata->get_permission_title($request_url, $_REQUEST['module']);
 //检查是否具有权限
 try{
     $auth = $rbac->check($perm_title, $user_id);
@@ -25,6 +25,6 @@ try{
 
 
 if(!$auth){
-    $hbdata->hbdata_msg($_LANG['auth_failed'], 'index.php', '',2);
+    $hbdata->hbdata_msg($_LANG['auth_failed'], 'index.php', '', 5);
 }
 ?>

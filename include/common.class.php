@@ -669,4 +669,41 @@ class Common extends DbMysql
                 return ture;
         }
     }
+
+    /**
+     * 通过REQUETS_URL获取权限
+     * @param string $request_url
+     * @param string $module
+     * @return string
+     */
+    function get_permission_title($request_url = 'admin/', $module = '') {
+
+        //去除前缀 */hbdata/admin/  -->  admin/
+        $permission_title = strstr($request_url, 'admin');
+
+        $tarray = explode('&', $permission_title);
+        $counts = count($tarray);
+
+
+        if ($counts == 2) {
+            //可能有下列两种情况
+            //admin/item.php?rec=edit&id=1
+            //admin/item.php?module=product&rec=edit
+
+            if ($module == '') {
+                $permission_title = $tarray[0];
+            }
+        } elseif($counts >= 3) {
+            //admin/item.php?module=product&rec=edit&id=1
+            ///admin/nav.php?rec=nav_select&id=1&type=top
+            if ($module != ''){
+                $permission_title = $tarray[0] . '&' . $tarray[1];
+            } else {
+                $permission_title = $tarray[0];
+            }
+
+        }
+        return $permission_title;
+    }
+
 }
