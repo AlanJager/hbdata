@@ -187,40 +187,8 @@ elseif ($step == 'install') {
 
     // 嵌入config配置文件
     include_once ($hbdataphp_config);
-    
-    //生成RBAC配置文件
-    $dbAdapterString = '$adapter="mysqli";';
-    $dbNameString = '$dbname="' . $_POST['dbname'] . '";';
-    $data =	 '<?php
 
-' . $dbAdapterString . '
-$host="' . $_POST['dbhost'] . '";
 
-' . $dbNameString . '
-$tablePrefix = "' . $_POST['prefix'] . '";
-
-$user="' . $_POST['dbuser'] . '";
-$pass="' . $_POST['dbpass'] . '";
-
-';
-
-    $dbConnFile = ROOT_PATH . 'admin/include/PhpRbac/database/database.config';
-
-    file_put_contents($dbConnFile, $data);
-
-    $currentOS = strtoupper(substr(PHP_OS, 0, 3));
-
-    if ($currentOS != 'WIN') {
-        chmod($dbConnFile, 0644);
-    }
-
-    // 实例化RBAC
-    require_once (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
-    require (ROOT_PATH . 'admin/include/PhpRbac/src/PhpRbac/Rbac.php');
-    $rbac = new PhpRbac\Rbac();
-
-    // execute '$rbac->reset(true);'
-    $rbac->reset(true);
 
     // 检查表单
     if (!@$link = mysql_connect($dbhost, $dbuser, $dbpass)) {
@@ -298,6 +266,46 @@ $pass="' . $_POST['dbpass'] . '";
         $install->sql_execute("UPDATE $table_config SET value = '$update_date' WHERE name = 'update_date'");
         $install->sql_execute("UPDATE $table_config SET value = '' WHERE name = 'cloud_account'");
 
+
+
+        //生成RBAC配置文件
+        $dbAdapterString = '$adapter="mysqli";';
+        $dbNameString = '$dbname="' . $_POST['dbname'] . '";';
+        $data =	 '<?php
+
+' . $dbAdapterString . '
+$host="' . $_POST['dbhost'] . '";
+
+' . $dbNameString . '
+$tablePrefix = "' . $_POST['prefix'] . '";
+
+$user="' . $_POST['dbuser'] . '";
+$pass="' . $_POST['dbpass'] . '";
+
+';
+
+        $dbConnFile = ROOT_PATH . 'admin/include/PhpRbac/database/database.config';
+
+        file_put_contents($dbConnFile, $data);
+
+        $currentOS = strtoupper(substr(PHP_OS, 0, 3));
+
+        if ($currentOS != 'WIN') {
+            chmod($dbConnFile, 0644);
+        }
+
+
+        // 实例化RBAC
+        require_once (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
+        require (ROOT_PATH . 'admin/include/PhpRbac/src/PhpRbac/Rbac.php');
+        $rbac = new PhpRbac\Rbac();
+
+        // execute '$rbac->reset(true);'
+        $rbac->reset(true);
+
+
+
+        
         $_SESSION['username'] = $_POST['username'];
 
         header("Location: index.php?step=finish");
