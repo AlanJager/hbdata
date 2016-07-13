@@ -294,18 +294,8 @@ $pass="' . $_POST['dbpass'] . '";
             chmod($dbConnFile, 0644);
         }
 
-
-        // 实例化RBAC
-        require_once (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
-        require (ROOT_PATH . 'admin/include/PhpRbac/src/PhpRbac/Rbac.php');
-        $rbac = new PhpRbac\Rbac();
-
-        // execute '$rbac->reset(true);'
-        $rbac->reset(true);
-
-
-
         
+
         $_SESSION['username'] = $_POST['username'];
 
         header("Location: index.php?step=finish");
