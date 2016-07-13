@@ -46,7 +46,7 @@ $smarty->assign('cur', $module);
 $smarty->assign('module_name', $_LANG['top_add_' . $module]);
 
 /**
- * 文章列表
+ * item列表
  */
 if ($rec == 'default') {
 

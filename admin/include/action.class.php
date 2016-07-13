@@ -522,6 +522,42 @@ class Action extends Common
         $GLOBALS['smarty']->display('hbdata_msg.htm');
         exit();
     }
-}
 
+    function add_module($module_name,$action,$module_old){
+        if($action == 'del') {
+            $file = file(ROOT_PATH . 'data/system.hbdata');
+            $file[1] = str_replace(':' . $module_name . ",", ':', $file[1]);
+            $file[1] = str_replace(',' . $module_name . ',', ',', $file[1]);
+            $file[1] = str_replace(',' . $module_name, '', $file[1]);
+            //write into file
+            $fd = fopen(ROOT_PATH . 'data/system.hbdata', "w") or die("Unable to open file!");
+            foreach ($file as $value) {
+                fwrite($fd, $value);
+            }
+            fclose($fd);
+        }
+        //add modele
+        if($action == 'add') {
+            $file = file(ROOT_PATH . 'data/system.hbdata');
+            $file[1] = str_replace(':', ':' . $module_name, $file[1]);
+            //write into file
+            $fd = fopen(ROOT_PATH . 'data/system.hbdata', "w") or die("Unable to open file!");
+            foreach ($file as $value) {
+                fwrite($fd, $value);
+            }
+            fclose($fd);
+        }
+        //alter modele
+        if($action == 'alter') {
+            $file = file(ROOT_PATH . 'data/system.hbdata');
+            $file[1] = str_replace($module_old, $module_name, $file[1]);
+            //write into file
+            $fd = fopen(ROOT_PATH . 'data/system.hbdata', "w") or die("Unable to open file!");
+            foreach ($file as $value) {
+                fwrite($fd, $value);
+            }
+            fclose($fd);
+        }
+    }
+}
 ?>
