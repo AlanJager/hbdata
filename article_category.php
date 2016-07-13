@@ -13,11 +13,11 @@ define('IN_HBDATA', true);
 require (dirname(__FILE__) . '/include/init.php');
 
 // 验证并获取合法的ID，如果不合法将其设定为-1
-$cat_id = $firewall->get_legal_id('article_category', $_REQUEST['id'], $_REQUEST['unique_id']);
+$cat_id = $firewall->get_legal_id('category', $_REQUEST['id'], $_REQUEST['unique_id']);
 if ($cat_id == -1) {
     $hbdata->hbdata_msg($GLOBALS['_LANG']['page_wrong'], ROOT_URL);
 } else {
-    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id('article_category', $cat_id) . ')';
+    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id('category', 'article', $cat_id) . ')';
 }
     
 // 获取分页信息
@@ -51,7 +51,7 @@ while ($row = $hbdata->fetch_array($query)) {
 }
 
 // 获取分类信息
-$sql = "SELECT cat_id, cat_name, parent_id FROM " . $hbdata->table('article_category') . " WHERE cat_id = '$cat_id'";
+$sql = "SELECT cat_id, cat_name, parent_id FROM " . $hbdata->table('category') . " WHERE cat_id = '$cat_id' AND category = 'article'";
 $query = $hbdata->query($sql);
 $cate_info = $hbdata->fetch_array($query);
 
@@ -68,7 +68,7 @@ $smarty->assign('nav_bottom_list', $hbdata->get_nav('bottom'));
 // 赋值给模板-数据
 $smarty->assign('ur_here', $hbdata->ur_here('article_category', $cat_id));
 $smarty->assign('cate_info', $cate_info);
-$smarty->assign('article_category', $hbdata->get_category('article_category', 0, $cat_id));
+$smarty->assign('article_category', $hbdata->get_category('category', 0, $cat_id, 'article'));
 $smarty->assign('article_list', $article_list);
 
 $smarty->display('article_category.dwt');

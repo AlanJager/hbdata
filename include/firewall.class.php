@@ -178,7 +178,7 @@ class Firewall
             }
         } else {
             if (isset($id)) {
-                if (strpos($module, 'category')) {
+                if ($module == 'category') {
                     if ($id === '0') return 0; // classification page ID could be 0
                     $get_id = $GLOBALS['hbdata']->get_one("SELECT cat_id FROM " . $GLOBALS['hbdata']->table($module) . " WHERE cat_id = '$id'");
                 } else {
@@ -186,7 +186,7 @@ class Firewall
                 }
             } else {
                 // if either unique_id and id not set, means main page or classification main page do not has id
-                return strpos($module, 'category') ? 0 : -1;
+                return ($module == 'category') ? 0 : -1;
             }
         }
 

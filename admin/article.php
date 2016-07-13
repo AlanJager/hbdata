@@ -53,7 +53,7 @@ if ($rec == 'default') {
     $keyword = isset($_REQUEST['keyword']) ? trim($_REQUEST['keyword']) : '';
 
     // 筛选条件
-    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id('article_category', $cat_id) . ')';
+    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id('category', 'article', $cat_id) . ')';
     if ($keyword) {
         $where = $where . " AND title LIKE '%$keyword%'";
         $get = '&keyword=' . $keyword;

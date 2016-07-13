@@ -20,10 +20,11 @@ require (dirname(__FILE__) . '/util.php');
 
 function testCommonChildId()
 {
-    $common = new Common('localhost', 'root', '', 'hbData', 'hbData', 'utf8', 0);
-    echo $common->hbdata_child_id("article_category", 1);
+    echo 'test hbdata_child_id()';
+    $common = new Common('localhost', 'root', 'root', 'hbData', 'hbData', 'utf8', 0);
+    echo $common->hbdata_child_id("category", "article", 1);
     $common->close();
 }
-//testCommonChildId();
+testCommonChildId();
 
 

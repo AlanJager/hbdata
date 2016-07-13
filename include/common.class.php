@@ -47,16 +47,22 @@ class Common extends DbMysql
      * @param $table
      * @param int $parent_id
      * @param string $child
+     * @param string $module
      * @return $child_id
      */
-    function hbdata_child_id($table, $parent_id = 0, &$child_id = '')
+    function hbdata_child_id($table, $module = '', $parent_id = 0, &$child_id = '')
     {
-        $data = $this->fetch_array_all($this->table($table), 'sort ASC');
+        if ($module != '') {
+            $data = $this->fetch_array_all($this->table($table), 'sort ASC', 'category=\'' . $module . '\'');
+        } else {
+            $data = $this->fetch_array_all($this->table($table), 'sort ASC');
+        } 
+        
 //        return $data;
         foreach ((array) $data as $value) {
             if ($value['parent_id'] == $parent_id) {
                 $child_id .= ',' . $value['cat_id'];
-                $this->hbdata_child_id($table, $value['cat_id'], $child_id);
+                $this->hbdata_child_id($table, $module, $value['cat_id'], $child_id);
             }
         }
         return $child_id;
@@ -186,11 +192,18 @@ class Common extends DbMysql
      * @param $table
      * @param int $parent_id
      * @param string $current_id
+     * @param string $module
      * @return array
      */
-    function get_category($table, $parent_id = 0, $current_id = '') {
+    function get_category($table, $parent_id = 0, $current_id = '', $module = '') {
         $category = array ();
-        $data = $this->fetch_array_all($this->table($table), 'sort ASC');
+
+        if ($module != '') {
+            $data = $this->fetch_array_all($this->table($table), 'sort ASC', 'category=\'' . $module . '\'');
+        } else {
+            $data = $this->fetch_array_all($this->table($table), 'sort ASC');
+        }
+        
         foreach ((array) $data as $value) {
             // $parent_id将在嵌套函数中随之变化
             if ($value['parent_id'] == $parent_id) {
@@ -307,7 +320,7 @@ class Common extends DbMysql
      * @return array
      */
     function get_list($module, $cat_id = '', $num = '', $sort = '') {
-        $where = $cat_id == 'ALL' ? '' : " WHERE cat_id IN (" . $cat_id . $this->hbdata_child_id($module . '_category', $cat_id) . ")";
+        $where = $cat_id == 'ALL' ? '' : " WHERE cat_id IN (" . $cat_id . $this->hbdata_child_id('category', $module, $cat_id) . ")";
         $sort = $sort ? $sort . ',' : '';
         $limit = $num ? ' LIMIT ' . $num : '';
 

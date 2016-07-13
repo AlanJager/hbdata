@@ -28,6 +28,7 @@ if ($_REQUEST['s']) {
 }
 
 // 获取关于我们信息
+//TODO 考虑更灵活的实现
 $sql = "SELECT * FROM " . $hbdata->table('page') . " WHERE id = '1'";
 $query = $hbdata->query($sql);
 $about = $hbdata->fetch_array($query);
@@ -59,6 +60,7 @@ $smarty->display('index.dwt');
 
 /**
  * 获取友情链接
+ * TODO 目前没有这张表
  * @return array
  */
 function get_link_list() {

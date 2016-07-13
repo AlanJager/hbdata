@@ -381,12 +381,14 @@ class DbMysql {
      * get all the query set into array
      * @param $table
      * @param string $order_by
+     * @param string $where
      * @return array
      */
-    function fetch_array_all($table, $order_by = '')
+    function fetch_array_all($table, $order_by = '', $where = '')
     {
         $order_by = $order_by ? " ORDER BY " . $order_by : '';
-        $query = $this->query("SELECT * FROM ". $table . $order_by);
+        $where = $where ? " WHERE " . $where : '';
+        $query = $this->query("SELECT * FROM ". $table . $where . $order_by);
         while ($row = $this->fetch_assoc($query)) {
             $data[] = $row;
         }
