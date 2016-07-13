@@ -48,12 +48,13 @@ require (ROOT_PATH . 'include/common.class.php');
 require (ROOT_PATH . ADMIN_PATH . '/include/action.class.php');
 require (ROOT_PATH . 'include/check.class.php');
 require (ROOT_PATH . 'include/firewall.class.php');
-
+require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
 
 // 实例化类
 $hbdata = new Action($dbhost, $dbuser, $dbpass, $dbname, $prefix, HBDATA_CHARSET);
 $check = new Check();
 $firewall = new Firewall();
+$rbac = new PhpRbac\Rbac();
 
 
 // 定义系统标示

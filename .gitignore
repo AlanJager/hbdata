@@ -5,7 +5,7 @@ _ide_helper.php
 /cache
 /data/config.php
 /data/system.hbdata
-
+/admin/include/PhpRbac/database/database.config
 
 # User-specific stuff:
 .idea/workspace.xml
