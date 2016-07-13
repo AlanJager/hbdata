@@ -560,4 +560,23 @@ class Action extends Common
         }
     }
 }
+    function create_table($module_name){
+        $sql="DROP TABLE IF EXISTS $this->table($module_name)";
+        $this->query($sql);
+        $sql="CREATE TABLE $this->table($module_name) (
+        `id` mediumint(8) unsigned NOT NULL auto_increment,
+        `cat_id` smallint(5) NOT NULL default '0',
+        `title` varchar(150) NOT NULL default '',
+        `defined` text NOT NULL,
+        `content` longtext NOT NULL,
+        `image` varchar(255) NOT NULL default '',
+        `keywords` varchar(255) NOT NULL default '',
+        `add_time` int(10) unsigned NOT NULL default '0',
+        `click` smallint(6) unsigned NOT NULL default '0',
+        `description` varchar(255) NOT NULL default '',
+        `sort` tinyint(3) unsigned NOT NULL default '0',
+        PRIMARY KEY  (`id`)
+      ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8";
+        $this->query($sql);
+    }
 ?>
