@@ -116,6 +116,7 @@ $_LANG['top_manager_edit'] = '编辑我的个人资料';
 $_LANG['top_logout'] = '退出';
 $_LANG['menu_home'] = '管理首页';
 $_LANG['menu_page'] = '单页面管理';
+$_LANG['category_manage'] = '分类管理';
 $_LANG['footer_copyright'] = '版权所有 © 2016 北京宏宝数据科技有限公司，并保留所有权利。';
 
 // 系统警示
