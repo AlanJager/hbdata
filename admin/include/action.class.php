@@ -523,7 +523,7 @@ class Action extends Common
         exit();
     }
 
-    function add_module($module_name,$action,$module_old){
+    function edit_module($module_name,$action,$module_old){
         if($action == 'del') {
             $file = file(ROOT_PATH . 'data/system.hbdata');
             $file[1] = str_replace(':' . $module_name . ",", ':', $file[1]);
@@ -537,18 +537,19 @@ class Action extends Common
             fclose($fd);
         }
         //add modele
-        if($action == 'add') {
+        elseif($action == 'add') {
             $file = file(ROOT_PATH . 'data/system.hbdata');
             $file[1] = str_replace(':', ':' . $module_name, $file[1]);
             //write into file
             $fd = fopen(ROOT_PATH . 'data/system.hbdata', "w") or die("Unable to open file!");
             foreach ($file as $value) {
-                fwrite($fd, $value);
+                echo $value;
+                //fwrite($fd, $value);
             }
             fclose($fd);
         }
         //alter modele
-        if($action == 'alter') {
+        elseif($action == 'alter') {
             $file = file(ROOT_PATH . 'data/system.hbdata');
             $file[1] = str_replace($module_old, $module_name, $file[1]);
             //write into file
@@ -560,6 +561,7 @@ class Action extends Common
         }
     }
 }
+
     function create_table($module_name){
         $sql="DROP TABLE IF EXISTS $this->table($module_name)";
         $this->query($sql);
