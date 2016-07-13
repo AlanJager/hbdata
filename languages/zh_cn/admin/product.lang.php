@@ -31,7 +31,7 @@ $_LANG['product_category_add_succes'] = '添加商品分类成功';
 $_LANG['product_category_edit_succes'] = '编辑商品分类成功';
 
 // 产品中心
-$_LANG['product'] = '商品列表';
+$_LANG['product'] = '商品';
 $_LANG['product_add'] = '添加商品';
 $_LANG['product_edit'] = '编辑商品';
 $_LANG['product_thumb'] = '更新商品缩略图';

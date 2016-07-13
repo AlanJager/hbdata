@@ -31,7 +31,7 @@ $_LANG['article_category_add_succes'] = '添加文章分类成功';
 $_LANG['article_category_edit_succes'] = '编辑文章分类成功';
 
 // 文章中心
-$_LANG['article'] = '文章列表';
+$_LANG['article'] = '文章';
 $_LANG['article_add'] = '添加文章';
 $_LANG['article_edit'] = '编辑文章';
 $_LANG['article_del'] = '删除文章';
