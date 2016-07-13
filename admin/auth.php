@@ -25,6 +25,6 @@ try{
 
 
 if(!$auth){
-    echo '您没有权限访问!';die;
+    $hbdata->hbdata_msg($_LANG['auth_failed'], 'index.php', '',2);
 }
 ?>
