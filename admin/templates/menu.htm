@@ -7,6 +7,7 @@
         <li{if $cur eq 'nav'} class="cur"{/if}><a href="nav.php"><i class="nav"></i><em>{$lang.nav}</em></a></li>
         <li{if $cur eq 'show'} class="cur"{/if}><a href="show.php"><i class="show"></i><em>{$lang.show}</em></a></li>
         <li{if $cur eq 'page'} class="cur"{/if}><a href="page.php"><i class="page"></i><em>{$lang.menu_page}</em></a></li>
+        <li{if $cur eq 'category_manage'} class="cur"{/if}><a href="category_manage.php"><i class="category_manage"></i><em>{$lang.category_manage}</em></a> </li>
     </ul>
      {if !$workspace.menu_column && !$workspace.menu_single} 如果没有模块则调用单页面菜单 
      {foreach from=$workspace.menu_simple item=menu} 
