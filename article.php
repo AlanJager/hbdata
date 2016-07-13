@@ -54,7 +54,7 @@ $smarty->assign('nav_bottom_list', $hbdata->get_nav('bottom'));
 
 // 赋值给模板-数据
 $smarty->assign('ur_here', $hbdata->ur_here('article_category', $cat_id, $article['title']));
-$smarty->assign('article_category', $hbdata->get_category('article_category', 0, $cat_id));
+$smarty->assign('article_category', $hbdata->get_category('category', 0, $cat_id, 'article'));
 $smarty->assign('lift', $hbdata->lift('article', $id, $cat_id));
 $smarty->assign('article', $article);
 $smarty->assign('defined', $defined);

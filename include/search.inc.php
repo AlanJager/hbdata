@@ -83,8 +83,8 @@ $smarty->assign('nav_bottom_list', $hbdata->get_nav('bottom'));
 //assign value to data
 $smarty->assign('ur_here', $search_results);
 $smarty->assign('search_module', $module);
-$smarty->assign('product_category', $hbdata->get_category('product_category'));
-$smarty->assign('article_category', $hbdata->get_category('article_category'));
+$smarty->assign('product_category', $hbdata->get_category('category', 0, '', 'product'));
+$smarty->assign('article_category', $hbdata->get_category('category', 0, '', 'article'));
 $smarty->assign('search_list', $search_list);
 
 $smarty->display('search.dwt');

@@ -13,11 +13,11 @@ define('IN_HBDATA', true);
 require (dirname(__FILE__) . '/include/init.php');
 
 // 验证并获取合法的ID，如果不合法将其设定为-1
-$cat_id = $firewall->get_legal_id('product_category', $_REQUEST['id'], $_REQUEST['unique_id']);
+$cat_id = $firewall->get_legal_id('category', $_REQUEST['id'], $_REQUEST['unique_id']);
 if ($cat_id == -1) {
     $hbdata->hbdata_msg($GLOBALS['_LANG']['page_wrong'], ROOT_URL);
 } else {
-    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id('product_category', $cat_id) . ')';
+    $where = ' WHERE cat_id IN (' . $cat_id . $hbdata->hbdata_child_id('category', 'product',  $cat_id) . ')';
 }
 
 // 获取分页信息
@@ -58,7 +58,7 @@ while ($row = $hbdata->fetch_array($query)) {
 }
 
 // 获取分类信息
-$sql = "SELECT * FROM " . $hbdata->table('product_category') . " WHERE cat_id = '$cat_id'";
+$sql = "SELECT * FROM " . $hbdata->table('category') . " WHERE cat_id = '$cat_id' AND category = 'product'";
 $query = $hbdata->query($sql);
 $cate_info = $hbdata->fetch_assoc($query);
 
@@ -75,7 +75,7 @@ $smarty->assign('nav_bottom_list', $hbdata->get_nav('bottom'));
 // 赋值给模板-数据
 $smarty->assign('ur_here', $hbdata->ur_here('product_category', $cat_id));
 $smarty->assign('cate_info', $cate_info);
-$smarty->assign('product_category', $hbdata->get_category('product_category', 0, $cat_id));
+$smarty->assign('product_category', $hbdata->get_category('category', 0, $cat_id, 'product'));
 $smarty->assign('product_list', $product_list);
 
 $smarty->display('product_category.dwt');

@@ -207,14 +207,14 @@ class Common extends DbMysql
         foreach ((array) $data as $value) {
             // $parent_id将在嵌套函数中随之变化
             if ($value['parent_id'] == $parent_id) {
-                $value['url'] = $this->rewrite_url($table, $value['cat_id']);
+                $value['url'] = $this->rewrite_url($module . '_' . $table, $value['cat_id']);
                 $value['cur'] = $value['cat_id'] == $current_id ? true : false;
 
                 foreach ($data as $child) {
                     // filter next category
                     if ($child['parent_id'] == $value['cat_id']) {
                         // get child category sorted
-                        $value['child'] = $this->get_category($table, $value['cat_id'], $current_id);
+                        $value['child'] = $this->get_category($table, $value['cat_id'], $current_id, $module);
                         break;
                     }
                 }
