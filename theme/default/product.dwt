@@ -20,7 +20,7 @@
                 <div class="productInfo">
                     <h1>{$product.name}</h1>
                     <ul>
-                        <li class="productPrice">{$lang.price}：<em class="price">{$product.price}</em></li>
+                        <li class="productPrice">{if $product.show_price == true}{$lang.price}：<em class="price">{$product.price}{else}{/if}</em></li>
                          {foreach from=$defined name=defined item=defined} 
                         <li>{$defined.arr}：{$defined.value}</li>
                          {/foreach} 
