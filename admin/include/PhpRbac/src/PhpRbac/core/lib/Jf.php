@@ -131,6 +131,7 @@ class Jf
 		$args = func_get_args ();
 		if (count ( $args ) == 1)
 		{
+			self::$Db->query("SET NAMES utf8");
 			$result = self::$Db->query ( $Query );
 			if ($result===true)
 				return true;
@@ -145,6 +146,7 @@ class Jf
 		}
 		else
 		{
+			self::$Db->query("SET NAMES utf8");
 			if (! $preparedStatement = self::$Db->prepare ( $Query ))
 				trigger_error ( "Unable to prepare statement: {$Query}, reason: ".self::$Db->error );
 			array_shift ( $args ); // remove $Query from args
