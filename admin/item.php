@@ -12,6 +12,9 @@ define('IN_HBDATA', true);
 
 require (dirname(__FILE__).'/include/init.php');
 
+//权限判断
+require ('auth.php');
+
 $module = $_REQUEST['module'];
 
 //检测是否为正确的module。
