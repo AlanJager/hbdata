@@ -43,7 +43,7 @@ if ($rec == 'default'){
     $smarty->assign('ur_here', $_LANG['category']);
     $smarty->assign('action_link', array (
         'text' => $_LANG['category_add'],
-        'href' => 'category_manage.php?&rec=add'
+        'href' => 'category_manage.php?rec=add'
     ));
 
     // 赋值给模板
@@ -78,6 +78,8 @@ if ($rec == 'add'){
  *分类插入
  */
 if ($rec == 'insert'){
+    $category_name=$_POST['category_name'];
+    echo $category_name;
     if (empty($_POST['category_name']))
         $hbdata->hbdata_msg($_LANG['category_name'] . $_LANG['is_empty']);
     if (empty($_POST['unique_id']))
@@ -94,7 +96,11 @@ if ($rec == 'insert'){
     //$hbdata->add_module($_POST['category_name'], $_POST['unique_id']);
 
     $hbdata->create_admin_log($_LANG['category_add'] . ': ' . $_POST['unique_id']);//need to fix
+    $hbdata->edit_module($category_name,'add');
+    $hbdata->create_table($category_name);
     $hbdata->hbdata_msg($_LANG['category_add_succes'], 'category_manage.php');//need to fix
+
+
 }
 
 /**

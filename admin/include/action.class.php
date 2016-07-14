@@ -523,11 +523,22 @@ class Action extends Common
         exit();
     }
 
-    function edit_module($module_name,$action,$module_old){
+    /**
+     * 编辑模块
+     * @param （array）$file         存放data/system.hbdata内容的数组
+     * @param string $fd            打开文件的流
+     * @param str $module_name      要修改或添加，删除的模块名
+     * @param string $action        对模块的操作行为
+     */
+    function edit_module($module_name,$action,$module_old = ''){
         if($action == 'del') {
             $file = file(ROOT_PATH . 'data/system.hbdata');
+            //分三种情况删除
+            //module在第一个
             $file[1] = str_replace(':' . $module_name . ",", ':', $file[1]);
+            //module在中间
             $file[1] = str_replace(',' . $module_name . ',', ',', $file[1]);
+            //module在末尾
             $file[1] = str_replace(',' . $module_name, '', $file[1]);
             //write into file
             $fd = fopen(ROOT_PATH . 'data/system.hbdata', "w") or die("Unable to open file!");
@@ -539,14 +550,15 @@ class Action extends Common
         //add modele
         elseif($action == 'add') {
             $file = file(ROOT_PATH . 'data/system.hbdata');
-            $file[1] = str_replace(':', ':' . $module_name, $file[1]);
+            $file[1] = str_replace(':', ':' . $module_name.',', $file[1]);
             //write into file
             $fd = fopen(ROOT_PATH . 'data/system.hbdata', "w") or die("Unable to open file!");
             foreach ($file as $value) {
-                echo $value;
-                //fwrite($fd, $value);
+                fwrite($fd, $value);
             }
             fclose($fd);
+            
+            //创建新表
         }
         //alter modele
         elseif($action == 'alter') {
@@ -560,12 +572,18 @@ class Action extends Common
             fclose($fd);
         }
     }
-}
-
+    /**
+     * 创建新模块的表
+     * @param string $sql           数据库操作语句
+     * @param str $module_name      模块名
+     */
     function create_table($module_name){
-        $sql="DROP TABLE IF EXISTS $this->table($module_name)";
+        //若之前存在此表则删除
+        $sql="DROP TABLE IF EXISTS".$this->table($module_name);
         $this->query($sql);
-        $sql="CREATE TABLE $this->table($module_name) (
+
+        //创建新表
+        $sql="CREATE TABLE".$this->table($module_name)."(
         `id` mediumint(8) unsigned NOT NULL auto_increment,
         `cat_id` smallint(5) NOT NULL default '0',
         `title` varchar(150) NOT NULL default '',
@@ -581,4 +599,6 @@ class Action extends Common
       ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8";
         $this->query($sql);
     }
+}
+
 ?>
