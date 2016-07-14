@@ -43,7 +43,7 @@ if ($rec == 'default'){
     $smarty->assign('ur_here', $_LANG['category']);
     $smarty->assign('action_link', array (
         'text' => $_LANG['category_add'],
-        'href' => 'category_manage.php?&rec=add'
+        'href' => 'category_manage.php?rec=add'
     ));
 
     // 赋值给模板
@@ -82,19 +82,19 @@ if ($rec == 'insert'){
         $hbdata->hbdata_msg($_LANG['category_name'] . $_LANG['is_empty']);
     if (empty($_POST['unique_id']))
         $hbdata->hbdata_msg($_LANG['unique'] . $_LANG['is_empty']);
-    if (!$check->is_unique_id($_POST['unique_id']))
-        $hbdata->hbdata_msg($_LANG['unique_id_wrong']);
-
     if ($check->unique_id_exist($_POST['unique_id'], $_MODULE['column']))
         $hbdata->hbdata_msg($_LANG['unique_id_existed']);
 
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'category_add');
 
-    //$hbdata->add_module($_POST['category_name'], $_POST['unique_id']);
-
     $hbdata->create_admin_log($_LANG['category_add'] . ': ' . $_POST['unique_id']);//need to fix
+    $hbdata->edit_module($_POST['unique_id'],'add');
+    $hbdata->add_category_lang($_POST['unique_id'],$_POST['category_name']);
+    $hbdata->create_table($_POST['unique_id']);
     $hbdata->hbdata_msg($_LANG['category_add_succes'], 'category_manage.php');//need to fix
+
+
 }
 
 /**
