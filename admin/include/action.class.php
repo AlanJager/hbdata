@@ -572,7 +572,10 @@ class Action extends Common
             fclose($fd);
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> dbf99fea3de5895b7c9e907c9a5738f4a3bbf3bd
     /**
      * 创建新模块的表
      * @param string $sql           数据库操作语句
@@ -580,7 +583,19 @@ class Action extends Common
      */
     function create_table($module_name){
         //若之前存在此表则删除
+<<<<<<< HEAD
         $sql="DROP TABLE IF EXISTS".$this->table($module_name);
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        $sql="DROP TABLE IF EXISTS".$this->table($module_name);
+=======
+        $sql="DROP TABLE IF EXISTS".$this->table('admin_log');
+>>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
+=======
+        $sql="DROP TABLE IF EXISTS".$this->table('admin_log');
+>>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
+>>>>>>> dbf99fea3de5895b7c9e907c9a5738f4a3bbf3bd
         $this->query($sql);
 
         //创建新表
@@ -600,6 +615,7 @@ class Action extends Common
       ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8";
         $this->query($sql);
     }
+<<<<<<< HEAD
 
     /**
      * 为新模块增加语言包
@@ -625,6 +641,8 @@ class Action extends Common
     function add_limits(){
         //$sql="INSERT INTO `hbdata_permissions`() VALUES(342, 343,".", '')";
     }
+=======
+>>>>>>> dbf99fea3de5895b7c9e907c9a5738f4a3bbf3bd
 }
 
 ?>
