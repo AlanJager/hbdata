@@ -81,8 +81,11 @@ if ($rec == 'insert'){
     $category_name=$_POST['category_name'];
     echo $category_name;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+>>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
+=======
 >>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
     if (empty($_POST['category_name']))
 =======
@@ -104,8 +107,11 @@ if ($rec == 'insert'){
 
     $hbdata->create_admin_log($_LANG['category_add'] . ': ' . $_POST['unique_id']);//need to fix
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+>>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
+=======
 >>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
     $hbdata->edit_module($category_name,'add');
     $hbdata->create_table($category_name);
@@ -113,13 +119,19 @@ if ($rec == 'insert'){
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
 =======
     $hbdata->hbdata_msg($_LANG['category_add_succes'], 'category_manage.php');//need to fix*/
     //$hbdata->edit_module($category_name,'add');
     $hbdata->create_table($category_name);
     $hbdata->hbdata_msg($_LANG['category_add_succes'], 'category_manage.php');//need to fix*/
 >>>>>>> 4ec5924c9983873d36ae57da0329d1f5d6a1dc31
+<<<<<<< HEAD
+>>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
+=======
 >>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
 }
 

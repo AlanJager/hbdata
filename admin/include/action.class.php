@@ -580,7 +580,11 @@ class Action extends Common
     function create_table($module_name){
         //若之前存在此表则删除
 <<<<<<< HEAD
+<<<<<<< HEAD
         $sql="DROP TABLE IF EXISTS".$this->table($module_name);
+=======
+        $sql="DROP TABLE IF EXISTS".$this->table('admin_log');
+>>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
 =======
         $sql="DROP TABLE IF EXISTS".$this->table('admin_log');
 >>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
