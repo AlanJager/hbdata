@@ -204,6 +204,9 @@ CREATE TABLE`hbdata_roles` (
   KEY `Rght` (`Rght`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+
+INSERT INTO `hbdata_roles` VALUES(1, 0, 1, 'root', 'root');
+
 DROP TABLE IF EXISTS `hbdata_userroles`;
 CREATE TABLE `hbdata_userroles` (
   `UserID` int(11) NOT NULL,
@@ -211,6 +214,8 @@ CREATE TABLE `hbdata_userroles` (
   `AssignmentDate` int(11) NOT NULL,
   PRIMARY KEY  (`UserID`,`RoleID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO `hbdata_userroles` VALUES(1, 1, 0);
 
 /*
  * 网站业务逻辑部分
