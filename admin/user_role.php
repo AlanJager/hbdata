@@ -25,10 +25,6 @@ $smarty->assign('rec', $rec);
  */
 if ($rec == 'default') {
     $smarty->assign('ur_here', $_LANG['user_role_manage']);
-    $smarty->assign('action_link', array (
-        'text' => $_LANG['add_user_role'],
-        'href' => 'user_role.php?rec=add'
-    ));
 
 
     $sql = "SELECT * FROM " . $hbdata->table('admin') . " ORDER BY user_id ASC";
@@ -40,9 +36,7 @@ if ($rec == 'default') {
         );
     }
 
-    $testSet = array();
-    $val = -1;
-    //array_push($testSet, $sql);
+    $result_set = array();
     foreach ($user_role_list as $user_role) {
         $user_id = $user_role['user_id'];
         $sql = "SELECT * FROM " . $hbdata->table('userroles') . " where UserID = " . $user_id;
@@ -53,8 +47,8 @@ if ($rec == 'default') {
             );
         }
 
-        foreach ($user_role_result_set as $user_role) {
-            $role_id = $user_role['role_id'];
+        foreach ($user_role_result_set as $user_role_info) {
+            $role_id = $user_role_info['role_id'];
             $sql = "SELECT * FROM " . $hbdata->table('roles') . "where ID = " . $role_id;
             $query = $hbdata->query($sql);
             while ($row = $hbdata->fetch_array($query)) {
@@ -63,16 +57,14 @@ if ($rec == 'default') {
                 );
                 $user_role['role_title'] = $role_list;
             }
-
-            $val = $user_role['user_id'];
+            array_push($result_set, $user_role);
         }
-
     }
 
     // 赋值给模板
-    $smarty->assign('test', $val);
+    $smarty->assign('test', $var);
     $smarty->assign('cur', 'user_role');
-    $smarty->assign('user_role_list', $user_role_list);
+    $smarty->assign('user_role_list', $result_set);
 
     $smarty->display('user_role.htm');
 } else if ($rec == "add") {
