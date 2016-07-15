@@ -33,7 +33,7 @@
                 {/foreach}
             </table>
             {/if}
-            {if $rec eq 'add'} 角色添加
+            {if $rec eq 'add'} 权限添加
             <form action="permission.php?rec=insert" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
@@ -58,7 +58,7 @@
                 </table>
             </form>
             {/if}
-            {if $rec eq 'edit'} 角色编辑
+            {if $rec eq 'edit'} 权限编辑
             <form action="permission.php?rec=update" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>

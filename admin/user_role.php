@@ -31,19 +31,48 @@ if ($rec == 'default') {
     ));
 
 
-    $sql = "SELECT * FROM " . $hbdata->table('userroles') . " ORDER BY UserID ASC";
+    $sql = "SELECT * FROM " . $hbdata->table('admin') . " ORDER BY user_id ASC";
     $query = $hbdata->query($sql);
     while ($row = $hbdata->fetch_array($query)) {
         $user_role_list[] = array (
-            "user_id" => $row['UserID'],
-            "role_id" => $row['RoleID'],
-            "assign_date" => $row['AssignmentDate']
+            "user_id" => $row['user_id'],
+            "user_name" => $row['user_name'],
         );
     }
 
+    $testSet = array();
+    $val = -1;
+    //array_push($testSet, $sql);
+    foreach ($user_role_list as $user_role) {
+        $user_id = $user_role['user_id'];
+        $sql = "SELECT * FROM " . $hbdata->table('userroles') . " where UserID = " . $user_id;
+        $query = $hbdata->query($sql);
+        while ($row = $hbdata->fetch_array($query)) {
+            $user_role_result_set[] = array (
+                "role_id" => $row['RoleID'],
+            );
+        }
+
+        foreach ($user_role_result_set as $user_role) {
+            $role_id = $user_role['role_id'];
+            $sql = "SELECT * FROM " . $hbdata->table('roles') . "where ID = " . $role_id;
+            $query = $hbdata->query($sql);
+            while ($row = $hbdata->fetch_array($query)) {
+                $role_list[] = array (
+                    "role_title" => $row['Title'],
+                );
+                $user_role['role_title'] = $role_list;
+            }
+
+            $val = $user_role['user_id'];
+        }
+
+    }
+
     // 赋值给模板
+    $smarty->assign('test', $val);
     $smarty->assign('cur', 'user_role');
-    $smarty->assign('user_role_list', $user_role);
+    $smarty->assign('user_role_list', $user_role_list);
 
     $smarty->display('user_role.htm');
 } else if ($rec == "add") {
