@@ -28,7 +28,10 @@
                     <td align="center">{$role.role_id}</td>
                     <td>{$role.role_title}</td>
                     <td>{$role.role_description}</td>
-                    <td align="center"><a href="role.php?rec=edit&id={$role.role_id}">{$lang.edit}</a> | <a href="role.php?rec=del&id={$role.role_id}">{$lang.del}</a></td>
+                    <td align="center"><a href="role.php?rec=edit&id={$role.role_id}">{$lang.edit}</a>
+                        | <a href="role.php?rec=del&id={$role.role_id}">{$lang.del}</a>
+                        | <a href="role.php?rec=setPermission&id={$role.role_id}">{$lang.set_role_permission}</a>
+                    </td>
                 </tr>
                 {/foreach}
             </table>
