@@ -123,7 +123,27 @@ if ($rec == 'default') {
     } else {
         $hbdata->hbdata_msg($_LANG['role_delete_fail'], 'role.php');
     }
+} else if ($rec == "setpermission") {
+    if ($_USER['action_list'] != 'ALL') {
+        $hbdata->hbdata_msg($_LANG['without'], 'role.php');
+    }
 
+    $smarty->assign('ur_here', $_LANG['role_manage']);
+    $smarty->assign('action_link', array (
+        'text' => $_LANG['role_list'],
+        'href' => 'role.php'
+    ));
+
+
+    $role_id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
+
+    $smarty->assign("permissions", $rbac->Roles->permissions($role_id, false));
+
+    // CSRF防御令牌生成
+    $smarty->assign('token', $firewall->set_token('edit_role'));
+
+    $smarty->display('role.htm');
+} else if ($rec == 'updaterolepermission') {
 
 }
 
