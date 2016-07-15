@@ -482,7 +482,7 @@ if ($rec == 'del') {
         $hbdata->delete($hbdata->table($module), "id = $id", 'item.php?module=' . $module);
     } else {
         $_LANG['del_check'] = preg_replace('/d%/Ums', $item_name, $_LANG['del_check']);
-        $hbdata->hbdata_msg($_LANG['del_check'], 'item.php?module=' . $module, '', '30', "item.php?module='$module'&rec=del&id='$id'");
+        $hbdata->hbdata_msg($_LANG['del_check'], 'item.php?module=' . $module, '', '30', "item.php?module=$module&rec=del&id=$id");
     }
 
 }
