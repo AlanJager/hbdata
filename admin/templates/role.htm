@@ -88,6 +88,28 @@
                 </table>
             </form>
             {/if}
+            {if $rec eq 'setpermission'} 角色授权
+            <form action="role.php?rec=updaterolepermission" method="post">
+                <form action="role.php?rec=updaterolepermission" method="post">
+                    <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                        <tr>
+                            <th></th>
+                            <th align="center">{$lang.permission_id}</th>
+                            <th align="center">{$lang.permission_title}</th>
+                            <th align="center">{$lang.permission_description}</th>
+                        </tr>
+                        {foreach from=$permissions item=permission}
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td align="center">{$permission.ID}</td>
+                            <td>{$permission.Title}</td>
+                            <td>{$permission.Description}</td>
+                        </tr>
+                        {/foreach}
+                    </table>
+                </form>
+            </form>
+            {/if}
         </div>
     </div>
     {include file="footer.htm"}
