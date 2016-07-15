@@ -51,27 +51,17 @@
                     {/if}
                     {if $rec eq 'edit'}
                     <tr>
-                        <td width="80" align="right">{$lang.old_category_name}</td>
+                        <td width="80" align="right">{$lang.category_name}</td>
                         <td>
-                            <input type="text" name="old_category_name" value="{$lang.$unique_id}" size="40" class="inpMain" />
+                            <input type="hidden" name="old_category_name" value="{$lang.$unique_id}" size="40" class="inpMain" />
+                            <input type="text" name="new_category_name"  value="{$lang.$unique_id}" size="40" class="inpMain" />
                         </td>
                     </tr>
                     <tr>
-                        <td align="right">{$lang.old_unique}</td>
+                        <td align="right">{$lang.unique}</td>
                         <td>
-                            <input type="text" name="old_unique_id" value="{$unique_id}" size="40" class="inpMain" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="80" align="right">{$lang.new_category_name}</td>
-                        <td>
-                            <input type="text" name="new_category_name"  size="40" class="inpMain" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">{$lang.new_unique}</td>
-                        <td>
-                            <input type="text" name="new_unique_id"  size="40" class="inpMain" />
+                            <input type="hidden" name="old_unique_id" value="{$unique_id}" size="40" class="inpMain" />
+                            <input type="text" name="new_unique_id"  value="{$unique_id}" size="40" class="inpMain" />
                         </td>
                     </tr>
                     {/if}
