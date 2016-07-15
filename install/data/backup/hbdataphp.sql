@@ -343,7 +343,7 @@ INSERT INTO hbdata_config VALUES('hbdataphp_version','v1.0 Release 20160705','hi
 DROP TABLE IF EXISTS `hbdata_nav`;
 CREATE TABLE `hbdata_nav` (
   `id` mediumint(8) NOT NULL auto_increment,
-  `module` varchar(20) NOT NULL,
+  `module` varchar(50) NOT NULL,
   `nav_name` varchar(255) NOT NULL,
   `guide` varchar(255) NOT NULL,
   `parent_id` smallint(5) NOT NULL default '0',
