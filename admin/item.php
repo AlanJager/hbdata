@@ -185,7 +185,7 @@ if ($rec == 'add') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
-    $smarty->assign('module_category', $hbdata->get_category_nolevel($module , 'category'));
+    $smarty->assign('item_category', $hbdata->get_category_nolevel($module , 'category'));
     $smarty->assign('item', $item);
 
     $smarty->display('item.htm');
