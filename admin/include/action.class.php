@@ -547,6 +547,10 @@ class Action extends Common
                 fwrite($fd, $value);
             }
             $this->del_lang_file($module_name);
+            //删除category表里对应的模块内容
+            $sql="DELETE FROM hbdata_category WHERE category = '".$module_name."'";
+            $this->query($sql);
+            //删除表
             $sql="DROP TABLE IF EXISTS".$this->table($module_name);
             $this->query($sql);
             fclose($fd);
