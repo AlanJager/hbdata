@@ -1,9 +1,13 @@
 <?php
 
+//菜单信息
 $_LANG['role_manage'] = '角色管理';
 $_LANG['permission_manage'] = '权限管理';
 $_LANG['user_role_manage'] = '用户角色管理';
 $_LANG['role_permission_manage'] = '角色权限管理';
+
+//操作信息
+$_LANG['set_role_permission'] = '授权';
 
 //角色管理
 $_LANG['role_id'] = '角色编号';
