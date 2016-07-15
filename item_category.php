@@ -18,9 +18,8 @@ $module = $_REQUEST['module'];
 //检测是否为正确的module。
 //如果错误，则返回404
 if (!$check->is_module($module, $hbdata->read_system())){
-    $hbdata->hbdata_msg($_LANG['no_module'], 'index.php', '', 2);
+    $hbdata->hbdata_msg($_LANG['no_module'], 'index.php', 2);
 }
-
 // 验证并获取合法的ID，如果不合法将其设定为-1
 $cat_id = $firewall->get_legal_id('category', $_REQUEST['id'], $_REQUEST['unique_id']);
 if ($cat_id == -1) {
@@ -88,20 +87,20 @@ $query = $hbdata->query($sql);
 $cate_info = $hbdata->fetch_array($query);
 
 // 赋值给模板-meta和title信息
-$smarty->assign('page_title', $hbdata->page_title('category', $cat_id));
+$smarty->assign('page_title', $hbdata->page_title($module . '_category', $cat_id));
 $smarty->assign('keywords', $cate_info['keywords']);
 $smarty->assign('description', $cate_info['description']);
 
 // 赋值给模板-导航栏
 $smarty->assign('nav_top_list', $hbdata->get_nav('top'));
-$smarty->assign('nav_middle_list', $hbdata->get_nav('middle', '0', 'category', $cat_id, $cate_info['parent_id']));
+$smarty->assign('nav_middle_list', $hbdata->get_nav('middle', '0', $module . '_category', $cat_id, $cate_info['parent_id']));
 $smarty->assign('nav_bottom_list', $hbdata->get_nav('bottom'));
 
 // 赋值给模板-数据
-$smarty->assign('ur_here', $hbdata->ur_here($module . 'category', $cat_id));
+$smarty->assign('ur_here', $hbdata->ur_here($module . '_category', $cat_id));
 $smarty->assign('cate_info', $cate_info);
 $smarty->assign('item_category', $hbdata->get_category('category', 0, $cat_id, $module));
-$smarty->assign('item_list', $article_list);
+$smarty->assign('item_list', $item_list);
 
 $smarty->display('item_category.dwt');
 
