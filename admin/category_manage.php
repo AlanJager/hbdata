@@ -78,65 +78,24 @@ if ($rec == 'add'){
  *分类插入
  */
 if ($rec == 'insert'){
-    $category_name=$_POST['category_name'];
-    echo $category_name;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
-=======
->>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
     if (empty($_POST['category_name']))
-=======
-/*    if (empty($_POST['category_name']))
->>>>>>> 4ec5924c9983873d36ae57da0329d1f5d6a1dc31
         $hbdata->hbdata_msg($_LANG['category_name'] . $_LANG['is_empty']);
     if (empty($_POST['unique_id']))
         $hbdata->hbdata_msg($_LANG['unique'] . $_LANG['is_empty']);
+    if (!$check->is_unique_id($_POST['unique_id']))
+        $hbdata->hbdata_msg($_LANG['unique_id_wrong']);
     if ($check->unique_id_exist($_POST['unique_id'], $_MODULE['column']))
         $hbdata->hbdata_msg($_LANG['unique_id_existed']);
 
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'category_add');
 
-    $hbdata->create_admin_log($_LANG['category_add'] . ': ' . $_POST['unique_id']);//need to fix
-<<<<<<< HEAD
     $hbdata->edit_module($_POST['unique_id'],'add');
     $hbdata->add_category_lang($_POST['unique_id'],$_POST['category_name']);
     $hbdata->create_table($_POST['unique_id']);
+
+    $hbdata->create_admin_log($_LANG['category_add'] . ': ' . $_POST['unique_id']);//need to fix
     $hbdata->hbdata_msg($_LANG['category_add_succes'], 'category_manage.php');//need to fix
-
-
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
-=======
->>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
-    $hbdata->edit_module($category_name,'add');
-    $hbdata->create_table($category_name);
-    $hbdata->hbdata_msg($_LANG['category_add_succes'], 'category_manage.php');//need to fix
-
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
-=======
-    $hbdata->hbdata_msg($_LANG['category_add_succes'], 'category_manage.php');//need to fix*/
-    //$hbdata->edit_module($category_name,'add');
-    $hbdata->create_table($category_name);
-    $hbdata->hbdata_msg($_LANG['category_add_succes'], 'category_manage.php');//need to fix*/
->>>>>>> 4ec5924c9983873d36ae57da0329d1f5d6a1dc31
-<<<<<<< HEAD
->>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
-=======
->>>>>>> 88f62f93dbe53accd98abb6ff75c0322d71a4b88
->>>>>>> dbf99fea3de5895b7c9e907c9a5738f4a3bbf3bd
 }
 
 /**
