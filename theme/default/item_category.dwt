@@ -13,8 +13,27 @@
 <body>
 <div id="wrapper"> {include file="inc/header.tpl"}
     <div class="wrap mb">
-        <div id="pageLeft"> {include file="inc/article_tree.tpl"} </div>
+        <div id="pageLeft"> {include file="inc/item_tree.tpl"} </div>
         <div id="pageIn"> {include file="inc/ur_here.tpl"}
+            {if $cur eq 'product'}
+
+            <div class="productList">
+                {foreach from=$item_list name=item_list item=item}
+                <dl {if $smarty.foreach.item_list.last}  class="last" {/if} >
+                <dt><a href="{$item.url}"><img src="{$item.thumb}" alt="{$item.name}" width="{$site.thumb_width}" height="{$site.thumb_height}" /></a></dt>
+                <dd>
+                    <p class="name"><a href="{$item.url}" title="{$item.name}">{$item.name}</a></p>
+                    <p class="brief">{$item.description|truncate:50:"..."}</p>
+                    <p class="price">{if $item.show_price == true}{$lang.price}：{$item.price}{else}{/if}</p>
+                    <p><a href="{$item.url}" class="btn">{$lang.product_buy}</a></p>
+                </dd>
+                </dl>
+                {/foreach}
+                <div class="clear"></div>
+            </div>
+
+            {else}
+
             <div id="articleList">
                 {foreach from=$item_list name=item_list item=item}
                 <dl {if $smarty.foreach.item_list.last}  class="last" {/if} >
@@ -30,10 +49,14 @@
                 </dl>
                 {/foreach}
             </div>
-            {include file="inc/pager.tpl"} </div>
+
+            {/if}
+
+         {include file="inc/pager.tpl"} </div>
         <div class="clear"></div>
     </div>
-    {include file="inc/online_service.tpl"}
-    {include file="inc/footer.tpl"} </div>
+{include file="inc/online_service.tpl"}
+{include file="inc/footer.tpl"}
+</div>
 </body>
 </html>
