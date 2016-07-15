@@ -21,3 +21,10 @@ $_LANG['permission_list'] = '返回角色列表';
 $_LANG['add_permission'] = '添加权限';
 $_LANG['permission_add_success'] = '添加权限成功';
 
+//用户角色管理
+$_LANG['user_role'] = '用户角色';
+$_LANG['user_name'] = '用户名称';
+$_LANG['user_role_assign_date'] = '用户角色添加日期';
+$_LANG['user_role_list'] = '返回用户角色列表';
+$_LANG['add_user_role'] = '添加用户角色';
+$_LANG['user_role_add_success'] = '添加用户角色成功';

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$lang.home}{if $ur_here} - {$ur_here} {/if}</title>
+    <meta name="Copyright" content="HbData Design." />
+    <link href="templates/public.css" rel="stylesheet" type="text/css">
+    {include file="javascript.htm"}
+</head>
+<body>
+<div id="dcWrap">
+    {include file="header.htm"}
+    <div id="dcLeft">{include file="menu.htm"}</div>
+    <div id="dcMain">
+        {include file="ur_here.htm"}
+        <div id="role" class="mainBox" style="{$workspace.height}">
+            <h3> <a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
+            {if $rec eq 'default'} 用户角色列表
+            {$test}
+            <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                <tr>
+                    <th align="center">{$lang.record_id}</th>
+                    <th align="center">{$lang.user_name}</th>
+                    <th align="center">{$lang.role_description}</th>
+                    <th align="center">{$lang.handler}</th>
+                </tr>
+                {foreach from=$user_role_list item=user_role}
+                <tr>
+                    <td align="center">{$user_role.user_id}</td>
+                    <td>{$user_role.user_name}</td>
+                    <td>
+                        {foreach from=$user_role.role_title item=user_role_title}
+                            {$user_role_title}
+                        {/foreach}
+                    </td>
+                    <td align="center"><a href="role.php?rec=edit&id={$role.role_id}">{$lang.edit}</a> | <a href="role.php?rec=del&id={$role.role_id}">{$lang.del}</a></td>
+                </tr>
+                {/foreach}
+            </table>
+            {/if}
+            {if $rec eq 'add'} 角色添加
+            <form action="role.php?rec=insert" method="post">
+                <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                    <tr>
+                        <td width="100" align="right">{$lang.role_title}</td>
+                        <td>
+                            <input type="text" name="role_title" size="40" class="inpMain" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="100" align="right">{$lang.role_description}</td>
+                        <td>
+                            <input type="text" name="role_description" size="40" class="inpMain" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="hidden" name="token" value="{$token}" />
+                            <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            {/if}
+            {if $rec eq 'edit'} 角色编辑
+            <form action="role.php?rec=update" method="post">
+                <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                    <tr>
+                        <td width="100" align="right">{$lang.role_title}</td>
+                        <td>
+                            <input type="text" name="role_title" size="40" class="inpMain" value="{$role_info.role_title}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="100" align="right">{$lang.role_description}</td>
+                        <td>
+                            <input type="text" name="role_description" size="40" class="inpMain" value="{$role_info.role_description}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="hidden" name="token" value="{$token}" />
+                            <input type="hidden" name="id" value="{$manager_info.user_id}" />
+                            <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            {/if}
+        </div>
+    </div>
+    {include file="footer.htm"}
+</div>
+</body>
+</html>

@@ -92,7 +92,7 @@ if ($rec == 'insert'){
 
     $hbdata->edit_module($_POST['unique_id'],'add');
     $hbdata->add_category_lang($_POST['unique_id'],$_POST['category_name']);
-    $hbdata->create_table($_POST['unique_id']);
+    //$hbdata->create_table($_POST['unique_id']);
     $hbdata->create_admin_log($_LANG['category_add'] . ': ' . $_POST['unique_id']);//need to fix
     $hbdata->hbdata_msg($_LANG['category_add_succes'], 'category_manage.php');//need to fix
 }
@@ -131,7 +131,8 @@ if($rec == 'update'){
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'category_edit');
     $hbdata->edit_module($_POST['new_unique_id'],'alter',$_POST['old_unique_id']);
-    $hbdata->create_table($_POST['new_unique_id']);
+    //$hbdata->create_table($_POST['new_unique_id']);
+    $hbdata->add_category_lang($_POST['new_unique_id'],$_POST['category_name']);
     $hbdata->create_admin_log($_LANG['category_edit'] . ': ' . $_POST['unique_id']);
     $hbdata->hbdata_msg($_LANG['category_edit_succes'], 'category_manage.php');
 
@@ -141,15 +142,12 @@ if($rec == 'update'){
  *分类删除
  */
 if($rec == 'del'){
+    //验证并获取合法的别名
+    $unique_id = $check->is_letter($_REQUEST['category_unique_id']) ? $_REQUEST['category_unique_id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'category_manage.php?module=' . $module);
 
-//    $category_id = $check->is_number($_REQUEST['category_id']) ? $_REQUEST['category_id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'category_manage.php');
-//    $category_name = $hbdata->get_one("SELECT category_name FROM " . $hbdata->table('category_manage') . " WHERE category_id = '$category_id'");
-    //del_module();
-
-//    $hbdata->create_admin_log($_LANG['category_del'] . ': ' . $_REQUEST['category_unique_id']);
-//    $hbdata->hbdata_msg($_LANG['del_check'], 'article_category.php', '', '30', "article_category.php?rec=del&cat_id=$cat_id");
-//    $hbdata->delete($hbdata->table('article_category'), "cat_id = $cat_id", 'article_category.php');
-
+    $hbdata->edit_module($unique_id,"del");
+    $hbdata->create_admin_log($_LANG['category_del'] . ': ' . $_POST['unique_id']);
+    $hbdata->hbdata_msg($_LANG['category_del_succes'], 'category_manage.php');
 }
 
 

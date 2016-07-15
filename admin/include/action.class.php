@@ -545,6 +545,9 @@ class Action extends Common
             foreach ($file as $value) {
                 fwrite($fd, $value);
             }
+            $this->del_lang_file($module_name);
+            $sql="DROP TABLE IF EXISTS".$this->table($module_name);
+            $this->query($sql);
             fclose($fd);
         }
         //add modele
@@ -556,6 +559,7 @@ class Action extends Common
             foreach ($file as $value) {
                 fwrite($fd, $value);
             }
+            $this->create_table($module_name);
             fclose($fd);
             
             //创建新表
@@ -569,8 +573,10 @@ class Action extends Common
             foreach ($file as $value) {
                 fwrite($fd, $value);
             }
-            $sql=$sql="DROP TABLE IF EXISTS".$this->table($module_old);
+            $this->del_lang_file($module_old);
+            $sql="DROP TABLE IF EXISTS".$this->table($module_old);
             $this->query($sql);
+            $this->create_table($module_name);
             fclose($fd);
         }
     }
@@ -671,10 +677,13 @@ class Action extends Common
         fclose($fd);
     }
 
-    //待写，新模块权限插入表
-
-    function add_limits(){
-        //$sql="INSERT INTO `hbdata_permissions`() VALUES(342, 343,".", '')";
+    /**
+     * 删除模块对应的语言包
+     */
+    function del_lang_file($unique_id){
+        $file_path =ROOT_PATH."/languages/zh_cn/admin/".$unique_id.".lang.php";
+        $result = @unlink ($file_path);
+        return $result;
     }
 }
 
