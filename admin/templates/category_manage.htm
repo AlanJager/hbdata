@@ -35,13 +35,13 @@
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
             <form action="category_manage.php?rec={$form_action}" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                    {if $rec eq 'add'}
                     <tr>
                         <td width="80" align="right">{$lang.category_name}</td>
                         <td>
                             <input type="text" name="category_name" value="{$lang.$unique_id}" size="40" class="inpMain" />
                         </td>
                     </tr>
-                    {if $rec eq 'add'}
                     <tr>
                         <td align="right">{$lang.unique}</td>
                         <td>
@@ -51,9 +51,21 @@
                     {/if}
                     {if $rec eq 'edit'}
                     <tr>
+                        <td width="80" align="right">{$lang.old_category_name}</td>
+                        <td>
+                            <input type="text" name="old_category_name" value="{$lang.$unique_id}" size="40" class="inpMain" />
+                        </td>
+                    </tr>
+                    <tr>
                         <td align="right">{$lang.old_unique}</td>
                         <td>
                             <input type="text" name="old_unique_id" value="{$unique_id}" size="40" class="inpMain" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="80" align="right">{$lang.new_category_name}</td>
+                        <td>
+                            <input type="text" name="new_category_name"  size="40" class="inpMain" />
                         </td>
                     </tr>
                     <tr>

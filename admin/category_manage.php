@@ -121,19 +121,21 @@ if ($rec == 'edit'){
  *分类更新
  */
 if($rec == 'update'){
-    if (empty($_POST['category_name']))
-        $hbdata->hbdata_msg($_LANG['category_name'] . $_LANG['is_empty']);
+    if (empty($_POST['old_category_name']))
+        $hbdata->hbdata_msg($_LANG['old_category_name'] . $_LANG['is_empty']);
+    if (empty($_POST['new_category_name']))
+        $hbdata->hbdata_msg($_LANG['new_category_name'] . $_LANG['is_empty']);
     if (empty($_POST['old_unique_id']))
-        $hbdata->hbdata_msg($_LANG['unique'] . $_LANG['is_empty']);
+        $hbdata->hbdata_msg($_LANG['old_unique'] . $_LANG['is_empty']);
     if (empty($_POST['new_unique_id']))
-        $hbdata->hbdata_msg($_LANG['unique'] . $_LANG['is_empty']);
+        $hbdata->hbdata_msg($_LANG['new_unique'] . $_LANG['is_empty']);
     
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'category_edit');
     $hbdata->edit_module($_POST['new_unique_id'],'alter',$_POST['old_unique_id']);
     //$hbdata->create_table($_POST['new_unique_id']);
-    $hbdata->add_category_lang($_POST['new_unique_id'],$_POST['category_name']);
-    $hbdata->create_admin_log($_LANG['category_edit'] . ': ' . $_POST['unique_id']);
+    $hbdata->add_category_lang($_POST['new_unique_id'],$_POST['new_category_name']);
+    $hbdata->create_admin_log($_LANG['category_edit'] . ': ' . $_POST['new_unique_id']);
     $hbdata->hbdata_msg($_LANG['category_edit_succes'], 'category_manage.php');
 
 }
