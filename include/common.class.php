@@ -609,6 +609,32 @@ class Common extends DbMysql
         }
     }
 
+
+    /**
+     * 重写分类的URL
+     * @param string $path
+     * @param string $module
+     * @param string $value
+     * @return string
+     * //TODO 生成开启rewrite模式后的URL
+     */
+    function rewrite_category_url($path = '', $module = '', $value = ''){
+
+        if (is_numeric($value)) {
+            $id = $value;
+        } else {
+            $rec = $value;
+        }
+
+        if ($GLOBALS['_CFG']['rewrite']) {
+
+        } else {
+            $req = $rec ? '?rec=' . $rec : ($id ? '?id=' . $id : '');
+            $url = $path . '.php?module=' . $module . '&' . $req;
+        }
+        return ROOT_URL . $url;
+    }
+
     /**
      * send mail
      * @param $mailto
