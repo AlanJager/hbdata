@@ -46,6 +46,10 @@ class Action extends Common
                         // if customize url content in cur url, highlight it if do not need just annotation it
                         $value['cur'] = strpos($_SERVER['REQUEST_URI'], $value['guide']);
                     }
+                } elseif (strpos($value['module'], 'category') != 0) {
+                    $module = explode('_', $value['module'])[0];
+                    $req = ($value['guide'] == 0) ? '' : '&id='.$value['guide'];
+                    $value['url'] = ROOT_URL . 'item_category.php?module=' . $module .$req;
                 } else {
                     $value['url'] = $this->rewrite_url($value['module'], $value['guide']);
                     $value['cur'] = $this->hbdata_current($value['module'], $value['guide'], $current_module, $current_id, $current_parent_id);
