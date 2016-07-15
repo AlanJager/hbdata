@@ -561,6 +561,7 @@ class Action extends Common
                 fwrite($fd, $value);
             }
             $this->create_table($module_name);
+            $this->add_limits($module_name);
             fclose($fd);
             
             //创建新表
