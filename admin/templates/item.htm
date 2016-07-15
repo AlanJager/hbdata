@@ -15,7 +15,7 @@
     <div id="dcMain">
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
-             {if $rec eq 'default'} 文章列表TODO
+             {if $rec eq 'default'} 文章列表
             <h3><a href="{$action_link.href}" class="actionBtn add">{$action_link.text}</a>{$ur_here}</h3>
             <div class="filter">
                 <form action="item.php?module={$cur}" method="post">
@@ -125,7 +125,7 @@
         <div class="clear"></div>
         {include file="pager.htm"}
          {/if} 
-         {if $rec eq 'add' || $rec eq 'edit'} 文章添加或编辑TODO
+         {if $rec eq 'add' || $rec eq 'edit'} 添加或编辑
         <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
         <form action="item.php?module={$cur}&rec={$form_action}" method="post" enctype="multipart/form-data">
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">

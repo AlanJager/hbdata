@@ -56,7 +56,7 @@ if ($rec == 'default') {
     $smarty->assign('ur_here', $_LANG[$module]);
     $smarty->assign('action_link', array (
         'text' => $_LANG[$module . '_add'],
-        'href' => $module . '.php?module=' . $module . '&rec=add'
+        'href' => 'item.php?module=' . $module . '&rec=add'
     ));
 
     // 获取参数
@@ -185,7 +185,7 @@ if ($rec == 'add') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
-    $smarty->assign('module_category', $hbdata->get_category_nolevel($module , 'category'));
+    $smarty->assign('item_category', $hbdata->get_category_nolevel($module , 'category'));
     $smarty->assign('item', $item);
 
     $smarty->display('item.htm');
@@ -223,7 +223,7 @@ if ($rec == 'insert') {
         $sql = "INSERT INTO " . $hbdata->table($module) . " (id, cat_id, name, price, defined, content, image ,keywords, add_time, description,show_price)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[name]', '$_POST[price]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]', '$show_price[0]')";
         $hbdata->query($sql);
     } else {
-        if (empty($_POST[$module]))
+        if (empty($_POST['title']))
             $hbdata->hbdata_msg($_LANG[$module . '_name'] . $_LANG['is_empty']);
 
         // 判断是否有上传图片/上传图片生成
