@@ -324,7 +324,7 @@ class Action extends Common
         $this->query("DELETE FROM " . $this->table($module) . " WHERE " . $field_filter . " " . $sql_in);
 
         $this->create_admin_log($GLOBALS['_LANG']['del_all'] . ': ' . strtoupper($module) . ' ' . addslashes($sql_in));
-        $this->hbdata_msg($GLOBALS['_LANG']['del_succes'], $module . '.php');
+        $this->hbdata_msg($GLOBALS['_LANG']['del_succes'], 'item.php?module=' . $module);
     }
 
     /**

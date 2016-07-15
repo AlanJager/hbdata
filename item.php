@@ -69,7 +69,7 @@ $smarty->assign('nav_middle_list', $hbdata->get_nav('middle', '0', $module . 'ca
 $smarty->assign('nav_bottom_list', $hbdata->get_nav('bottom'));
 
 // 赋值给模板-数据
-$smarty->assign('ur_here', $hbdata->ur_here($module . '_category', $cat_id, $item['title']));
+$smarty->assign('ur_here', $hbdata->ur_here($module, $cat_id, $item['title']));
 $smarty->assign('item_category', $hbdata->get_category('category', 0, $cat_id, $module));
 $smarty->assign('lift', $hbdata->lift($module, $id, $cat_id));
 $smarty->assign('item', $item);

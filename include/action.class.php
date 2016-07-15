@@ -100,7 +100,7 @@ class Action extends Common
             $ur_here = $GLOBALS['_LANG'][$module];
         } else {
             // module name
-            $main = '<a href=' . $this->rewrite_url($module) . '>' . $GLOBALS['_LANG'][$module] . '</a>';
+            $main = '<a href=' . $this->rewrite_category_url('item_category', $module) . '>' . $GLOBALS['_LANG'][$module . '_category'] . '</a>';
             // if different classification exists
             if ($class) {
                 $cat_name = is_numeric($class) ? $this->get_one("SELECT cat_name FROM " . $this->table($module) . " WHERE cat_id = '$class'") : $GLOBALS['_LANG'][$class];

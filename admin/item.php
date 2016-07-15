@@ -505,7 +505,6 @@ if ($rec == 'action') {
     } else {
         $hbdata->hbdata_msg($_LANG[$module . '_select_empty']);
     }
-
 }
 
 /**
