@@ -15,6 +15,43 @@
     <div class="wrap mb">
         <div id="pageLeft"> {include file="inc/article_tree.tpl"} </div>
         <div id="pageIn"> {include file="inc/ur_here.tpl"}
+            {if $cur eq 'product'}
+            <div id="product">
+                <div class="productImg"><a href="{$item.image}" target="_blank"><img src="{$item.image}" width="300" /></a></div>
+                <div class="productInfo">
+                    <h1>{$product.name}</h1>
+                    <ul>
+                        <li class="productPrice">{if $item.show_price == true}{$lang.price}：<em class="price">{$item.price}{else}{/if}</em></li>
+                        {foreach from=$defined name=defined item=defined}
+                        <li>{$defined.arr}：{$defined.value}</li>
+                        {/foreach}
+                    </ul>
+                    {if $open.order}
+                    <dl class="btnBuy">
+                        <form action="{$site.root_url}order.php?rec=insert" method="post">
+                            <input type="hidden" name="product_id" value="{$item.id}" />
+                            <input type="hidden" name="number" value="1" />
+                            <input type="submit" name="submit" class="addToCart" value="{$lang.order_addtocart}" />
+                        </form>
+                    </dl>
+                    {else}
+                    <dl class="btnAsk">
+                        <dt>{$lang.product_buy}：</dt>
+                        <dd> {foreach from=$site.qq name=qq item=qq}  {if $smarty.foreach.qq.first} <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={if is_array($qq)}{$qq.number}{else}{$qq}{/if}&amp;site=qq&amp;menu=yes" target="_blank"><img src="images/online_qq.jpg" /></a> {/if}  {/foreach}  <a href="mailto:{$site.email}"><img src="images/online_email.jpg" /></a></dd>
+                    </dl>
+                    {/if}
+                </div>
+                <div class="clear"></div>
+                <div class="productContent">
+                    <h3>{$lang.product_content}</h3>
+                    <ul>
+                        {$item.content}
+                    </ul>
+                </div>
+            </div>
+
+            {else}
+
             <div id="article">
                 <h1>{$item.title}</h1>
                 <div class="info">{$lang.add_time}：{$item.add_time} {$lang.click}：{$item.click}
@@ -26,6 +63,7 @@
                 <div class="lift"> {if $lift.previous}<span>{$lang.article_previous}：<a href="{$lift.previous.url}">{$lift.previous.title}</a></span>{/if}
                     {if $lift.next}<span>{$lang.article_next}：<a href="{$lift.next.url}">{$lift.next.title}</a></span>{/if} </div>
             </div>
+            {/if}
         </div>
         <div class="clear"></div>
     </div>

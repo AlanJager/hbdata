@@ -19,6 +19,7 @@ if(!defined('IN_HBDATA')){
  */
 class Action extends Common
 {
+    private $i=0;
     /**
      * 初始化工作空间
      * @return mixed
@@ -609,6 +610,53 @@ class Action extends Common
         $this->query($sql);
     }
 
+    /**
+     * @param string $module  //module的unique_id
+     */
+    function add_limits($module){
+
+        //计算权限
+        $column = 136 + 12 * $this->i;
+
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column, $column+11, 'admin/item_category.php?module=".$module."');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+1, $column+2, 'admin/item_category.php?module=".$module."&rec=add');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+3, $column+4, 'admin/item_category.php?module=".$module."&rec=insert');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+5, $column+6, 'admin/item_category.php?module=".$module."&rec=update');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+7, $column+8, 'admin/item_category.php?module=".$module."&rec=edit');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+9, $column+10, 'admin/item_category.php?module=".$module."&rec=del');";
+        $this->query($sql);
+
+        $column = 344 + 20 * $this->i;
+
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column, $column+19, 'admin/item.php?module=".$module."');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+1, $column+2, 'admin/item.php?module=".$module."&rec=add');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+3, $column+4, 'admin/item.php?module=".$module."&rec=insert');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+5, $column+6, 'admin/item.php?module=".$module."&rec=update');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+7, $column+8, 'admin/item.php?module=".$module."&rec=edit');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+9, $column+10, 'admin/item.php?module=".$module."&rec=del');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+11, $column+12, 'admin/item.php?module=".$module."&rec=sort');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+13, $column+14, 'admin/item.php?module=".$module."&rec=set_sort');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+15, $column+16, 'admin/item.php?module=".$module."&rec=del_sort');";
+        $this->query($sql);
+        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+17, $column+18, 'admin/item.php?module=".$module."&rec=action');";
+        $this->query($sql);
+
+        $this->i++;
+        return;
+    }
 
     /**
      * 为新模块增加语言包

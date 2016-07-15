@@ -33,7 +33,12 @@ $page = $check->is_number($_REQUEST['page']) ? trim($_REQUEST['page']) : 1;
 $limit = $hbdata->pager($module, ($_DISPLAY[$module] ? $_DISPLAY[$module] : 10), $page, $hbdata->rewrite_category_url('item', $module , $cat_id), $where);
 
 /* 获取列表 */
-$sql = "SELECT id, title, content, image, cat_id, add_time, click, description, sort FROM " . $hbdata->table($module) . $where . " ORDER BY sort ASC" . $limit;
+if ($module == 'product') {
+    $sql = "SELECT id, cat_id, name, price, content, image, add_time, description, show_price FROM " . $hbdata->table('product') . $where . " ORDER BY id DESC" . $limit;
+
+} else {
+    $sql = "SELECT id, title, content, image, cat_id, add_time, click, description, sort FROM " . $hbdata->table($module) . $where . " ORDER BY sort ASC" . $limit;
+}
 $query = $hbdata->query($sql);
 
 while ($row = $hbdata->fetch_array($query)) {
@@ -101,6 +106,7 @@ $smarty->assign('ur_here', $hbdata->ur_here($module . '_category', $cat_id));
 $smarty->assign('cate_info', $cate_info);
 $smarty->assign('item_category', $hbdata->get_category('category', 0, $cat_id, $module));
 $smarty->assign('item_list', $item_list);
+$smarty->assign('cur', $module);
 
 $smarty->display('item_category.dwt');
 
