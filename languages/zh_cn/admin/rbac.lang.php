@@ -11,6 +11,7 @@ $_LANG['role_title'] = '角色名称';
 $_LANG['role_description'] = '角色描述';
 $_LANG['role_list'] = '返回角色列表';
 $_LANG['add_role'] = '添加角色';
+$_LANG['edit_role'] = '编辑角色';
 $_LANG['role_add_success'] = '添加角色成功';
 
 //权限管理
