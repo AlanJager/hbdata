@@ -7,6 +7,20 @@ _ide_helper.php
 /data/system.hbdata
 /admin/include/PhpRbac/database/database.config
 
+/languages/zh_cn/
+!languages/zh_cn/admin/article.lang.php
+!languages/zh_cn/admin/auth.lang.php
+!languages/zh_cn/admin/category_manage.lang.php
+!languages/zh_cn/admin/common.lang.php
+!languages/zh_cn/admin/guestbook.lang.php
+!languages/zh_cn/admin/item.lang.php
+!languages/zh_cn/admin/product.lang.php
+!languages/zh_cn/admin/theme.lang.php
+!languages/zh_cn/article.lang.php
+!languages/zh_cn/common.lang.php
+!languages/zh_cn/guestbook.lang.php
+!languages/zh_cn/product.lang.php
+
 # User-specific stuff:
 .idea/workspace.xml
 .idea/tasks.xml
