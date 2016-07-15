@@ -16,6 +16,7 @@ _ide_helper.php
 !languages/zh_cn/admin/item.lang.php
 !languages/zh_cn/admin/product.lang.php
 !languages/zh_cn/admin/theme.lang.php
+!languages/zh_cn/admin/rbac.lang.php
 !languages/zh_cn/article.lang.php
 !languages/zh_cn/common.lang.php
 !languages/zh_cn/guestbook.lang.php

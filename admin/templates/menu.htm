@@ -37,5 +37,10 @@
         <li {if $cur eq 'theme'} class="cur" {/if}><a href="theme.php"><i class="theme"></i><em>{$lang.theme} {if $unum.theme} <span class="unum"><span>{$unum.theme}</span></span> {/if} </em></a></li>
         <li {if $cur eq 'manager'} class="cur" {/if}><a href="manager.php"><i class="manager"></i><em>{$lang.manager}</em></a></li>
         <li {if $cur eq 'manager_log'} class="cur" {/if}><a href="manager.php?rec=manager_log"><i class="managerLog"></i><em>{$lang.manager_log}</em></a></li>
+        <li {if $cur eq 'role'} class="cur" {/if}><a href="role.php"><i class="managerLog"></i><em>{$lang.role_manage}</em></a></li>
+        <li {if $cur eq 'permission'} class="cur" {/if}><a href="permission.php"><i class="managerLog"></i><em>{$lang.permission_manage}</em></a></li>
+        <li {if $cur eq 'user_role'} class="cur" {/if}><a href="user_role.php"><i class="managerLog"></i><em>{$lang.user_role_manage}</em></a></li>
+        <li {if $cur eq 'role_permission'} class="cur" {/if}><a href="role_permission.php"><i class="managerLog"></i><em>{$lang.role_permission_manage}</em></a></li>
+
     </ul>
 </div>
