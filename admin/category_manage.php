@@ -15,22 +15,11 @@ require (dirname(__FILE__).'/include/init.php');
 //权限判断
 require ('auth.php');
 
-////获得module
-//$module = $_REQUEST['module'];
-//
-////检测是否为正确的module。
-////如果错误，则返回404
-//if (!$check->is_module($module, $hbdata->read_system())){
-//   echo '404';die;
-//}
-//
-////rec 操作项的初始化
 $rec = $check->is_rec($_REQUEST['rec']) ? $_REQUEST['rec'] : 'default';
 
 //赋值给模板
 $smarty->assign('rec', $rec);
-//$smarty->assign('module', $module);
-//$smarty->assign('cur', $module.'_category');
+$smarty->assign('cur', 'category_manage');
 
 
 
