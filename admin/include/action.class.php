@@ -664,7 +664,10 @@ class Action extends Common
      * @param str $lang_category     语言包分类
      */
     function add_category_lang($unique_id,$category){
-        
+
+        //后台语言包
+
+        //系统设置
         $system=array(
             "\r\n//系统设置\r\n",
             "\$_LANG['top_add_".$unique_id."'] = '".$category."';\r\n",
@@ -678,6 +681,7 @@ class Action extends Common
             "\$_LANG['mobile_display_home_".$unique_id."'] = '手机版首页展示".$category."数量';\r\n"
         );
 
+        //**分类
         $cate=array(
             "\r\n//".$category."分类\r\n",
             "\$_LANG['".$unique_id."_category'] = '".$category."分类';\r\n",
@@ -690,6 +694,7 @@ class Action extends Common
             "\$_LANG['".$unique_id."_category_edit_succes'] = '编辑".$category."分类成功';\r\n",
         );
 
+        //**中心
         $center=array(
             "\r\n//".$category."中心\r\n",
             "\$_LANG['".$unique_id."'] = '".$category."';\r\n",
@@ -715,11 +720,26 @@ class Action extends Common
         foreach ($system as $value){
             fwrite($fd, $value);
         }
-
         foreach ($cate as $value){
             fwrite($fd, $value);
         }
         foreach ($center as $value){
+            fwrite($fd, $value);
+        }
+        fclose($fd);
+
+        //前台语言包
+        $lang=array(
+            "\$_LANG['".$unique_id."_category'] = '".$category."中心';\r\n",
+            "\$_LANG['".$unique_id."_tree'] = '".$category."分类';\r\n",
+            "\$_LANG['".$unique_id."_news'] = '".$category."新闻';\r\n",
+            "\$_LANG['".$unique_id."_more'] = '查看更多".$category."';\r\n",
+            "\$_LANG['".$unique_id."_previous'] = '上一篇';\r\n",
+            "\$_LANG['".$unique_id."_next'] = '下一篇';\r\n"
+        );
+        $fd = fopen(ROOT_PATH."/languages/zh_cn/".$unique_id.".lang.php", "w") or die("Unable to open file!");
+        fwrite($fd,"<?php\r\n");
+        foreach ($lang as $value){
             fwrite($fd, $value);
         }
         fclose($fd);
@@ -729,9 +749,14 @@ class Action extends Common
      * 删除模块对应的语言包
      */
     function del_lang_file($unique_id){
-        $file_path =ROOT_PATH."/languages/zh_cn/admin/".$unique_id.".lang.php";
-        $result = @unlink ($file_path);
-        return $result;
+        //删除后台
+        $file_path_f =ROOT_PATH."/languages/zh_cn/admin/".$unique_id.".lang.php";
+        @unlink ($file_path_f);
+
+        //删除前台
+        $file_path_b =ROOT_PATH."/languages/zh_cn/".$unique_id.".lang.php";
+        @unlink ($file_path_b);
+        return;
     }
 }
 
