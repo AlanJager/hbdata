@@ -26,7 +26,7 @@ $smarty->assign('rec', $rec);
 if ($rec == 'default') {
     $smarty->assign('ur_here', $_LANG['role_manage']);
     $smarty->assign('action_link', array (
-        'text' => $_LANG['role_add'],
+        'text' => $_LANG['add_role'],
         'href' => 'role.php?rec=add'
     ));
 
@@ -58,12 +58,12 @@ if ($rec == 'default') {
 
     $smarty->display('role.htm');
 } else if ($rec == "insert") {
-//    if ($_USER['action_list'] != 'ALL') {
-//        $hbdata->hbdata_msg($_LANG['without'], 'role.php');
-//    }
+    if ($_USER['action_list'] != 'ALL') {
+        $hbdata->hbdata_msg($_LANG['without'], 'role.php');
+    }
 
     //TODO verify role name
-    $role_name = $_POST['role_name'];
+    $role_title = $_POST['role_title'];
 
     //TODO verify role description
     $role_description = $_POST['role_description'];
@@ -72,7 +72,26 @@ if ($rec == 'default') {
     $firewall->check_token($_POST['token'], 'add_role');
 
 
-    $rbac->Roles->add($role_name, $role_description);
-    $hbdata->create_admin_log($_LANG['role_add'] . ': ' . $_POST['$role_name']);
-    $hbdata->hbdata_msg($_LANG['role_add_success'], 'role.php');
+    $rbac->Roles->add($role_title, $role_description);
+    $hbdata->create_admin_log($_LANG['add_role'] . ': ' . $_POST['$role_title']);
+    $hbdata->hbdata_msg($_LANG['add_role_success'], 'role.php');
+} else if ($rec == "edit") {
+    if ($_USER['action_list'] != 'ALL') {
+        $hbdata->hbdata_msg($_LANG['without'], 'role.php');
+    }
+
+    $smarty->assign('ur_here', $_LANG['role_manage']);
+    $smarty->assign('action_link', array (
+        'text' => $_LANG['role_list'],
+        'href' => 'role.php'
+    ));
+
+
+    //TODO
+
+    $smarty->display('role.htm');
+} else if ($rec == "update") {
+
+} else if ($rec == "del") {
+
 }

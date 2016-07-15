@@ -14,19 +14,21 @@
     <div id="dcMain">
         {include file="ur_here.htm"}
         <div id="role" class="mainBox" style="{$workspace.height}">
-            <h3> {if $rec neq 'manager_log'} 角色列表 <a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a> {/if} {$ur_here}</h3>
-            {if $rec eq 'default'} 管理员列表
+            <h3> <a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
+            {if $rec eq 'default'} 角色列表
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <tr>
                     <th align="center">{$lang.role_id}</th>
-                    <th align="center">{$lang.role_name}</th>
+                    <th align="center">{$lang.role_title}</th>
                     <th align="center">{$lang.role_description}</th>
+                    <th align="center">{$lang.handler}</th>
                 </tr>
                 {foreach from=$role_list item=role}
                 <tr>
                     <td align="center">{$role.role_id}</td>
                     <td>{$role.role_title}</td>
                     <td>{$role.role_description}</td>
+                    <td align="center"><a href="role.php?rec=edit&id={$role.role_id}">{$lang.edit}</a> | <a href="role.php?rec=del&id={$role.role_id}">{$lang.del}</a></td>
                 </tr>
                 {/foreach}
             </table>
@@ -35,9 +37,9 @@
             <form action="role.php?rec=insert" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
-                        <td width="100" align="right">{$lang.role_name}</td>
+                        <td width="100" align="right">{$lang.role_title}</td>
                         <td>
-                            <input type="text" name="role_name" size="40" class="inpMain" />
+                            <input type="text" name="role_title" size="40" class="inpMain" />
                         </td>
                     </tr>
                     <tr>
@@ -60,35 +62,15 @@
             <form action="role.php?rec=update" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
-                        <td width="100" align="right">{$lang.manager_username}</td>
+                        <td width="100" align="right">{$lang.role_title}</td>
                         <td>
-                            <input type="text" name="user_name" value="{$manager_info.user_name}" size="40" class="inpMain" {if $user.action_list neq 'ALL'}readonly="true"{/if}/>
+                            <input type="text" name="role_title" size="40" class="inpMain" value="{$role_info.role_title}" />
                         </td>
                     </tr>
                     <tr>
-                        <td width="100" align="right">{$lang.manager_email}</td>
+                        <td width="100" align="right">{$lang.role_description}</td>
                         <td>
-                            <input type="text" name="email" value="{$manager_info.email}" size="40" class="inpMain" />
-                        </td>
-                    </tr>
-                    {if $if_check}
-                    <tr>
-                        <td align="right">{$lang.manager_old_password}</td>
-                        <td>
-                            <input type="password" name="old_password" size="40" class="inpMain" />
-                        </td>
-                    </tr>
-                    {/if}
-                    <tr>
-                        <td align="right">{$lang.manager_new_password}</td>
-                        <td>
-                            <input type="password" name="password" size="40" class="inpMain" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">{$lang.manager_new_password_confirm}</td>
-                        <td>
-                            <input type="password" name="password_confirm" size="40" class="inpMain" />
+                            <input type="text" name="role_description" size="40" class="inpMain" value="{$role_info.role_description}" />
                         </td>
                     </tr>
                     <tr>
