@@ -56,7 +56,7 @@ if ($rec == 'default') {
     $smarty->assign('ur_here', $_LANG[$module]);
     $smarty->assign('action_link', array (
         'text' => $_LANG[$module . '_add'],
-        'href' => $module . '.php?module=' . $module . '&rec=add'
+        'href' => 'item.php?module=' . $module . '&rec=add'
     ));
 
     // 获取参数
