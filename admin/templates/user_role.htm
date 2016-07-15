@@ -14,7 +14,7 @@
     <div id="dcMain">
         {include file="ur_here.htm"}
         <div id="role" class="mainBox" style="{$workspace.height}">
-            <h3> <a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
+            <h3>{$ur_here}</h3>
             {if $rec eq 'default'} 用户角色列表
             {$test}
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
@@ -30,38 +30,13 @@
                     <td>{$user_role.user_name}</td>
                     <td>
                         {foreach from=$user_role.role_title item=user_role_title}
-                            {$user_role_title}
+                            {$user_role_title.role_title}
                         {/foreach}
                     </td>
-                    <td align="center"><a href="role.php?rec=edit&id={$role.role_id}">{$lang.edit}</a> | <a href="role.php?rec=del&id={$role.role_id}">{$lang.del}</a></td>
+                    <td align="center"><a href="user_role.php?rec=edit&id={$user_role.user_id}">{$lang.edit}</a> | <a href="user_role.php?rec=del&id={$user_role.user_id}">{$lang.del}</a></td>
                 </tr>
                 {/foreach}
             </table>
-            {/if}
-            {if $rec eq 'add'} 角色添加
-            <form action="role.php?rec=insert" method="post">
-                <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
-                    <tr>
-                        <td width="100" align="right">{$lang.role_title}</td>
-                        <td>
-                            <input type="text" name="role_title" size="40" class="inpMain" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="100" align="right">{$lang.role_description}</td>
-                        <td>
-                            <input type="text" name="role_description" size="40" class="inpMain" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input type="hidden" name="token" value="{$token}" />
-                            <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
-                        </td>
-                    </tr>
-                </table>
-            </form>
             {/if}
             {if $rec eq 'edit'} 角色编辑
             <form action="role.php?rec=update" method="post">
