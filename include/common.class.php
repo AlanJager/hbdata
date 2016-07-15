@@ -731,5 +731,4 @@ class Common extends DbMysql
         }
         return $permission_title;
     }
-
 }

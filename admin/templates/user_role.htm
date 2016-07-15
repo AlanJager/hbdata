@@ -14,7 +14,7 @@
     <div id="dcMain">
         {include file="ur_here.htm"}
         <div id="role" class="mainBox" style="{$workspace.height}">
-            <h3>{$ur_here}</h3>
+            <h3> {if $rec eq edit}<a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{/if} {$ur_here}</h3>
             {if $rec eq 'default'} 用户角色列表
             {$test}
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
@@ -38,26 +38,26 @@
                 {/foreach}
             </table>
             {/if}
-            {if $rec eq 'edit'} 角色编辑
-            <form action="role.php?rec=update" method="post">
+            {if $rec eq 'edit'} 用户权限编辑
+            <form action="role_user.php?rec=update" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                    <tr>
+                        <td width="100" align="right">{$lang.user_name}</td>
+                        <td>{$user_info.user_name}</td>
+                    </tr>
                     <tr>
                         <td width="100" align="right">{$lang.role_title}</td>
                         <td>
-                            <input type="text" name="role_title" size="40" class="inpMain" value="{$role_info.role_title}" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="100" align="right">{$lang.role_description}</td>
-                        <td>
-                            <input type="text" name="role_description" size="40" class="inpMain" value="{$role_info.role_description}" />
+                        {foreach from=$role_list item=role}
+                            {$role.role_title}<input type="checkbox" name="{$role.role_id}" size="40" value="{$role.role_id}" />
+                        {/foreach}
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
                             <input type="hidden" name="token" value="{$token}" />
-                            <input type="hidden" name="id" value="{$manager_info.user_id}" />
+                            <input type="hidden" name="id" value="{$user_info.user_id}" />
                             <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
                         </td>
                     </tr>
