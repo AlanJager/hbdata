@@ -609,21 +609,69 @@ class Action extends Common
      * @param str $lang_category     语言包分类
      */
     function add_category_lang($unique_id,$category){
-        $fd = fopen(ROOT_PATH."/languages/zh_cn/admin/".$unique_id.".lang.php", "w") or die("Unable to open file!");
+        
+        $system=array(
+            "\r\n//系统设置\r\n",
+            "\$_LANG['top_add_".$unique_id."'] = '".$category."';\r\n",
+            "\$_LANG['display_".$unique_id."'] = '".$category."列表数量';\r\n",
+            "\$_LANG['display_home_".$unique_id."'] = '首页展示".$category."数量';\r\n",
+            "\$_LANG['defined_".$unique_id."'] = '".$category."自定义属性';\r\n",
+            "\$_LANG['defined_".$unique_id."_cue'] = '如\"颜色,尺寸,型号\"中间以英文逗号隔开';\r\n",
+            "\$_LANG['sort_".$unique_id."'] = '开始筛选首页".$category."';\r\n",
+            "\$_LANG['nav_".$unique_id."'] = '".$category."中心';\r\n",
+            "\$_LANG['mobile_display_".$unique_id."'] = '手机版".$category."列表数量';\r\n",
+            "\$_LANG['mobile_display_home_".$unique_id."'] = '手机版首页展示".$category."数量';\r\n"
+        );
 
-        //write *
-        $head = "<?php\r\n";
-        fwrite($fd, $head);
+        $cate=array(
+            "\r\n//".$category."分类\r\n",
+            "\$_LANG['".$unique_id."_category'] = '".$category."分类';\r\n",
+            "\$_LANG['".$unique_id."_category_add'] = '添加分类';\r\n",
+            "\$_LANG['".$unique_id."_category_edit'] = '编辑".$category."分类';\r\n",
+            "\$_LANG['".$unique_id."_category_del'] = '删除".$category."分类';\r\n",
+            "\$_LANG['".$unique_id."_category_del_is_parent'] = '\"d%\"不是末级分类或者分类下还存在".$category."，您不能删除';\r\n",
+            "\$_LANG['".$unique_id."_category_name'] = '分类名称';\r\n",
+            "\$_LANG['".$unique_id."_category_add_succes'] = '添加".$category."分类成功';\r\n",
+            "\$_LANG['".$unique_id."_category_edit_succes'] = '编辑".$category."分类成功';\r\n",
+        );
+
+        $center=array(
+            "\r\n//".$category."中心\r\n",
+            "\$_LANG['".$unique_id."'] = '".$category."';\r\n",
+            "\$_LANG['".$unique_id."_add'] = '添加".$category."';\r\n",
+            "\$_LANG['".$unique_id."_edit'] = '编辑".$category."';\r\n",
+            "\$_LANG['".$unique_id."_del'] = '删除".$category."';\r\n",
+            "\$_LANG['".$unique_id."_name'] = '".$category."名称';\r\n",
+            "\$_LANG['".$unique_id."_defined'] = '自定义属性';\r\n",
+            "\$_LANG['".$unique_id."_defined_cue'] = '以英文逗号 , 隔开';\r\n",
+            "\$_LANG['".$unique_id."_content'] = '".$category."描述';\r\n",
+            "\$_LANG['".$unique_id."_add_succes'] = '添加".$category."成功';\r\n",
+            "\$_LANG['".$unique_id."_edit_succes'] = '编辑".$category."成功';\r\n",
+            "\$_LANG['".$unique_id."_select_empty'] = '没有选择任何".$category."';\r\n"
+        );
+        $fd = fopen(ROOT_PATH."/languages/zh_cn/admin/".$unique_id.".lang.php", "w") or die("Unable to open file!");
+        fwrite($fd,"<?php\r\n");
+        fwrite($fd, "//category\r\n");
         $lang="\$_LANG['".$unique_id."'] = '".$category."';\r\n";
         fwrite($fd, $lang);
-
-        //write *分类
         $lang_category="\$_LANG['".$unique_id."_category'] = '".$category."分类"."';\r\n";
         fwrite($fd, $lang_category);
+
+        foreach ($system as $value){
+            fwrite($fd, $value);
+        }
+
+        foreach ($cate as $value){
+            fwrite($fd, $value);
+        }
+        foreach ($center as $value){
+            fwrite($fd, $value);
+        }
         fclose($fd);
     }
 
     //待写，新模块权限插入表
+
     function add_limits(){
         //$sql="INSERT INTO `hbdata_permissions`() VALUES(342, 343,".", '')";
     }
