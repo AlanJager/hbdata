@@ -94,7 +94,7 @@ if ($rec == 'default') {
         $hbdata->hbdata_msg($_LANG['without'], 'role.php');
     }
 
-    $role_id = $_POST['role_id'];
+    $role_id = $_POST['id'];
 
     //TODO verify role name
     $role_title = $_POST['role_title'];
@@ -105,8 +105,10 @@ if ($rec == 'default') {
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'edit_role');
 
+    $sql = updateRoleByRoleID($role_id, $role_title, $role_description);
+
     $hbdata->create_admin_log($_LANG['edit_role'] . ': ' . $_POST['$role_title']);
-    $hbdata->hbdata_msg($_LANG['add_role_success'], 'role.php');
+    $hbdata->hbdata_msg($_LANG['role_edit_success'], 'role.php');
 } else if ($rec == "del") {
     if ($_USER['action_list'] != 'ALL') {
         $hbdata->hbdata_msg($_LANG['without'], 'role.php');
@@ -115,10 +117,14 @@ if ($rec == 'default') {
     //TODO
     $role_id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
 
-    $rbac->Roles->remove($role_id);
+    if ($rbac->Roles->remove($role_id, true)){
+        $hbdata->create_admin_log($_LANG['edit_role'] . ': ' . $_POST['$role_title']);
+        $hbdata->hbdata_msg($_LANG['role_delete_success'], 'role.php');
+    } else {
+        $hbdata->hbdata_msg($_LANG['role_delete_fail'], 'role.php');
+    }
 
-    $hbdata->create_admin_log($_LANG['edit_role'] . ': ' . $_POST['$role_title']);
-    $hbdata->hbdata_msg($_LANG['add_role_success'], 'role.php');
+
 }
 
 /**
@@ -143,7 +149,7 @@ function getAllRoles() {
  * @return array
  */
 function getRoleByRoleID($role_id) {
-    $sql = "SELECT * FROM " . $GLOBALS['hbdata']->table('roles') . "where ID = " . $role_id;
+    $sql = "SELECT * FROM " . $GLOBALS['hbdata']->table('roles') . " where ID = " . $role_id;
     $query = $GLOBALS['hbdata']->query($sql);
     while ($row = $GLOBALS['hbdata']->fetch_array($query)) {
         $role_list[] = array (
@@ -153,4 +159,15 @@ function getRoleByRoleID($role_id) {
         );
     }
     return $role_list;
+}
+
+/**
+ * 根据角色ID返回角色信息
+ * @return array
+ */
+function updateRoleByRoleID($role_id, $role_title, $role_description) {
+    $sql = "UPDATE " . $GLOBALS['hbdata']->table('roles') . " SET `Title`='" . $role_title . "',`Description`='" . $role_description . "' WHERE ID = " . $role_id;
+    $GLOBALS['hbdata']->query($sql);
+
+    return $sql;
 }
