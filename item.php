@@ -18,7 +18,7 @@ $module = $_REQUEST['module'];
 //检测是否为正确的module。
 //如果错误，则返回404
 if (!$check->is_module($module, $hbdata->read_system())){
-    $hbdata->hbdata_msg($_LANG['no_module'], 'index.php', '', 2);
+    $hbdata->hbdata_msg($_LANG['no_module'], 'index.php', 2);
 }
 
 // 验证并获取合法的ID，如果不合法将其设定为-1
@@ -59,21 +59,21 @@ $click = $item['click'] + 1;
 $hbdata->query("update " . $hbdata->table($module) . " SET click = '$click' WHERE id = '$id'");
 
 // 赋值给模板-meta和title信息
-$smarty->assign('page_title', $hbdata->page_title('category', $cat_id, $item['title']));
+$smarty->assign('page_title', $hbdata->page_title($module . '_category', $cat_id, $item['title']));
 $smarty->assign('keywords', $item['keywords']);
 $smarty->assign('description', $item['description']);
 
 // 赋值给模板-导航栏
 $smarty->assign('nav_top_list', $hbdata->get_nav('top'));
-$smarty->assign('nav_middle_list', $hbdata->get_nav('middle', '0', 'category', $cat_id, $parent_id));
+$smarty->assign('nav_middle_list', $hbdata->get_nav('middle', '0', $module . 'category', $cat_id, $parent_id));
 $smarty->assign('nav_bottom_list', $hbdata->get_nav('bottom'));
 
 // 赋值给模板-数据
-$smarty->assign('ur_here', $hbdata->ur_here($module . 'category', $cat_id, $item['title']));
-$smarty->assign('article_category', $hbdata->get_category('category', 0, $cat_id, 'article'));
-$smarty->assign('lift', $hbdata->lift('article', $id, $cat_id));
-$smarty->assign('article', $item);
-$smarty->assign('defined', $item);
+$smarty->assign('ur_here', $hbdata->ur_here($module . '_category', $cat_id, $item['title']));
+$smarty->assign('item_category', $hbdata->get_category('category', 0, $cat_id, $module));
+$smarty->assign('lift', $hbdata->lift($module, $id, $cat_id));
+$smarty->assign('item', $item);
+$smarty->assign('defined', $defined);
 
 $smarty->display('item.dwt');
 

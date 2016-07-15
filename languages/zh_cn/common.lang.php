@@ -87,3 +87,4 @@ $_LANG['hbdata_msg'] = '信息提示';
 $_LANG['hbdata_msg_cue'] = "如果您不做出选择，将在 d% 秒后跳转到上一页面，您也可以手动点击";
 $_LANG['hbdata_msg_back'] = '返回上一页';
 $_LANG['hbdata_msg_success'] = '操作已成功';
+$_LANG['no_module'] = '错误的操作!';
