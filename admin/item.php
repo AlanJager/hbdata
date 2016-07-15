@@ -101,7 +101,7 @@ if ($rec == 'default') {
             );
         }
     } else {
-        $sql = "SELECT id, title, cat_id, image, add_time , sort FROM " . $hbdata->table('article') . $where . " ORDER BY id DESC" . $limit;
+        $sql = "SELECT id, title, cat_id, image, add_time , sort FROM " . $hbdata->table($module) . $where . " ORDER BY id DESC" . $limit;
         $query = $hbdata->query($sql);
 
         if($hbdata->field_exist($hbdata->table($module), "image")){
@@ -248,7 +248,7 @@ if ($rec == 'insert') {
         // CSRF防御令牌验证
         $firewall->check_token($_POST['token'], $module . '_add');
 
-        $sql = "INSERT INTO " . $hbdata->table('article') . " (id, cat_id, title, defined, content, image ,keywords, add_time, description, sort)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[title]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]', '$_POST[sort]')";
+        $sql = "INSERT INTO " . $hbdata->table($module) . " (id, cat_id, title, defined, content, image ,keywords, add_time, description, sort)" . " VALUES (NULL, '$_POST[cat_id]', '$_POST[title]', '$_POST[defined]', '$_POST[content]', '$file', '$_POST[keywords]', '$add_time', '$_POST[description]', '$_POST[sort]')";
         $hbdata->query($sql);
     }
 
