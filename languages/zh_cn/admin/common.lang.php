@@ -325,20 +325,6 @@ $_LANG['backup_vol_include'] = '以及分卷';
 $_LANG['backup_submit'] = '确定备份';
 $_LANG['backup_total_size'] = '数据库占用';
 
-//权限管理
-$_LANG['role_manage'] = '角色管理';
-$_LANG['role_id'] = '角色编号';
-$_LANG['role_name'] = '角色名称';
-$_LANG['role_add'] = '添加角色';
-$_LANG['role_description'] = '角色描述';
-$_LANG['role_list'] = '返回角色列表';
-$_LANG['add_role'] = '添加角色';
-$_LANG['role_add_success'] = '添加角色';
-$_LANG['auth_manage'] = '权限管理';
-$_LANG['user_role_manage'] = '用户权限管理';
-$_LANG['role_auth_manage'] = '角色权限管理';
-
-
 // 分页
 $_LANG['pager_1'] = '总计';
 $_LANG['pager_2'] = '个记录';

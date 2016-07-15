@@ -69,10 +69,10 @@ if ($rec == 'default') {
     $role_description = $_POST['role_description'];
 
     // CSRF防御令牌验证
-//    $firewall->check_token($_POST['token'], 'role_add');
-    
-    $sql = "INSERT INTO " . $hbdata->table('roles') . " (title, Description)" . " VALUES ('$role_name' , '$role_description')";
-    $hbdata->query($sql);
+    $firewall->check_token($_POST['token'], 'add_role');
+
+
+    $rbac->Roles->add($role_name, $role_description);
     $hbdata->create_admin_log($_LANG['role_add'] . ': ' . $_POST['$role_name']);
     $hbdata->hbdata_msg($_LANG['role_add_success'], 'role.php');
 }
