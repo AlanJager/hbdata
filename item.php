@@ -74,6 +74,7 @@ $smarty->assign('item_category', $hbdata->get_category('category', 0, $cat_id, $
 $smarty->assign('lift', $hbdata->lift($module, $id, $cat_id));
 $smarty->assign('item', $item);
 $smarty->assign('defined', $defined);
+$smarty->assign('cur', $module);
 
 $smarty->display('item.dwt');
 

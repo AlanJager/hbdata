@@ -629,7 +629,7 @@ class Common extends DbMysql
         if ($GLOBALS['_CFG']['rewrite']) {
 
         } else {
-            $req = $rec ? '?rec=' . $rec : ($id ? '?id=' . $id : '');
+            $req = $rec ? '?rec=' . $rec : ($id ? 'id=' . $id : '');
             $url = $path . '.php?module=' . $module . '&' . $req;
         }
         return ROOT_URL . $url;
