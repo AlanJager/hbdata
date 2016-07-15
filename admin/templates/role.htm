@@ -60,6 +60,7 @@
             {/if}
             {if $rec eq 'edit'} 角色编辑
             <form action="role.php?rec=update" method="post">
+
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
                         <td width="100" align="right">{$lang.role_title}</td>
@@ -77,7 +78,7 @@
                         <td></td>
                         <td>
                             <input type="hidden" name="token" value="{$token}" />
-                            <input type="hidden" name="id" value="{$manager_info.user_id}" />
+                            <input type="hidden" name="id" value="{$role_info.role_id}" />
                             <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
                         </td>
                     </tr>
