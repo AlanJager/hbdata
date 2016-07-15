@@ -569,6 +569,8 @@ class Action extends Common
             foreach ($file as $value) {
                 fwrite($fd, $value);
             }
+            $sql=$sql="DROP TABLE IF EXISTS".$this->table($module_old);
+            $this->query($sql);
             fclose($fd);
         }
     }
@@ -581,7 +583,6 @@ class Action extends Common
     function create_table($module_name){
         //若之前存在此表则删除
         $sql="DROP TABLE IF EXISTS".$this->table($module_name);
-        $sql="DROP TABLE IF EXISTS".$this->table('admin_log');
         $this->query($sql);
 
         //创建新表
