@@ -207,7 +207,7 @@ class Common extends DbMysql
         foreach ((array) $data as $value) {
             // $parent_id将在嵌套函数中随之变化
             if ($value['parent_id'] == $parent_id) {
-                $value['url'] = $this->rewrite_url($module . '_' . $table, $value['cat_id']);
+                $value['url'] = $this->rewrite_category_url('item_category', $module, $value['cat_id']);
                 $value['cur'] = $value['cat_id'] == $current_id ? true : false;
 
                 foreach ($data as $child) {
@@ -731,5 +731,4 @@ class Common extends DbMysql
         }
         return $permission_title;
     }
-
 }
