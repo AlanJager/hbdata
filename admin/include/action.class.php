@@ -19,7 +19,6 @@ if(!defined('IN_HBDATA')){
  */
 class Action extends Common
 {
-    private $i=0;
     /**
      * 初始化工作空间
      * @return mixed
@@ -553,6 +552,8 @@ class Action extends Common
             //删除表
             $sql="DROP TABLE IF EXISTS".$this->table($module_name);
             $this->query($sql);
+            //删除权限
+            $this->del_access($module_name);
             fclose($fd);
         }
         //add modele
@@ -565,7 +566,7 @@ class Action extends Common
                 fwrite($fd, $value);
             }
             $this->create_table($module_name);
-            $this->add_limits($module_name);
+            $this->add_access($module_name);
             fclose($fd);
             
             //创建新表
@@ -616,12 +617,14 @@ class Action extends Common
     }
 
     /**
-     * @param string $module  //module的unique_id
+     * @param $action
+     * @param $module
      */
-    function add_limits($module){
+    function add_access($module){
+        static $i=0;
 
         //计算权限
-        $column = 136 + 12 * $this->i;
+        $column = 136 + 12 * $i;
 
         $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column, $column+11, 'admin/item_category.php?module=".$module."');";
         $this->query($sql);
@@ -636,7 +639,7 @@ class Action extends Common
         $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+9, $column+10, 'admin/item_category.php?module=".$module."&rec=del');";
         $this->query($sql);
 
-        $column = 344 + 20 * $this->i;
+        $column = 344 + 20 * $i;
 
         $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column, $column+19, 'admin/item.php?module=".$module."');";
         $this->query($sql);
@@ -659,8 +662,44 @@ class Action extends Common
         $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+17, $column+18, 'admin/item.php?module=".$module."&rec=action');";
         $this->query($sql);
 
-        $this->i++;
+        $i=$i+1;
         return;
+    }
+
+    function del_access($module){
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."&rec=add'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."&rec=insert'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."&rec=update'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."&rec=edit'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."&rec=del'";
+        $this->query($sql);
+
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=add'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=insert'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=update'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=edit'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=del'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=sort'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=set_sort'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=del_sort'";
+        $this->query($sql);
+        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=action'";
+        $this->query($sql);
     }
 
     /**
