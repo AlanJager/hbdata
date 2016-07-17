@@ -628,23 +628,23 @@ class Action extends Common
         $rbac = new PhpRbac\Rbac();
         $id = $rbac->Permissions->titleId('admin/item_category.php');
         $id = $rbac->Permissions->add('admin/item_category.php?module='.$module, '', $id);
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'$rec=add', '', $id);
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'$rec=insert', '', $id);
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'$rec=update', '', $id);
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'$rec=edit', '', $id);
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'$rec=del', '', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=add', '', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=insert', '', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=update', '', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=edit', '', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=del', '', $id);
 
         $id = $rbac->Permissions->titleId('admin/item.php');
         $id = $rbac->Permissions->add('admin/item.php?module='.$module, '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=add', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=insert', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=update', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=edit', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=del', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=sort', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=set_sort', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=del_sort', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=action', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=add', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=insert', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=update', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=edit', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=del', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=sort', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=set_sort', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=del_sort', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=action', '', $id);
         return;
     }
 

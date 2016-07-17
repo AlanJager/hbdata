@@ -478,14 +478,3 @@ INSERT INTO hbdata_category VALUES('4','home','家居百货','家居用品,沙�
 INSERT INTO hbdata_category VALUES('5','baby','母婴用品','奶粉,营养辅食,尿裤湿巾,喂养用品,洗护用','母婴用品销售','0','30','product');
 INSERT INTO hbdata_category VALUES('6','phone','智能手机','iphone,blackberry','智能手机销售','3','50','product');
 INSERT INTO hbdata_category VALUES('7','tabletpc','平板电脑','ipad','平板电脑销售','3','50','product');
-
-DROP TABLE IF EXISTS `category_manage`;
-CREATE TABLE  `category_manage`(
-  `category_id` smallint(5) NOT NULL auto_increment,
-  `category_name` varchar(255) NOT NULL,
-  `category_unique_id` varchar(50) NOT NULL,
-  PRIMARY KEY (`category_id`)
-)ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-INSERT INTO category_manage VALUES ('1', '商品', 'product');
-INSERT INTO category_manage VALUES ('2', '文章', 'article' );
