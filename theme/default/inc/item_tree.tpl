@@ -3,11 +3,11 @@
 <div class="treeBox">
     <h3>{$lang.product_tree}</h3>
     <ul>
-        {foreach from=$item_category item=cate} 一级分类
+        {foreach from=$item_category item=cate}
             <li{if $cate.cur} class="cur"{/if}><a href="{$cate.url}">{$cate.cat_name}</a></li>
             {if $cate.child}
                 <ul>
-                    {foreach from=$cate.child item=child} 二级分类
+                    {foreach from=$cate.child item=child}
                         <li{if $child.cur} class="cur"{/if}>-<a href="{$child.url}">{$child.cat_name}</a></li>
                     {/foreach}
                 </ul>
@@ -17,13 +17,13 @@
 </div>
 {else}
 <div class="treeBox">
-    <h3>{$lang.article_tree}</h3>
+    <h3>{$item_tree}</h3>
     <ul>
-        {foreach from=$item_category item=cate} 一级分类
+        {foreach from=$item_category item=cate}
             <li{if $cate.cur} class="cur"{/if}><a href="{$cate.url}">{$cate.cat_name}</a></li>
             {if $cate.child}
                 <ul>
-                    {foreach from=$cate.child item=child} 二级分类
+                    {foreach from=$cate.child item=child}
                         <li{if $child.cur} class="cur"{/if}>-<a href="{$child.url}">{$child.cat_name}</a></li>
                     {/foreach}
                 </ul>

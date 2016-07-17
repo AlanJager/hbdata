@@ -339,7 +339,7 @@ class Common extends DbMysql
             $item['image'] = $row['image'] ? ROOT_URL . $row['image'] : '';
             $image = explode(".", $row['image']);
             $item['thumb'] = ROOT_URL . $image[0] . "_thumb." . $image[1];
-            $item['url'] = $this->rewrite_url($module, $row['id']);
+            $item['url'] = $this->rewrite_category_url('item', $module, $row['id']);
 
             $list[] = $item;
         }

@@ -547,10 +547,13 @@ class Action extends Common
             }
             $this->del_lang_file($module_name);
             //删除category表里对应的模块内容
-            $sql="DELETE FROM hbdata_category WHERE category = '".$module_name."'";
+            $sql="DELETE FROM ".$this->table('category')."WHERE category = '".$module_name."'";
             $this->query($sql);
             //删除表
             $sql="DROP TABLE IF EXISTS".$this->table($module_name);
+            $this->query($sql);
+            //删除nav
+            $sql = "DELETE FROM ".$this->table('nav')."WHERE module = '".$module_name."_category'";
             $this->query($sql);
             //删除权限
             $this->del_access($module_name);
@@ -621,85 +624,37 @@ class Action extends Common
      * @param $module
      */
     function add_access($module){
-        static $i=0;
+        require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
+        $rbac = new PhpRbac\Rbac();
+        $id = $rbac->Permissions->titleId('admin/item_category.php');
+        $id = $rbac->Permissions->add('admin/item_category.php?module='.$module, '', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'$rec=add', '', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'$rec=insert', '', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'$rec=update', '', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'$rec=edit', '', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'$rec=del', '', $id);
 
-        //计算权限
-        $column = 136 + 12 * $i;
-
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column, $column+11, 'admin/item_category.php?module=".$module."');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+1, $column+2, 'admin/item_category.php?module=".$module."&rec=add');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+3, $column+4, 'admin/item_category.php?module=".$module."&rec=insert');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+5, $column+6, 'admin/item_category.php?module=".$module."&rec=update');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+7, $column+8, 'admin/item_category.php?module=".$module."&rec=edit');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+9, $column+10, 'admin/item_category.php?module=".$module."&rec=del');";
-        $this->query($sql);
-
-        $column = 344 + 20 * $i;
-
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column, $column+19, 'admin/item.php?module=".$module."');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+1, $column+2, 'admin/item.php?module=".$module."&rec=add');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+3, $column+4, 'admin/item.php?module=".$module."&rec=insert');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+5, $column+6, 'admin/item.php?module=".$module."&rec=update');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+7, $column+8, 'admin/item.php?module=".$module."&rec=edit');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+9, $column+10, 'admin/item.php?module=".$module."&rec=del');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+11, $column+12, 'admin/item.php?module=".$module."&rec=sort');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+13, $column+14, 'admin/item.php?module=".$module."&rec=set_sort');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+15, $column+16, 'admin/item.php?module=".$module."&rec=del_sort');";
-        $this->query($sql);
-        $sql = "INSERT INTO ".$this->table('permissions')."(Lft, Rght, Title)"."VALUES ($column+17, $column+18, 'admin/item.php?module=".$module."&rec=action');";
-        $this->query($sql);
-
-        $i=$i+1;
+        $id = $rbac->Permissions->titleId('admin/item.php');
+        $id = $rbac->Permissions->add('admin/item.php?module='.$module, '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=add', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=insert', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=update', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=edit', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=del', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=sort', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=set_sort', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=del_sort', '', $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'$rec=action', '', $id);
         return;
     }
 
     function del_access($module){
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."&rec=add'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."&rec=insert'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."&rec=update'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."&rec=edit'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item_category.php?module=".$module."&rec=del'";
-        $this->query($sql);
-
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=add'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=insert'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=update'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=edit'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=del'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=sort'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=set_sort'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=del_sort'";
-        $this->query($sql);
-        $sql = "DELETE FROM ".$this->table('permissions')."WHERE Title = 'admin/item.php?module=".$module."&rec=action'";
-        $this->query($sql);
+        require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
+        $rbac = new PhpRbac\Rbac();
+        $id = $rbac->Permissions->titleId('admin/item_category.php?module='.$module);
+        $rbac->Permissions->remove($id, true);
+        $id = $rbac->Permissions->titleId('admin/item.php?module='.$module);
+        $rbac->Permissions->remove($id, true);
     }
 
     /**

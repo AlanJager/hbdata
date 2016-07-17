@@ -107,6 +107,7 @@ $smarty->assign('cate_info', $cate_info);
 $smarty->assign('item_category', $hbdata->get_category('category', 0, $cat_id, $module));
 $smarty->assign('item_list', $item_list);
 $smarty->assign('cur', $module);
+$smarty->assign('item_tree',$_LANG[$module . '_tree']);
 
 $smarty->display('item_category.dwt');
 
