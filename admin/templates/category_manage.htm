@@ -24,7 +24,7 @@
                 </tr>
                 {foreach from=$category_manage item=unique_id}
                 <tr>
-                    <td align="left"> <a href="category_manage.php">{$lang.$unique_id}</a></td>
+                    <td align="left">{$lang.$unique_id}</a></td>
                     <td>{$unique_id}</td>
                     <td align="center"><a href="category_manage.php?rec=edit&category_unique_id={$unique_id}">{$lang.edit}</a> | <a href="category_manage.php?rec=del&category_unique_id={$unique_id}">{$lang.del}</a></td>
                 </tr>

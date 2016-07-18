@@ -161,7 +161,7 @@ if($rec == 'update'){
 if($rec == 'del'){
 
     $cat_id = $check->is_number($_REQUEST['cat_id']) ? $_REQUEST['cat_id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'item_category.php?module='.$module);
-    $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table($module.'_category') . " WHERE cat_id = '$cat_id'");
+    $cat_name = $hbdata->get_one("SELECT cat_name FROM " . $hbdata->table('category') . " WHERE cat_id = '$cat_id'");
     $is_parent = $hbdata->get_one("SELECT id FROM " . $hbdata->table($module) . " WHERE cat_id = '$cat_id'") . $hbdata->get_one("SELECT cat_id FROM " . $hbdata->table($module.'_category') . " WHERE parent_id = '$cat_id'");
 
     if ($is_parent) {
@@ -173,7 +173,7 @@ if($rec == 'del'){
             $hbdata->delete($hbdata->table('category'), "cat_id = $cat_id", 'item_category.php?module='.$module);
         } else {
             $_LANG['del_check'] = preg_replace('/d%/Ums', $cat_name, $_LANG['del_check']);
-            $hbdata->hbdata_msg($_LANG['del_check'], 'item_category.php?module='.$module, '', '30', "item_category.php?module=".$module."&rec=del&cat_id=$cat_id");
+            $hbdata->hbdata_msg($_LANG['del_check'], 'item_category.php?module='.$module, '', '30', "item_category.php?module=$module&rec=del&cat_id=$cat_id");
         }
     }
 

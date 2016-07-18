@@ -135,10 +135,16 @@ if($rec == 'update'){
 if($rec == 'del'){
     //验证并获取合法的别名
     $unique_id = $check->is_letter($_REQUEST['category_unique_id']) ? $_REQUEST['category_unique_id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'category_manage.php?module=' . $module);
+    $module_name=$_LANG[$unique_id];
+    if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
+        $hbdata->edit_module($unique_id,"del");
+        $hbdata->create_admin_log($_LANG['category_del'] . ': ' . $_POST['unique_id']);
+        $hbdata->hbdata_msg($_LANG['category_del_succes'], 'category_manage.php');
+    } else {
+        $_LANG['del_check'] = preg_replace('/d%/Ums', $module_name, $_LANG['del_check']);
+        $hbdata->hbdata_msg($_LANG['del_check'], 'category_manage.php', '', '30', "category_manage.php?rec=del&category_unique_id=$unique_id");
+    }
 
-    $hbdata->edit_module($unique_id,"del");
-    $hbdata->create_admin_log($_LANG['category_del'] . ': ' . $_POST['unique_id']);
-    $hbdata->hbdata_msg($_LANG['category_del_succes'], 'category_manage.php');
 }
 
 
