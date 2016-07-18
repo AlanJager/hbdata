@@ -41,21 +41,22 @@ $_LANG['user_role_add_success'] = '添加用户角色成功';
 $_LANG['edit_user_role'] = '编辑用户角色';
 
 
-// 网站管理员
+// 网站用户
 $_LANG['manager'] = '用户管理';
 $_LANG['manager_list'] = '返回列表';
-$_LANG['manager_add'] = '添加管理员';
-$_LANG['manager_edit'] = '编辑管理员';
-$_LANG['manager_del'] = '删除管理员';
-$_LANG['manager_del_wrong'] = '您不能删除此管理员';
-$_LANG['manager_username'] = '管理员名称';
+$_LANG['manager_add'] = '添加用户';
+$_LANG['manager_edit'] = '编辑用户';
+$_LANG['manager_edit_user'] = '编辑用户角色';
+$_LANG['manager_del'] = '删除用户';
+$_LANG['manager_del_wrong'] = '您不能删除此用户';
+$_LANG['manager_username'] = '用户名称';
 $_LANG['manager_email'] = 'E-mail地址';
 $_LANG['manager_action'] = '管理权限';
 $_LANG['manager_add_time'] = '添加时间';
 $_LANG['manager_last_login'] = '最后登录时间';
 $_LANG['manager_last_ip'] = '最后登录IP';
-$_LANG['manager_add_succes'] = '添加管理员成功';
-$_LANG['manager_edit_succes'] = '编辑管理员成功';
+$_LANG['manager_add_succes'] = '添加用户成功';
+$_LANG['manager_edit_succes'] = '编辑用户成功';
 $_LANG['manager_password'] = '密码';
 $_LANG['manager_password_confirm'] = '确认密码';
 $_LANG['manager_username_cue'] = '用户名不能为空且至少包含4个字符，需以字母开头。只能使用字母、数字、下划线';

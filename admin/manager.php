@@ -21,7 +21,7 @@ $rec = $check->is_rec($_REQUEST['rec']) ? $_REQUEST['rec'] : 'default';
 $smarty->assign('rec', $rec);
 
 /**
- * 管理员列表
+ * 用户列表
  */
 if ($rec == 'default') {
     $smarty->assign('ur_here', $_LANG['manager']);
@@ -54,7 +54,7 @@ if ($rec == 'default') {
 }
 
 /**
- * 管理员添加处理
+ * 用户添加处理
  */
 elseif ($rec == 'add') {
     if ($_USER['action_list'] != 'ALL') {
@@ -103,7 +103,7 @@ elseif ($rec == 'insert') {
 }
 
 /**
- * 管理员编辑
+ * 用户编辑
  */
 elseif ($rec == 'edit') {
     $smarty->assign('ur_here', $_LANG['manager']);
@@ -122,7 +122,7 @@ elseif ($rec == 'edit') {
         $hbdata->hbdata_msg($_LANG['without'], 'manager.php');
     }
 
-    // 超级管理员修改普通管理员信息无需旧密码
+    // 超级用户修改普通用户信息无需旧密码
     if ($_USER['action_list'] == 'ALL' && $manager_info['user_name'] != $_USER['user_name']) {
         $if_check = false;
     } else {
@@ -142,12 +142,12 @@ elseif ($rec == 'update') {
     $query = $hbdata->select($hbdata->table('admin'), '*', '`user_id` = \'' . $_POST['id'] . '\'');
     $manager_info = $hbdata->fetch_array($query);
 
-    // 判断管理员账号是否符合规范
+    // 判断用户账号是否符合规范
     if (!$check->is_username($_POST['user_name'])) {
         $hbdata->hbdata_msg($_LANG['manager_username_cue']);
     }
 
-    // 超级管理员修改普通管理员信息无需旧密码
+    // 超级用户修改普通用户信息无需旧密码
     if (!($_USER['action_list'] == 'ALL' && $manager_info['user_name'] != $_USER['user_name'])) {
         if (!$_POST['old_password']) {
             $hbdata->hbdata_msg($_LANG['manager_old_password_cue']);
@@ -180,7 +180,7 @@ elseif ($rec == 'update') {
 }
 
 /**
- * 管理员删除
+ * 用户删除
  */
 elseif ($rec == 'del') {
     if ($_USER['action_list'] != 'ALL') {
@@ -285,14 +285,14 @@ elseif ($rec == 'update_user_role'){
     $user_id = $_POST['id'];
 
     foreach ($role_list as $role) {
-        $rbac->Users->unassign($role['role_id'], id);
+        $rbac->Users->unassign($role['role_id'], $user_id);
         if ($_POST[$role['role_id']]) {
             $rbac->Users->assign($role['role_id'], $user_id);
         }
     }
 
     //TODO 增加LOG
-
+    $hbdata->create_admin_log($_LANG['manager_edit_user'] . ': ' . $_POST['role.role_id']);
     $hbdata->hbdata_msg($_LANG['user_role_add_success'], 'manager.php');
 }
 

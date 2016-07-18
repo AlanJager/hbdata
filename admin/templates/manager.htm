@@ -14,8 +14,8 @@
     <div id="dcMain">
         {include file="ur_here.htm"}
         <div id="manager" class="mainBox" style="{$workspace.height}">
-            <h3> {if $rec neq 'manager_log'} 管理员列表 <a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a> {/if} {$ur_here}</h3>
-             {if $rec eq 'default'} 管理员列表 
+            <h3> {if $rec neq 'manager_log'}  <a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a> {/if} {$ur_here}</h3>
+             {if $rec eq 'default'} 管理员列表
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <tr>
                     <th width="30" align="center">{$lang.record_id}</th>
