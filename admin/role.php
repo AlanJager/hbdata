@@ -78,10 +78,13 @@ if ($rec == 'default') {
     ));
 
 
-    //TODO
-    $role_id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
 
-    $role_info = getRoleByRoleID($role_id)[0];
+    $role_id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
+    if (! $role_id) {
+        $hbdata->hbdata_msg($LANG['illegal'], 'role.php', '', 2);
+    }
+
+    $role_info = getRoleByRoleID($role_id);
 
     // CSRF防御令牌生成
     $smarty->assign('token', $firewall->set_token('edit_role'));
@@ -123,7 +126,7 @@ if ($rec == 'default') {
     } else {
         $hbdata->hbdata_msg($_LANG['role_delete_fail'], 'role.php');
     }
-} else if ($rec == "setpermission") {
+} else if ($rec == "set_permission") {
     if ($_USER['action_list'] != 'ALL') {
         $hbdata->hbdata_msg($_LANG['without'], 'role.php');
     }
@@ -143,7 +146,7 @@ if ($rec == 'default') {
     $smarty->assign('token', $firewall->set_token('edit_role'));
 
     $smarty->display('role.htm');
-} else if ($rec == 'updaterolepermission') {
+} else if ($rec == 'update_role_permission') {
 
 }
 
@@ -178,7 +181,7 @@ function getRoleByRoleID($role_id) {
             "role_description" => $row['Description']
         );
     }
-    return $role_list;
+    return $role_list[0];
 }
 
 /**

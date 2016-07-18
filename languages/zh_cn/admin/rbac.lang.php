@@ -38,3 +38,30 @@ $_LANG['user_role_assign_date'] = '用户角色添加日期';
 $_LANG['user_role_list'] = '返回用户角色列表';
 $_LANG['add_user_role'] = '添加用户角色';
 $_LANG['user_role_add_success'] = '添加用户角色成功';
+$_LANG['edit_user_role'] = '编辑用户角色';
+
+
+// 网站管理员
+$_LANG['manager'] = '用户管理';
+$_LANG['manager_list'] = '返回列表';
+$_LANG['manager_add'] = '添加管理员';
+$_LANG['manager_edit'] = '编辑管理员';
+$_LANG['manager_del'] = '删除管理员';
+$_LANG['manager_del_wrong'] = '您不能删除此管理员';
+$_LANG['manager_username'] = '管理员名称';
+$_LANG['manager_email'] = 'E-mail地址';
+$_LANG['manager_action'] = '管理权限';
+$_LANG['manager_add_time'] = '添加时间';
+$_LANG['manager_last_login'] = '最后登录时间';
+$_LANG['manager_last_ip'] = '最后登录IP';
+$_LANG['manager_add_succes'] = '添加管理员成功';
+$_LANG['manager_edit_succes'] = '编辑管理员成功';
+$_LANG['manager_password'] = '密码';
+$_LANG['manager_password_confirm'] = '确认密码';
+$_LANG['manager_username_cue'] = '用户名不能为空且至少包含4个字符，需以字母开头。只能使用字母、数字、下划线';
+$_LANG['manager_password_cue'] = '密码不能为空，且至少包含6个字符';
+$_LANG['manager_password_confirm_cue'] = '确认密码输入不对';
+$_LANG['manager_old_password'] = '旧密码';
+$_LANG['manager_old_password_cue'] = '旧密码为空或者输入不正确';
+$_LANG['manager_new_password'] = '新密码';
+$_LANG['manager_new_password_confirm'] = '确认新密码';

@@ -32,7 +32,11 @@
                     <td align="center">{$manager_list.email}</td>
                     <td align="center">{$manager_list.add_time}</td>
                     <td align="center">{$manager_list.last_login}</td>
-                    <td align="center"><a href="manager.php?rec=edit&id={$manager_list.user_id}">{$lang.edit}</a> | <a href="manager.php?rec=del&id={$manager_list.user_id}">{$lang.del}</a></td>
+                    <td align="center">
+                          <a href="manager.php?rec=edit&id={$manager_list.user_id}">{$lang.edit}</a>
+                        | <a href="manager.php?rec=del&id={$manager_list.user_id}">{$lang.del}</a>
+                        | <a  href="manager.php?rec=edit_user_role&id={$manager_list.user_id}">{$lang.edit_user_role}</a>
+                    </td>
                 </tr>
                  {/foreach} 
             </table>
@@ -140,7 +144,33 @@
                  {/foreach} 
             </table>
             {include file="pager.htm"}
-             {/if} 
+             {/if}
+            {if $rec eq 'edit_user_role'} 用户角色编辑
+            <form action="manager.php?rec=update_user_role" method="post">
+                <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                    <tr>
+                        <td width="100" align="right">{$lang.user_name}</td>
+                        <td>{$user_info.user_name}</td>
+                    </tr>
+                    <tr>
+                        <td width="100" align="right">{$lang.role_title}</td>
+                        <td>
+                            {foreach from=$role_list item=role}
+                            {$role.role_title}<input type="checkbox" name="{$role.role_id}" size="40" value="{$role.role_id}" />
+                            {/foreach}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="hidden" name="token" value="{$token}" />
+                            <input type="hidden" name="id" value="{$user_info.user_id}" />
+                            <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            {/if}
         </div>
     </div>
     {include file="footer.htm"}
