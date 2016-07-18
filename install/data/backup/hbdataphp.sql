@@ -383,6 +383,8 @@ INSERT INTO hbdata_nav VALUES('30','page','人才招聘','5','0','mobile','60');
 INSERT INTO hbdata_nav VALUES('31','page','联系我们','4','0','mobile','255');
 INSERT INTO hbdata_nav VALUES('33','mobile','手机版','0','0','top','10');
 INSERT INTO hbdata_nav VALUES('34','mobile','手机版','0','0','bottom','60');
+INSERT INTO hbdata_nav VALUES('35', 'guestbook', '留言板', '0', '0', 'top', '5');
+INSERT INTO hbdata_nav VALUES('36', 'guestbook', '留言板', '0', '0', 'mobile', '5');
 
 DROP TABLE IF EXISTS `hbdata_page`;
 CREATE TABLE `hbdata_page` (
@@ -478,3 +480,19 @@ INSERT INTO hbdata_category VALUES('4','home','家居百货','家居用品,沙�
 INSERT INTO hbdata_category VALUES('5','baby','母婴用品','奶粉,营养辅食,尿裤湿巾,喂养用品,洗护用','母婴用品销售','0','30','product');
 INSERT INTO hbdata_category VALUES('6','phone','智能手机','iphone,blackberry','智能手机销售','3','50','product');
 INSERT INTO hbdata_category VALUES('7','tabletpc','平板电脑','ipad','平板电脑销售','3','50','product');
+
+DROP TABLE IF EXISTS `hbdata_guestbook`;
+CREATE TABLE `hbdata_guestbook` (
+  `id` mediumint(8) unsigned NOT NULL auto_increment,
+  `title` varchar(150) NOT NULL default '',
+  `name` varchar(60) NOT NULL default '',
+  `contact_type` varchar(30) NOT NULL default '',
+  `contact` varchar(150) NOT NULL default '',
+  `content` text NOT NULL,
+  `if_show` tinyint(1) NOT NULL default '0',
+  `if_read` tinyint(1) NOT NULL default '0',
+  `ip` varchar(15) NOT NULL default '',
+  `add_time` int(10) unsigned NOT NULL default '0',
+  `reply_id` smallint(5) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
