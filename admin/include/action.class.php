@@ -556,7 +556,7 @@ class Action extends Common
             $sql = "DELETE FROM ".$this->table('nav')."WHERE module = '".$module_name."_category'";
             $this->query($sql);
             //删除权限
-            $this->del_access($module_name);
+            $this->del_module_access($module_name);
             fclose($fd);
         }
         //add modele
@@ -569,7 +569,7 @@ class Action extends Common
                 fwrite($fd, $value);
             }
             $this->create_table($module_name);
-            $this->add_access($module_name);
+            $this->add_module_access($module_name);
             fclose($fd);
             
             //创建新表
@@ -620,10 +620,10 @@ class Action extends Common
     }
 
     /**
-     * @param $action
+     * 增加分类的权限
      * @param $module
      */
-    function add_access($module){
+    function add_module_access($module){
         require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
         $rbac = new PhpRbac\Rbac();
         $id = $rbac->Permissions->titleId('admin/item_category.php');
@@ -648,7 +648,11 @@ class Action extends Common
         return;
     }
 
-    function del_access($module){
+    /**
+     * 删除分类的权限
+     * @param $module
+     */
+    function del_module_access($module){
         require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
         $rbac = new PhpRbac\Rbac();
         $id = $rbac->Permissions->titleId('admin/item_category.php?module='.$module);
@@ -657,6 +661,41 @@ class Action extends Common
         $rbac->Permissions->remove($id, true);
     }
 
+    /**
+     * 增加单页面的权限
+     * @param $parent_id
+     * @param $page_name
+     */
+    function add_page_access($parent_id, $page_name){
+        require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
+        $rbac = new PhpRbac\Rbac();
+        if($parent_id != 0){
+            $parent_unique_id = $this->get_one("SELECT unique_id FROM ".$this->table('page')."WHERE id = $parent_id");
+            $id = $rbac->Permissions->titleId('admin/page.php?name='.$parent_unique_id);
+            $id = $rbac->Permissions->add('admin/page.php?name='.$page_name, '', $id);
+        }
+        else{
+            $id = $rbac->Permissions->titleId('admin/page.php');
+            $id = $rbac->Permissions->add('admin/page.php?name='.$page_name, '', $id);
+        }
+        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=add', '', $id);
+        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=insert', '', $id);
+        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=update', '', $id);
+        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=edit', '', $id);
+        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=del', '', $id);
+    }
+
+    /**
+     * 删除页面的权限
+     * @param $page_name
+     */
+    function del_page_access($page_name){
+        require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
+        $rbac = new PhpRbac\Rbac();
+        $id = $rbac->Permissions->titleId('admin/page.php?name='.$page_name);
+        $rbac->Permissions->remove($id, true);
+    }
+    
     /**
      * 为新模块增加语言包
      * @param string $lang          语言包
