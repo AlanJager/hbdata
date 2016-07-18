@@ -190,9 +190,7 @@ function is_water($ip) {
  * @return bool
  */
 function check_guestbook($value, $length) {
-    $check_chinese = $GLOBALS['_CFG']['guestbook_check_chinese'] ? $GLOBALS['check']->if_include_chinese($value) : true;
-
-    if ($check_chinese && $GLOBALS['check']->ch_length($value, $length)) {
+    if ($GLOBALS['check']->ch_length($value, $length)) {
         return true;
     }
 }
