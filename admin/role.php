@@ -151,7 +151,7 @@ if ($rec == 'default') {
 
     $smarty->display('role.htm');
 } else if ($rec == 'update_role_permission') {
-    
+
     $role_id = $_POST['role_id'];
 
     $permission_list = getAllPermissions($role_id);
