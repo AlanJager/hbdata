@@ -285,7 +285,7 @@ elseif ($rec == 'update_user_role'){
     $user_id = $_POST['id'];
 
     foreach ($role_list as $role) {
-        $rbac->Users->unassign($role['role_id'], id);
+        $rbac->Users->unassign($role['role_id'], $user_id);
         if ($_POST[$role['role_id']]) {
             $rbac->Users->assign($role['role_id'], $user_id);
         }
