@@ -133,7 +133,7 @@ if ($rec == 'insert') {
     }
 
     // 判断验证码
-    if ($_CFG['captcha'] && md5($captcha . hbdata_SHELL) != $_SESSION['captcha'])
+    if ($_CFG['captcha'] && md5($captcha . HBDATA_SHELL) != $_SESSION['captcha'])
         $wrong['captcha'] = $_LANG['captcha_wrong'];
 
     // AJAX验证表单
