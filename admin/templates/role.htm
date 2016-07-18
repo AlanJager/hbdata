@@ -90,22 +90,37 @@
             {/if}
             {if $rec eq 'set_role_permission'} 角色授权
             <form action="role.php?rec=update_role_permission" method="post">
-                <tr>
-                    <td width="100" align="right">{$lang.permission_title}</td>
-                    <td>
-                        {foreach from=$permission_list item=permission}
-                        {$permission.permission_description}<input type="checkbox" name="{$permission.permission_id}" size="40" value="{$permission.permission_id}" />
-                        {/foreach}
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="hidden" name="token" value="{$token}" />
-                        <input type="hidden" name="role_id" value="{$role_id}" />
-                        <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
-                    </td>
-                </tr>
+                <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                    <tr>
+                        <th></th>
+                        <th align="center">{$lang.permission_id}</th>
+                        <th align="center">{$lang.permission_title}</th>
+                        <th align="center">{$lang.permission_description}</th>
+                    </tr>
+                    {foreach from=$permission_list item=permission}
+                    <tr>
+                        <td>
+                            {if $permission.is_assigned}
+                            <input type="checkbox" name="{$permission.permission_id}" size="40" value="{$permission.permission_id}" checked/>
+                            {else}
+                            <input type="checkbox" name="{$permission.permission_id}" size="40" value="{$permission.permission_id}" />
+                            {/if}
+                        </td>
+                        <td align="center">{$permission.permission_id}</td>
+                        <td>{$permission.permission_title}</td>
+                        <td>{$permission.permission_description}</td>
+                    </tr>
+                    {/foreach}
+                </table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="hidden" name="token" value="{$token}" />
+                            <input type="hidden" name="role_id" value="{$role_id}" />
+                            <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
+                        </td>
+                    </tr>
+
             </form>
             {/if}
         </div>

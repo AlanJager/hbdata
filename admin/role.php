@@ -142,8 +142,7 @@ if ($rec == 'default') {
 
 
 
-    $smarty->assign("permissions", $rbac->Roles->permissions($role_id, false));
-    $smarty->assign("permission_list", getAllPermissions());
+    $smarty->assign("permission_list", getAllPermissions($role_id));
     $smarty->assign('role_id', $role_id);
 
 
@@ -152,10 +151,10 @@ if ($rec == 'default') {
 
     $smarty->display('role.htm');
 } else if ($rec == 'update_role_permission') {
-
-    $permission_list = getAllPermissions();
-
+    
     $role_id = $_POST['role_id'];
+
+    $permission_list = getAllPermissions($role_id);
 
     foreach ($permission_list as $permission) {
         $rbac->Permissions->unassign($role_id, $permission['permission_id']);
@@ -191,14 +190,22 @@ function getAllRoles() {
  * 返回所有角色信息
  * @return array
  */
-function getAllPermissions() {
+function getAllPermissions($role_id) {
     $permission_sql = "SELECT * FROM " . $GLOBALS['hbdata']->table('permissions') . " ORDER BY ID ASC";
     $permission_query = $GLOBALS['hbdata']->query($permission_sql);
+
+    $permission_ids = $GLOBALS['rbac']->Roles->permissions($role_id, true);
+
     while ($row = $GLOBALS['hbdata']->fetch_array($permission_query)) {
+        $assigned = false;
+        if (in_array($row['ID'], $permission_ids)) {
+            $assigned = true;
+        }
         $permission_list[] = array (
             "permission_id" => $row['ID'],
             "permission_title" => $row['Title'],
-            "permission_description" => $row['Description']
+            "permission_description" => $row['Description'],
+            "is_assigned" => $assigned
         );
     }
     return $permission_list;
