@@ -142,7 +142,7 @@ if($rec == 'del'){
         $hbdata->hbdata_msg($_LANG['category_del_succes'], 'category_manage.php');
     } else {
         $_LANG['del_check'] = preg_replace('/d%/Ums', $module_name, $_LANG['del_check']);
-        $hbdata->hbdata_msg($_LANG['del_check'], 'item_category.php?module='.$module, '', '30', "item_category.php?module=".$module."&rec=del");
+        $hbdata->hbdata_msg($_LANG['del_check'], 'category_manage.php', '', '30', "category_manage.php?rec=del&category_unique_id=$unique_id");
     }
 
 }
