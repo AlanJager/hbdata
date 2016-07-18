@@ -34,6 +34,7 @@
      {/if} 
     <ul class="bot">
         <li {if $cur eq 'backup'} class="cur" {/if}><a href="backup.php"><i class="backup"></i><em>{$lang.backup}</em></a></li>
+        <li {if $cur eq 'guestbook'} class="cur" {/if}><a href="guestbook.php"><i class="guestbook"></i><em>{$lang.guestbook}</em></a></li>
         <li {if $cur eq 'theme'} class="cur" {/if}><a href="theme.php"><i class="theme"></i><em>{$lang.theme} {if $unum.theme} <span class="unum"><span>{$unum.theme}</span></span> {/if} </em></a></li>
         <li {if $cur eq 'manager'} class="cur" {/if}><a href="manager.php"><i class="manager"></i><em>{$lang.manager}</em></a></li>
         <li {if $cur eq 'manager_log'} class="cur" {/if}><a href="manager.php?rec=manager_log"><i class="managerLog"></i><em>{$lang.manager_log}</em></a></li>
