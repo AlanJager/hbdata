@@ -151,12 +151,14 @@
                     <tr>
                         <td width="100" align="right">{$lang.user_name}</td>
                         <td>{$user_info.user_name}</td>
+                        <input type="hidden" name="user_name" size="40" value="{$user_info.user_name}" />
                     </tr>
                     <tr>
                         <td width="100" align="right">{$lang.role_title}</td>
                         <td>
                             {foreach from=$role_list item=role}
                             {$role.role_title}<input type="checkbox" name="{$role.role_id}" size="40" value="{$role.role_id}" />
+                            <input type="hidden" name="role_title" size="40" value="{$role.role_title}" />
                             {/foreach}
                         </td>
                     </tr>
