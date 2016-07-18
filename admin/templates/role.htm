@@ -30,7 +30,7 @@
                     <td>{$role.role_description}</td>
                     <td align="center"><a href="role.php?rec=edit&id={$role.role_id}">{$lang.edit}</a>
                         | <a href="role.php?rec=del&id={$role.role_id}">{$lang.del}</a>
-                        | <a href="role.php?rec=set_permission&id={$role.role_id}">{$lang.set_role_permission}</a>
+                        | <a href="role.php?rec=set_role_permission&id={$role.role_id}">{$lang.set_role_permission}</a>
                     </td>
                 </tr>
                 {/foreach}
@@ -88,24 +88,24 @@
                 </table>
             </form>
             {/if}
-            {if $rec eq 'set_permission'} 角色授权
+            {if $rec eq 'set_role_permission'} 角色授权
             <form action="role.php?rec=update_role_permission" method="post">
-                <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
-                    <tr>
-                        <th></th>
-                        <th align="center">{$lang.permission_id}</th>
-                        <th align="center">{$lang.permission_title}</th>
-                        <th align="center">{$lang.permission_description}</th>
-                    </tr>
-                    {foreach from=$permissions item=permission}
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td align="center">{$permission.ID}</td>
-                        <td>{$permission.Title}</td>
-                        <td>{$permission.Description}</td>
-                    </tr>
-                    {/foreach}
-                </table>
+                <tr>
+                    <td width="100" align="right">{$lang.permission_title}</td>
+                    <td>
+                        {foreach from=$permission_list item=permission}
+                        {$permission.permission_description}<input type="checkbox" name="{$permission.permission_id}" size="40" value="{$permission.permission_id}" />
+                        {/foreach}
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="hidden" name="token" value="{$token}" />
+                        <input type="hidden" name="role_id" value="{$role_id}" />
+                        <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
+                    </td>
+                </tr>
             </form>
             {/if}
         </div>
