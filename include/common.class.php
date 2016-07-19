@@ -702,7 +702,7 @@ class Common extends DbMysql
      * @param string $page
      * @return string
      */
-    function get_permission_title($request_url = 'admin/', $module = '', $page) {
+    function get_permission_title($request_url = 'admin/', $module = '', $page = '') {
 
         //去除前缀 */hbdata/admin/  -->  admin/
         $permission_title = strstr($request_url, 'admin');
