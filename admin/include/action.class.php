@@ -39,7 +39,7 @@ class Action extends Common
         if ($GLOBALS['_MODULE']['all']) {
             $height = (count($menu_list['single']) * 43) + (count($menu_list['column']) * 86) + 280;
         } else {
-            $record_count = mysql_num_rows($this->query("SELECT * FROM " . $this->table('page')));
+            $record_count = mysqli_num_rows($this->query("SELECT * FROM " . $this->table('page')));
             $height = $record_count * 43 + 280;
         }
         $height = $height < 550 ? 550 : $height;

@@ -35,6 +35,10 @@ if ($rec == 'default') {
     while ($row = $hbdata->fetch_array($query)) {
         $add_time = date("Y-m-d", $row['add_time']);
         $last_login = date("Y-m-d H:i:s", $row['last_login']);
+        foreach ($rbac->Users->allRoles($_USER['user_id']) as $role) {
+            $user_roles .= ',' . $role['Title'];
+        }
+        $user_roles = trim($user_roles, ',');
 
         $manager_list[] = array (
             "user_id" => $row['user_id'],
@@ -42,7 +46,8 @@ if ($rec == 'default') {
             "email" => $row['email'],
             "action_list" => $row['action_list'],
             "add_time" => $add_time,
-            "last_login" => $last_login
+            "last_login" => $last_login,
+            "user_roles" => $user_roles
         );
     }
 

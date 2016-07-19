@@ -514,7 +514,7 @@ class Common extends DbMysql
     function pager($table, $page_size = 10, $page, $page_url = '', $where = '', $get = '', $close_rewrite = false)
     {
         $sql = "SELECT * FROM " . $this->table($table) . $where;
-        $record_count = mysql_num_rows($this->query($sql));
+        $record_count = mysqli_num_rows($this->query($sql));
 
         // set page style sheet
         if (!defined('IS_ADMIN') && $GLOBALS['_CFG']['rewrite'] && !$close_rewrite) {
@@ -526,11 +526,10 @@ class Common extends DbMysql
         }
 
         $page_count = ceil($record_count / $page_size);
-        $first = $page_url . $get_page . '1' . $get;
+        $first = $page_url;
         $previous = $page_url . $get_page . ($page > 1 ? $page - 1 : 0) . $get;
         $next = $page_url . $get_page . ($page_count > $page ? $page + 1 : 0) . $get;
         $last = $page_url . $get_page . $page_count . $get;
-
         $pager = array (
             "record_count" => $record_count,
             "page_size" => $page_size,
