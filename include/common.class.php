@@ -526,11 +526,10 @@ class Common extends DbMysql
         }
 
         $page_count = ceil($record_count / $page_size);
-        $first = $page_url . $get_page . '1' . $get;
+        $first = $page_url;
         $previous = $page_url . $get_page . ($page > 1 ? $page - 1 : 0) . $get;
         $next = $page_url . $get_page . ($page_count > $page ? $page + 1 : 0) . $get;
         $last = $page_url . $get_page . $page_count . $get;
-
         $pager = array (
             "record_count" => $record_count,
             "page_size" => $page_size,
@@ -541,6 +540,7 @@ class Common extends DbMysql
             "first" => $first,
             "last" => $last
         );
+
         $start = ($page - 1) * $page_size;
         $limit = " LIMIT $start, $page_size";
 
