@@ -144,6 +144,25 @@ p.cue {
  cursor: pointer;
  -webkit-appearance: none;
 }
+.btnSystem{
+ margin-left:418px;
+}
+.btnCategory,.btnManager,.btnRole,.btnNav,.btnShow{
+ margin-left: 155px;
+}
+.btnProduct{
+ margin-left: 310px;
+}
+.btnItem{
+ position: absolute;
+ left: 425px;
+}
+.btnBackup{
+ margin-left: 555px;
+}
+.btnGuest{
+ margin-left: 1160px;
+}
 .btnGray {
  display: inline-block;
  background-color: #EEE;
