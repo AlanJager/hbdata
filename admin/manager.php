@@ -285,10 +285,10 @@ elseif($rec == 'edit_user_role'){
 
 
 elseif ($rec == 'update_user_role'){
-
-    $role_list = getAllRoles();
-
+    
     $user_id = $_POST['id'];
+
+    $role_list = getAllRoles($user_id);
 
     foreach ($role_list as $role) {
         $rbac->Users->unassign($role['role_id'], $user_id);
