@@ -23,7 +23,7 @@ elseif(!empty($_REQUEST['name'])){
 else{
     $url_name = '';
 }
-$perm_title = $hbdata->get_permission_title($request_url, $url_name);
+$perm_title = $hbdata->get_permission_title($request_url, $url_name, $_REQUEST['page']);
 //检查是否具有权限
 try{
     $auth = $rbac->check($perm_title, $user_id);

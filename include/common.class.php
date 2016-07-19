@@ -699,9 +699,10 @@ class Common extends DbMysql
      * 通过REQUETS_URL获取权限
      * @param string $request_url
      * @param string $module
+     * @param string $page
      * @return string
      */
-    function get_permission_title($request_url = 'admin/', $module = '') {
+    function get_permission_title($request_url = 'admin/', $module = '', $page) {
 
         //去除前缀 */hbdata/admin/  -->  admin/
         $permission_title = strstr($request_url, 'admin');
@@ -711,16 +712,22 @@ class Common extends DbMysql
 
 
         if ($counts == 2) {
-            //可能有下列两种情况
+            //可能有下列三种情况
             //admin/item.php?rec=edit&id=1
             //admin/item.php?module=product&rec=edit
+            //admin/item.php?module=article&page=1
 
             if ($module == '') {
                 $permission_title = $tarray[0];
+            } else {
+                if ($page != '') {
+                    $permission_title = $tarray[0];
+                }
             }
         } elseif($counts >= 3) {
             //admin/item.php?module=product&rec=edit&id=1
             ///admin/nav.php?rec=nav_select&id=1&type=top
+
             if ($module != ''){
                 $permission_title = $tarray[0] . '&' . $tarray[1];
             } else {
