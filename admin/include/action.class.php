@@ -678,9 +678,6 @@ class Action extends Common
             $id = $rbac->Permissions->titleId('admin/page.php');
             $id = $rbac->Permissions->add('admin/page.php?name='.$page_name, '', $id);
         }
-        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=add', '', $id);
-        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=insert', '', $id);
-        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=update', '', $id);
         $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=edit', '', $id);
         $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=del', '', $id);
     }
