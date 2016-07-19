@@ -388,7 +388,7 @@ if ($rec == 're_thumb') {
         ));
 
         $sql = "SELECT id, image FROM " . $hbdata->table($module) . "ORDER BY id ASC";
-        $count = mysql_num_rows($query = $hbdata->query($sql));
+        $count = mysqli_num_rows($query = $hbdata->query($sql));
         $mask['count'] = preg_replace('/d%/Ums', $count, $_LANG[$module . '_thumb_count']);
         $mask_tag = '<i></i>';
         $mask['confirm'] = $_POST['confirm'];
