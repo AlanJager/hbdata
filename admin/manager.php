@@ -270,7 +270,7 @@ elseif($rec == 'edit_user_role'){
     }
 
 
-    $all_roles = getAllRoles();
+    $all_roles = getAllRoles($user_id);
 
 
     // TODO delete same value
@@ -323,14 +323,18 @@ function getAllRolesForUser($user_id) {
  * 返回所有角色信息
  * @return array
  */
-function getAllRoles() {
+function getAllRoles($user_id) {
     $role_sql = "SELECT * FROM " . $GLOBALS['hbdata']->table('roles') . " ORDER BY ID ASC";
     $role_query = $GLOBALS['hbdata']->query($role_sql);
+
+
+
     while ($row = $GLOBALS['hbdata']->fetch_array($role_query)) {
         $role_list[] = array (
             "role_id" => $row['ID'],
             "role_title" => $row['Title'],
-            "role_description" => $row['Description']
+            "role_description" => $row['Description'],
+            "is_assigned" => $GLOBALS['rbac']->Users->hasRole($row['ID'], $user_id)
         );
     }
     return $role_list;
