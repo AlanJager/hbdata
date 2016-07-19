@@ -541,7 +541,6 @@ class Common extends DbMysql
             "first" => $first,
             "last" => $last
         );
-
         $start = ($page - 1) * $page_size;
         $limit = " LIMIT $start, $page_size";
 
