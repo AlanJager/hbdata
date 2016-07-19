@@ -285,7 +285,7 @@ elseif($rec == 'edit_user_role'){
 
 
 elseif ($rec == 'update_user_role'){
-    
+
     $user_id = $_POST['id'];
 
     $role_list = getAllRoles($user_id);
