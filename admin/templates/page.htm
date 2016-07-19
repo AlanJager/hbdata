@@ -20,7 +20,7 @@
                  {foreach from=$page_list item=page_list} 
                 <dl {if $page_list.level gt 0} class="child{$page_list.level}"{/if}>
                 <dt><strong>{$page_list.page_name}</strong><p>{$page_list.unique_id}</p></dt>
-                <dd><a href="page.php?rec=edit&id={$page_list.id}">{$lang.edit}</a> | <a href="page.php?rec=del&id={$page_list.id}">{$lang.del}</a></dd>
+                <dd><a href="page.php?name={$page_list.unique_id}&rec=edit&id={$page_list.id}">{$lang.edit}</a> | <a href="page.php?name={$page_list.unique_id}&rec=del&id={$page_list.id}">{$lang.del}</a></dd>
                 </dl>
                  {/foreach} 
             </div>
@@ -54,13 +54,19 @@
                         <td align="right">{$lang.parent}</td>
                         <td>
                             <select name="parent_id">
+                                {if $can_empty == true}
                                 <option value="0">{$lang.empty}</option>
-                                 {foreach from=$page_list item=list} 
-                                 {if $list.id eq $page.parent_id} 
-                                <option value="{$list.id}" selected="selected">{$list.mark} {$list.page_name}</option>
-                                 {else} 
-                                <option value="{$list.id}">{$list.mark} {$list.page_name}</option>
-                                 {/if} 
+                                {/if}
+                                 {foreach from=$page_list item=list}
+                                    {foreach from=$page_perm item=perm}
+                                        {if $perm.unique_id eq $list.unique_id}
+                                            {if $list.id eq $page.parent_id}
+                                                <option value="{$list.id}" selected="selected">{$list.mark} {$list.page_name}</option>
+                                            {else}
+                                                <option value="{$list.id}">{$list.mark} {$list.page_name}</option>
+                                            {/if}
+                                        {/if}
+                                    {/foreach}
                                  {/foreach} 
                             </select>
                         </td>

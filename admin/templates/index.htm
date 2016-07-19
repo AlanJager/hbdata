@@ -22,7 +22,7 @@
                 <div class="boxTitle">{$lang.title_page}</div>
                 <ul class="ipage">
                      {foreach from=$page_list item=page_list} 
-                    <a href="page.php?rec=edit&id={$page_list.id}"{if $page_list.level gt 0} class="child{$page_list.level}"{/if}>{$page_list.page_name}</a>
+                    <a href="page.php?name={$page_list.unique_id}&rec=edit"{if $page_list.level gt 0} class="child{$page_list.level}"{/if}>{$page_list.page_name}</a>
                      {/foreach} 
                     <div class="clear"></div>
                 </ul>

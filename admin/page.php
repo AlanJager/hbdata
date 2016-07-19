@@ -11,6 +11,8 @@
 define('IN_HBDATA', true);
 
 require (dirname(__FILE__) . '/include/init.php');
+require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
+$rbac = new PhpRbac\Rbac();
 
 //权限判断
 require ('auth.php');
@@ -47,11 +49,36 @@ elseif ($rec == 'add') {
         'href' => 'page.php'
     ));
 
+    //获得用户权限内的页面
+    $roles = $rbac->Users->allRoles($_USER['user_id']);
+    $sql = "SELECT * FROM ".$hbdata->table('page');
+    $query = $hbdata->query($sql);
+    $page_perm = array();
+    foreach($roles as $role){
+        $sql = "SELECT ID FROM ".$hbdata->table('permissions')."WHERE Title = 'admin/page.php?manage'";
+        $parent_page = $hbdata->fetch_array($hbdata->query($sql));
+        if($rbac->Roles->hasPermission($role['ID'], $parent_page['ID']) == true){
+            $can_empty = true;
+        }
+        else{
+            $can_empty = false;
+        }
+        while ($page = $hbdata->fetch_array($query)){
+            $sql = "SELECT ID FROM ".$hbdata->table('permissions')."WHERE Title = 'admin/page.php?name=".$page['unique_id']."'";
+            $result = $hbdata->fetch_array($hbdata->query($sql));
+            if($rbac->Roles->hasPermission($role['ID'], $result['ID']) == true){
+                array_push($page_perm, $page);
+            }
+        }
+    }
+
     // CSRF防御令牌生成
     $smarty->assign('token', $firewall->set_token('page_add'));
 
     // 赋值给模板
     $smarty->assign('form_action', 'insert');
+    $smarty->assign('page_perm', $page_perm);
+    $smarty->assign('can_empty', $can_empty);
     $smarty->assign('page_list', $hbdata->get_page_nolevel());
 
     $smarty->display('page.htm');
@@ -72,6 +99,7 @@ elseif ($rec == 'insert') {
 
     $sql = "INSERT INTO " . $hbdata->table('page') . " (id, unique_id, parent_id, page_name, content ,keywords, description,sort)" . " VALUES (NULL, '$_POST[unique_id]', '$_POST[parent_id]', '$_POST[page_name]', '$_POST[content]', '$_POST[keywords]', '$_POST[description]', '$_POST[sort]')";
     $hbdata->query($sql);
+    $hbdata->add_page_access($_POST['parent_id'], $_POST['page_name']);
 
     $hbdata->create_admin_log($_LANG['page_add'] . ': ' . $_POST[page_name]);
     $hbdata->hbdata_msg($_LANG['page_add_succes'], 'page.php');
@@ -87,6 +115,29 @@ elseif ($rec == 'edit') {
         'href' => 'page.php'
     ));
 
+    //获得用户权限内的页面
+    $roles = $rbac->Users->allRoles($_USER['user_id']);
+    $sql = "SELECT * FROM ".$hbdata->table('page');
+    $query = $hbdata->query($sql);
+    $page_perm = array();
+    foreach($roles as $role){
+        $sql = "SELECT ID FROM ".$hbdata->table('permissions')."WHERE Title = 'admin/page.php?manage'";
+        $parent_page = $hbdata->fetch_array($hbdata->query($sql));
+        if($rbac->Roles->hasPermission($role['ID'], $parent_page['ID']) == true){
+            $can_empty = true;
+        }
+        else{
+            $can_empty = false;
+        }
+        while ($page = $hbdata->fetch_array($query)){
+            $sql = "SELECT ID FROM ".$hbdata->table('permissions')."WHERE Title = 'admin/page.php?name=".$page['unique_id']."'";
+            $result = $hbdata->fetch_array($hbdata->query($sql));
+            if($rbac->Roles->hasPermission($role['ID'], $result['ID']) == true){
+                array_push($page_perm, $page);
+            }
+        }
+    }
+
     // 验证并获取合法的ID
     $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
 
@@ -98,6 +149,8 @@ elseif ($rec == 'edit') {
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
+    $smarty->assign('page_perm', $page_perm);
+    $smarty->assign('can_empty', $can_empty);
     $smarty->assign('page_list', $hbdata->get_page_nolevel(0, 0, $id));
     $smarty->assign('page', $page);
 

@@ -19,7 +19,7 @@
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <tr>
                     <th width="30" align="center">{$lang.record_id}</th>
-                    <th align="left">{$lang.manager_username}</th>
+                    <th align="center">{$lang.manager_username}</th>
                     <th align="center">{$lang.manager_email}</th>
                     <th align="center">{$lang.manager_add_time}</th>
                     <th align="center">{$lang.manager_last_login}</th>
@@ -29,7 +29,7 @@
                  {foreach from=$manager_list item=manager}
                 <tr>
                     <td align="center">{$manager.user_id}</td>
-                    <td>{$manager.user_name}</td>
+                    <td align="center">{$manager.user_name}</td>
                     <td align="center">{$manager.email}</td>
                     <td align="center">{$manager.add_time}</td>
                     <td align="center">{$manager.last_login}</td>
@@ -158,16 +158,16 @@
                         </tr>
                         {foreach from=$role_list item=role}
                         <tr>
-                            <td>
+                            <td align="center">
                                 {if $role.is_assigned}
-                                <input type="checkbox" name="{$role.role_id}" size="40" value="{$role.role_id}" checked/>
+                                <input type="checkbox" name="{$role.role_id}" size="10" value="{$role.role_id}" checked/>
                                 {else}
-                                <input type="checkbox" name="{$role.role_id}" size="40" value="{$role.role_id}" />
+                                <input type="checkbox" name="{$role.role_id}" size="10" value="{$role.role_id}" />
                                 {/if}
                             </td>
                             <td align="center">{$role.role_id}</td>
-                            <td>{$role.role_title}</td>
-                            <td>{$role.role_description}</td>
+                            <td align="center">{$role.role_title}</td>
+                            <td align="center">{$role.role_description}</td>
                         </tr>
                         {/foreach}
                     </table>

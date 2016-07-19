@@ -26,10 +26,10 @@
                 {foreach from=$role_list item=role}
                 <tr>
                     <td align="center">{$role.role_id}</td>
-                    <td>{$role.role_title}</td>
-                    <td>{$role.role_description}</td>
+                    <td align="center">{$role.role_title}</td>
+                    <td align="center">{$role.role_description}</td>
                     <td align="center"><a href="role.php?rec=edit&id={$role.role_id}">{$lang.edit}</a>
-                        | <a href="role.php?rec=set_role_permission&id={$role.role_id}">{$lang.set_role_permission}</a>
+                        | <a href="role.php?rec=edit_role_permission&id={$role.role_id}">{$lang.set_role_permission}</a>
                         | <a href="role.php?rec=del&id={$role.role_id}">{$lang.del}</a>
                     </td>
                 </tr>
@@ -88,7 +88,7 @@
                 </table>
             </form>
             {/if}
-            {if $rec eq 'set_role_permission'} 角色授权
+            {if $rec eq 'edit_role_permission'} 角色授权
             <form action="role.php?rec=update_role_permission" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
