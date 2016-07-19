@@ -23,19 +23,21 @@
                     <th align="center">{$lang.manager_email}</th>
                     <th align="center">{$lang.manager_add_time}</th>
                     <th align="center">{$lang.manager_last_login}</th>
+                    <th align="center">{$lang.user_role}</th>
                     <th align="center">{$lang.handler}</th>
                 </tr>
-                 {foreach from=$manager_list item=manager_list} 
+                 {foreach from=$manager_list item=manager}
                 <tr>
-                    <td align="center">{$manager_list.user_id}</td>
-                    <td>{$manager_list.user_name}</td>
-                    <td align="center">{$manager_list.email}</td>
-                    <td align="center">{$manager_list.add_time}</td>
-                    <td align="center">{$manager_list.last_login}</td>
+                    <td align="center">{$manager.user_id}</td>
+                    <td>{$manager.user_name}</td>
+                    <td align="center">{$manager.email}</td>
+                    <td align="center">{$manager.add_time}</td>
+                    <td align="center">{$manager.last_login}</td>
+                    <td align="center">{$manager.user_roles}</td>
                     <td align="center">
-                          <a href="manager.php?rec=edit&id={$manager_list.user_id}">{$lang.edit}</a>
-                        | <a  href="manager.php?rec=edit_user_role&id={$manager_list.user_id}">{$lang.edit_user_role}</a>
-                        | <a href="manager.php?rec=del&id={$manager_list.user_id}">{$lang.del}</a>
+                          <a href="manager.php?rec=edit&id={$manager.user_id}">{$lang.edit}</a>
+                        | <a  href="manager.php?rec=edit_user_role&id={$manager.user_id}">{$lang.edit_user_role}</a>
+                        | <a href="manager.php?rec=del&id={$manager.user_id}">{$lang.del}</a>
                     </td>
                 </tr>
                  {/foreach} 
