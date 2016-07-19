@@ -515,6 +515,7 @@ class Common extends DbMysql
     {
         $sql = "SELECT * FROM " . $this->table($table) . $where;
         $record_count = mysqli_num_rows($this->query($sql));
+
         // set page style sheet
         if (!defined('IS_ADMIN') && $GLOBALS['_CFG']['rewrite'] && !$close_rewrite) {
             $get_page = '/o';

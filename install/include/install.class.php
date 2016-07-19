@@ -93,11 +93,11 @@ class Install {
         if (is_array($sqls)) {
             foreach ($sqls as $sql) {
                 if (trim($sql) != '') {
-                    mysql_query($sql, $link);
+                    mysqli_query($link, $sql);
                 }
             }
         } else {
-            mysql_query($sqls, $link);
+            mysqli_query($link, $sqls);
         }
         return true;
     }
@@ -138,9 +138,9 @@ class Install {
             $sql = trim($sql . ' LIMIT 1');
         }
 
-        $res = mysql_query($sql, $link);
+        $res = mysqli_query($link, $sql);
         if ($res !== false) {
-            $row = mysql_fetch_row($res);
+            $row = mysqli_fetch_row($res);
 
             if ($row !== false) {
                 return $row[0];
@@ -158,7 +158,7 @@ class Install {
     function version() {
         global $link;
         if (empty($this->version)) {
-            $this->version = mysql_get_server_info($link);
+            $this->version = mysqli_get_server_info($link);
         }
         return $this->version;
     }

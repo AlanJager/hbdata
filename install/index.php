@@ -191,7 +191,7 @@ elseif ($step == 'install') {
 
 
     // 检查表单
-    if (!@$link = mysql_connect($dbhost, $dbuser, $dbpass)) {
+    if (!@$link = mysqli_connect($dbhost, $dbuser, $dbpass)) {
         $cue = $_LANG['cue_connect'];
     } elseif (!$_POST['username']) {
         $cue = $_LANG['cue_username_empty'];
@@ -217,8 +217,8 @@ elseif ($step == 'install') {
 
     // 无错误信息，完成安装
     if (!$cue) {
-        mysql_query("CREATE DATABASE IF NOT EXISTS `$dbname` default charset utf8 COLLATE utf8_general_ci");
-        mysql_select_db($dbname);
+        mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `$dbname` default charset utf8 COLLATE utf8_general_ci");
+        mysqli_select_db($link, $dbname);
 
         // 读取SQL文件到一个字符串中
         $sql = file_get_contents(I_PATH . 'data/backup/hbdataphp.sql');
