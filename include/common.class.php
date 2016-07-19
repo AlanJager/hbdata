@@ -514,7 +514,7 @@ class Common extends DbMysql
     function pager($table, $page_size = 10, $page, $page_url = '', $where = '', $get = '', $close_rewrite = false)
     {
         $sql = "SELECT * FROM " . $this->table($table) . $where;
-        $record_count = mysql_num_rows($this->query($sql));
+        $record_count = mysqli_num_rows($this->query($sql));
 
         // set page style sheet
         if (!defined('IS_ADMIN') && $GLOBALS['_CFG']['rewrite'] && !$close_rewrite) {
@@ -526,11 +526,10 @@ class Common extends DbMysql
         }
 
         $page_count = ceil($record_count / $page_size);
-        $first = $page_url . $get_page . '1' . $get;
+        $first = $page_url;
         $previous = $page_url . $get_page . ($page > 1 ? $page - 1 : 0) . $get;
         $next = $page_url . $get_page . ($page_count > $page ? $page + 1 : 0) . $get;
         $last = $page_url . $get_page . $page_count . $get;
-
         $pager = array (
             "record_count" => $record_count,
             "page_size" => $page_size,
@@ -700,9 +699,10 @@ class Common extends DbMysql
      * 通过REQUETS_URL获取权限
      * @param string $request_url
      * @param string $module
+     * @param string $page
      * @return string
      */
-    function get_permission_title($request_url = 'admin/', $module = '') {
+    function get_permission_title($request_url = 'admin/', $module = '', $page = '') {
 
         //去除前缀 */hbdata/admin/  -->  admin/
         $permission_title = strstr($request_url, 'admin');
@@ -712,16 +712,22 @@ class Common extends DbMysql
 
 
         if ($counts == 2) {
-            //可能有下列两种情况
+            //可能有下列三种情况
             //admin/item.php?rec=edit&id=1
             //admin/item.php?module=product&rec=edit
+            //admin/item.php?module=article&page=1
 
             if ($module == '') {
                 $permission_title = $tarray[0];
+            } else {
+                if ($page != '') {
+                    $permission_title = $tarray[0];
+                }
             }
         } elseif($counts >= 3) {
             //admin/item.php?module=product&rec=edit&id=1
             ///admin/nav.php?rec=nav_select&id=1&type=top
+
             if ($module != ''){
                 $permission_title = $tarray[0] . '&' . $tarray[1];
             } else {

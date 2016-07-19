@@ -37,7 +37,8 @@ if ($rec == 'default') {
     $smarty->assign('role_list', $role_list);
 
     $smarty->display('role.htm');
-} else if ($rec == "add") {
+}
+else if ($rec == "add") {
     $smarty->assign('ur_here', $_LANG['role_manage']);
     $smarty->assign('action_link', array (
         'text' => $_LANG['role_list'],
@@ -48,7 +49,8 @@ if ($rec == 'default') {
     $smarty->assign('token', $firewall->set_token('add_role'));
 
     $smarty->display('role.htm');
-} else if ($rec == "insert") {
+}
+else if ($rec == "insert") {
     if ($_USER['action_list'] != 'ALL') {
         $hbdata->hbdata_msg($_LANG['without'], 'role.php');
     }
@@ -66,7 +68,8 @@ if ($rec == 'default') {
     $rbac->Roles->add($role_title, $role_description);
     $hbdata->create_admin_log($_LANG['add_role'] . ': ' . $_POST['$role_title']);
     $hbdata->hbdata_msg($_LANG['add_role_success'], 'role.php');
-} else if ($rec == "edit") {
+}
+else if ($rec == "edit") {
     if ($_USER['action_list'] != 'ALL') {
         $hbdata->hbdata_msg($_LANG['without'], 'role.php');
     }
@@ -92,7 +95,8 @@ if ($rec == 'default') {
     $smarty->assign('role_info', $role_info);
 
     $smarty->display('role.htm');
-} else if ($rec == "update") {
+}
+else if ($rec == "update") {
     if ($_USER['action_list'] != 'ALL') {
         $hbdata->hbdata_msg($_LANG['without'], 'role.php');
     }
@@ -112,7 +116,8 @@ if ($rec == 'default') {
 
     $hbdata->create_admin_log($_LANG['edit_role'] . ': ' . $_POST['$role_title']);
     $hbdata->hbdata_msg($_LANG['role_edit_success'], 'role.php');
-} else if ($rec == "del") {
+}
+else if ($rec == "del") {
     if ($_USER['action_list'] != 'ALL') {
         $hbdata->hbdata_msg($_LANG['without'], 'role.php');
     }
@@ -126,7 +131,8 @@ if ($rec == 'default') {
     } else {
         $hbdata->hbdata_msg($_LANG['role_delete_fail'], 'role.php');
     }
-} else if ($rec == "set_role_permission") {
+}
+else if ($rec == "edit_role_permission") {
     if ($_USER['action_list'] != 'ALL') {
         $hbdata->hbdata_msg($_LANG['without'], 'role.php');
     }
@@ -150,7 +156,8 @@ if ($rec == 'default') {
     $smarty->assign('token', $firewall->set_token('edit_role'));
 
     $smarty->display('role.htm');
-} else if ($rec == 'update_role_permission') {
+}
+else if ($rec == 'update_role_permission') {
 
     $role_id = $_POST['role_id'];
 

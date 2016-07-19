@@ -35,6 +35,11 @@ if ($rec == 'default') {
     while ($row = $hbdata->fetch_array($query)) {
         $add_time = date("Y-m-d", $row['add_time']);
         $last_login = date("Y-m-d H:i:s", $row['last_login']);
+        $user_roles = '';
+        foreach ($rbac->Users->allRoles($row['user_id']) as $role) {
+            $user_roles .= ',' . $role['Title'];
+        }
+        $user_roles = trim($user_roles, ',');
 
         $manager_list[] = array (
             "user_id" => $row['user_id'],
@@ -42,7 +47,8 @@ if ($rec == 'default') {
             "email" => $row['email'],
             "action_list" => $row['action_list'],
             "add_time" => $add_time,
-            "last_login" => $last_login
+            "last_login" => $last_login,
+            "user_roles" => $user_roles
         );
     }
 
@@ -264,7 +270,7 @@ elseif($rec == 'edit_user_role'){
     }
 
 
-    $all_roles = getAllRoles();
+    $all_roles = getAllRoles($user_id);
 
 
     // TODO delete same value
@@ -280,9 +286,9 @@ elseif($rec == 'edit_user_role'){
 
 elseif ($rec == 'update_user_role'){
 
-    $role_list = getAllRoles();
-
     $user_id = $_POST['id'];
+
+    $role_list = getAllRoles($user_id);
 
     foreach ($role_list as $role) {
         $rbac->Users->unassign($role['role_id'], $user_id);
@@ -317,14 +323,18 @@ function getAllRolesForUser($user_id) {
  * 返回所有角色信息
  * @return array
  */
-function getAllRoles() {
+function getAllRoles($user_id) {
     $role_sql = "SELECT * FROM " . $GLOBALS['hbdata']->table('roles') . " ORDER BY ID ASC";
     $role_query = $GLOBALS['hbdata']->query($role_sql);
+
+
+
     while ($row = $GLOBALS['hbdata']->fetch_array($role_query)) {
         $role_list[] = array (
             "role_id" => $row['ID'],
             "role_title" => $row['Title'],
-            "role_description" => $row['Description']
+            "role_description" => $row['Description'],
+            "is_assigned" => $GLOBALS['rbac']->Users->hasRole($row['ID'], $user_id)
         );
     }
     return $role_list;

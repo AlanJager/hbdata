@@ -30,7 +30,7 @@ if ($cat_id == -1) {
 
 // 获取分页信息
 $page = $check->is_number($_REQUEST['page']) ? trim($_REQUEST['page']) : 1;
-$limit = $hbdata->pager($module, ($_DISPLAY[$module] ? $_DISPLAY[$module] : 10), $page, $hbdata->rewrite_category_url('item', $module , $cat_id), $where);
+$limit = $hbdata->pager($module, ($_DISPLAY[$module] ? $_DISPLAY[$module] : 10), $page, $hbdata->rewrite_category_url('item_category', $module , $cat_id), $where);
 
 /* 获取列表 */
 if ($module == 'product') {

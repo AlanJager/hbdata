@@ -129,9 +129,9 @@ $_DEFINED = unserialize($_CFG['defined']);
 
 
 // Smarty 过滤器
-function remove_html_comments($source, & $smarty) {
+/*function remove_html_comments($source, & $smarty) {
     return $source = preg_replace('/<!--.*{(.*)}.*-->/U', '{$1}', $source);
 }
-$smarty->register_prefilter('remove_html_comments');
+$smarty->register_prefilter('remove_html_comments');*/
 
 ?>

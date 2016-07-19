@@ -39,7 +39,7 @@ class Action extends Common
         if ($GLOBALS['_MODULE']['all']) {
             $height = (count($menu_list['single']) * 43) + (count($menu_list['column']) * 86) + 280;
         } else {
-            $record_count = mysql_num_rows($this->query("SELECT * FROM " . $this->table('page')));
+            $record_count = mysqli_num_rows($this->query("SELECT * FROM " . $this->table('page')));
             $height = $record_count * 43 + 280;
         }
         $height = $height < 550 ? 550 : $height;
@@ -569,7 +569,6 @@ class Action extends Common
                 fwrite($fd, $value);
             }
             $this->create_table($module_name);
-            $this->add_module_access($module_name);
             fclose($fd);
             
             //创建新表
@@ -622,29 +621,30 @@ class Action extends Common
     /**
      * 增加分类的权限
      * @param $module
+     * @param $module_name
      */
-    function add_module_access($module){
+    function add_module_access($module, $module_name){
         require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
         $rbac = new PhpRbac\Rbac();
         $id = $rbac->Permissions->titleId('admin/item_category.php');
-        $id = $rbac->Permissions->add('admin/item_category.php?module='.$module, '', $id);
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=add', '', $id);
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=insert', '', $id);
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=update', '', $id);
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=edit', '', $id);
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=del', '', $id);
+        $id = $rbac->Permissions->add('admin/item_category.php?module='.$module, $module_name . '分类', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=add', '添加' . $module_name . '分类', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=insert', '插入' . $module_name . '分类', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=update', '更新' . $module_name . '分类', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=edit', '编辑' . $module_name . '分类', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=del', '删除' . $module_name . '分类', $id);
 
         $id = $rbac->Permissions->titleId('admin/item.php');
-        $id = $rbac->Permissions->add('admin/item.php?module='.$module, '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=add', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=insert', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=update', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=edit', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=del', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=sort', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=set_sort', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=del_sort', '', $id);
-        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=action', '', $id);
+        $id = $rbac->Permissions->add('admin/item.php?module='.$module, $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=add', '添加' . $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=insert', '插入' . $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=update', '更新' . $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=edit', '编辑' . $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=del', '删除' . $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=sort', '筛选' . $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=set_sort', '设置首页显示' . $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=del_sort', '取消首页显示' . $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=action', '批量操作' . $module_name, $id);
         return;
     }
 
