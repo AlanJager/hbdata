@@ -149,21 +149,28 @@
              {/if}
             {if $rec eq 'edit_user_role'} 用户角色编辑
             <form action="manager.php?rec=update_user_role" method="post">
-                <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
-                    <tr>
-                        <td width="100" align="right">{$lang.user_name}</td>
-                        <td>{$user_info.user_name}</td>
-                        <input type="hidden" name="user_name" size="40" value="{$user_info.user_name}" />
-                    </tr>
-                    <tr>
-                        <td width="100" align="right">{$lang.role_title}</td>
-                        <td>
-                            {foreach from=$role_list item=role}
-                            {$role.role_title}<input type="checkbox" name="{$role.role_id}" size="40" value="{$role.role_id}" />
-                            <input type="hidden" name="role_title" size="40" value="{$role.role_title}" />
-                            {/foreach}
-                        </td>
-                    </tr>
+                    <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                        <tr>
+                            <th></th>
+                            <th align="center">{$lang.role_id}</th>
+                            <th align="center">{$lang.role_title}</th>
+                            <th align="center">{$lang.role_description}</th>
+                        </tr>
+                        {foreach from=$role_list item=role}
+                        <tr>
+                            <td>
+                                {if $role.is_assigned}
+                                <input type="checkbox" name="{$role.role_id}" size="40" value="{$role.role_id}" checked/>
+                                {else}
+                                <input type="checkbox" name="{$role.role_id}" size="40" value="{$role.role_id}" />
+                                {/if}
+                            </td>
+                            <td align="center">{$role.role_id}</td>
+                            <td>{$role.role_title}</td>
+                            <td>{$role.role_description}</td>
+                        </tr>
+                        {/foreach}
+                    </table>
                     <tr>
                         <td></td>
                         <td>
@@ -172,7 +179,7 @@
                             <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
                         </td>
                     </tr>
-                </table>
+
             </form>
             {/if}
         </div>
