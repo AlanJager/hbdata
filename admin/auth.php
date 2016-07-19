@@ -14,7 +14,16 @@ $user_id = $_USER['user_id'];
 //获取REQUEST_URL
 $request_url = $_SERVER['REQUEST_URI'];
 //获取权限名称
-$perm_title = $hbdata->get_permission_title($request_url, $_REQUEST['module']);
+if (!empty($_REQUEST['module'])){
+    $url_name = $_REQUEST['module'];
+}
+elseif(!empty($_REQUEST['name'])){
+    $url_name = $_REQUEST['name'];
+}
+else{
+    $url_name = '';
+}
+$perm_title = $hbdata->get_permission_title($request_url, $url_name);
 //检查是否具有权限
 try{
     $auth = $rbac->check($perm_title, $user_id);
