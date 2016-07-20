@@ -16,12 +16,13 @@ $rbac = new PhpRbac\Rbac();
 
 //权限判断
 require ('auth.php');
-
+//获得name
+$name = $_REQUEST['name'];
 // rec操作项的初始化
 $rec = $check->is_rec($_REQUEST['rec']) ? $_REQUEST['rec'] : 'default';
 
 $smarty->assign('rec', $rec);
-$smarty->assign('name', $_REQUEST['name']);
+$smarty->assign('name', $name);
 $smarty->assign('cur', 'page');
 
 /**
@@ -89,7 +90,8 @@ elseif ($rec == 'add') {
     $id = $rbac->Permissions->titleId('admin/item.php?module=product');
     $rbac->Permissions->add('admin/item.php?module=product&manage', '查看商品', $id);
     $id = $rbac->Permissions->titleId('admin/item.php?module=article');
-    $rbac->Permissions->add('admin/item.php?module=article&manage', '查看文章', $id);*/
+    $rbac->Permissions->add('admin/item.php?module=article&manage', '查看文章', $id);
+
     $id = $rbac->Permissions->titleId('admin/page.php?rec=update');
     $rbac->Permissions->remove($id, false);
     $id = $rbac->Permissions->titleId('admin/page.php?name=about&manage');
@@ -103,7 +105,7 @@ elseif ($rec == 'add') {
     $id = $rbac->Permissions->titleId('admin/page.php?name=job&manage');
     $rbac->Permissions->add('admin/page.php?name=job&rec=update', '更新人才招聘', $id);
     $id = $rbac->Permissions->titleId('admin/page.php?name=market&manage');
-    $rbac->Permissions->add('admin/page.php?name=market&rec=update', '更新营销网络', $id);
+    $rbac->Permissions->add('admin/page.php?name=market&rec=update', '更新营销网络', $id);*/
 
     //获得用户权限内的页面
     $user = $_USER['user_id'];
@@ -137,7 +139,7 @@ elseif ($rec == 'insert') {
 
     $sql = "INSERT INTO " . $hbdata->table('page') . " (id, unique_id, parent_id, page_name, content ,keywords, description,sort)" . " VALUES (NULL, '$_POST[unique_id]', '$_POST[parent_id]', '$_POST[page_name]', '$_POST[content]', '$_POST[keywords]', '$_POST[description]', '$_POST[sort]')";
     $hbdata->query($sql);
-    $hbdata->add_page_access($_POST['parent_id'], $_POST['unique_id']);
+    $hbdata->add_page_access($_POST['parent_id'], $_POST['unique_id'], $_POST['page_name']);
 
     $hbdata->create_admin_log($_LANG['page_add'] . ': ' . $_POST[page_name]);
     $hbdata->hbdata_msg($_LANG['page_add_succes'], 'page.php');
@@ -193,7 +195,7 @@ elseif ($rec == 'update') {
     $sql = "UPDATE " . $hbdata->table('page') . " SET unique_id = '$_POST[unique_id]', parent_id = '$_POST[parent_id]', page_name = '$_POST[page_name]', content = '$_POST[content]', keywords = '$_POST[keywords]', description = '$_POST[description]',sort = '$_POST[sort]' WHERE id = '$_POST[id]'";
     $hbdata->query($sql);
     $hbdata->del_page_access($_POST['old_unique_id']);
-    $hbdata->add_page_access($_POST['parent_id'], $_POST['unique_id']);
+    $hbdata->add_page_access($_POST['parent_id'], $_POST['unique_id'], $_POST['page_name']);
 
     $hbdata->create_admin_log($_LANG['page_edit'] . ': ' . $_POST['page_name']);
     $hbdata->hbdata_msg($_LANG['page_edit_succes'], 'page.php?name='.$_REQUEST['name'], '', '3');
@@ -207,21 +209,22 @@ elseif ($rec == 'del') {
     $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : $hbdata->hbdata_msg($_LANG['illegal'], 'page.php');
 
     $page_name = $hbdata->get_one("SELECT page_name FROM " . $hbdata->table('page') . " WHERE id = '$id'");
+    $unique_id = $hbdata->get_one("SELECT unique_id FROM ".$hbdata->table('page')."WHERE id = '$id'");
     $is_parent = $hbdata->get_one("SELECT id FROM " . $hbdata->table('page') . " WHERE parent_id = '$id'");
 
     if ($id == '1') {
-        $hbdata->hbdata_msg($_LANG['page_del_wrong'], 'page.php', '', '3');
+        $hbdata->hbdata_msg($_LANG['page_del_wrong'], 'page.php?name='.$name, '', '3');
     } elseif ($is_parent) {
         $_LANG['page_del_is_parent'] = preg_replace('/d%/Ums', $page_name, $_LANG['page_del_is_parent']);
-        $hbdata->hbdata_msg($_LANG['page_del_is_parent'], 'page.php', '', '3');
+        $hbdata->hbdata_msg($_LANG['page_del_is_parent'], 'page.php?name='.$name, '', '3');
     } else {
         if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
             $hbdata->create_admin_log($_LANG['page_del'] . ': ' . $page_name);
             $hbdata->delete($hbdata->table('page'), "id = $id", 'page.php');
-            $hbdata->del_page_access($_POST['page_name']);
+            $hbdata->del_page_access($name);
         } else {
             $_LANG['del_check'] = preg_replace('/d%/Ums', $page_name, $_LANG['del_check']);
-            $hbdata->hbdata_msg($_LANG['del_check'], 'page.php', '', '30', "page.php?rec=del&id=$id");
+            $hbdata->hbdata_msg($_LANG['del_check'], 'page.php?name='.$name, '', '30', "page.php?name=$name&rec=del&id=$id");
         }
     }
 }
