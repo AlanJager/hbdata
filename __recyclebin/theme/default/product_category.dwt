@@ -16,7 +16,7 @@
         <div id="pageLeft"> {include file="inc/product_tree.tpl"} </div>
         <div id="pageIn"> {include file="inc/ur_here.tpl"}
             <div class="productList">
-                 {foreach from=$product_list name=product_list item=product} 
+                 {foreach from=$product_list name=product_list item=product}
                 <dl {if $smarty.foreach.product_list.last}  class="last" {/if} >
                 <dt><a href="{$product.url}"><img src="{$product.thumb}" alt="{$product.name}" width="{$site.thumb_width}" height="{$site.thumb_height}" /></a></dt>
                 <dd>

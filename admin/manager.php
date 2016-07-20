@@ -297,7 +297,7 @@ elseif ($rec == 'update_user_role'){
         }
     }
 
-    //TODO 增加LOG
+   
     $hbdata->create_admin_log($_LANG['manager_edit_user'] . ': ' . $_POST['role_title']."->".$_POST['user_name']);
     $hbdata->hbdata_msg($_LANG['user_role_add_success'], 'manager.php');
 }

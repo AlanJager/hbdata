@@ -82,7 +82,6 @@ if ($rec == 'insert'){
     $hbdata->edit_module($_POST['unique_id'],'add');
     $hbdata->add_module_access($_POST['unique_id'],$_POST['category_name']);
     $hbdata->add_category_lang($_POST['unique_id'],$_POST['category_name']);
-    //$hbdata->create_table($_POST['unique_id']);
     $hbdata->create_admin_log($_LANG['category_add'] . ': ' . $_POST['unique_id']);//need to fix
     $hbdata->hbdata_msg($_LANG['category_add_succes'], 'category_manage.php');//need to fix
 }
@@ -123,7 +122,7 @@ if($rec == 'update'){
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'category_edit');
     $hbdata->edit_module($_POST['new_unique_id'],'alter',$_POST['old_unique_id']);
-    //$hbdata->create_table($_POST['new_unique_id']);
+    $hbdata->add_module_access($_POST['new_unique_id'],$_POST['new_category_name']);
     $hbdata->add_category_lang($_POST['new_unique_id'],$_POST['new_category_name']);
     $hbdata->create_admin_log($_LANG['category_edit'] . ': ' . $_POST['new_unique_id']);
     $hbdata->hbdata_msg($_LANG['category_edit_succes'], 'category_manage.php');

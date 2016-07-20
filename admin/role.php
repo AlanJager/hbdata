@@ -170,8 +170,8 @@ else if ($rec == 'update_role_permission') {
         }
     }
 
-    //TODO 增加LOG
-
+    //TODO
+    //$hbdata->create_admin_log($_LANG['add_permission'] . ': ' . $_POST['permission_description']."-->".$_POST['role_id']);
     $hbdata->hbdata_msg($_LANG['role_permission_add_success'], 'role.php');
 
 }

@@ -527,48 +527,49 @@ class Action extends Common
      * 编辑模块
      * @param （array）$file         存放data/system.hbdata内容的数组
      * @param string $fd            打开文件的流
-     * @param str $module_name      要修改或添加，删除的模块名
+     * @param str $module            要添加或删除的模块名
+     * @param str $module_old        要修改的模块名
      * @param string $action        对模块的操作行为
      */
-    function edit_module($module_name,$action,$module_old = ''){
+    function edit_module($module,$action,$module_old = ''){
         if($action == 'del') {
             $file = file(ROOT_PATH . 'data/system.hbdata');
             //分三种情况删除
             //module在第一个
-            $file[1] = str_replace(':' . $module_name . ",", ':', $file[1]);
+            $file[1] = str_replace(':' . $module. ",", ':', $file[1]);
             //module在中间
-            $file[1] = str_replace(',' . $module_name . ',', ',', $file[1]);
+            $file[1] = str_replace(',' . $module . ',', ',', $file[1]);
             //module在末尾
-            $file[1] = str_replace(',' . $module_name, '', $file[1]);
+            $file[1] = str_replace(',' . $module , '', $file[1]);
             //write into file
             $fd = fopen(ROOT_PATH . 'data/system.hbdata', "w") or die("Unable to open file!");
             foreach ($file as $value) {
                 fwrite($fd, $value);
             }
-            $this->del_lang_file($module_name);
+            $this->del_lang_file($module);
             //删除category表里对应的模块内容
-            $sql="DELETE FROM ".$this->table('category')."WHERE category = '".$module_name."'";
+            $sql="DELETE FROM ".$this->table('category')."WHERE category = '".$module."'";
             $this->query($sql);
             //删除表
-            $sql="DROP TABLE IF EXISTS".$this->table($module_name);
+            $sql="DROP TABLE IF EXISTS".$this->table($module);
             $this->query($sql);
             //删除nav
-            $sql = "DELETE FROM ".$this->table('nav')."WHERE module = '".$module_name."_category'";
+            $sql = "DELETE FROM ".$this->table('nav')."WHERE module = '".$module."_category'";
             $this->query($sql);
             //删除权限
-            $this->del_module_access($module_name);
+            $this->del_module_access($module);
             fclose($fd);
         }
         //add modele
         elseif($action == 'add') {
             $file = file(ROOT_PATH . 'data/system.hbdata');
-            $file[1] = str_replace(':', ':' . $module_name.',', $file[1]);
+            $file[1] = str_replace(':', ':' . $module.',', $file[1]);
             //write into file
             $fd = fopen(ROOT_PATH . 'data/system.hbdata', "w") or die("Unable to open file!");
             foreach ($file as $value) {
                 fwrite($fd, $value);
             }
-            $this->create_table($module_name);
+            $this->create_table($module);
             fclose($fd);
             
             //创建新表
@@ -576,16 +577,21 @@ class Action extends Common
         //alter modele
         elseif($action == 'alter') {
             $file = file(ROOT_PATH . 'data/system.hbdata');
-            $file[1] = str_replace($module_old, $module_name, $file[1]);
+            $file[1] = str_replace($module_old, $module, $file[1]);
             //write into file
             $fd = fopen(ROOT_PATH . 'data/system.hbdata', "w") or die("Unable to open file!");
             foreach ($file as $value) {
                 fwrite($fd, $value);
             }
+            
+            //删除旧语言包和旧权限
             $this->del_lang_file($module_old);
-            $sql="DROP TABLE IF EXISTS".$this->table($module_old);
+            $this->del_module_access($module_old);
+            
+            //修改表名
+            $sql="ALTER  TABLE ".$this->table($module_old)."RENAME TO".$this->table($module);
             $this->query($sql);
-            $this->create_table($module_name);
+            
             fclose($fd);
         }
     }
@@ -593,15 +599,15 @@ class Action extends Common
     /**
      * 创建新模块的表
      * @param string $sql           数据库操作语句
-     * @param str $module_name      模块名
+     * @param str $module      模块名
      */
-    function create_table($module_name){
+    function create_table($module){
         //若之前存在此表则删除
-        $sql="DROP TABLE IF EXISTS".$this->table($module_name);
+        $sql="DROP TABLE IF EXISTS".$this->table($module);
         $this->query($sql);
 
         //创建新表
-        $sql="CREATE TABLE".$this->table($module_name)."(
+        $sql="CREATE TABLE".$this->table($module)."(
         `id` mediumint(8) unsigned NOT NULL auto_increment,
         `cat_id` smallint(5) NOT NULL default '0',
         `title` varchar(150) NOT NULL default '',
