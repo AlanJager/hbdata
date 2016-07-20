@@ -74,11 +74,11 @@ INSERT INTO `hbdata_permissions` (`ID`, `Lft`, `Rght`, `Title`, `Description`) V
 (NULL, 105, 106, 'admin/page.php?name=market&rec=del', '删除营销网络'),
 (NULL, 113, 126, 'admin/category_manage.php?manage', '分类管理'),
 (NULL, 124, 125, 'admin/category_manage.php', '查看分类管理'),
-(NULL, 114, 115, 'admin/category_manage.php?rec=add', '添加'),
-(NULL, 116, 117, 'admin/category_manage.php?rec=insert', '插入'),
-(NULL, 118, 119, 'admin/category_manage.php?rec=update', '更新'),
-(NULL, 120, 121, 'admin/category_manage.php?rec=edit', '编辑'),
-(NULL, 122, 123, 'admin/category_manage.php?rec=del', '删除'),
+(NULL, 114, 115, 'admin/category_manage.php?rec=add', '添加分类'),
+(NULL, 116, 117, 'admin/category_manage.php?rec=insert', '插入分类'),
+(NULL, 118, 119, 'admin/category_manage.php?rec=update', '更新分类'),
+(NULL, 120, 121, 'admin/category_manage.php?rec=edit', '编辑分类'),
+(NULL, 122, 123, 'admin/category_manage.php?rec=del', '删除分类'),
 (NULL, 127, 140, 'admin/backup.php?manage', '备份管理'),
 (NULL, 138, 139, 'admin/backup.php', '查看备份情况'),
 (NULL, 128, 129, 'admin/backup.php?rec=backup', '备份'),
@@ -164,88 +164,19 @@ CREATE TABLE `hbdata_rolepermissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO `hbdata_rolepermissions` VALUES (1, 1, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 2, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 3, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 4, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 5, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 6, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 7, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 8, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 9, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 10, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 11, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 12, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 13, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 14, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 15, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 16, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 17, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 18, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 19, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 20, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 21, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 22, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 23, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 24, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 25, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 26, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 27, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 28, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 29, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 30, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 31, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 32, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 33, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 34, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 35, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 36, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 37, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 38, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 39, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 40, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 41, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 42, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 43, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 44, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 45, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 46, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 47, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 48, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 49, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 50, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 51, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 52, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 53, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 54, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 55, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 56, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 57, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 58, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 59, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 60, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 61, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 62, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 63, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 64, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 65, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 66, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 67, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 68, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 69, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 70, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 71, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 72, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 73, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 74, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 75, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 76, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 77, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 78, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 79, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 80, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 81, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 82, 0);
-INSERT INTO `hbdata_rolepermissions` VALUES (1, 83, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (2, 7, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (3, 18, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (4, 24, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (5, 58, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (6, 117, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (7, 102, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (8, 129, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (9, 109, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (10, 65, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (11, 95, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (12, 72, 0);
+INSERT INTO `hbdata_rolepermissions` VALUES (13, 4, 0);
+
 
 DROP TABLE IF EXISTS `hbdata_roles`;
 CREATE TABLE`hbdata_roles` (
@@ -261,7 +192,21 @@ CREATE TABLE`hbdata_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
-INSERT INTO `hbdata_roles` VALUES(1, 0, 1, 'root', 'root');
+INSERT INTO `hbdata_roles` VALUES(1, 0, 1, '超级管理员', '具有网站的最高管理权限');
+INSERT INTO `hbdata_roles` VALUES(2, 2, 3, '自定义导航栏模块管理员', '管理系统的自定义导航栏模块');
+INSERT INTO `hbdata_roles` VALUES(3, 4, 5, '首页幻灯广告模块管理员', '管理系统的首页幻灯广告模块');
+INSERT INTO `hbdata_roles` VALUES(4, 6, 7, '单页面管理模块管理员', '管理系统的单页面管理模块');
+INSERT INTO `hbdata_roles` VALUES(5, 8, 9, '分类管理模块管理员', '管理系统的分类管理模块');
+INSERT INTO `hbdata_roles` VALUES(6, 10, 11, '商品分类模块管理员', '管理系统的商品分类模块');
+INSERT INTO `hbdata_roles` VALUES(7, 12, 13, '商品模块管理员', '管理系统的商品模块');
+INSERT INTO `hbdata_roles` VALUES(8, 14, 15, '文章分类设置模块管理员', '管理系统的文章分类模块');
+INSERT INTO `hbdata_roles` VALUES(9, 16, 17, '文章模块管理员', '管理系统的文章模块');
+INSERT INTO `hbdata_roles` VALUES(10, 18, 19, '数据备份模块管理员', '管理系统的数据备份模块');
+INSERT INTO `hbdata_roles` VALUES(11, 20, 21, '留言反馈模块管理员', '管理系统的留言反馈模块');
+INSERT INTO `hbdata_roles` VALUES(12, 22, 23, '设置模板模块管理员', '管理系统的设置模板模块');
+INSERT INTO `hbdata_roles` VALUES(13, 24, 25, '系统设置模块管理员', '管理系统的系统设置模块');
+
+
 
 DROP TABLE IF EXISTS `hbdata_userroles`;
 CREATE TABLE `hbdata_userroles` (
