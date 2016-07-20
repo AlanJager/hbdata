@@ -558,6 +558,7 @@ class Action extends Common
             $this->query($sql);
             //删除权限
             $this->del_module_access($module);
+
             fclose($fd);
         }
         //add modele
