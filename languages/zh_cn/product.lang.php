@@ -1,18 +1,7 @@
 <?php
-/**
- * hbData
- * --------------------------------------------------------------------------------------------------
- * 版权所有 2016-
- * 网站地址:
- * --------------------------------------------------------------------------------------------------
- * Author: AlanJager
- * Release Date: 2016-7-4
- */
-
-// 产品中心
-$_LANG['product_category'] = '产品中心';
-$_LANG['product_tree'] = '产品分类';
-$_LANG['product_content'] = '产品介绍';
-$_LANG['product_buy'] = '购买咨询';
-$_LANG['product_news'] = '产品展示';
+$_LANG['product_category'] = '商品中心';
+$_LANG['product_tree'] = '商品分类';
+$_LANG['product_news'] = '商品新闻';
 $_LANG['product_more'] = '查看更多商品';
+$_LANG['product_previous'] = '上一篇';
+$_LANG['product_next'] = '下一篇';
