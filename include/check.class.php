@@ -141,6 +141,12 @@ class Check
             return true;
         }
     }
+
+    /**
+     * 检查别名是否能转换为表名
+     * @param $unique
+     * @return bool
+     */
     function is_unique_id_transform_table($unique){
         if(preg_match("/^[a-z]+$/", $unique)){
             return true;

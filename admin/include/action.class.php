@@ -593,7 +593,7 @@ class Action extends Common
             $sql="ALTER  TABLE ".$this->table($module_old)."RENAME TO".$this->table($module);
             $this->query($sql);
             //删除原有权限
-            $this->del_module_access($module);
+            $this->del_module_access($module_old);
 
             fclose($fd);
         }
@@ -636,8 +636,8 @@ class Action extends Common
         require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
         $rbac = new PhpRbac\Rbac();
         $id = $rbac->Permissions->titleId('admin/item_category.php');
-        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&manage', $module_name . '分类管理', $id);
-        $id = $rbac->Permissions->add('admin/item_category.php?module='.$module, $module_name . '分类查看', $id);
+        $id = $rbac->Permissions->add('admin/item_category.php?module='.$module.'&manage', $module_name . '分类管理', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module, $module_name . '分类查看', $id);
         $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=add', '添加' . $module_name . '分类', $id);
         $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=insert', '插入' . $module_name . '分类', $id);
         $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=update', '更新' . $module_name . '分类', $id);
@@ -645,8 +645,8 @@ class Action extends Common
         $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=del', '删除' . $module_name . '分类', $id);
 
         $id = $rbac->Permissions->titleId('admin/item.php');
-        $rbac->Permissions->add('admin/item.php?module='.$module.'&manage', '管理' . $module_name, $id);
-        $id = $rbac->Permissions->add('admin/item.php?module='.$module, '查看'.$module_name, $id);
+        $id = $rbac->Permissions->add('admin/item.php?module='.$module.'&manage', '管理' . $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module, '查看'.$module_name, $id);
         $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=add', '添加' . $module_name, $id);
         $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=insert', '插入' . $module_name, $id);
         $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=update', '更新' . $module_name, $id);
@@ -666,9 +666,9 @@ class Action extends Common
     function del_module_access($module){
         require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
         $rbac = new PhpRbac\Rbac();
-        $id = $rbac->Permissions->titleId('admin/item_category.php?module='.$module);
+        $id = $rbac->Permissions->titleId('admin/item_category.php?module='.$module.'&manage');
         $rbac->Permissions->remove($id, true);
-        $id = $rbac->Permissions->titleId('admin/item.php?module='.$module);
+        $id = $rbac->Permissions->titleId('admin/item.php?module='.$module.'&manage');
         $rbac->Permissions->remove($id, true);
     }
 
@@ -677,22 +677,22 @@ class Action extends Common
      * @param $parent_id
      * @param $page_name
      */
-    function add_page_access($parent_id, $page_name){
+    function add_page_access($parent_id, $page_unique_id, $page_name){
         require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
         $rbac = new PhpRbac\Rbac();
         if($parent_id != 0){
             $parent_unique_id = $this->get_one("SELECT unique_id FROM ".$this->table('page')."WHERE id = $parent_id");
-            $id = $rbac->Permissions->titleId('admin/page.php?name='.$parent_unique_id);
-            $id = $rbac->Permissions->add('admin/page.php?name='.$page_name.'&manage', '', $id);
+            $id = $rbac->Permissions->titleId('admin/page.php?name='.$parent_unique_id.'&manage');
+            $id = $rbac->Permissions->add('admin/page.php?name='.$page_unique_id.'&manage', $page_name, $id);
         }
         else{
             $id = $rbac->Permissions->titleId('admin/page.php?manage');
-            $id = $rbac->Permissions->add('admin/page.php?name='.$page_name.'&manage', '', $id);
+            $id = $rbac->Permissions->add('admin/page.php?name='.$page_unique_id.'&manage', $page_name, $id);
         }
-        $rbac->Permissions->add('admin/page.php?name='.$page_name, '', $id);
-        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=edit', '', $id);
-        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=update', '', $id);
-        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=del', '', $id);
+        $rbac->Permissions->add('admin/page.php?name='.$page_unique_id, '查看'.$page_name, $id);
+        $rbac->Permissions->add('admin/page.php?name='.$page_unique_id.'&rec=edit', '编辑'.$page_name, $id);
+        $rbac->Permissions->add('admin/page.php?name='.$page_unique_id.'&rec=update', '更新'.$page_name, $id);
+        $rbac->Permissions->add('admin/page.php?name='.$page_unique_id.'&rec=del', '删除'.$page_name, $id);
     }
 
     /**
