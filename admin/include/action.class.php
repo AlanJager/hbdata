@@ -627,7 +627,8 @@ class Action extends Common
         require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
         $rbac = new PhpRbac\Rbac();
         $id = $rbac->Permissions->titleId('admin/item_category.php');
-        $id = $rbac->Permissions->add('admin/item_category.php?module='.$module, $module_name . '分类', $id);
+        $rbac->Permissions->add('admin/item_category.php?module='.$module.'&manage', $module_name . '分类管理', $id);
+        $id = $rbac->Permissions->add('admin/item_category.php?module='.$module, $module_name . '分类查看', $id);
         $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=add', '添加' . $module_name . '分类', $id);
         $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=insert', '插入' . $module_name . '分类', $id);
         $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=update', '更新' . $module_name . '分类', $id);
@@ -635,7 +636,8 @@ class Action extends Common
         $rbac->Permissions->add('admin/item_category.php?module='.$module.'&rec=del', '删除' . $module_name . '分类', $id);
 
         $id = $rbac->Permissions->titleId('admin/item.php');
-        $id = $rbac->Permissions->add('admin/item.php?module='.$module, $module_name, $id);
+        $rbac->Permissions->add('admin/item.php?module='.$module.'&manage', '管理' . $module_name, $id);
+        $id = $rbac->Permissions->add('admin/item.php?module='.$module, '查看'.$module_name, $id);
         $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=add', '添加' . $module_name, $id);
         $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=insert', '插入' . $module_name, $id);
         $rbac->Permissions->add('admin/item.php?module='.$module.'&rec=update', '更新' . $module_name, $id);
@@ -679,6 +681,7 @@ class Action extends Common
             $id = $rbac->Permissions->add('admin/page.php?name='.$page_name, '', $id);
         }
         $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=edit', '', $id);
+        $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=update', '', $id);
         $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=del', '', $id);
     }
 
@@ -793,6 +796,140 @@ class Action extends Common
         @unlink ($file_path_b);
         return;
     }
+
+    /**
+     * 获取用户权限内的页面
+     * @param $user
+     * @return array
+     * @throws RbacUserNotProvidedException
+     */
+    function getUserPageInPerm($user){
+        require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
+        $rbac = new PhpRbac\Rbac();
+        $roles = $rbac->Users->allRoles($user);
+        $sql = "SELECT * FROM ".$this->table('page');
+        $query = $this->query($sql);
+        $page_perm = array();
+        foreach($roles as $role){
+            while ($page = $this->fetch_array($query)){
+                $sql = "SELECT ID FROM ".$this->table('permissions')."WHERE Title = 'admin/page.php?name=".$page['unique_id']."'";
+                $result = $this->fetch_array($this->query($sql));
+                if($rbac->Roles->hasPermission($role['ID'], $result['ID'])){
+                    array_push($page_perm, $page);
+                }
+            }
+        }
+        return $page_perm;
+    }
+
+    /**
+     * 返回所有角色信息
+     * @return array
+     */
+    function getAllRoles($user_id='') {
+        require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
+        $rbac = new PhpRbac\Rbac();
+        $role_sql = "SELECT * FROM " . $this->table('roles') . " ORDER BY ID ASC";
+        $role_query = $this->query($role_sql);
+        while ($row = $this->fetch_array($role_query)) {
+            $role_list[] = array (
+                "role_id" => $row['ID'],
+                "role_title" => $row['Title'],
+                "role_description" => $row['Description'],
+                "is_assigned" => $rbac->Users->hasRole($row['ID'], $user_id)
+            );
+        }
+        return $role_list;
+    }
+
+    /**
+     * 返回所有角色信息
+     * @return array
+     */
+    function getAllPermissions($role_id) {
+        $permission_sql = "SELECT * FROM " . $this->table('permissions') . " ORDER BY ID ASC";
+        $permission_query = $this->query($permission_sql);
+
+        $permission_ids = $GLOBALS['rbac']->Roles->permissions($role_id, true);
+
+        while ($row = $this->fetch_array($permission_query)) {
+            $assigned = false;
+            if (in_array($row['ID'], $permission_ids)) {
+                $assigned = true;
+            }
+            $permission_list[] = array (
+                "permission_id" => $row['ID'],
+                "permission_title" => $row['Title'],
+                "permission_description" => $row['Description'],
+                "is_assigned" => $assigned
+            );
+        }
+        return $permission_list;
+    }
+
+    /**
+     * 根据角色ID返回角色信息
+     * @return array
+     */
+    function getRoleByRoleID($role_id) {
+        $sql = "SELECT * FROM " . $this->table('roles') . " where ID = " . $role_id;
+        $query = $this->query($sql);
+        while ($row = $this->fetch_array($query)) {
+            $role_list[] = array (
+                "role_id" => $row['ID'],
+                "role_title" => $row['Title'],
+                "role_description" => $row['Description']
+            );
+        }
+        return $role_list[0];
+    }
+
+    /**
+     * 根据角色ID返回角色信息
+     * @return array
+     */
+    function updateRoleByRoleID($role_id, $role_title, $role_description) {
+        $sql = "UPDATE " . $this->table('roles') . " SET `Title`='" . $role_title . "',`Description`='" . $role_description . "' WHERE ID = " . $role_id;
+        $this->query($sql);
+
+        return $sql;
+    }
+
+    /**
+     * 返回用户信息
+     * @param $user_id
+     * @return array
+     */
+    function getUserInfoByUserID($user_id)
+    {
+        $user_sql = "SELECT * FROM " . $this->table('admin') . " where user_id = " . $user_id;
+        $user_query = $this->query($user_sql);
+        while ($row = $this->fetch_array($user_query)) {
+            $user_info[] = array (
+                "user_id" => $row['user_id'],
+                "user_name" => $row['user_name'],
+            );
+        }
+
+        return $user_info[0];
+    }
+
+    /**
+     * 返回用户所有角色
+     * @param user_id
+     * @return array
+     */
+    function getAllRolesForUser($user_id) {
+        $sql = "SELECT * FROM " . $this->table('userroles') . " where UserID = " . $user_id;
+        $query = $this->query($sql);
+        while ($row = $this->fetch_array($query)) {
+            $user_role_result_set[] = array (
+                "role_id" => $row['RoleID'],
+            );
+        }
+        return $user_role_result_set;
+    }
+    
 }
 
 ?>

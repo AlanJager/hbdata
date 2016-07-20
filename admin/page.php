@@ -21,6 +21,7 @@ require ('auth.php');
 $rec = $check->is_rec($_REQUEST['rec']) ? $_REQUEST['rec'] : 'default';
 
 $smarty->assign('rec', $rec);
+$smarty->assign('name', $_REQUEST['name']);
 $smarty->assign('cur', 'page');
 
 /**
@@ -50,21 +51,10 @@ elseif ($rec == 'add') {
     ));
 
     //获得用户权限内的页面
-    $roles = $rbac->Users->allRoles($_USER['user_id']);
-    $sql = "SELECT * FROM ".$hbdata->table('page');
-    $query = $hbdata->query($sql);
-    $page_perm = array();
-    $can_empty = $rbac->check('admin/page.php?manage', $_USER['user_id']);
-    foreach($roles as $role){
-        while ($page = $hbdata->fetch_array($query)){
-            $sql = "SELECT ID FROM ".$hbdata->table('permissions')."WHERE Title = 'admin/page.php?name=".$page['unique_id']."'";
-            $result = $hbdata->fetch_array($hbdata->query($sql));
-            if($rbac->Roles->hasPermission($role['ID'], $result['ID'])){
-                array_push($page_perm, $page);
-            }
-        }
-    }
-
+    $user = $_USER['user_id'];
+    $can_empty = $rbac->check('admin/page.php?manage', $user);
+    $page_perm = $hbdata->getUserPageInPerm($user);
+    
     // CSRF防御令牌生成
     $smarty->assign('token', $firewall->set_token('page_add'));
 
@@ -109,20 +99,9 @@ elseif ($rec == 'edit') {
     ));
 
     //获得用户权限内的页面
-    $roles = $rbac->Users->allRoles($_USER['user_id']);
-    $sql = "SELECT * FROM ".$hbdata->table('page');
-    $query = $hbdata->query($sql);
-    $page_perm = array();
-    $can_empty = $rbac->check('admin/page.php?manage', $_USER['user_id']);
-    foreach($roles as $role){
-        while ($page = $hbdata->fetch_array($query)){
-            $sql = "SELECT ID FROM ".$hbdata->table('permissions')."WHERE Title = 'admin/page.php?name=".$page['unique_id']."'";
-            $result = $hbdata->fetch_array($hbdata->query($sql));
-            if($rbac->Roles->hasPermission($role['ID'], $result['ID'])){
-                array_push($page_perm, $page);
-            }
-        }
-    }
+    $user = $_USER['user_id'];
+    $can_empty = $rbac->check('admin/page.php?manage', $user);
+    $page_perm = $hbdata->getUserPageInPerm($user);
 
     // 验证并获取合法的ID
     $id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
@@ -158,9 +137,11 @@ elseif ($rec == 'update') {
 
     $sql = "UPDATE " . $hbdata->table('page') . " SET unique_id = '$_POST[unique_id]', parent_id = '$_POST[parent_id]', page_name = '$_POST[page_name]', content = '$_POST[content]', keywords = '$_POST[keywords]', description = '$_POST[description]',sort = '$_POST[sort]' WHERE id = '$_POST[id]'";
     $hbdata->query($sql);
+    $hbdata->del_page_access($_POST['old_unique_id']);
+    $hbdata->add_page_access($_POST['parent_id'], $_POST['unique_id']);
 
     $hbdata->create_admin_log($_LANG['page_edit'] . ': ' . $_POST['page_name']);
-    $hbdata->hbdata_msg($_LANG['page_edit_succes'], 'page.php', '', '3');
+    $hbdata->hbdata_msg($_LANG['page_edit_succes'], 'page.php?name='.$_REQUEST['name'], '', '3');
 }
 
 /**
@@ -189,4 +170,5 @@ elseif ($rec == 'del') {
         }
     }
 }
+
 ?>

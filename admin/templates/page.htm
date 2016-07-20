@@ -26,7 +26,12 @@
             </div>
              {/if} 
              {if $rec eq 'add' || $rec eq 'edit'} 单页面添加或编辑
-            <form action="page.php?rec={$form_action}" method="post">
+                {if $rec eq 'add'}
+                    <form action="page.php?rec={$form_action}" method="post">
+                {/if}
+                {if $rec eq 'edit'}
+                    <form action="page.php?name={$name}&rec={$form_action}" method="post">
+                {/if}
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>
                         <td width="80" align="right">{$lang.page_name}</td>
@@ -105,7 +110,8 @@
                         <td></td>
                         <td>
                             <input type="hidden" name="token" value="{$token}" />
-                            <input type="hidden" name="id" value="{$page.id}">
+                            <input type="hidden" name="id" value="{$page.id}"/>
+                            <input type="hidden" name="old_unique_id" value="{$page.unique_id}"/>
                             <input name="submit" class="btn" type="submit" value="{$lang.btn_submit}" />
                         </td>
                     </tr>
