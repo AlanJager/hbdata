@@ -14,7 +14,7 @@
     <div id="dcMain">
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
-            {if $rec eq 'default'} 鍒嗙被鍒楄〃
+            {if $rec eq 'default'} 分类列表
             <h3><a href="{$action_link.href}" class="actionBtn add">{$action_link.text}</a>{$ur_here}</h3>
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <tr>
@@ -31,7 +31,7 @@
                 {/foreach}
             </table>
             {/if}
-            {if $rec eq 'add' || $rec eq 'edit'} 鍒嗙被娣诲姞鎴栫紪杈�
+            {if $rec eq 'add' || $rec eq 'edit'} 编辑分类或添加
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
             <form action="category_manage.php?rec={$form_action}" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
