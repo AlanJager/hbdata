@@ -170,8 +170,8 @@ else if ($rec == 'update_role_permission') {
         }
     }
 
-    //TODO 增加LOG
-
+    //TODO
+    //$hbdata->create_admin_log($_LANG['add_permission'] . ': ' . $_POST['permission_description']."-->".$_POST['role_id']);
     $hbdata->hbdata_msg($_LANG['role_permission_add_success'], 'role.php');
 
 }
@@ -236,7 +236,7 @@ function getRoleByRoleID($role_id) {
 }
 
 /**
- * 根据角色ID返回角色信息
+ * 根据角色ID更新角色信息
  * @return array
  */
 function updateRoleByRoleID($role_id, $role_title, $role_description) {

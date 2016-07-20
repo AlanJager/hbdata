@@ -582,10 +582,12 @@ class Action extends Common
             foreach ($file as $value) {
                 fwrite($fd, $value);
             }
+            
             $this->del_lang_file($module_old);
-            $sql="DROP TABLE IF EXISTS".$this->table($module_old);
+            
+            //修改表名
+            $sql="ALTER  TABLE ".$this->table($module_old)."RENAME TO".$this->table($module_name);
             $this->query($sql);
-            $this->create_table($module_name);
             fclose($fd);
         }
     }
