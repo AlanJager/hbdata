@@ -29,7 +29,7 @@
                     <td align="center">{$role.role_title}</td>
                     <td align="center">{$role.role_description}</td>
                     <td align="center"><a href="role.php?rec=edit&id={$role.role_id}">{$lang.edit}</a>
-                        | <a href="role.php?rec=edit_role_permission&id={$role.role_id}">{$lang.set_role_permission}</a>
+                        | <a href="role.php?rec=edit_role_permission&id={$role.role_id}&title={$role.role_title}">{$lang.set_role_permission}</a>
                         | <a href="role.php?rec=del&id={$role.role_id}">{$lang.del}</a>
                     </td>
                 </tr>
@@ -102,8 +102,10 @@
                         <td>
                             {if $permission.is_assigned}
                             <input type="checkbox" name="{$permission.permission_id}" size="40" value="{$permission.permission_id}" checked/>
+                            <input type="hidden" name="{$permission.permission_description}" size="40" value="" />
                             {else}
-                            <input type="checkbox" name="{$permission.permission_id}" size="40" value="{$permission.permission_id}" />
+                            <input type="checkbox" name="{$permission.permission_id}" size="40" value="{$permission.permission_id}" >
+                            <input type="hidden" name="{$permission.permission_description}" size="40" value="{$permission.permission_description}" />
                             {/if}
                         </td>
                         <td align="center">{$permission.permission_id}</td>
@@ -117,6 +119,7 @@
                         <td>
                             <input type="hidden" name="token" value="{$token}" />
                             <input type="hidden" name="role_id" value="{$role_id}" />
+                            <input type="hidden" name="role_title" value="{$role_title}" />
                             <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
                         </td>
                     </tr>

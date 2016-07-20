@@ -145,11 +145,12 @@ else if ($rec == "edit_role_permission") {
 
 
     $role_id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
-
+    $role_title =$check->is_letter($_REQUEST['title']) ? $_REQUEST['title'] : '';
 
 
     $smarty->assign("permission_list", $hbdata->getAllPermissions($role_id));
     $smarty->assign('role_id', $role_id);
+    $smarty->assign('role_title', $role_title);
 
 
     // CSRF防御令牌生成
@@ -167,11 +168,12 @@ else if ($rec == 'update_role_permission') {
         $rbac->Permissions->unassign($role_id, $permission['permission_id']);
         if ($_POST[$permission['permission_id']]) {
             $rbac->Permissions->assign($role_id, $permission['permission_id']);
+            if($_POST[$permission['permission_description']]!=""){
+                $hbdata->create_admin_log($_LANG['add_permission'] . ': ' . $_POST[$permission['permission_description']]."-->".$_LANG['role_title'].": ".$_POST['role_title']);
+            }
         }
     }
 
-    //TODO
-    //$hbdata->create_admin_log($_LANG['add_permission'] . ': ' . $_POST['permission_description']."-->".$_POST['role_id']);
     $hbdata->hbdata_msg($_LANG['role_permission_add_success'], 'role.php');
 
 }
