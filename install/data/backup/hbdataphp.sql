@@ -14,122 +14,146 @@ CREATE TABLE `hbdata_permissions` (
   KEY `Rght` (`Rght`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;
 
-
-INSERT INTO `hbdata_permissions` VALUES(NULL, 0, 1000, 'root', 'root');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 1, 4, 'admin/', '网站根目录');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 2, 3, 'admin/index.php', '网站根目录');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 5, 8, 'admin/system.php', '系统设置');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 6, 7, 'admin/system.php?rec=update', '系统设置更新');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 9, 28, 'admin/nav.php', '自定义导航栏');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 10, 11, 'admin/nav.php?rec=add', '添加导航栏页面');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 12, 13, 'admin/nav.php?rec=insert', '添加导航栏');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 14, 15, 'admin/nav.php?rec=edit', '编辑导航栏页面');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 16, 17, 'admin/nav.php?rec=update', '更新导航栏');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 18, 19, 'admin/nav.php?type=top', '切换到顶部导航栏编辑界面');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 20, 21, 'admin/nav.php?type=bottom', '切换到底部导航栏编辑界面');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 22, 23, 'admin/nav.php?type=middle', '切换到中部导航栏编辑界面');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 24, 25, 'admin/nav.php?rec=del', '删除一个导航栏');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 26, 27, 'admin/nav.php?rec=nav_select', '添加导航时动态切换导航');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 29, 38, 'admin/show.php', '首页幻灯广告');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 30, 31, 'admin/show.php?rec=insert', '添加幻灯广告');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 32, 33, 'admin/show.php?rec=update', '更新幻灯广告');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 34, 35, 'admin/show.php?rec=edit', '编辑幻灯广告');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 36, 37, 'admin/show.php?rec=del', '删除幻灯广告');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 39, 84, 'admin/page.php?manage', '单页面管理');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 40, 41, 'admin/page.php', '单页面浏览');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 42, 43, 'admin/page.php?rec=add', '添加单页面');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 44, 45, 'admin/page.php?rec=insert', '插入单页面');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 46, 47, 'admin/page.php?rec=update', '更新单页面');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 48, 71, 'admin/page.php?name=about', '公司简介');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 49, 50, 'admin/page.php?name=about&rec=edit', '编辑公司简介');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 51, 52, 'admin/page.php?name=about&rec=del', '删除公司简介');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 53, 58, 'admin/page.php?name=honor', '企业荣誉');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 54, 55, 'admin/page.php?name=honor&rec=edit', '编辑企业荣誉');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 56, 57, 'admin/page.php?name=honor&rec=del', '删除企业荣誉');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 59, 64, 'admin/page.php?name=history', '发展历程');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 60, 61, 'admin/page.php?name=history&rec=edit', '编辑发展历程');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 62, 63, 'admin/page.php?name=history&rec=del', '删除发展历程');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 65, 70, 'admin/page.php?name=contact', '联系我们');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 66, 67, 'admin/page.php?name=contact&rec=edit', '编辑联系我们');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 68, 69, 'admin/page.php?name=contact&rec=del', '删除联系我们');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 72, 77, 'admin/page.php?name=job', '人才招聘');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 73, 74, 'admin/page.php?name=job&rec=edit', '编辑人才招聘');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 75, 76, 'admin/page.php?name=job&rec=del', '删除人才招聘');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 78, 83, 'admin/page.php?name=market', '营销网络');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 79, 80, 'admin/page.php?name=market&rec=edit', '编辑营销网络');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 81, 82, 'admin/page.php?name=market&rec=del', '删除营销网络');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 84, 95, 'admin/category_manage.php', '分类管理');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 85, 86, 'admin/category_manage.php?rec=add', '添加');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 87, 88, 'admin/category_manage.php?rec=insert', '插入');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 89, 90, 'admin/category_manage.php?rec=update', '更新');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 91, 92, 'admin/category_manage.php?rec=edit', '编辑');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 93, 94, 'admin/category_manage.php?rec=del', '删除');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 96, 107, 'admin/backup.php', '备份管理');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 97, 98, 'admin/backup.php?rec=backup', '备份');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 99, 100, 'admin/backup.php?rec=restore', '恢复备份');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 101, 102, 'admin/backup.php?rec=import', '导入备份');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 103, 104, 'admin/backup.php?rec=del', '删除备份');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 105, 106, 'admin/backup.php?rec=down', '下载备份');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 108, 113, 'admin/theme.php', '设置模板');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 109, 110, 'admin/theme.php?rec=enable', '开启模板');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 111, 112, 'admin/theme.php?rec=del', '删除模板');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 114, 131, 'admin/manager.php', '用户管理');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 115, 116, 'admin/manager.php?rec=add', '添加用户');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 117, 118, 'admin/manager.php?rec=insert', '插入用户');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 119, 120, 'admin/manager.php?rec=update', '更新用户');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 121, 122, 'admin/manager.php?rec=edit', '编辑用户');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 123, 124, 'admin/manager.php?rec=del', '删除用户');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 125, 126, 'admin/manager.php?rec=manager_log', '操作日志');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 127, 128, 'admin/manager.php?rec=edit_user_role', '编辑用户角色');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 129, 130, 'admin/manager.php?rec=update_user_role', '更新用户角色');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 132, 147, 'admin/role.php', '角色管理');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 133, 134, 'admin/role.php?rec=add', '添加角色');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 135, 136, 'admin/role.php?rec=insert', '插入角色');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 137, 138, 'admin/role.php?rec=update', '更新角色');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 139, 140, 'admin/role.php?rec=edit', '编辑角色');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 141, 142, 'admin/role.php?rec=del', '删除角色');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 143, 144, 'admin/role.php?rec=edit_role_permission', '编辑角色权限');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 145, 146, 'admin/role.php?rec=update_role_permission', '更新角色权限');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 148, 157, 'admin/guestbook.php', '留言反馈');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 149, 150, 'admin/guestbook.php?rec=read', '阅读留言');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 151, 152, 'admin/guestbook.php?rec=reply', '回复留言');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 153, 154, 'admin/guestbook.php?rec=show_hidden', '显示或隐藏留言');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 155, 156, 'admin/guestbook.php?rec=del_all', '删除留言');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 157, 183, 'admin/item_category.php', '分类管理');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 159, 170, 'admin/item_category.php?module=product', '商品分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 160, 161, 'admin/item_category.php?module=product&rec=add', '添加商品分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 162, 163, 'admin/item_category.php?module=product&rec=insert', '插入商品分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 164, 165, 'admin/item_category.php?module=product&rec=update', '更新商品分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 166, 167, 'admin/item_category.php?module=product&rec=edit', '编辑商品分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 168, 169, 'admin/item_category.php?module=product&rec=del', '删除商品分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 171, 182, 'admin/item_category.php?module=article', '文章分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 172, 173, 'admin/item_category.php?module=article&rec=add', '添加文章分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 174, 175, 'admin/item_category.php?module=article&rec=insert', '插入文章分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 176, 177, 'admin/item_category.php?module=article&rec=update', '更新文章分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 178, 179, 'admin/item_category.php?module=article&rec=edit', '编辑文章分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 180, 181, 'admin/item_category.php?module=article&rec=del', '删除文章分类');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 184, 227, 'admin/item.php', '分类项管理');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 185, 206, 'admin/item.php?module=product', '商品');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 186, 187, 'admin/item.php?module=product&rec=add', '添加商品');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 188, 189, 'admin/item.php?module=product&rec=insert', '插入商品');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 190, 191, 'admin/item.php?module=product&rec=update', '更新商品');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 192, 193, 'admin/item.php?module=product&rec=edit', '编辑商品');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 194, 195, 'admin/item.php?module=product&rec=del', '删除商品');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 196, 197, 'admin/item.php?module=product&rec=re_thumb', '重新生成商品略缩图');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 198, 199, 'admin/item.php?module=product&rec=sort', '筛选商品');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 200, 201, 'admin/item.php?module=product&rec=set_sort', '设置首页显示商品');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 202, 203, 'admin/item.php?module=product&rec=del_sort', '取消首页显示商品');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 204, 205, 'admin/item.php?module=product&rec=action', '批量操作商品');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 207, 226, 'admin/item.php?module=article', '文章');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 208, 209, 'admin/item.php?module=article&rec=add', '添加文章');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 210, 211, 'admin/item.php?module=article&rec=insert', '插入文章');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 212, 213, 'admin/item.php?module=article&rec=update', '更新文章');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 214, 215, 'admin/item.php?module=article&rec=edit', '编辑文章');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 216, 217, 'admin/item.php?module=article&rec=del', '删除文章');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 218, 219, 'admin/item.php?module=article&rec=sort', '筛选文章');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 220, 221, 'admin/item.php?module=article&rec=set_sort', '设置首页显示文章');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 222, 223, 'admin/item.php?module=article&rec=del_sort', '取消首页显示文章');
-INSERT INTO `hbdata_permissions` VALUES(NULL, 224, 225, 'admin/item.php?module=article&rec=action', '批量操作文章');
+INSERT INTO `hbdata_permissions` (`ID`, `Lft`, `Rght`, `Title`, `Description`) VALUES
+(NULL, 0, 277, 'root', 'root'),
+(NULL, 1, 4, 'admin/', '网站根目录'),
+(NULL, 2, 3, 'admin/index.php', '网站根目录'),
+(NULL, 5, 10, 'admin/system.php?manage', '系统设置'),
+(NULL, 6, 7, 'admin/system.php', '查看系统设置'),
+(NULL, 8, 9, 'admin/system.php?rec=update', '系统设置更新'),
+(NULL, 11, 32, 'admin/nav.php?manage', '自定义导航栏'),
+(NULL, 30, 31, 'admin/nav.php', '查看导航栏'),
+(NULL, 12, 13, 'admin/nav.php?rec=add', '添加导航栏页面'),
+(NULL, 14, 15, 'admin/nav.php?rec=insert', '添加导航栏'),
+(NULL, 16, 17, 'admin/nav.php?rec=edit', '编辑导航栏页面'),
+(NULL, 18, 19, 'admin/nav.php?rec=update', '更新导航栏'),
+(NULL, 20, 21, 'admin/nav.php?type=top', '切换到顶部导航栏编辑界面'),
+(NULL, 22, 23, 'admin/nav.php?type=bottom', '切换到底部导航栏编辑界面'),
+(NULL, 24, 25, 'admin/nav.php?type=middle', '切换到中部导航栏编辑界面'),
+(NULL, 26, 27, 'admin/nav.php?rec=del', '删除一个导航栏'),
+(NULL, 28, 29, 'admin/nav.php?rec=nav_select', '添加导航时动态切换导航'),
+(NULL, 33, 44, 'admin/show.php?manage', '首页幻灯广告'),
+(NULL, 42, 43, 'admin/show.php', '查看幻灯广告'),
+(NULL, 34, 35, 'admin/show.php?rec=insert', '添加幻灯广告'),
+(NULL, 36, 37, 'admin/show.php?rec=update', '更新幻灯广告'),
+(NULL, 38, 39, 'admin/show.php?rec=edit', '编辑幻灯广告'),
+(NULL, 40, 41, 'admin/show.php?rec=del', '删除幻灯广告'),
+(NULL, 45, 112, 'admin/page.php?manage', '单页面管理'),
+(NULL, 46, 47, 'admin/page.php', '单页面浏览'),
+(NULL, 48, 49, 'admin/page.php?rec=add', '添加单页面'),
+(NULL, 50, 51, 'admin/page.php?rec=insert', '插入单页面'),
+(NULL, 52, 91, 'admin/page.php?name=about&manage', '公司简介'),
+(NULL, 87, 88, 'admin/page.php?name=about', '查看公司简介'),
+(NULL, 53, 54, 'admin/page.php?name=about&rec=edit', '编辑公司简介'),
+(NULL, 89, 90, 'admin/page.php?name=about&rec=update', '更新公司简介'),
+(NULL, 55, 56, 'admin/page.php?name=about&rec=del', '删除公司简介'),
+(NULL, 57, 66, 'admin/page.php?name=honor&manage', '企业荣誉'),
+(NULL, 62, 63, 'admin/page.php?name=honor', '查看企业荣誉'),
+(NULL, 58, 59, 'admin/page.php?name=honor&rec=edit', '编辑企业荣誉'),
+(NULL, 64, 65, 'admin/page.php?name=honor&rec=update', '更新企业荣誉'),
+(NULL, 60, 61, 'admin/page.php?name=honor&rec=del', '删除企业荣誉'),
+(NULL, 67, 76, 'admin/page.php?name=history&manage', '发展历程'),
+(NULL, 72, 73, 'admin/page.php?name=history', '查看发展历程'),
+(NULL, 68, 69, 'admin/page.php?name=history&rec=edit', '编辑发展历程'),
+(NULL, 74, 75, 'admin/page.php?name=history&rec=update', '更新发展历程'),
+(NULL, 70, 71, 'admin/page.php?name=history&rec=del', '删除发展历程'),
+(NULL, 77, 86, 'admin/page.php?name=contact&manage', '联系我们'),
+(NULL, 82, 83, 'admin/page.php?name=contact', '查看联系我们'),
+(NULL, 78, 79, 'admin/page.php?name=contact&rec=edit', '编辑联系我们'),
+(NULL, 84, 85, 'admin/page.php?name=contact&rec=update', '更新联系我们'),
+(NULL, 80, 81, 'admin/page.php?name=contact&rec=del', '删除联系我们'),
+(NULL, 92, 101, 'admin/page.php?name=job&manage', '人才招聘'),
+(NULL, 97, 98, 'admin/page.php?name=job', '查看人才招聘'),
+(NULL, 93, 94, 'admin/page.php?name=job&rec=edit', '编辑人才招聘'),
+(NULL, 99, 100, 'admin/page.php?name=job&rec=update', '更新人才招聘'),
+(NULL, 95, 96, 'admin/page.php?name=job&rec=del', '删除人才招聘'),
+(NULL, 102, 111, 'admin/page.php?name=market&manage', '营销网络'),
+(NULL, 107, 108, 'admin/page.php?name=market', '查看营销网络'),
+(NULL, 103, 104, 'admin/page.php?name=market&rec=edit', '编辑营销网络'),
+(NULL, 109, 110, 'admin/page.php?name=market&rec=update', '更新营销网络'),
+(NULL, 105, 106, 'admin/page.php?name=market&rec=del', '删除营销网络'),
+(NULL, 113, 126, 'admin/category_manage.php?manage', '分类管理'),
+(NULL, 124, 125, 'admin/category_manage.php', '查看分类管理'),
+(NULL, 114, 115, 'admin/category_manage.php?rec=add', '添加'),
+(NULL, 116, 117, 'admin/category_manage.php?rec=insert', '插入'),
+(NULL, 118, 119, 'admin/category_manage.php?rec=update', '更新'),
+(NULL, 120, 121, 'admin/category_manage.php?rec=edit', '编辑'),
+(NULL, 122, 123, 'admin/category_manage.php?rec=del', '删除'),
+(NULL, 127, 140, 'admin/backup.php?manage', '备份管理'),
+(NULL, 138, 139, 'admin/backup.php', '查看备份情况'),
+(NULL, 128, 129, 'admin/backup.php?rec=backup', '备份'),
+(NULL, 130, 131, 'admin/backup.php?rec=restore', '恢复备份'),
+(NULL, 132, 133, 'admin/backup.php?rec=import', '导入备份'),
+(NULL, 134, 135, 'admin/backup.php?rec=del', '删除备份'),
+(NULL, 136, 137, 'admin/backup.php?rec=down', '下载备份'),
+(NULL, 141, 148, 'admin/theme.php?manage', '设置模板'),
+(NULL, 146, 147, 'admin/theme.php', '查看模板'),
+(NULL, 142, 143, 'admin/theme.php?rec=enable', '开启模板'),
+(NULL, 144, 145, 'admin/theme.php?rec=del', '删除模板'),
+(NULL, 149, 168, 'admin/manager.php?manage', '用户管理'),
+(NULL, 166, 167, 'admin/manager.php', '查看用户'),
+(NULL, 150, 151, 'admin/manager.php?rec=add', '添加用户'),
+(NULL, 152, 153, 'admin/manager.php?rec=insert', '插入用户'),
+(NULL, 154, 155, 'admin/manager.php?rec=update', '更新用户'),
+(NULL, 156, 157, 'admin/manager.php?rec=edit', '编辑用户'),
+(NULL, 158, 159, 'admin/manager.php?rec=del', '删除用户'),
+(NULL, 160, 161, 'admin/manager.php?rec=manager_log', '操作日志'),
+(NULL, 162, 163, 'admin/manager.php?rec=edit_user_role', '编辑用户角色'),
+(NULL, 164, 165, 'admin/manager.php?rec=update_user_role', '更新用户角色'),
+(NULL, 169, 186, 'admin/role.php?manage', '角色管理'),
+(NULL, 184, 185, 'admin/role.php', '查看角色'),
+(NULL, 170, 171, 'admin/role.php?rec=add', '添加角色'),
+(NULL, 172, 173, 'admin/role.php?rec=insert', '插入角色'),
+(NULL, 174, 175, 'admin/role.php?rec=update', '更新角色'),
+(NULL, 176, 177, 'admin/role.php?rec=edit', '编辑角色'),
+(NULL, 178, 179, 'admin/role.php?rec=del', '删除角色'),
+(NULL, 180, 181, 'admin/role.php?rec=edit_role_permission', '编辑角色权限'),
+(NULL, 182, 183, 'admin/role.php?rec=update_role_permission', '更新角色权限'),
+(NULL, 187, 198, 'admin/guestbook.php?manage', '留言反馈'),
+(NULL, 196, 197, 'admin/guestbook.php', '查看留言'),
+(NULL, 188, 189, 'admin/guestbook.php?rec=read', '阅读留言'),
+(NULL, 190, 191, 'admin/guestbook.php?rec=reply', '回复留言'),
+(NULL, 192, 193, 'admin/guestbook.php?rec=show_hidden', '显示或隐藏留言'),
+(NULL, 194, 195, 'admin/guestbook.php?rec=del_all', '删除留言'),
+(NULL, 199, 228, 'admin/item_category.php', '分类管理'),
+(NULL, 200, 213, 'admin/item_category.php?module=product&manage', '商品分类管理'),
+(NULL, 211, 212, 'admin/item_category.php?module=product', '查看商品分类'),
+(NULL, 201, 202, 'admin/item_category.php?module=product&rec=add', '添加商品分类'),
+(NULL, 203, 204, 'admin/item_category.php?module=product&rec=insert', '插入商品分类'),
+(NULL, 205, 206, 'admin/item_category.php?module=product&rec=update', '更新商品分类'),
+(NULL, 207, 208, 'admin/item_category.php?module=product&rec=edit', '编辑商品分类'),
+(NULL, 209, 210, 'admin/item_category.php?module=product&rec=del', '删除商品分类'),
+(NULL, 214, 227, 'admin/item_category.php?module=article&manage', '文章分类管理'),
+(NULL, 225, 226, 'admin/item_category.php?module=article', '查看文章分类'),
+(NULL, 215, 216, 'admin/item_category.php?module=article&rec=add', '添加文章分类'),
+(NULL, 217, 218, 'admin/item_category.php?module=article&rec=insert', '插入文章分类'),
+(NULL, 219, 220, 'admin/item_category.php?module=article&rec=update', '更新文章分类'),
+(NULL, 221, 222, 'admin/item_category.php?module=article&rec=edit', '编辑文章分类'),
+(NULL, 223, 224, 'admin/item_category.php?module=article&rec=del', '删除文章分类'),
+(NULL, 229, 276, 'admin/item.php', '分类项管理'),
+(NULL, 230, 253, 'admin/item.php?module=product&manage', '商品管理'),
+(NULL, 251, 252, 'admin/item.php?module=product', '查看商品'),
+(NULL, 231, 232, 'admin/item.php?module=product&rec=add', '添加商品'),
+(NULL, 233, 234, 'admin/item.php?module=product&rec=insert', '插入商品'),
+(NULL, 235, 236, 'admin/item.php?module=product&rec=update', '更新商品'),
+(NULL, 237, 238, 'admin/item.php?module=product&rec=edit', '编辑商品'),
+(NULL, 239, 240, 'admin/item.php?module=product&rec=del', '删除商品'),
+(NULL, 241, 242, 'admin/item.php?module=product&rec=re_thumb', '重新生成商品略缩图'),
+(NULL, 243, 244, 'admin/item.php?module=product&rec=sort', '筛选商品'),
+(NULL, 245, 246, 'admin/item.php?module=product&rec=set_sort', '设置首页显示商品'),
+(NULL, 247, 248, 'admin/item.php?module=product&rec=del_sort', '取消首页显示商品'),
+(NULL, 249, 250, 'admin/item.php?module=product&rec=action', '批量操作商品'),
+(NULL, 254, 275, 'admin/item.php?module=article&manage', '文章管理'),
+(NULL, 273, 274, 'admin/item.php?module=article', '查看文章'),
+(NULL, 255, 256, 'admin/item.php?module=article&rec=add', '添加文章'),
+(NULL, 257, 258, 'admin/item.php?module=article&rec=insert', '插入文章'),
+(NULL, 259, 260, 'admin/item.php?module=article&rec=update', '更新文章'),
+(NULL, 261, 262, 'admin/item.php?module=article&rec=edit', '编辑文章'),
+(NULL, 263, 264, 'admin/item.php?module=article&rec=del', '删除文章'),
+(NULL, 265, 266, 'admin/item.php?module=article&rec=sort', '筛选文章'),
+(NULL, 267, 268, 'admin/item.php?module=article&rec=set_sort', '设置首页显示文章'),
+(NULL, 269, 270, 'admin/item.php?module=article&rec=del_sort', '取消首页显示文章'),
+(NULL, 271, 272, 'admin/item.php?module=article&rec=action', '批量操作文章');
 
 DROP TABLE IF EXISTS `hbdata_rolepermissions`;
 CREATE TABLE `hbdata_rolepermissions` (

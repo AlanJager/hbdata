@@ -49,6 +49,61 @@ elseif ($rec == 'add') {
         'text' => $_LANG['page_list'],
         'href' => 'page.php'
     ));
+    
+    //脚本
+    /*$id = $rbac->Permissions->titleId('admin/system.php');
+    $rbac->Permissions->add('admin/system.php?manage', '查看系统设置', $id);
+    $id = $rbac->Permissions->titleId('admin/nav.php');
+    $rbac->Permissions->add('admin/nav.php?manage', '查看导航栏', $id);
+    $id = $rbac->Permissions->titleId('admin/show.php');
+    $rbac->Permissions->add('admin/show.php?manage', '查看幻灯广告', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=about');
+    $rbac->Permissions->add('admin/page.php?name=about&manage', '查看公司简介', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=honor');
+    $rbac->Permissions->add('admin/page.php?name=honor&manage', '查看企业荣誉', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=history');
+    $rbac->Permissions->add('admin/page.php?name=history&manage', '查看发展历程', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=contact');
+    $rbac->Permissions->add('admin/page.php?name=contact&manage', '查看联系我们', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=job');
+    $rbac->Permissions->add('admin/page.php?name=job&manage', '查看人才招聘', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=market');
+    $rbac->Permissions->add('admin/page.php?name=market&manage', '查看营销网络', $id);
+    $id = $rbac->Permissions->titleId('admin/category_manage.php');
+    $rbac->Permissions->add('admin/category_manage.php?manage', '查看分类管理', $id);
+
+    $id = $rbac->Permissions->titleId('admin/backup.php');
+    $rbac->Permissions->add('admin/backup.php?manage', '查看备份情况', $id);
+    $id = $rbac->Permissions->titleId('admin/theme.php');
+    $rbac->Permissions->add('admin/theme.php?manage', '查看模板', $id);
+    $id = $rbac->Permissions->titleId('admin/manager.php');
+    $rbac->Permissions->add('admin/manager.php?manage', '查看用户', $id);
+    $id = $rbac->Permissions->titleId('admin/role.php');
+    $rbac->Permissions->add('admin/role.php?manage', '查看角色', $id);
+    $id = $rbac->Permissions->titleId('admin/guestbook.php');
+    $rbac->Permissions->add('admin/guestbook.php?manage', '查看留言', $id);
+    $id = $rbac->Permissions->titleId('admin/item_category.php?module=product');
+    $rbac->Permissions->add('admin/item_category.php?module=product&manage', '查看商品分类', $id);
+    $id = $rbac->Permissions->titleId('admin/item_category.php?module=article');
+    $rbac->Permissions->add('admin/item_category.php?module=article&manage', '查看文章分类', $id);
+    $id = $rbac->Permissions->titleId('admin/item.php?module=product');
+    $rbac->Permissions->add('admin/item.php?module=product&manage', '查看商品', $id);
+    $id = $rbac->Permissions->titleId('admin/item.php?module=article');
+    $rbac->Permissions->add('admin/item.php?module=article&manage', '查看文章', $id);*/
+    $id = $rbac->Permissions->titleId('admin/page.php?rec=update');
+    $rbac->Permissions->remove($id, false);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=about&manage');
+    $rbac->Permissions->add('admin/page.php?name=about&rec=update', '更新公司简介', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=honor&manage');
+    $rbac->Permissions->add('admin/page.php?name=honor&rec=update', '更新企业荣誉', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=history&manage');
+    $rbac->Permissions->add('admin/page.php?name=history&rec=update', '更新发展历程', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=contact&manage');
+    $rbac->Permissions->add('admin/page.php?name=contact&rec=update', '更新联系我们', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=job&manage');
+    $rbac->Permissions->add('admin/page.php?name=job&rec=update', '更新人才招聘', $id);
+    $id = $rbac->Permissions->titleId('admin/page.php?name=market&manage');
+    $rbac->Permissions->add('admin/page.php?name=market&rec=update', '更新营销网络', $id);
 
     //获得用户权限内的页面
     $user = $_USER['user_id'];

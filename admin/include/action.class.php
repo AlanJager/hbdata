@@ -674,12 +674,13 @@ class Action extends Common
         if($parent_id != 0){
             $parent_unique_id = $this->get_one("SELECT unique_id FROM ".$this->table('page')."WHERE id = $parent_id");
             $id = $rbac->Permissions->titleId('admin/page.php?name='.$parent_unique_id);
-            $id = $rbac->Permissions->add('admin/page.php?name='.$page_name, '', $id);
+            $id = $rbac->Permissions->add('admin/page.php?name='.$page_name.'&manage', '', $id);
         }
         else{
-            $id = $rbac->Permissions->titleId('admin/page.php');
-            $id = $rbac->Permissions->add('admin/page.php?name='.$page_name, '', $id);
+            $id = $rbac->Permissions->titleId('admin/page.php?manage');
+            $id = $rbac->Permissions->add('admin/page.php?name='.$page_name.'&manage', '', $id);
         }
+        $rbac->Permissions->add('admin/page.php?name='.$page_name, '', $id);
         $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=edit', '', $id);
         $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=update', '', $id);
         $rbac->Permissions->add('admin/page.php?name='.$page_name.'&rec=del', '', $id);
@@ -692,7 +693,7 @@ class Action extends Common
     function del_page_access($page_name){
         require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
         $rbac = new PhpRbac\Rbac();
-        $id = $rbac->Permissions->titleId('admin/page.php?name='.$page_name);
+        $id = $rbac->Permissions->titleId('admin/page.php?name='.$page_name.'&manage');
         $rbac->Permissions->remove($id, true);
     }
     
