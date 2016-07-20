@@ -11,8 +11,7 @@
 define('IN_HBDATA', true);
 
 require (dirname(__FILE__) . '/include/init.php');
-require (ROOT_PATH  . 'admin/include/PhpRbac/autoload.php');
-$rbac = new PhpRbac\Rbac();
+
 
 //权限判断
 require ('auth.php');
