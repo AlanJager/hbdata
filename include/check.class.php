@@ -141,6 +141,11 @@ class Check
             return true;
         }
     }
+    function is_unique_id_transform_table($unique){
+        if(preg_match("/^[a-z]+$/", $unique)){
+            return true;
+        }
+    }
 
     /**
      * 检查分类别名是否存在

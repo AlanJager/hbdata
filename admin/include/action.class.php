@@ -591,7 +591,9 @@ class Action extends Common
             //修改表名
             $sql="ALTER  TABLE ".$this->table($module_old)."RENAME TO".$this->table($module);
             $this->query($sql);
-            
+            //删除原有权限
+            $this->del_module_access($module);
+
             fclose($fd);
         }
     }

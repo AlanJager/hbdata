@@ -71,6 +71,8 @@ if ($rec == 'insert'){
         $hbdata->hbdata_msg($_LANG['category_name'] . $_LANG['is_empty']);
     if (empty($_POST['unique_id']))
         $hbdata->hbdata_msg($_LANG['unique'] . $_LANG['is_empty']);
+    if (!$check->is_unique_id_transform_table($_POST['unique_id']))
+        $hbdata->hbdata_msg($_LANG['unique_id_wrong']);
     if (!$check->is_unique_id($_POST['unique_id']))
         $hbdata->hbdata_msg($_LANG['unique_id_wrong']);
     if ($check->unique_id_exist($_POST['unique_id'], $_MODULE['column']))
