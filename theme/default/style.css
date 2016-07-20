@@ -58,6 +58,9 @@ label {
     margin-bottom: 50px;
     margin-top: auto;
 }
+.intro{
+    height: 380px;
+}
 /* -- page -- */
 #pageLeft {
     float: left;
@@ -1159,6 +1162,9 @@ label {
 /* footer
 ----------------------------------------------- */
 #footer {
+    float: left;
+    width: 100%;
+    margin-top: 50px;
     border-top: 1px solid #D8D8D8;
     background-color: #EBEBEB;
     padding: 35px 0;

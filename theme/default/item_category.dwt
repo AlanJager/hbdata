@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="wrapper"> {include file="inc/header.tpl"}
-    <div class="wrap mb">
+    <div class="wrap mb intro">
         <div id="pageLeft"> {include file="inc/item_tree.tpl"} </div>
         <div id="pageIn"> {include file="inc/ur_here.tpl"}
             {if $cur eq 'product'}
