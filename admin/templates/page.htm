@@ -54,7 +54,7 @@
                         <td align="right">{$lang.parent}</td>
                         <td>
                             <select name="parent_id">
-                                {if $can_empty == true}
+                                {if $can_empty eq true}
                                 <option value="0">{$lang.empty}</option>
                                 {/if}
                                  {foreach from=$page_list item=list}

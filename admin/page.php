@@ -54,19 +54,12 @@ elseif ($rec == 'add') {
     $sql = "SELECT * FROM ".$hbdata->table('page');
     $query = $hbdata->query($sql);
     $page_perm = array();
+    $can_empty = $rbac->check('admin/page.php?manage', $_USER['user_id']);
     foreach($roles as $role){
-        $sql = "SELECT ID FROM ".$hbdata->table('permissions')."WHERE Title = 'admin/page.php?manage'";
-        $parent_page = $hbdata->fetch_array($hbdata->query($sql));
-        if($rbac->Roles->hasPermission($role['ID'], $parent_page['ID']) == true){
-            $can_empty = true;
-        }
-        else{
-            $can_empty = false;
-        }
         while ($page = $hbdata->fetch_array($query)){
             $sql = "SELECT ID FROM ".$hbdata->table('permissions')."WHERE Title = 'admin/page.php?name=".$page['unique_id']."'";
             $result = $hbdata->fetch_array($hbdata->query($sql));
-            if($rbac->Roles->hasPermission($role['ID'], $result['ID']) == true){
+            if($rbac->Roles->hasPermission($role['ID'], $result['ID'])){
                 array_push($page_perm, $page);
             }
         }
@@ -99,7 +92,7 @@ elseif ($rec == 'insert') {
 
     $sql = "INSERT INTO " . $hbdata->table('page') . " (id, unique_id, parent_id, page_name, content ,keywords, description,sort)" . " VALUES (NULL, '$_POST[unique_id]', '$_POST[parent_id]', '$_POST[page_name]', '$_POST[content]', '$_POST[keywords]', '$_POST[description]', '$_POST[sort]')";
     $hbdata->query($sql);
-    $hbdata->add_page_access($_POST['parent_id'], $_POST['page_name']);
+    $hbdata->add_page_access($_POST['parent_id'], $_POST['unique_id']);
 
     $hbdata->create_admin_log($_LANG['page_add'] . ': ' . $_POST[page_name]);
     $hbdata->hbdata_msg($_LANG['page_add_succes'], 'page.php');
@@ -120,19 +113,12 @@ elseif ($rec == 'edit') {
     $sql = "SELECT * FROM ".$hbdata->table('page');
     $query = $hbdata->query($sql);
     $page_perm = array();
+    $can_empty = $rbac->check('admin/page.php?manage', $_USER['user_id']);
     foreach($roles as $role){
-        $sql = "SELECT ID FROM ".$hbdata->table('permissions')."WHERE Title = 'admin/page.php?manage'";
-        $parent_page = $hbdata->fetch_array($hbdata->query($sql));
-        if($rbac->Roles->hasPermission($role['ID'], $parent_page['ID']) == true){
-            $can_empty = true;
-        }
-        else{
-            $can_empty = false;
-        }
         while ($page = $hbdata->fetch_array($query)){
             $sql = "SELECT ID FROM ".$hbdata->table('permissions')."WHERE Title = 'admin/page.php?name=".$page['unique_id']."'";
             $result = $hbdata->fetch_array($hbdata->query($sql));
-            if($rbac->Roles->hasPermission($role['ID'], $result['ID']) == true){
+            if($rbac->Roles->hasPermission($role['ID'], $result['ID'])){
                 array_push($page_perm, $page);
             }
         }
@@ -196,6 +182,7 @@ elseif ($rec == 'del') {
         if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
             $hbdata->create_admin_log($_LANG['page_del'] . ': ' . $page_name);
             $hbdata->delete($hbdata->table('page'), "id = $id", 'page.php');
+            $hbdata->del_page_access($_POST['page_name']);
         } else {
             $_LANG['del_check'] = preg_replace('/d%/Ums', $page_name, $_LANG['del_check']);
             $hbdata->hbdata_msg($_LANG['del_check'], 'page.php', '', '30', "page.php?rec=del&id=$id");
