@@ -30,7 +30,7 @@ if ($rec == 'default') {
         'href' => 'role.php?rec=add'
     ));
 
-    $role_list = getAllRoles();
+    $role_list = $hbdata->getAllRoles($_USER['user_id']);
 
     // 赋值给模板
     $smarty->assign('cur', 'role');
@@ -87,7 +87,7 @@ else if ($rec == "edit") {
         $hbdata->hbdata_msg($LANG['illegal'], 'role.php', '', 2);
     }
 
-    $role_info = getRoleByRoleID($role_id);
+    $role_info = $hbdata->getRoleByRoleID($role_id);
 
     // CSRF防御令牌生成
     $smarty->assign('token', $firewall->set_token('edit_role'));
@@ -112,7 +112,7 @@ else if ($rec == "update") {
     // CSRF防御令牌验证
     $firewall->check_token($_POST['token'], 'edit_role');
 
-    $sql = updateRoleByRoleID($role_id, $role_title, $role_description);
+    $sql = $hbdata->updateRoleByRoleID($role_id, $role_title, $role_description);
 
     $hbdata->create_admin_log($_LANG['edit_role'] . ': ' . $_POST['$role_title']);
     $hbdata->hbdata_msg($_LANG['role_edit_success'], 'role.php');
@@ -148,7 +148,7 @@ else if ($rec == "edit_role_permission") {
 
 
 
-    $smarty->assign("permission_list", getAllPermissions($role_id));
+    $smarty->assign("permission_list", $hbdata->getAllPermissions($role_id));
     $smarty->assign('role_id', $role_id);
 
 
@@ -161,7 +161,7 @@ else if ($rec == 'update_role_permission') {
 
     $role_id = $_POST['role_id'];
 
-    $permission_list = getAllPermissions($role_id);
+    $permission_list = $hbdata->getAllPermissions($role_id);
 
     foreach ($permission_list as $permission) {
         $rbac->Permissions->unassign($role_id, $permission['permission_id']);
@@ -176,91 +176,4 @@ else if ($rec == 'update_role_permission') {
 
 }
 
-/**
- * 返回所有角色信息
- * @return array
- */
-function getAllRoles() {
-    $role_sql = "SELECT * FROM " . $GLOBALS['hbdata']->table('roles') . " ORDER BY ID ASC";
-    $role_query = $GLOBALS['hbdata']->query($role_sql);
-    while ($row = $GLOBALS['hbdata']->fetch_array($role_query)) {
-        $role_list[] = array (
-            "role_id" => $row['ID'],
-            "role_title" => $row['Title'],
-            "role_description" => $row['Description']
-        );
-    }
-    return $role_list;
-}
-
-/**
- * 返回所有角色信息
- * @return array
- */
-function getAllPermissions($role_id) {
-    $permission_sql = "SELECT * FROM " . $GLOBALS['hbdata']->table('permissions') . " ORDER BY ID ASC";
-    $permission_query = $GLOBALS['hbdata']->query($permission_sql);
-
-    $permission_ids = $GLOBALS['rbac']->Roles->permissions($role_id, true);
-
-    while ($row = $GLOBALS['hbdata']->fetch_array($permission_query)) {
-        $assigned = false;
-        if (in_array($row['ID'], $permission_ids)) {
-            $assigned = true;
-        }
-        $permission_list[] = array (
-            "permission_id" => $row['ID'],
-            "permission_title" => $row['Title'],
-            "permission_description" => $row['Description'],
-            "is_assigned" => $assigned
-        );
-    }
-    return $permission_list;
-}
-
-/**
- * 根据角色ID返回角色信息
- * @return array
- */
-function getRoleByRoleID($role_id) {
-    $sql = "SELECT * FROM " . $GLOBALS['hbdata']->table('roles') . " where ID = " . $role_id;
-    $query = $GLOBALS['hbdata']->query($sql);
-    while ($row = $GLOBALS['hbdata']->fetch_array($query)) {
-        $role_list[] = array (
-            "role_id" => $row['ID'],
-            "role_title" => $row['Title'],
-            "role_description" => $row['Description']
-        );
-    }
-    return $role_list[0];
-}
-
-/**
- * 根据角色ID返回角色信息
- * @return array
- */
-function updateRoleByRoleID($role_id, $role_title, $role_description) {
-    $sql = "UPDATE " . $GLOBALS['hbdata']->table('roles') . " SET `Title`='" . $role_title . "',`Description`='" . $role_description . "' WHERE ID = " . $role_id;
-    $GLOBALS['hbdata']->query($sql);
-
-    return $sql;
-}
-
-/**
- * 返回用户信息
- * @param $user_id
- * @return array
- */
-function getUserInfoByUserID($user_id)
-{
-    $user_sql = "SELECT * FROM " . $GLOBALS['hbdata']->table('admin') . " where user_id = " . $user_id;
-    $user_query = $GLOBALS['hbdata']->query($user_sql);
-    while ($row = $GLOBALS['hbdata']->fetch_array($user_query)) {
-        $user_info[] = array (
-            "user_id" => $row['user_id'],
-            "user_name" => $row['user_name'],
-        );
-    }
-
-    return $user_info[0];
-}
+?>
