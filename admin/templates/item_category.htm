@@ -26,7 +26,7 @@
                 </tr>
                 {foreach from=$item_category item=cate}
                 <tr>
-                    <td align="left">{$cate.mark} <a href="item_category.php?module={$module}&cat_id={$cate.cat_id}">{$cate.cat_name}</a></td>
+                    <td align="left">{$cate.mark} <a href="item.php?module={$module}&cat_id={$cate.cat_id}">{$cate.cat_name}</a></td>
                     <td>{$cate.unique_id}</td>
                     <td>{$cate.description}</td>
                     <td align="center">{$cate.sort}</td>

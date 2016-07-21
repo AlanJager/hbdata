@@ -123,7 +123,7 @@ if ($rec == 'edit'){
 
     // 赋值给模板
     $smarty->assign('form_action', 'update');
-    $smarty->assign($module.'_category', $hbdata->get_category_nolevel($module , 'category', '0', '0', $cat_id));
+    $smarty->assign('item_category', $hbdata->get_category_nolevel($module , 'category', '0', '0', $cat_id));
     $smarty->assign('cat_info', $cat_info);
 
     $smarty->display('item_category.htm');
