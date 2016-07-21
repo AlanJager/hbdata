@@ -702,7 +702,7 @@ class Common extends DbMysql
      * @param string $page
      * @return string
      */
-    function get_permission_title($request_url = 'admin/', $module = '', $page = '') {
+    function get_permission_title($request_url = 'admin/', $module = '', $url_suffixes = '') {
 
         //去除前缀 */hbdata/admin/  -->  admin/
         $permission_title = strstr($request_url, 'admin');
@@ -712,7 +712,8 @@ class Common extends DbMysql
 
 
         if ($counts == 2) {
-            //可能有下列三种情况
+            //可能有下列四种情况
+            //admin/item_category?module=product&cat_id=3
             //admin/item.php?rec=edit&id=1
             //admin/item.php?module=product&rec=edit
             //admin/item.php?module=article&page=1
@@ -720,7 +721,7 @@ class Common extends DbMysql
             if ($module == '') {
                 $permission_title = $tarray[0];
             } else {
-                if ($page != '') {
+                if ($url_suffixes != '') {
                     $permission_title = $tarray[0];
                 }
             }
