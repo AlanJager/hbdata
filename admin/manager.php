@@ -294,11 +294,12 @@ elseif ($rec == 'update_user_role'){
         $rbac->Users->unassign($role['role_id'], $user_id);
         if ($_POST[$role['role_id']]) {
             $rbac->Users->assign($role['role_id'], $user_id);
+            if($_POST[$role['role_title']]!=""){
+                $hbdata->create_admin_log($_LANG['manager_edit_user'] . ': ' . $_POST[$role['role_title']]."->".$_POST['user_name']);
+            }
         }
     }
 
-   
-    $hbdata->create_admin_log($_LANG['manager_edit_user'] . ': ' . $_POST['role_title']."->".$_POST['user_name']);
     $hbdata->hbdata_msg($_LANG['user_role_add_success'], 'manager.php');
 }
 
