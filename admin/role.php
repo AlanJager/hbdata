@@ -124,12 +124,19 @@ else if ($rec == "del") {
 
     //TODO
     $role_id = $check->is_number($_REQUEST['id']) ? $_REQUEST['id'] : '';
+    $role_title = $hbdata->get_one("SELECT Title FROM " . $hbdata->table('roles') . " WHERE id = '$role_id'");
 
-    if ($rbac->Roles->remove($role_id, true)){
-        $hbdata->create_admin_log($_LANG['edit_role'] . ': ' . $_POST['$role_title']);
-        $hbdata->hbdata_msg($_LANG['role_delete_success'], 'role.php');
+    if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
+        if ($rbac->Roles->remove($role_id, true)){
+            $hbdata->create_admin_log($_LANG['edit_role'] . ': ' . $_POST['$role_title']);
+            $hbdata->hbdata_msg($_LANG['role_delete_success'], 'role.php');
+        }
+        else {
+            $hbdata->hbdata_msg($_LANG['role_delete_fail'], 'role.php');
+        }
     } else {
-        $hbdata->hbdata_msg($_LANG['role_delete_fail'], 'role.php');
+        $_LANG['del_check'] = preg_replace('/d%/Ums', $role_title, $_LANG['del_check']);
+        $hbdata->hbdata_msg($_LANG['del_check'], 'role.php','', '30', "role.php?rec=del&id=$role_id");
     }
 }
 else if ($rec == "edit_role_permission") {
