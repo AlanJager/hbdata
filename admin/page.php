@@ -164,8 +164,7 @@ elseif ($rec == 'del') {
         if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
             $hbdata->create_admin_log($_LANG['page_del'] . ': ' . $page_name);
             $hbdata->del_page_access($name);
-            if($hbdata->delete($hbdata->table('page'), "id = $id"))
-            $hbdata->hbdata_msg($_LANG['del_succes'], 'page.php');
+            $hbdata->delete($hbdata->table('page'), "id = $id", 'page.php');
         } else {
             $_LANG['del_check'] = preg_replace('/d%/Ums', $page_name, $_LANG['del_check']);
             $hbdata->hbdata_msg($_LANG['del_check'], 'page.php', '', '30', "page.php?name=$name&rec=del&id=$id");

@@ -354,9 +354,13 @@ class DbMysql {
      * @param $condition
      * @param string $url
      */
-    function delete($table, $condition)
+    function delete($table, $condition, $url = '')
     {
-        return $this->query("DELETE FROM $table WHERE $condition");
+        if ($this->query("DELETE FROM $table WHERE $condition")) {
+            if (!empty($url)) {
+                $GLOBALS['hbdata']->hbdata_msg($GLOBALS['_LANG']['del_succes'], $url);
+            }
+        }
     }
 
     /**

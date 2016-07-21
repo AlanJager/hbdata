@@ -103,21 +103,21 @@ p.cue {
 }
 /* 主体框架
 ----------------------------------------------- */
-#dcWrap {
+#Wrap {
  width: 100%;
  height: 100%;
 }
-#dcHead {
+#Head {
  background-color: #0072C6;
  float: left;
  height: 40px;
  width: 100%;
 }
-#dcLeft {
+#Left {
  float: left;
  width: 179px;
 }
-#dcMain {
+#Main {
  background-color: #FFFFFF;
  border-left: 1px solid #CCC;
  margin-left: 179px;
@@ -125,7 +125,7 @@ p.cue {
  *padding-top:0;
  zoom: 1/* padding-top:40px; */
 }
-#dcFooter {
+#Footer {
  height: 45px;
  background-color: #EEEEEE;
 }
