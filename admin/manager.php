@@ -204,9 +204,11 @@ elseif ($rec == 'del') {
         if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
             $hbdata->create_admin_log($_LANG['manager_del'] . ': ' . $user_name);
             $hbdata->delete($hbdata->table('admin'), "user_id = $user_id", 'manager.php');
+            $hbdata->delete($hbdata->table('userroles'), "UserID = $user_id", 'manager.php');
+            $hbdata->hbdata_msg($_LANG['manager_del_success'], 'manager.php');
         } else {
             $_LANG['del_check'] = preg_replace('/d%/Ums', $user_name, $_LANG['del_check']);
-            $hbdata->hbdata_msg($_LANG['del_check'], 'manager.php', '', '30', "manager.php?rec=del&id=$user_id");
+            $hbdata->hbdata_msg($_LANG['del_check'], 'manager.php','', '30', "manager.php?rec=del&id=$user_id");
         }
     }
 }
