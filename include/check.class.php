@@ -189,6 +189,17 @@ class Check
     }
 
     /**
+     * 判断角色名是否规范
+     * @param $rolename
+     * @return bool
+     */
+    function is_rolename($rolename) {
+        if (preg_match("/^[a-zA-Z]{1}([0-9a-zA-Z]|[._]){3,19}$/", $rolename)) {
+            return true;
+        }
+    }
+
+    /**
      * 限制密码长度为6-32位
      * @param $password
      * @return bool

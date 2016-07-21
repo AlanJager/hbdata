@@ -55,10 +55,11 @@ else if ($rec == "insert") {
         $hbdata->hbdata_msg($_LANG['without'], 'role.php');
     }
 
-    //TODO verify role name
-    $role_title = $_POST['role_title'];
+    //验证角色名
+    if (!$check->is_rolename($_POST['role_title']))
+        $hbdata->hbdata_msg($_LANG['role_rolename_cue']);
 
-    //TODO verify role description
+    $role_title = $_POST['role_title'];
     $role_description = $_POST['role_description'];
 
     // CSRF防御令牌验证
@@ -128,7 +129,7 @@ else if ($rec == "del") {
 
     if (isset($_POST['confirm']) ? $_POST['confirm'] : '') {
         if ($rbac->Roles->remove($role_id, true)){
-            $hbdata->create_admin_log($_LANG['edit_role'] . ': ' . $_POST['$role_title']);
+            $hbdata->create_admin_log($_LANG['edit_role'] . ': ' . $role_title);
             $hbdata->hbdata_msg($_LANG['role_delete_success'], 'role.php');
         }
         else {
