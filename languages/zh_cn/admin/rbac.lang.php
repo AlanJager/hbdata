@@ -49,6 +49,7 @@ $_LANG['manager_add'] = '添加用户';
 $_LANG['manager_edit'] = '编辑用户';
 $_LANG['manager_edit_user'] = '编辑用户角色';
 $_LANG['manager_del'] = '删除用户';
+$_LANG['manager_del_success'] = '删除用户成功';
 $_LANG['manager_del_wrong'] = '您不能删除此用户';
 $_LANG['manager_username'] = '用户名称';
 $_LANG['manager_email'] = 'E-mail地址';
