@@ -161,8 +161,10 @@
                             <td align="center">
                                 {if $role.is_assigned}
                                 <input type="checkbox" name="{$role.role_id}" size="10" value="{$role.role_id}" checked/>
+                                <input type="hidden" name="{$role.role_title}" size="40" value="" />
                                 {else}
                                 <input type="checkbox" name="{$role.role_id}" size="10" value="{$role.role_id}" />
+                                <input type="hidden" name="{$role.role_title}" size="40" value="{$role.role_title}" />
                                 {/if}
                             </td>
                             <td align="center">{$role.role_id}</td>
@@ -176,6 +178,7 @@
                         <td>
                             <input type="hidden" name="token" value="{$token}" />
                             <input type="hidden" name="id" value="{$user_info.user_id}" />
+                            <input type="hidden" name="user_name" value="{$user_info.user_name}" />
                             <input type="submit" name="submit" class="btn" value="{$lang.btn_submit}" />
                         </td>
                     </tr>
