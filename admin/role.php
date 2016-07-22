@@ -56,8 +56,11 @@ else if ($rec == "insert") {
     }
 
     //验证角色名
-    if (!$check->is_rolename($_POST['role_title']))
+    if (empty($_POST['role_title']))
         $hbdata->hbdata_msg($_LANG['role_rolename_cue']);
+
+    if (empty($_POST['role_description']))
+        $hbdata->hbdata_msg($_LANG['role_description_cue']);
 
     $role_title = $_POST['role_title'];
     $role_description = $_POST['role_description'];

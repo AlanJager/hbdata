@@ -22,7 +22,8 @@ $_LANG['role_add_fail'] = '添加角色失败';
 $_LANG['role_edit_fail'] = '编辑角色失败';
 $_LANG['role_delete_success'] = '删除角色成功';
 $_LANG['role_delete_fail'] = '删除角色失败';
-$_LANG['role_rolename_cue'] = '角色名不能为空且至少包含4个字符，需以字母开头。只能使用字母、数字、下划线';
+$_LANG['role_rolename_cue'] = '角色名不能为空';
+$_LANG['role_description_cue'] = '角色描述不能为空';
 
 //权限管理
 $_LANG['permission_id'] = '权限编号';
