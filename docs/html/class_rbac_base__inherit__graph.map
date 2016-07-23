@@ -1,0 +1,6 @@
+<map id="RbacBase" name="RbacBase">
+<area shape="rect" id="node5" href="$class_php_rbac_1_1_rbac_permissions_test.html" title="RbacPermissionsTest" alt="" coords="5,319,155,345"/>
+<area shape="rect" id="node6" href="$class_php_rbac_1_1_rbac_roles_test.html" title="RbacRolesTest" alt="" coords="179,319,290,345"/>
+<area shape="rect" id="node2" href="$class_rbac_setup.html" title="RbacSetup" alt="" coords="114,169,201,196"/>
+<area shape="rect" id="node3" href="$class_generic___tests___database_test_case.html" title="Generic_Tests_DatabaseTestCase" alt="" coords="46,95,269,121"/>
+</map>

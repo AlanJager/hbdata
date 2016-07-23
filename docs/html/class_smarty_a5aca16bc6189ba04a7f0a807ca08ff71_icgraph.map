@@ -1,0 +1,9 @@
+<map id="_read_file" name="_read_file">
+<area shape="rect" id="node2" href="$class_smarty.html#a0c3ac497dbe0e595d4f2a85f1168a219" title="_fetch_resource_info" alt="" coords="131,56,272,83"/>
+<area shape="rect" id="node3" href="$class_smarty.html#abfade212562dbeff89ccf453c02f5a1b" title="template_exists" alt="" coords="328,5,443,32"/>
+<area shape="rect" id="node4" href="$class_smarty.html#a315bf9a64ca2baea77f8868804d847be" title="_is_compiled" alt="" coords="336,107,435,133"/>
+<area shape="rect" id="node8" href="$class_smarty.html#af0c22913faf4ec5e6d8674c643c69cc5" title="_compile_resource" alt="" coords="320,56,451,83"/>
+<area shape="rect" id="node5" href="$class_smarty.html#acd45e8177ae9f297026ee9a0732e976c" title="fetch" alt="" coords="532,56,583,83"/>
+<area shape="rect" id="node7" href="$class_smarty.html#a2636e88dc9c8c3876aa63720c7d6ac25" title="_smarty_include" alt="" coords="499,107,616,133"/>
+<area shape="rect" id="node6" href="$class_smarty.html#a7318c22504478672906d321cba2bd713" title="display" alt="" coords="664,56,727,83"/>
+</map>

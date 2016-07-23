@@ -1,0 +1,7 @@
+<map id="getAllRoles" name="getAllRoles">
+<area shape="rect" id="node2" href="$class_db_mysql.html#a832b02974ec506549b44591dc99e2dd5" title="DbMysql\\table" alt="" coords="159,5,265,32"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="DbMysql\\query" alt="" coords="157,56,267,83"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#a97b1b694e8d8e436823f947eba5de124" title="DbMysql\\fetch_array" alt="" coords="141,107,283,133"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="DbMysql\\result" alt="" coords="331,56,440,83"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="DbMysql\\mysqli_result" alt="" coords="488,56,643,83"/>
+</map>

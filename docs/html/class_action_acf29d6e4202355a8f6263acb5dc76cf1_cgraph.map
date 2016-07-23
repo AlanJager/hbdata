@@ -1,0 +1,12 @@
+<map id="del_all" name="del_all">
+<area shape="rect" id="node2" href="$class_action.html#add469f51eb594ad93817f29ae46d5625" title="create_sql_in" alt="" coords="133,5,232,32"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a832b02974ec506549b44591dc99e2dd5" title="DbMysql\\table" alt="" coords="305,56,411,83"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="DbMysql\\query" alt="" coords="303,208,413,235"/>
+<area shape="rect" id="node7" href="$class_db_mysql.html#a97b1b694e8d8e436823f947eba5de124" title="DbMysql\\fetch_array" alt="" coords="112,157,253,184"/>
+<area shape="rect" id="node8" href="$class_action.html#aeb160ef95d065c9a2f7f927d17a606c8" title="del_image" alt="" coords="142,208,223,235"/>
+<area shape="rect" id="node9" href="$class_action.html#a0c259160d5c1300a1b36aef0c78cb37c" title="create_admin_log" alt="" coords="121,107,245,133"/>
+<area shape="rect" id="node11" href="$class_action.html#a7829a361680a7de4408cf7deb8700cef" title="hbdata_msg" alt="" coords="136,309,229,336"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="DbMysql\\result" alt="" coords="463,208,572,235"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="DbMysql\\mysqli_result" alt="" coords="620,208,775,235"/>
+<area shape="rect" id="node10" href="$class_common.html#aeee17985d43ce8318775ffb06cd0290d" title="Common\\get_ip" alt="" coords="301,107,415,133"/>
+</map>

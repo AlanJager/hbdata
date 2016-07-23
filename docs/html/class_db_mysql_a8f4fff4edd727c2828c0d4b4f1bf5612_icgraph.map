@@ -1,0 +1,18 @@
+<map id="get_one" name="get_one">
+<area shape="rect" id="node2" href="$class_action.html#a730e057eb5ea333ce8961ccbaf75d42b" title="Action\\get_admin_log" alt="" coords="132,5,279,32"/>
+<area shape="rect" id="node3" href="$class_action.html#a4c0b56c9a976c0559a33c9900e718429" title="Action\\add_page_access" alt="" coords="121,56,289,83"/>
+<area shape="rect" id="node4" href="$class_action.html#a44a6871c24477b042bd2389b98f6a62b" title="Action\\ur_here" alt="" coords="558,92,665,119"/>
+<area shape="rect" id="node5" href="$class_action.html#a271beb295e3f6edfa0038a62c9c085d8" title="Action\\page_title" alt="" coords="146,157,265,184"/>
+<area shape="rect" id="node6" href="$class_common.html#a34a5ca815e4006654e38814f8c2c1d84" title="Common\\get_unique" alt="" coords="135,208,276,235"/>
+<area shape="rect" id="node17" href="$class_db_mysql.html#ae66f46c8c5cd7317550b267601783c50" title="auto_id" alt="" coords="173,259,237,285"/>
+<area shape="rect" id="node7" href="$class_common.html#a827dd022d071a357e21432936a6cb39a" title="Common\\rewrite_url" alt="" coords="337,237,475,264"/>
+<area shape="rect" id="node8" href="$class_action.html#a48a12179c804e16929661d6aa6ed50dd" title="Action\\get_nav" alt="" coords="558,143,665,169"/>
+<area shape="rect" id="node11" href="$class_common.html#a53335a6558e87c86b0a10e9c8b84e72c" title="Common\\hbdata_url" alt="" coords="542,193,681,220"/>
+<area shape="rect" id="node12" href="$class_common.html#a60c89b728171c24704ba7e1d3b99d63f" title="Common\\get_category\l_nolevel" alt="" coords="535,245,688,286"/>
+<area shape="rect" id="node14" href="$class_common.html#a828ff172a651d90bc27ddc61b2a800af" title="Common\\get_page_list" alt="" coords="534,311,689,337"/>
+<area shape="rect" id="node15" href="$class_common.html#a69d3f6d822c72631414d7f1746d1563e" title="Common\\get_page_nolevel" alt="" coords="523,361,700,388"/>
+<area shape="rect" id="node16" href="$class_common.html#a58892abbfda3ff135d460dca67750393" title="Common\\lift" alt="" coords="566,412,657,439"/>
+<area shape="rect" id="node9" href="$class_action.html#a811c633c6042116af8bb9b21b0d20197" title="Action\\get_nav" alt="" coords="762,117,869,144"/>
+<area shape="rect" id="node10" href="$class_action.html#a175d1a05e7fa529830a7d88ad59bd083" title="Action\\hbdata_msg" alt="" coords="748,168,883,195"/>
+<area shape="rect" id="node13" href="$class_action.html#a1e565e933e7adbed18db29fd66c78e62" title="Action\\get_catalog" alt="" coords="750,307,881,333"/>
+</map>

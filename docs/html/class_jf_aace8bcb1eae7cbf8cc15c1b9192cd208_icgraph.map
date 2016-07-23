@@ -1,0 +1,37 @@
+<map id="sql" name="sql">
+<area shape="rect" id="node2" href="$class_base_nested_set.html#aed9b99dd10e1717a5d4914ad172b8307" title="BaseNestedSet\\descendant\lCount" alt="" coords="119,5,303,47"/>
+<area shape="rect" id="node3" href="$class_base_nested_set.html#a822ac9caa18ded59dea5bfdacba64ee2" title="BaseNestedSet\\delete" alt="" coords="135,71,287,98"/>
+<area shape="rect" id="node4" href="$class_base_nested_set.html#a8858ea529023ef8b603c2e11db22a4b3" title="BaseNestedSet\\deleteSubtree" alt="" coords="113,122,310,149"/>
+<area shape="rect" id="node5" href="$class_base_nested_set.html#ac15d1439d82611453624b5679fc6eac5" title="BaseNestedSet\\descendants" alt="" coords="116,173,307,199"/>
+<area shape="rect" id="node6" href="$class_base_nested_set.html#a2f37c88e919b30a57bc74f1d986911c2" title="BaseNestedSet\\children" alt="" coords="130,223,293,250"/>
+<area shape="rect" id="node7" href="$class_base_nested_set.html#a281a5f2a6aa1f62278a9f2c67cbbb048" title="BaseNestedSet\\path" alt="" coords="140,274,283,301"/>
+<area shape="rect" id="node8" href="$class_base_nested_set.html#aa121de8c7e16c365ede76f4a79d93a1e" title="BaseNestedSet\\leaves" alt="" coords="135,325,288,351"/>
+<area shape="rect" id="node9" href="$class_base_nested_set.html#ac975bfefc247069262bbfd4fc867cbe1" title="BaseNestedSet\\insertSibling" alt="" coords="117,375,305,402"/>
+<area shape="rect" id="node10" href="$class_base_nested_set.html#ad064c1518e35d26aa01694c0d3a9e3b9" title="BaseNestedSet\\insertChild" alt="" coords="122,426,301,453"/>
+<area shape="rect" id="node11" href="$class_base_nested_set.html#a6a07e3dcde30ddbadaecf8ca63cd7587" title="BaseNestedSet\\fullTree" alt="" coords="132,477,291,503"/>
+<area shape="rect" id="node12" href="$class_full_nested_set.html#a0bdd8976d36e7d04dc19d04ec064c8c0" title="FullNestedSet\\lock" alt="" coords="145,527,277,554"/>
+<area shape="rect" id="node13" href="$class_full_nested_set.html#a70e0ce481fc399de94d15754a4adf88a" title="FullNestedSet\\deleteConditional" alt="" coords="108,578,315,605"/>
+<area shape="rect" id="node14" href="$class_full_nested_set.html#a222c227fa9ce26a9f6874714712aed4b" title="FullNestedSet\\deleteSubtree\lConditional" alt="" coords="117,629,305,671"/>
+<area shape="rect" id="node15" href="$class_full_nested_set.html#a28f641fcee4d0ac16db29e2bcb43bc87" title="FullNestedSet\\leavesConditional" alt="" coords="107,695,315,722"/>
+<area shape="rect" id="node16" href="$class_full_nested_set.html#a3d0860efe60d2fad38a53594da8c5597" title="FullNestedSet\\insertSiblingData" alt="" coords="108,746,315,773"/>
+<area shape="rect" id="node17" href="$class_full_nested_set.html#abdf6fbc185457208738d0b822daf7928" title="FullNestedSet\\insertChildData" alt="" coords="113,797,309,823"/>
+<area shape="rect" id="node18" href="$class_base_rbac.html#ac751e87b3d4c4bf2feb03bee8b092755" title="BaseRbac\\count" alt="" coords="152,847,271,874"/>
+<area shape="rect" id="node19" href="$class_base_rbac.html#a1ad8c256fcecaf7131b8d5f75bfef8e6" title="BaseRbac\\pathId" alt="" coords="151,898,272,925"/>
+<area shape="rect" id="node20" href="$class_base_rbac.html#a3e96a8ddc7016dd304db81a672743a3b" title="BaseRbac\\reset" alt="" coords="154,949,269,975"/>
+<area shape="rect" id="node21" href="$class_base_rbac.html#a4c68c17fb346626bddde06676923e46b" title="BaseRbac\\assign" alt="" coords="149,999,273,1026"/>
+<area shape="rect" id="node22" href="$class_base_rbac.html#add3b0f2220debf011775b08e4c03691a" title="BaseRbac\\unassign" alt="" coords="142,1050,281,1077"/>
+<area shape="rect" id="node23" href="$class_base_rbac.html#a07d2768db445d85eed9145efad7fbb06" title="BaseRbac\\resetAssignments" alt="" coords="116,1101,307,1127"/>
+<area shape="rect" id="node24" href="$class_rbac_manager.html#a52610e7038a3f48a7eebd732bf235fa6" title="RbacManager\\check" alt="" coords="141,1151,282,1178"/>
+<area shape="rect" id="node25" href="$class_permission_manager.html#a3f25b014a2d6d5b58acee41ad150d73b" title="PermissionManager\\unassign\lRoles" alt="" coords="115,1203,308,1244"/>
+<area shape="rect" id="node26" href="$class_permission_manager.html#a8ba4c2b08ec86f1ca2f0d56544034c01" title="PermissionManager\\roles" alt="" coords="127,1269,296,1295"/>
+<area shape="rect" id="node27" href="$class_role_manager.html#a85df328cef0fb06bd143934c9b569daa" title="RoleManager\\unassignPermissions" alt="" coords="98,1319,325,1346"/>
+<area shape="rect" id="node28" href="$class_role_manager.html#a0d06dd190e562e48513d6420754a4566" title="RoleManager\\unassignUsers" alt="" coords="117,1370,305,1397"/>
+<area shape="rect" id="node29" href="$class_role_manager.html#abe933ed23ab4cd2ec31b0d198b58571d" title="RoleManager\\hasPermission" alt="" coords="117,1421,305,1447"/>
+<area shape="rect" id="node30" href="$class_role_manager.html#afa6c6abcb0f13951cf5da0d28b125ea5" title="RoleManager\\permissions" alt="" coords="125,1471,297,1498"/>
+<area shape="rect" id="node31" href="$class_rbac_user_manager.html#ada5d707a107ea250407c95d7bb1afc14" title="RbacUserManager\\hasRole" alt="" coords="121,1522,301,1549"/>
+<area shape="rect" id="node32" href="$class_rbac_user_manager.html#afcb031c88e92a255dc8bc8c6b9d403d5" title="RbacUserManager\\assign" alt="" coords="126,1573,297,1599"/>
+<area shape="rect" id="node33" href="$class_rbac_user_manager.html#a28debd14badf9c73748366de43d43387" title="RbacUserManager\\unassign" alt="" coords="119,1623,304,1650"/>
+<area shape="rect" id="node34" href="$class_rbac_user_manager.html#a482c5bb3b4c2dbfaaf40c2ce6176f99b" title="RbacUserManager\\allRoles" alt="" coords="122,1674,301,1701"/>
+<area shape="rect" id="node35" href="$class_rbac_user_manager.html#ab236c3fee68d3651c2ca8a8f6e2959c7" title="RbacUserManager\\roleCount" alt="" coords="117,1725,305,1751"/>
+<area shape="rect" id="node36" href="$class_rbac_user_manager.html#a07d2768db445d85eed9145efad7fbb06" title="RbacUserManager\\resetAssignments" alt="" coords="92,1775,331,1802"/>
+</map>

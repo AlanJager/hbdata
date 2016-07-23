@@ -1,0 +1,7 @@
+<map id="JModel" name="JModel">
+<area shape="rect" id="node2" href="$class_base_rbac.html" title="BaseRbac" alt="" coords="103,80,186,107"/>
+<area shape="rect" id="node5" href="$class_rbac_manager.html" title="RbacManager" alt="" coords="211,80,313,107"/>
+<area shape="rect" id="node6" href="$class_rbac_user_manager.html" title="RbacUserManager" alt="" coords="337,80,467,107"/>
+<area shape="rect" id="node3" href="$class_permission_manager.html" title="PermissionManager" alt="" coords="5,155,143,181"/>
+<area shape="rect" id="node4" href="$class_role_manager.html" title="RoleManager" alt="" coords="167,155,266,181"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="smtpConnect" name="smtpConnect">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#af7e9144e6dfd367a6a05dc8b794a4481" title="getSMTPInstance" alt="" coords="152,5,277,32"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#a702ec4df6918a529cf123d1d09f608b7" title="lang" alt="" coords="191,56,238,83"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#ae0867f9651bd0b2f78fb7ccca41377a2" title="serverHostname" alt="" coords="157,107,272,133"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#a57893521a989230a020d8862a3bf751e" title="edebug" alt="" coords="183,157,247,184"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a9da63815ca021badd4fbffa1f568976a" title="setLanguage" alt="" coords="325,56,421,83"/>
+</map>

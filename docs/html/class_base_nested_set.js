@@ -1,0 +1,26 @@
+var class_base_nested_set =
+[
+    [ "__construct", "class_base_nested_set.html#a80a544f451b10167436fc3ca816e08c2", null ],
+    [ "assign", "class_base_nested_set.html#a1d23d15017156e89dd87adf2d291a957", null ],
+    [ "children", "class_base_nested_set.html#a2f37c88e919b30a57bc74f1d986911c2", null ],
+    [ "delete", "class_base_nested_set.html#a822ac9caa18ded59dea5bfdacba64ee2", null ],
+    [ "deleteSubtree", "class_base_nested_set.html#a8858ea529023ef8b603c2e11db22a4b3", null ],
+    [ "depth", "class_base_nested_set.html#a0e812e7be843f7defaa59713d8756b1b", null ],
+    [ "descendantCount", "class_base_nested_set.html#aed9b99dd10e1717a5d4914ad172b8307", null ],
+    [ "descendants", "class_base_nested_set.html#ac15d1439d82611453624b5679fc6eac5", null ],
+    [ "fullTree", "class_base_nested_set.html#a6a07e3dcde30ddbadaecf8ca63cd7587", null ],
+    [ "id", "class_base_nested_set.html#a087060b582403885d08e89ad894ecc5d", null ],
+    [ "insertChild", "class_base_nested_set.html#ad064c1518e35d26aa01694c0d3a9e3b9", null ],
+    [ "insertSibling", "class_base_nested_set.html#ac975bfefc247069262bbfd4fc867cbe1", null ],
+    [ "leaves", "class_base_nested_set.html#aa121de8c7e16c365ede76f4a79d93a1e", null ],
+    [ "left", "class_base_nested_set.html#aa0258726bd4d20bfa43d8146c9530119", null ],
+    [ "parentNode", "class_base_nested_set.html#a63a6e78158b05a07eba34d66cf16bc4e", null ],
+    [ "path", "class_base_nested_set.html#a281a5f2a6aa1f62278a9f2c67cbbb048", null ],
+    [ "right", "class_base_nested_set.html#a923ed9cacbe5210acc9b15601c15195b", null ],
+    [ "sibling", "class_base_nested_set.html#aa982e3b4913db7450339555fe732a380", null ],
+    [ "table", "class_base_nested_set.html#a5aa7b43c8ec77df216a71a27da0a321c", null ],
+    [ "$ID", "class_base_nested_set.html#a68d2e459193313b71494801a69ade623", null ],
+    [ "$Left", "class_base_nested_set.html#a9f0e299eb6a8c76541a52f1c1d1ef960", null ],
+    [ "$Right", "class_base_nested_set.html#a29b7d185301efb8141ff4762954eab43", null ],
+    [ "$Table", "class_base_nested_set.html#a8bf6fc821c91521ef62aca0189fb8936", null ]
+];

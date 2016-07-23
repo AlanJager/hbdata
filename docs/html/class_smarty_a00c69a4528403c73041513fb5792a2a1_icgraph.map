@@ -1,0 +1,8 @@
+<map id="_get_filter_name" name="_get_filter_name">
+<area shape="rect" id="node2" href="$class_smarty.html#afdd4dead058273890d629d207f236239" title="register_prefilter" alt="" coords="187,5,301,32"/>
+<area shape="rect" id="node3" href="$class_smarty.html#a8208fd226842f48de08ce37305295d64" title="unregister_prefilter" alt="" coords="180,56,308,83"/>
+<area shape="rect" id="node4" href="$class_smarty.html#a1eb31d2b852e5862a3d04284614d145b" title="register_postfilter" alt="" coords="183,107,305,133"/>
+<area shape="rect" id="node5" href="$class_smarty.html#a36d917f9b975efc48682198c705eb244" title="unregister_postfilter" alt="" coords="177,157,311,184"/>
+<area shape="rect" id="node6" href="$class_smarty.html#a54426aae9228293c47e05f4ceaacd516" title="register_outputfilter" alt="" coords="178,208,310,235"/>
+<area shape="rect" id="node7" href="$class_smarty.html#a8d7427d8dc5f3d71aeb3385b9aad3700" title="unregister_outputfilter" alt="" coords="171,259,317,285"/>
+</map>

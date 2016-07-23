@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>HBDATA: F:/phpStudy/WWW/hbdata/admin/resources/js/jquery.autoTextarea.js 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HBDATA
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.11 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3a581ba30d25676e4b797b1f96d53b45.html">F:</a></li><li class="navelem"><a class="el" href="dir_d93ed94f554929dcb568eaeedc20c95a.html">phpStudy</a></li><li class="navelem"><a class="el" href="dir_ddaee2cbd2c58e13ac3f3ddc3ac7c112.html">WWW</a></li><li class="navelem"><a class="el" href="dir_5fe62192234219e42f96c1558d355b57.html">hbdata</a></li><li class="navelem"><a class="el" href="dir_5ab86c307a2d41e926486cae503a186c.html">admin</a></li><li class="navelem"><a class="el" href="dir_6007cfff240ec97653080f074922863a.html">resources</a></li><li class="navelem"><a class="el" href="dir_e558aa9cef0e6fc14b7ded9a42e772de.html">js</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">jquery.autoTextarea.js</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* autoTextarea-文本框根据输入内容自适应高度</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* 参数 maxHeight:null,//文本框是否自动撑高，默认：null，不自动撑高；如果自动撑高必须输入数值，该值作为文本框自动撑高的最大高度</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* 参数 minHeight:$(this).height()//默认最小高度，也就是文本框最初的高度，当内容高度小于这个高度的时候，文本以这个高度显示</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*/</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;(<span class="keyword">function</span>($){</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    $.fn.autoTextarea = <span class="keyword">function</span>(options) {</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        var defaults={</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;            maxHeight:null,<span class="comment">//文本框是否自动撑高，默认：null，不自动撑高；如果自动撑高必须输入数值，该值作为文本框自动撑高的最大高度</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;            minHeight:$(<span class="keyword">this</span>).height() <span class="comment">//默认最小高度，也就是文本框最初的高度，当内容高度小于这个高度的时候，文本以这个高度显示</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        };</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        var opts = $.extend({},defaults,options);</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordflow">return</span> $(<span class="keyword">this</span>).each(<span class="keyword">function</span>() {</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            $(<span class="keyword">this</span>).bind(<span class="stringliteral">&quot;paste cut keydown keyup focus blur&quot;</span>,<span class="keyword">function</span>(){</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                var height,style=this.style;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                this.style.height =  opts.minHeight + <span class="stringliteral">&#39;px&#39;</span>;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <span class="keywordflow">if</span> (this.scrollHeight &gt; opts.minHeight) {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                    <span class="keywordflow">if</span> (opts.maxHeight &amp;&amp; <span class="keyword">this</span>.scrollHeight &gt; opts.maxHeight) {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                        height = opts.maxHeight;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                        style.overflowY = <span class="stringliteral">&#39;scroll&#39;</span>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                        height = this.scrollHeight;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                        style.overflowY = <span class="stringliteral">&#39;hidden&#39;</span>;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                    }</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    style.height = height  + <span class="stringliteral">&#39;px&#39;</span>;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                }</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            });</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        });</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;})(jQuery);</div></div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<map id="addAddress" name="addAddress">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a57e7af9505dfbabc7c465ee9ca58e562" title="addAnAddress" alt="" coords="144,81,251,108"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#a9b84595d8561a0abd81c0b83b6238472" title="setError" alt="" coords="321,5,389,32"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a702ec4df6918a529cf123d1d09f608b7" title="lang" alt="" coords="460,31,507,57"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#a57893521a989230a020d8862a3bf751e" title="edebug" alt="" coords="323,107,387,133"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#a9b3ae711688c15576d03e477fc9a1f76" title="validateAddress" alt="" coords="299,157,412,184"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#a9da63815ca021badd4fbffa1f568976a" title="setLanguage" alt="" coords="555,31,651,57"/>
+</map>

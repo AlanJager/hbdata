@@ -1,0 +1,7 @@
+<map id="fn_execute" name="fn_execute">
+<area shape="rect" id="node2" href="$class_db_mysql.html#ab22b7b99a9321a8874e9d8dfd23ac5dc" title="fn_split" alt="" coords="139,5,201,32"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="query" alt="" coords="143,56,197,83"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a6080dae0886626b9a4cedb29240708b1" title="version" alt="" coords="249,5,312,32"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="result" alt="" coords="253,56,308,83"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="mysqli_result" alt="" coords="360,56,459,83"/>
+</map>

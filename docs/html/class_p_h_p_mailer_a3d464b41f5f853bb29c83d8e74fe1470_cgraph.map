@@ -1,0 +1,8 @@
+<map id="DKIM_Add" name="DKIM_Add">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#acec5422fbacb7c17671e613d5a3c6c47" title="DKIM_QP" alt="" coords="153,5,233,32"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#a59e764f699f678a6fa52ee089e941b1b" title="DKIM_BodyC" alt="" coords="143,56,243,83"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a9bcf728e9960a6512c5145a413cf86f5" title="DKIM_HeaderC" alt="" coords="137,107,248,133"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#aadcda1cd84010ce6e24880ef263581d7" title="DKIM_Sign" alt="" coords="149,157,236,184"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#a702ec4df6918a529cf123d1d09f608b7" title="lang" alt="" coords="296,157,343,184"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#a9da63815ca021badd4fbffa1f568976a" title="setLanguage" alt="" coords="391,157,487,184"/>
+</map>

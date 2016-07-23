@@ -1,0 +1,6 @@
+<map id="pager" name="pager">
+<area shape="rect" id="node2" href="$class_db_mysql.html#a832b02974ec506549b44591dc99e2dd5" title="DbMysql\\table" alt="" coords="110,5,215,32"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="DbMysql\\query" alt="" coords="108,56,217,83"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="DbMysql\\result" alt="" coords="265,56,375,83"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="DbMysql\\mysqli_result" alt="" coords="423,56,577,83"/>
+</map>

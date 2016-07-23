@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>HBDATA: 弃用列表</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HBDATA
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.11 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">弃用列表 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><dl class="reflist">
+<dt><a class="anchor" id="_deprecated000002"></a>全局 <a class="el" href="class_p_h_p_mailer.html#a80c30e6b011ed425f82610685c961df7">PHPMailer::$PluginDir</a>  </dt>
+<dd>Should not be needed now there is an autoloader.  </dd>
+<dt><a class="anchor" id="_deprecated000001"></a>全局 <a class="el" href="class_p_h_p_mailer.html#a51413bc6dfa3e9122897131c4b369a19">PHPMailer::$ReturnPath</a>  </dt>
+<dd>Email senders should never set a return-path header; it's the receiver's job (RFC5321 section 4.4), so this no longer does anything. <a class="el" href="">RFC5321 reference </a> </dd>
+<dt><a class="anchor" id="_deprecated000003"></a>全局 <a class="el" href="class_p_h_p_mailer.html#a4e86849b8958dd59a8f5e67df9bb58c3">PHPMailer::encodeQPphp</a>  ($string, $line_max=76, $space_conv=false)</dt>
+<dd>Use encodeQP instead.  </dd>
+<dt><a class="anchor" id="_deprecated000006"></a>全局 <a class="el" href="class_s_m_t_p.html#a75538b15bafd1ec1eaaa6ea0bbfa642a">SMTP::$CRLF</a>  </dt>
+<dd>Use the <code>CRLF</code> constant instead  </dd>
+<dt><a class="anchor" id="_deprecated000005"></a>全局 <a class="el" href="class_s_m_t_p.html#ae1e172b1b60aa3a8f2385012966200da">SMTP::$SMTP_PORT</a>  </dt>
+<dd>This is only ever used as a default value, so use the <code>DEFAULT_SMTP_PORT</code> constant instead  </dd>
+<dt><a class="anchor" id="_deprecated000004"></a>全局 <a class="el" href="class_s_m_t_p.html#a8a43e1c8b245951155d04b279276af95">SMTP::$Version</a>  </dt>
+<dd>Use the <code>VERSION</code> constant instead </dd>
+</dl>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

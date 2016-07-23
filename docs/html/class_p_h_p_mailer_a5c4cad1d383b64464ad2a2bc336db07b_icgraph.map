@@ -1,0 +1,7 @@
+<map id="encodeString" name="encodeString">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#ad8d982cb84383c36585dab8ac1a01414" title="createBody" alt="" coords="407,5,495,32"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#ad5142fb4a879dbe9a4280772d255fff8" title="attachAll" alt="" coords="285,31,359,57"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#a0f50908e540f0214dd419e40f378029f" title="encodeFile" alt="" coords="152,81,237,108"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#a528cfdd34d79b053a812a735632593ea" title="preSend" alt="" coords="543,5,613,32"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a12bcef5130168b80d3d52dc82213f19a" title="send" alt="" coords="661,5,712,32"/>
+</map>

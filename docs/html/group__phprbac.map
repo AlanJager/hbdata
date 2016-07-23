@@ -1,0 +1,6 @@
+<map id="Rbac Functionality" name="Rbac Functionality">
+<area shape="rect" id="node1" href="$group__phprbac__manager.html" title="Documentation regarding\l Rbac Manager Functionality" alt="" coords="201,5,389,47"/>
+<area shape="rect" id="node2" href="$group__phprbac__permission__manager.html" title="Documentation regarding\l Permission Manager Functionality" alt="" coords="184,71,407,112"/>
+<area shape="rect" id="node3" href="$group__phprbac__role__manager.html" title="Documentation regarding\l Role Manager Functionality" alt="" coords="203,136,387,177"/>
+<area shape="rect" id="node4" href="$group__phprbac__user__manager.html" title="Documentation regarding\l Rbac User Manager Functionality" alt="" coords="186,201,405,243"/>
+</map>

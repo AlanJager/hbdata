@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>HBDATA: F:/phpStudy/WWW/hbdata/include/smarty/plugins/modifier.count_words.php 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HBDATA
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.11 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3a581ba30d25676e4b797b1f96d53b45.html">F:</a></li><li class="navelem"><a class="el" href="dir_d93ed94f554929dcb568eaeedc20c95a.html">phpStudy</a></li><li class="navelem"><a class="el" href="dir_ddaee2cbd2c58e13ac3f3ddc3ac7c112.html">WWW</a></li><li class="navelem"><a class="el" href="dir_5fe62192234219e42f96c1558d355b57.html">hbdata</a></li><li class="navelem"><a class="el" href="dir_f6cdc08d897569f6cff17869073c0b17.html">include</a></li><li class="navelem"><a class="el" href="dir_61e2bfc9567ee7cbfee2b2f5cab035fd.html">smarty</a></li><li class="navelem"><a class="el" href="dir_c0bdbd4d573c2d2a32c1ecfd285bfc20.html">plugins</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">modifier.count_words.php</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">function</span> smarty_modifier_count_words($string)</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">// split text by &#39; &#39;,\r,\n,\f,\t</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    $split_array = preg_split(<span class="stringliteral">&#39;/\s+/&#39;</span>,$string);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// count matches that contain alphanumerics</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    $word_count = preg_grep(<span class="stringliteral">&#39;/[a-zA-Z0-9\\x80-\\xff]/&#39;</span>, $split_array);</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> count($word_count);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* vim: set expandtab: */</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;?&gt;</div></div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

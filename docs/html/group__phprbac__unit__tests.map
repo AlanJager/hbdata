@@ -1,0 +1,9 @@
+<map id="Rbac Unit Test Functionality" name="Rbac Unit Test Functionality">
+<area shape="rect" id="node1" href="$group__phprbac__unit__test__wrapper__setup.html" title="Unit Tests for Rbac\l Functionality" alt="" coords="279,5,412,47"/>
+<area shape="rect" id="node2" href="$group__phprbac__unit__test__wrapper__user__manager.html" title="Unit Tests for RbacUserManager\l Functionality" alt="" coords="240,71,451,112"/>
+<area shape="rect" id="node4" href="$group__phprbac__unit__test__wrapper__base.html" title="Unit Tests for BaseRbac\l Functionality" alt="" coords="264,136,427,177"/>
+<area shape="rect" id="node5" href="$group__phprbac__unit__test__wrapper__role__manager.html" title="Unit Tests for Base\l Rbac Functionality" alt="" coords="278,201,413,243"/>
+<area shape="rect" id="node6" href="$group__phprbac__unit__test__wrapper__permission__manager.html" title="Unit Tests for Permission\lManager Functionality" alt="" coords="261,267,429,308"/>
+<area shape="rect" id="node7" href="$group__phprbac__unit__test__wrapper__generic.html" title="Unit Tests for Generic\l_Tests_DatabaseTestCase\l Functionality" alt="" coords="256,333,435,389"/>
+<area shape="rect" id="node8" href="$group__phprbac__unit__test__wrapper__manager.html" title="Unit Tests for RbacManager\l Functionality" alt="" coords="254,413,437,455"/>
+</map>

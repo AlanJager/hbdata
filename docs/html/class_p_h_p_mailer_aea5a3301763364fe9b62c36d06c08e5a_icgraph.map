@@ -1,0 +1,12 @@
+<map id="encodeHeader" name="encodeHeader">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a37e796debc19de7ab514da84ebe526c6" title="mailPassthru" alt="" coords="159,5,257,32"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#a528cfdd34d79b053a812a735632593ea" title="preSend" alt="" coords="594,107,665,133"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#a9306048710347e893a743acd0f39bb45" title="addrFormat" alt="" coords="164,107,252,133"/>
+<area shape="rect" id="node9" href="$class_p_h_p_mailer.html#a0e6615e9843f58e99362166dd25a185b" title="createHeader" alt="" coords="444,157,543,184"/>
+<area shape="rect" id="node10" href="$class_p_h_p_mailer.html#ad5142fb4a879dbe9a4280772d255fff8" title="attachAll" alt="" coords="314,259,387,285"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#a9f43cac580fb8f33ef5e159f1eeb9148" title="mailSend" alt="" coords="313,5,389,32"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#aa2e32c2514a2f342c87509f9d9af34cb" title="postSend" alt="" coords="591,31,668,57"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#a12bcef5130168b80d3d52dc82213f19a" title="send" alt="" coords="716,69,767,96"/>
+<area shape="rect" id="node8" href="$class_p_h_p_mailer.html#ab43217a9ec1bb4fe5a88d2f409fa7ae2" title="addrAppend" alt="" coords="305,107,396,133"/>
+<area shape="rect" id="node11" href="$class_p_h_p_mailer.html#ad8d982cb84383c36585dab8ac1a01414" title="createBody" alt="" coords="449,233,537,260"/>
+</map>

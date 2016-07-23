@@ -1,0 +1,10 @@
+<map id="mailPassthru" name="mailPassthru">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a808495366277050ff38fa5bcfab8f49e" title="secureHeader" alt="" coords="153,31,256,57"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#aea5a3301763364fe9b62c36d06c08e5a" title="encodeHeader" alt="" coords="152,81,257,108"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a6bb4300a48c25d9fdec7fddf4f8e2549" title="hasMultiBytes" alt="" coords="332,5,437,32"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#aa3aba7f0151d96a9a5d56d8ee5be8aab" title="base64EncodeWrapMB" alt="" coords="305,56,464,83"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#adbbd9f5ed4492196db3f804e7db4d764" title="encodeQ" alt="" coords="347,107,422,133"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#aabf081d0812225a5cf80c27ffa74c76c" title="wrapText" alt="" coords="347,157,422,184"/>
+<area shape="rect" id="node8" href="$class_p_h_p_mailer.html#a1b9ac8f8f734ebda9ca05c3313a42852" title="fixEOL" alt="" coords="544,132,605,159"/>
+<area shape="rect" id="node9" href="$class_p_h_p_mailer.html#a155c6b34e020054e9c19f0a94bacee38" title="utf8CharBoundary" alt="" coords="512,183,637,209"/>
+</map>

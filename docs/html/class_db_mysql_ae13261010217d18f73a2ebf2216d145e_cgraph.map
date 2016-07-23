@@ -1,0 +1,7 @@
+<map id="table_exist" name="table_exist">
+<area shape="rect" id="node2" href="$class_db_mysql.html#abefe93c500ae2f81956a060a5c761c10" title="num_rows" alt="" coords="139,5,220,32"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="query" alt="" coords="152,56,207,83"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#a832b02974ec506549b44591dc99e2dd5" title="table" alt="" coords="154,107,205,133"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="result" alt="" coords="268,56,323,83"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="mysqli_result" alt="" coords="371,56,469,83"/>
+</map>

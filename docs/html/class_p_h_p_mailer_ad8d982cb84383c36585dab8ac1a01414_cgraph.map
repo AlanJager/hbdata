@@ -1,0 +1,25 @@
+<map id="createBody" name="createBody">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a4ced769572258a705d3d66f5c2243c47" title="getMailMIME" alt="" coords="143,35,242,62"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#a76caf3b881a28504c1bebedd520004bd" title="headerLine" alt="" coords="302,35,387,62"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a77108e49f31bbd9d96ec281de118b815" title="textLine" alt="" coords="311,86,379,113"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#ab3b2787c3d322ed943f863c6bf2e4bc8" title="setWordWrap" alt="" coords="141,390,244,417"/>
+<area shape="rect" id="node9" href="$class_p_h_p_mailer.html#a00a5a1581e01bf5ae1a012b55a7f2b12" title="has8bitChars" alt="" coords="143,441,242,467"/>
+<area shape="rect" id="node10" href="$class_p_h_p_mailer.html#a57449646a9556091a31920bf34206a8a" title="getBoundary" alt="" coords="145,86,240,113"/>
+<area shape="rect" id="node11" href="$class_p_h_p_mailer.html#a5c4cad1d383b64464ad2a2bc336db07b" title="encodeString" alt="" coords="475,289,574,315"/>
+<area shape="rect" id="node14" href="$class_p_h_p_mailer.html#a702ec4df6918a529cf123d1d09f608b7" title="lang" alt="" coords="833,213,879,239"/>
+<area shape="rect" id="node16" href="$class_p_h_p_mailer.html#ad5142fb4a879dbe9a4280772d255fff8" title="attachAll" alt="" coords="156,289,229,315"/>
+<area shape="rect" id="node22" href="$class_p_h_p_mailer.html#a763bcf1f1b83418647c32053ed2988db" title="isError" alt="" coords="315,441,375,467"/>
+<area shape="rect" id="node24" href="$class_p_h_p_mailer.html#aa1451add03edfd34d6b682c53d820a61" title="endBoundary" alt="" coords="143,491,242,518"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#aabf081d0812225a5cf80c27ffa74c76c" title="wrapText" alt="" coords="487,491,562,518"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#a1b9ac8f8f734ebda9ca05c3313a42852" title="fixEOL" alt="" coords="825,390,887,417"/>
+<area shape="rect" id="node8" href="$class_p_h_p_mailer.html#a155c6b34e020054e9c19f0a94bacee38" title="utf8CharBoundary" alt="" coords="652,491,777,518"/>
+<area shape="rect" id="node12" href="$class_p_h_p_mailer.html#a8ee2de12dc615c6f5e75642265885ada" title="encodeQP" alt="" coords="673,390,756,417"/>
+<area shape="rect" id="node13" href="$class_p_h_p_mailer.html#a9b84595d8561a0abd81c0b83b6238472" title="setError" alt="" coords="681,238,749,265"/>
+<area shape="rect" id="node15" href="$class_p_h_p_mailer.html#a9da63815ca021badd4fbffa1f568976a" title="setLanguage" alt="" coords="935,213,1031,239"/>
+<area shape="rect" id="node17" href="$class_p_h_p_mailer.html#aea5a3301763364fe9b62c36d06c08e5a" title="encodeHeader" alt="" coords="292,390,397,417"/>
+<area shape="rect" id="node21" href="$class_p_h_p_mailer.html#a808495366277050ff38fa5bcfab8f49e" title="secureHeader" alt="" coords="293,339,396,366"/>
+<area shape="rect" id="node23" href="$class_p_h_p_mailer.html#a0f50908e540f0214dd419e40f378029f" title="encodeFile" alt="" coords="302,187,387,214"/>
+<area shape="rect" id="node18" href="$class_p_h_p_mailer.html#a6bb4300a48c25d9fdec7fddf4f8e2549" title="hasMultiBytes" alt="" coords="472,441,577,467"/>
+<area shape="rect" id="node19" href="$class_p_h_p_mailer.html#aa3aba7f0151d96a9a5d56d8ee5be8aab" title="base64EncodeWrapMB" alt="" coords="445,339,604,366"/>
+<area shape="rect" id="node20" href="$class_p_h_p_mailer.html#adbbd9f5ed4492196db3f804e7db4d764" title="encodeQ" alt="" coords="487,390,562,417"/>
+</map>

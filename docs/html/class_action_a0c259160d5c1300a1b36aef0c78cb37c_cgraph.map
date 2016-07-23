@@ -1,0 +1,7 @@
+<map id="create_admin_log" name="create_admin_log">
+<area shape="rect" id="node2" href="$class_common.html#aeee17985d43ce8318775ffb06cd0290d" title="Common\\get_ip" alt="" coords="177,5,291,32"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a832b02974ec506549b44591dc99e2dd5" title="DbMysql\\table" alt="" coords="181,56,287,83"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="DbMysql\\query" alt="" coords="179,107,289,133"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="DbMysql\\result" alt="" coords="339,107,448,133"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="DbMysql\\mysqli_result" alt="" coords="496,107,651,133"/>
+</map>

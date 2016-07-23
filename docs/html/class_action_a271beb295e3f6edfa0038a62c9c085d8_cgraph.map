@@ -1,0 +1,7 @@
+<map id="page_title" name="page_title">
+<area shape="rect" id="node2" href="$class_db_mysql.html#a8f4fff4edd727c2828c0d4b4f1bf5612" title="DbMysql\\get_one" alt="" coords="132,5,255,32"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#a832b02974ec506549b44591dc99e2dd5" title="DbMysql\\table" alt="" coords="141,56,246,83"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="DbMysql\\query" alt="" coords="303,5,412,32"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="DbMysql\\result" alt="" coords="460,5,569,32"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="DbMysql\\mysqli_result" alt="" coords="617,5,772,32"/>
+</map>

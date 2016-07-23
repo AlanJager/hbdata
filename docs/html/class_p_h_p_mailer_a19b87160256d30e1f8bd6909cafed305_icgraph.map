@@ -1,0 +1,5 @@
+<map id="smtpConnect" name="smtpConnect">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a49eca48203f71281e82986420773c3be" title="smtpSend" alt="" coords="152,5,233,32"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#aa2e32c2514a2f342c87509f9d9af34cb" title="postSend" alt="" coords="281,5,359,32"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a12bcef5130168b80d3d52dc82213f19a" title="send" alt="" coords="407,5,457,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="buildRequestPara" name="buildRequestPara">
+<area shape="rect" id="node2" href="$class_alipay_submit.html#a9cb42c8b39b78f7a44be579e57366469" title="buildRequestParaToString" alt="" coords="177,5,349,32"/>
+<area shape="rect" id="node3" href="$class_alipay_submit.html#a593824d6b0ed61f22dfcb2a4cbbbccf1" title="buildRequestForm" alt="" coords="200,56,327,83"/>
+<area shape="rect" id="node4" href="$class_alipay_submit.html#a901a9ea8baf8625a0a45562733c60ec9" title="buildRequestHttp" alt="" coords="203,107,324,133"/>
+<area shape="rect" id="node5" href="$class_alipay_submit.html#a9a1947a9f64f994c21a5c999f8f8a6e7" title="buildRequestHttpInFile" alt="" coords="187,157,339,184"/>
+</map>

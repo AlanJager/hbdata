@@ -1,0 +1,6 @@
+<map id="serverHostname" name="serverHostname">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a19b87160256d30e1f8bd6909cafed305" title="smtpConnect" alt="" coords="168,5,267,32"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#a49eca48203f71281e82986420773c3be" title="smtpSend" alt="" coords="315,5,396,32"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#aa2e32c2514a2f342c87509f9d9af34cb" title="postSend" alt="" coords="444,5,521,32"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#a12bcef5130168b80d3d52dc82213f19a" title="send" alt="" coords="569,5,620,32"/>
+</map>

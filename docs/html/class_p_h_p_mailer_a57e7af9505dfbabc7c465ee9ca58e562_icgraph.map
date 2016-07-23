@@ -1,0 +1,6 @@
+<map id="addAnAddress" name="addAnAddress">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#ae2087944add1c9bf5647b9e9d49689a6" title="addAddress" alt="" coords="160,5,251,32"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#acc911962347c94dd63dd595c397f4cb3" title="addCC" alt="" coords="175,56,236,83"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a089e714287f7577eb8d0a7632e896900" title="addBCC" alt="" coords="170,107,241,133"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#aba5661a6b69f68826b39f4dc197e7a5d" title="addReplyTo" alt="" coords="160,157,251,184"/>
+</map>

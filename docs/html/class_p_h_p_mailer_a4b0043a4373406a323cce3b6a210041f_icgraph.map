@@ -1,0 +1,7 @@
+<map id="doCallback" name="doCallback">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a05940f686d59bcc249d8d42a6f2e7df0" title="sendmailSend" alt="" coords="140,5,244,32"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#a9f43cac580fb8f33ef5e159f1eeb9148" title="mailSend" alt="" coords="154,56,230,83"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#a49eca48203f71281e82986420773c3be" title="smtpSend" alt="" coords="151,107,233,133"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#aa2e32c2514a2f342c87509f9d9af34cb" title="postSend" alt="" coords="292,56,369,83"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a12bcef5130168b80d3d52dc82213f19a" title="send" alt="" coords="417,56,468,83"/>
+</map>

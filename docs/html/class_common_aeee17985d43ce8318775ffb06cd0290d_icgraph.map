@@ -1,0 +1,5 @@
+<map id="get_ip" name="get_ip">
+<area shape="rect" id="node2" href="$class_action.html#a0c259160d5c1300a1b36aef0c78cb37c" title="Action\\create_admin_log" alt="" coords="111,31,276,57"/>
+<area shape="rect" id="node3" href="$class_action.html#a675803fcf6dffcc5fac169ac8f8e8d25" title="Action\\category_move" alt="" coords="324,5,475,32"/>
+<area shape="rect" id="node4" href="$class_action.html#acf29d6e4202355a8f6263acb5dc76cf1" title="Action\\del_all" alt="" coords="349,56,449,83"/>
+</map>

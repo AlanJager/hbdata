@@ -1,0 +1,8 @@
+<map id="addrFormat" name="addrFormat">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a9f43cac580fb8f33ef5e159f1eeb9148" title="mailSend" alt="" coords="149,5,225,32"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#ab43217a9ec1bb4fe5a88d2f409fa7ae2" title="addrAppend" alt="" coords="141,56,232,83"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#a0e6615e9843f58e99362166dd25a185b" title="createHeader" alt="" coords="280,107,379,133"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#aa2e32c2514a2f342c87509f9d9af34cb" title="postSend" alt="" coords="427,5,504,32"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a12bcef5130168b80d3d52dc82213f19a" title="send" alt="" coords="552,31,603,57"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#a528cfdd34d79b053a812a735632593ea" title="preSend" alt="" coords="430,56,501,83"/>
+</map>

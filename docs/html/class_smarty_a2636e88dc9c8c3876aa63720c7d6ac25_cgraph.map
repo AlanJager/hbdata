@@ -1,0 +1,11 @@
+<map id="_smarty_include" name="_smarty_include">
+<area shape="rect" id="node2" href="$class_smarty.html#a8a89232edb42318063b90fee5f608ec0" title="_get_compile_path" alt="" coords="171,5,301,32"/>
+<area shape="rect" id="node4" href="$class_smarty.html#a315bf9a64ca2baea77f8868804d847be" title="_is_compiled" alt="" coords="187,56,285,83"/>
+<area shape="rect" id="node9" href="$class_smarty.html#af0c22913faf4ec5e6d8674c643c69cc5" title="_compile_resource" alt="" coords="171,107,301,133"/>
+<area shape="rect" id="node3" href="$class_smarty.html#a3e145fee368d93f35313bcb7018c1a76" title="_get_auto_filename" alt="" coords="353,5,487,32"/>
+<area shape="rect" id="node5" href="$class_smarty.html#a0c3ac497dbe0e595d4f2a85f1168a219" title="_fetch_resource_info" alt="" coords="349,56,491,83"/>
+<area shape="rect" id="node6" href="$class_smarty.html#a3fd3782e935db8cbac33da3d735df988" title="_parse_resource_name" alt="" coords="539,5,696,32"/>
+<area shape="rect" id="node7" href="$class_smarty.html#a5aca16bc6189ba04a7f0a807ca08ff71" title="_read_file" alt="" coords="579,56,656,83"/>
+<area shape="rect" id="node8" href="$class_smarty.html#aa4f8246510406271300bee84f9e1bce3" title="trigger_error" alt="" coords="572,107,663,133"/>
+<area shape="rect" id="node10" href="$class_smarty.html#a9df9b14069c359f1f45416acc6d7d81f" title="_compile_source" alt="" coords="360,107,480,133"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="BaseRbac" name="BaseRbac">
+<area shape="rect" id="node3" href="$class_permission_manager.html" title="PermissionManager" alt="" coords="5,155,143,181"/>
+<area shape="rect" id="node4" href="$class_role_manager.html" title="RoleManager" alt="" coords="167,155,266,181"/>
+<area shape="rect" id="node2" href="$class_j_model.html" title="JModel" alt="" coords="113,5,176,32"/>
+</map>

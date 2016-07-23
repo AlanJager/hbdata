@@ -1,0 +1,8 @@
+<map id="_compile_compiler_tag" name="_compile_compiler_tag">
+<area shape="rect" id="node2" href="$class_smarty.html#aca3dac6a8fa20f5038e34af0c7f1c78b" title="Smarty\\_get_plugin\l_filepath" alt="" coords="220,5,355,47"/>
+<area shape="rect" id="node3" href="$class_smarty___compiler.html#a11b685691a5b572278f01ff01c31afbe" title="_push_cacheable_state" alt="" coords="208,71,367,98"/>
+<area shape="rect" id="node4" href="$class_smarty___compiler.html#a485abbea43510914e066dcc2f0ebbfc0" title="_pop_cacheable_state" alt="" coords="211,122,363,149"/>
+<area shape="rect" id="node5" href="$class_smarty___compiler.html#a9cf75cd6abe553dd33660de24527d0aa" title="_syntax_error" alt="" coords="237,173,338,199"/>
+<area shape="rect" id="node6" href="$class_smarty.html#a069f86732ff92f739c488416e0958307" title="Smarty\\_trigger_fatal\l_error" alt="" coords="415,165,557,207"/>
+<area shape="rect" id="node7" href="$class_smarty.html#aa4f8246510406271300bee84f9e1bce3" title="Smarty\\trigger_error" alt="" coords="605,173,743,199"/>
+</map>

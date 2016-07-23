@@ -1,0 +1,5 @@
+<map id="select" name="select">
+<area shape="rect" id="node2" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="query" alt="" coords="111,5,165,32"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="result" alt="" coords="213,5,268,32"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="mysqli_result" alt="" coords="316,5,415,32"/>
+</map>

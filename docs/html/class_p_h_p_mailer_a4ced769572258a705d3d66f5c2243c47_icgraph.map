@@ -1,0 +1,6 @@
+<map id="getMailMIME" name="getMailMIME">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a0e6615e9843f58e99362166dd25a185b" title="createHeader" alt="" coords="152,5,251,32"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#ad8d982cb84383c36585dab8ac1a01414" title="createBody" alt="" coords="157,56,245,83"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#a528cfdd34d79b053a812a735632593ea" title="preSend" alt="" coords="299,31,369,57"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a12bcef5130168b80d3d52dc82213f19a" title="send" alt="" coords="417,31,468,57"/>
+</map>

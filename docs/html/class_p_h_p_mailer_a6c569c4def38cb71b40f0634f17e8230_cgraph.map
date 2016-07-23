@@ -1,0 +1,10 @@
+<map id="msgHTML" name="msgHTML">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a7b18e8e4f8c831c4b315d31fe83a04dc" title="addStringEmbeddedImage" alt="" coords="135,5,309,32"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#a6f0beefe8ba70873b02374024d546042" title="addEmbeddedImage" alt="" coords="152,56,292,83"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#af811636f1958d3a406ebf82e455c1f7a" title="isHTML" alt="" coords="189,107,255,133"/>
+<area shape="rect" id="node8" href="$class_p_h_p_mailer.html#a0098c763eef87ec682208020c880ce71" title="normalizeBreaks" alt="" coords="163,157,281,184"/>
+<area shape="rect" id="node9" href="$class_p_h_p_mailer.html#adcc957bbfc73453cc7f04e412603989d" title="html2text" alt="" coords="184,208,260,235"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a9b84595d8561a0abd81c0b83b6238472" title="setError" alt="" coords="357,31,425,57"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#a702ec4df6918a529cf123d1d09f608b7" title="lang" alt="" coords="473,56,520,83"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#a9da63815ca021badd4fbffa1f568976a" title="setLanguage" alt="" coords="568,56,664,83"/>
+</map>

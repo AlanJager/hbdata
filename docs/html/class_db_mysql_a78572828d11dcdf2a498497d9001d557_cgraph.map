@@ -1,0 +1,7 @@
+<map id="connect" name="connect">
+<area shape="rect" id="node2" href="$class_db_mysql.html#ad7e12f42d290780981e87f8a84a35054" title="error" alt="" coords="129,5,177,32"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a6080dae0886626b9a4cedb29240708b1" title="version" alt="" coords="121,56,184,83"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="query" alt="" coords="125,107,180,133"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="result" alt="" coords="232,107,287,133"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="mysqli_result" alt="" coords="335,107,433,133"/>
+</map>

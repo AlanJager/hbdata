@@ -1,0 +1,5 @@
+<map id="RbacException" name="RbacException">
+<area shape="rect" id="node3" href="$class_rbac_permission_not_found_exception.html" title="RbacPermissionNotFoundException" alt="" coords="292,5,523,32"/>
+<area shape="rect" id="node4" href="$class_rbac_role_not_found_exception.html" title="RbacRoleNotFoundException" alt="" coords="311,56,503,83"/>
+<area shape="rect" id="node5" href="$class_rbac_user_not_provided_exception.html" title="RbacUserNotProvidedException" alt="" coords="304,107,511,133"/>
+</map>

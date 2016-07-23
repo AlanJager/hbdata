@@ -1,0 +1,10 @@
+<map id="category_move" name="category_move">
+<area shape="rect" id="node2" href="$class_action.html#add469f51eb594ad93817f29ae46d5625" title="create_sql_in" alt="" coords="175,5,274,32"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="DbMysql\\query" alt="" coords="337,56,446,83"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#a832b02974ec506549b44591dc99e2dd5" title="DbMysql\\table" alt="" coords="339,157,444,184"/>
+<area shape="rect" id="node7" href="$class_action.html#a0c259160d5c1300a1b36aef0c78cb37c" title="create_admin_log" alt="" coords="163,107,287,133"/>
+<area shape="rect" id="node9" href="$class_action.html#a7829a361680a7de4408cf7deb8700cef" title="hbdata_msg" alt="" coords="178,208,271,235"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="DbMysql\\result" alt="" coords="496,56,605,83"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="DbMysql\\mysqli_result" alt="" coords="653,56,808,83"/>
+<area shape="rect" id="node8" href="$class_common.html#aeee17985d43ce8318775ffb06cd0290d" title="Common\\get_ip" alt="" coords="335,107,448,133"/>
+</map>

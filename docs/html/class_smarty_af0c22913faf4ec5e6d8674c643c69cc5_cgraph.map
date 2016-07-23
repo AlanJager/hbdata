@@ -1,0 +1,7 @@
+<map id="_compile_resource" name="_compile_resource">
+<area shape="rect" id="node2" href="$class_smarty.html#a0c3ac497dbe0e595d4f2a85f1168a219" title="_fetch_resource_info" alt="" coords="184,56,325,83"/>
+<area shape="rect" id="node6" href="$class_smarty.html#a9df9b14069c359f1f45416acc6d7d81f" title="_compile_source" alt="" coords="195,107,315,133"/>
+<area shape="rect" id="node3" href="$class_smarty.html#a3fd3782e935db8cbac33da3d735df988" title="_parse_resource_name" alt="" coords="373,5,531,32"/>
+<area shape="rect" id="node4" href="$class_smarty.html#a5aca16bc6189ba04a7f0a807ca08ff71" title="_read_file" alt="" coords="413,56,491,83"/>
+<area shape="rect" id="node5" href="$class_smarty.html#aa4f8246510406271300bee84f9e1bce3" title="trigger_error" alt="" coords="407,107,497,133"/>
+</map>

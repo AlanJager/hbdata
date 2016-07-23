@@ -1,0 +1,9 @@
+<map id="edit_module" name="edit_module">
+<area shape="rect" id="node2" href="$class_action.html#a9555cf3cb1a7d0966c4cd452e7aa18b4" title="del_lang_file" alt="" coords="167,5,261,32"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="DbMysql\\query" alt="" coords="331,107,440,133"/>
+<area shape="rect" id="node6" href="$class_action.html#a7cda5447da645ede80ad5c397b80c736" title="del_module_access" alt="" coords="145,107,283,133"/>
+<area shape="rect" id="node7" href="$class_action.html#a16461ddd3cb52f97dce8ab0a897c794d" title="create_table" alt="" coords="167,157,261,184"/>
+<area shape="rect" id="node8" href="$class_db_mysql.html#a832b02974ec506549b44591dc99e2dd5" title="DbMysql\\table" alt="" coords="161,208,267,235"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="DbMysql\\result" alt="" coords="488,107,597,133"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="DbMysql\\mysqli_result" alt="" coords="645,107,800,133"/>
+</map>

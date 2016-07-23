@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>HBDATA: F:/phpStudy/WWW/hbdata/include/plugin/bankpay/return_url.php 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HBDATA
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.11 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3a581ba30d25676e4b797b1f96d53b45.html">F:</a></li><li class="navelem"><a class="el" href="dir_d93ed94f554929dcb568eaeedc20c95a.html">phpStudy</a></li><li class="navelem"><a class="el" href="dir_ddaee2cbd2c58e13ac3f3ddc3ac7c112.html">WWW</a></li><li class="navelem"><a class="el" href="dir_5fe62192234219e42f96c1558d355b57.html">hbdata</a></li><li class="navelem"><a class="el" href="dir_f6cdc08d897569f6cff17869073c0b17.html">include</a></li><li class="navelem"><a class="el" href="dir_b6195614b0ea9ac9921f9a6d49e30970.html">plugin</a></li><li class="navelem"><a class="el" href="dir_0c1e29fdcae16d3a8e2657644e90545e.html">bankpay</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">return_url.php</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">/* * </span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * 功能：支付宝页面跳转同步通知页面</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * 版本：3.3</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * 日期：2012-07-23</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * 说明：</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * 该代码仅供学习和研究支付宝接口使用，只是提供一个参考。</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *************************页面功能说明*************************</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * 该页面可在本机电脑测试</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * 可放入HTML等美化页面的代码、商户业务逻辑程序代码</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * 该页面可以使用PHP开发工具调试，也可以使用写文本函数logResult，该函数已被默认关闭，见alipay_notify_class.php中的函数verifyReturn</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;define(<span class="stringliteral">&#39;IN_HBDATA&#39;</span>, <span class="keyword">true</span>);</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;require (<span class="stringliteral">&#39;../../init.php&#39;</span>);</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// 引入和实例化订单功能</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;require_once (ROOT_PATH . <span class="stringliteral">&#39;include/order.class.php&#39;</span>);</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;$hbdata_order = <span class="keyword">new</span> Order();</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// 实例化插件</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;require_once(<span class="stringliteral">&quot;work.plugin.php&quot;</span>);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;$plugin = <span class="keyword">new</span> <a class="code" href="class_plugin.html">Plugin</a>();</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;require_once(<span class="stringliteral">&quot;lib/alipay_notify.class.php&quot;</span>);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;?&gt;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;&lt;!DOCTYPE HTML&gt;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;&lt;html&gt;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;&lt;head&gt;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;&lt;meta http-equiv=<span class="stringliteral">&quot;Content-Type&quot;</span> content=<span class="stringliteral">&quot;text/html; charset=utf-8&quot;</span>&gt;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;&lt;?php</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">//计算得出通知验证结果</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;$alipayNotify = <span class="keyword">new</span> <a class="code" href="class_alipay_notify.html">AlipayNotify</a>($plugin-&gt;alipay_config());</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;$verify_result = $alipayNotify-&gt;verifyReturn();</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordflow">if</span> ($verify_result) {<span class="comment">//验证成功</span></div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//请在这里加上商户的业务逻辑程序代码</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">//——请根据您的业务逻辑来编写程序（以下代码仅作参考）——</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">//获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表</span></div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">//商户订单号</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    $out_trade_no = $_GET[<span class="stringliteral">&#39;out_trade_no&#39;</span>];</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">//支付宝交易号</span></div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    $trade_no = $_GET[<span class="stringliteral">&#39;trade_no&#39;</span>];</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">//交易状态</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    $trade_status = $_GET[<span class="stringliteral">&#39;trade_status&#39;</span>];</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">if</span>($_GET[<span class="stringliteral">&#39;trade_status&#39;</span>] == <span class="stringliteral">&#39;TRADE_FINISHED&#39;</span> || $_GET[<span class="stringliteral">&#39;trade_status&#39;</span>] == <span class="stringliteral">&#39;TRADE_SUCCESS&#39;</span>) {</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        $hbdata_order-&gt;change_status($out_trade_no, 1);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        echo <span class="stringliteral">&quot;trade_status=&quot;</span>.$_GET[<span class="stringliteral">&#39;trade_status&#39;</span>];</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  </div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    $hbdata-&gt;hbdata_header($_URL[<span class="stringliteral">&#39;order_list&#39;</span>]);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——</span></div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordflow">else</span> {</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">//验证失败</span></div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">//如要调试，请看alipay_notify.php页面的verifyReturn函数</span></div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    $hbdata-&gt;hbdata_header(ROOT_URL);</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;?&gt;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;&lt;title&gt;支付宝纯网关接口&lt;/title&gt;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;&lt;/head&gt;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;&lt;body&gt;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;&lt;/body&gt;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;&lt;/html&gt;</div><div class="ttc" id="class_plugin_html"><div class="ttname"><a href="class_plugin.html">Plugin</a></div><div class="ttdef"><b>Definition:</b> <a href="alipay_2work_8plugin_8php_source.html#l00022">work.plugin.php:22</a></div></div>
+<div class="ttc" id="class_alipay_notify_html"><div class="ttname"><a href="class_alipay_notify.html">AlipayNotify</a></div><div class="ttdef"><b>Definition:</b> <a href="alipay_2lib_2alipay__notify_8class_8php_source.html#l00019">alipay_notify.class.php:19</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

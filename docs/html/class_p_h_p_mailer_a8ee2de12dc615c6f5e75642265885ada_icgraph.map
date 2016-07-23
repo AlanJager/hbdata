@@ -1,0 +1,9 @@
+<map id="encodeQP" name="encodeQP">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a5c4cad1d383b64464ad2a2bc336db07b" title="encodeString" alt="" coords="139,31,237,57"/>
+<area shape="rect" id="node8" href="$class_p_h_p_mailer.html#a4e86849b8958dd59a8f5e67df9bb58c3" title="encodeQPphp" alt="" coords="136,81,240,108"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#ad8d982cb84383c36585dab8ac1a01414" title="createBody" alt="" coords="543,5,631,32"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#ad5142fb4a879dbe9a4280772d255fff8" title="attachAll" alt="" coords="421,31,495,57"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#a0f50908e540f0214dd419e40f378029f" title="encodeFile" alt="" coords="288,81,373,108"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a528cfdd34d79b053a812a735632593ea" title="preSend" alt="" coords="679,5,749,32"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#a12bcef5130168b80d3d52dc82213f19a" title="send" alt="" coords="797,5,848,32"/>
+</map>

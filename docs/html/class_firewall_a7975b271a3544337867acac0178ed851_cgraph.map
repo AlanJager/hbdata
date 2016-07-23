@@ -1,0 +1,4 @@
+<map id="hbdata_firewall" name="hbdata_firewall">
+<area shape="rect" id="node2" href="$class_firewall.html#ad30420ffefdd984bacb2160d32bf800c" title="hbdata_magic_quotes" alt="" coords="160,5,309,32"/>
+<area shape="rect" id="node3" href="$class_firewall.html#a1cade933a369ebc36ec490f7b10fa752" title="addslashes_deep" alt="" coords="357,5,480,32"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="_parse_var_props" name="_parse_var_props">
+<area shape="rect" id="node2" href="$class_smarty___compiler.html#aeeaa2b6e8325e1aa932d45a189e8bce6" title="_parse_var" alt="" coords="389,382,473,408"/>
+<area shape="rect" id="node9" href="$class_smarty___compiler.html#afd43133d5f05a358b1a76cf60805119e" title="_parse_modifiers" alt="" coords="371,204,491,231"/>
+<area shape="rect" id="node13" href="$class_smarty___compiler.html#ad242e9af4f6ee1524acdca2ee529f87a" title="_expand_quoted_text" alt="" coords="176,382,323,408"/>
+<area shape="rect" id="node14" href="$class_smarty___compiler.html#a3887c9771f60165babae612a4595d1fc" title="_parse_conf_var" alt="" coords="192,280,307,307"/>
+<area shape="rect" id="node15" href="$class_smarty___compiler.html#a4509a57efd495c63579f7447c2d28972" title="_parse_section_prop" alt="" coords="178,179,321,206"/>
+<area shape="rect" id="node3" href="$class_smarty___compiler.html#ab320c43ef5206f5be26190264ee8e87d" title="_compile_smarty_ref" alt="" coords="539,444,681,471"/>
+<area shape="rect" id="node4" href="$class_smarty___compiler.html#a9cf75cd6abe553dd33660de24527d0aa" title="_syntax_error" alt="" coords="744,394,845,420"/>
+<area shape="rect" id="node7" href="$class_smarty___compiler.html#a77a6bbc6a17e76b941c3cefeee9c7b2d" title="_parse_parenth_args" alt="" coords="539,343,681,370"/>
+<area shape="rect" id="node5" href="$class_smarty.html#a069f86732ff92f739c488416e0958307" title="Smarty\\_trigger_fatal\l_error" alt="" coords="908,310,1051,352"/>
+<area shape="rect" id="node6" href="$class_smarty.html#aa4f8246510406271300bee84f9e1bce3" title="Smarty\\trigger_error" alt="" coords="1099,318,1236,344"/>
+<area shape="rect" id="node8" href="$class_smarty___compiler.html#a2ab9cbfebcdbc2807c684de842278295" title="_parse_vars_props" alt="" coords="729,292,860,319"/>
+<area shape="rect" id="node10" href="$class_smarty.html#aca3dac6a8fa20f5038e34af0c7f1c78b" title="Smarty\\_get_plugin\l_filepath" alt="" coords="543,74,677,116"/>
+<area shape="rect" id="node11" href="$class_smarty___compiler.html#aaaf68202b4841dc6c783be9b8911d36b" title="_add_plugin" alt="" coords="565,140,655,167"/>
+<area shape="rect" id="node12" href="$class_smarty___compiler.html#ac9e7526111cdf46d56d1515813a26e09" title="_compile_plugin_call" alt="" coords="539,191,681,218"/>
+</map>

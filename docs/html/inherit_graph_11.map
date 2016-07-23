@@ -1,0 +1,8 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="node1" href="$class_j_model.html" title="JModel" alt="" coords="5,81,68,108"/>
+<area shape="rect" id="node2" href="$class_base_rbac.html" title="BaseRbac" alt="" coords="139,31,222,57"/>
+<area shape="rect" id="node5" href="$class_rbac_manager.html" title="RbacManager" alt="" coords="129,81,232,108"/>
+<area shape="rect" id="node6" href="$class_rbac_user_manager.html" title="RbacUserManager" alt="" coords="116,132,245,159"/>
+<area shape="rect" id="node3" href="$class_permission_manager.html" title="PermissionManager" alt="" coords="293,5,431,32"/>
+<area shape="rect" id="node4" href="$class_role_manager.html" title="RoleManager" alt="" coords="313,56,411,83"/>
+</map>

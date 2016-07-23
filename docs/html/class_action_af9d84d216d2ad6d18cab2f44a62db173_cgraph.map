@@ -1,0 +1,11 @@
+<map id="admin_check" name="admin_check">
+<area shape="rect" id="node2" href="$class_action.html#a2cc0f298ce32e5f23f8f2dcf5291159f" title="admin_state" alt="" coords="187,56,280,83"/>
+<area shape="rect" id="node9" href="$class_action.html#af09bc2d55758e4ccf51c8e8bfd2c9bc8" title="admin_ontime" alt="" coords="182,107,285,133"/>
+<area shape="rect" id="node10" href="$class_common.html#a63ae1e561583b09e9856933111757182" title="Common\\hbdata_header" alt="" coords="152,157,315,184"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a0bf26223f61dafeb9fc1b9491da75930" title="DbMysql\\select" alt="" coords="377,5,489,32"/>
+<area shape="rect" id="node7" href="$class_db_mysql.html#a832b02974ec506549b44591dc99e2dd5" title="DbMysql\\table" alt="" coords="381,56,486,83"/>
+<area shape="rect" id="node8" href="$class_db_mysql.html#a97b1b694e8d8e436823f947eba5de124" title="DbMysql\\fetch_array" alt="" coords="363,107,504,133"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="DbMysql\\query" alt="" coords="552,5,661,32"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="DbMysql\\result" alt="" coords="709,5,819,32"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="DbMysql\\mysqli_result" alt="" coords="867,5,1021,32"/>
+</map>

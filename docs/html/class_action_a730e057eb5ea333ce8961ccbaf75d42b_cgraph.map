@@ -1,0 +1,8 @@
+<map id="get_admin_log" name="get_admin_log">
+<area shape="rect" id="node2" href="$class_db_mysql.html#a832b02974ec506549b44591dc99e2dd5" title="DbMysql\\table" alt="" coords="178,5,283,32"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="DbMysql\\query" alt="" coords="349,107,459,133"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#a97b1b694e8d8e436823f947eba5de124" title="DbMysql\\fetch_array" alt="" coords="160,107,301,133"/>
+<area shape="rect" id="node7" href="$class_db_mysql.html#a8f4fff4edd727c2828c0d4b4f1bf5612" title="DbMysql\\get_one" alt="" coords="169,157,292,184"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="DbMysql\\result" alt="" coords="507,107,616,133"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="DbMysql\\mysqli_result" alt="" coords="664,107,819,133"/>
+</map>

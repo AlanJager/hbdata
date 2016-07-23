@@ -1,0 +1,13 @@
+<map id="base64EncodeWrapMB" name="base64EncodeWrapMB">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#aea5a3301763364fe9b62c36d06c08e5a" title="encodeHeader" alt="" coords="212,107,317,133"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#a37e796debc19de7ab514da84ebe526c6" title="mailPassthru" alt="" coords="365,5,464,32"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#a528cfdd34d79b053a812a735632593ea" title="preSend" alt="" coords="801,107,871,133"/>
+<area shape="rect" id="node8" href="$class_p_h_p_mailer.html#a9306048710347e893a743acd0f39bb45" title="addrFormat" alt="" coords="371,107,459,133"/>
+<area shape="rect" id="node10" href="$class_p_h_p_mailer.html#a0e6615e9843f58e99362166dd25a185b" title="createHeader" alt="" coords="651,157,749,184"/>
+<area shape="rect" id="node11" href="$class_p_h_p_mailer.html#ad5142fb4a879dbe9a4280772d255fff8" title="attachAll" alt="" coords="521,259,594,285"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a9f43cac580fb8f33ef5e159f1eeb9148" title="mailSend" alt="" coords="519,5,595,32"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#aa2e32c2514a2f342c87509f9d9af34cb" title="postSend" alt="" coords="797,31,875,57"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#a12bcef5130168b80d3d52dc82213f19a" title="send" alt="" coords="923,69,973,96"/>
+<area shape="rect" id="node9" href="$class_p_h_p_mailer.html#ab43217a9ec1bb4fe5a88d2f409fa7ae2" title="addrAppend" alt="" coords="512,107,603,133"/>
+<area shape="rect" id="node12" href="$class_p_h_p_mailer.html#ad8d982cb84383c36585dab8ac1a01414" title="createBody" alt="" coords="656,233,744,260"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="DbMysql" name="DbMysql">
+<area shape="rect" id="node2" href="$class_db_mysql.html#a78572828d11dcdf2a498497d9001d557" title="connect" alt="" coords="127,56,195,83"/>
+<area shape="rect" id="node3" href="$class_db_mysql.html#ad7e12f42d290780981e87f8a84a35054" title="error" alt="" coords="250,5,298,32"/>
+<area shape="rect" id="node4" href="$class_db_mysql.html#a6080dae0886626b9a4cedb29240708b1" title="version" alt="" coords="243,56,305,83"/>
+<area shape="rect" id="node5" href="$class_db_mysql.html#a6b251c8058230359b2922377699c4f29" title="query" alt="" coords="247,107,301,133"/>
+<area shape="rect" id="node6" href="$class_db_mysql.html#ae797d630fec0daaec9d5f93ebee35553" title="result" alt="" coords="353,107,408,133"/>
+<area shape="rect" id="node7" href="$class_db_mysql.html#a98605194a335b43bb163cb855d4f8da5" title="mysqli_result" alt="" coords="456,107,555,133"/>
+</map>

@@ -1,0 +1,25 @@
+var dir_bf62fae35bca80e880ce9dd22d96380f =
+[
+    [ "core.assemble_plugin_filepath.php", "core_8assemble__plugin__filepath_8php_source.html", null ],
+    [ "core.assign_smarty_interface.php", "core_8assign__smarty__interface_8php_source.html", null ],
+    [ "core.create_dir_structure.php", "core_8create__dir__structure_8php_source.html", null ],
+    [ "core.display_debug_console.php", "core_8display__debug__console_8php_source.html", null ],
+    [ "core.get_include_path.php", "core_8get__include__path_8php_source.html", null ],
+    [ "core.get_microtime.php", "core_8get__microtime_8php_source.html", null ],
+    [ "core.get_php_resource.php", "core_8get__php__resource_8php_source.html", null ],
+    [ "core.is_secure.php", "core_8is__secure_8php_source.html", null ],
+    [ "core.is_trusted.php", "core_8is__trusted_8php_source.html", null ],
+    [ "core.load_plugins.php", "core_8load__plugins_8php_source.html", null ],
+    [ "core.load_resource_plugin.php", "core_8load__resource__plugin_8php_source.html", null ],
+    [ "core.process_cached_inserts.php", "core_8process__cached__inserts_8php_source.html", null ],
+    [ "core.process_compiled_include.php", "core_8process__compiled__include_8php_source.html", null ],
+    [ "core.read_cache_file.php", "core_8read__cache__file_8php_source.html", null ],
+    [ "core.rm_auto.php", "core_8rm__auto_8php_source.html", null ],
+    [ "core.rmdir.php", "core_8rmdir_8php_source.html", null ],
+    [ "core.run_insert_handler.php", "core_8run__insert__handler_8php_source.html", null ],
+    [ "core.smarty_include_php.php", "core_8smarty__include__php_8php_source.html", null ],
+    [ "core.write_cache_file.php", "core_8write__cache__file_8php_source.html", null ],
+    [ "core.write_compiled_include.php", "core_8write__compiled__include_8php_source.html", null ],
+    [ "core.write_compiled_resource.php", "core_8write__compiled__resource_8php_source.html", null ],
+    [ "core.write_file.php", "core_8write__file_8php_source.html", null ]
+];

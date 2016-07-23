@@ -1,0 +1,10 @@
+<map id="smtpSend" name="smtpSend">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#a19b87160256d30e1f8bd6909cafed305" title="smtpConnect" alt="" coords="135,81,233,108"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#a702ec4df6918a529cf123d1d09f608b7" title="lang" alt="" coords="321,5,367,32"/>
+<area shape="rect" id="node8" href="$class_p_h_p_mailer.html#a9b84595d8561a0abd81c0b83b6238472" title="setError" alt="" coords="150,31,218,57"/>
+<area shape="rect" id="node9" href="$class_p_h_p_mailer.html#a4b0043a4373406a323cce3b6a210041f" title="doCallback" alt="" coords="141,132,227,159"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#af7e9144e6dfd367a6a05dc8b794a4481" title="getSMTPInstance" alt="" coords="281,56,407,83"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#ae0867f9651bd0b2f78fb7ccca41377a2" title="serverHostname" alt="" coords="287,107,401,133"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#a57893521a989230a020d8862a3bf751e" title="edebug" alt="" coords="312,157,376,184"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#a9da63815ca021badd4fbffa1f568976a" title="setLanguage" alt="" coords="455,5,551,32"/>
+</map>

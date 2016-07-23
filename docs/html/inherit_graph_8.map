@@ -1,0 +1,9 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="node2" href="$class_generic___tests___database_test_case.html" title="Generic_Tests_DatabaseTestCase" alt="" coords="200,56,423,83"/>
+<area shape="rect" id="node3" href="$class_rbac_setup.html" title="RbacSetup" alt="" coords="471,56,557,83"/>
+<area shape="rect" id="node4" href="$class_php_rbac_1_1_rbac_manager_test.html" title="RbacManagerTest" alt="" coords="605,5,732,32"/>
+<area shape="rect" id="node5" href="$class_php_rbac_1_1_rbac_users_test.html" title="RbacUsersTest" alt="" coords="613,56,724,83"/>
+<area shape="rect" id="node6" href="$class_rbac_base.html" title="RbacBase" alt="" coords="627,107,710,133"/>
+<area shape="rect" id="node7" href="$class_php_rbac_1_1_rbac_permissions_test.html" title="RbacPermissionsTest" alt="" coords="780,81,929,108"/>
+<area shape="rect" id="node8" href="$class_php_rbac_1_1_rbac_roles_test.html" title="RbacRolesTest" alt="" coords="799,132,910,159"/>
+</map>

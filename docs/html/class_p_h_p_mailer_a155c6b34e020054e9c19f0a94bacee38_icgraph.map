@@ -1,0 +1,15 @@
+<map id="utf8CharBoundary" name="utf8CharBoundary">
+<area shape="rect" id="node2" href="$class_p_h_p_mailer.html#aabf081d0812225a5cf80c27ffa74c76c" title="wrapText" alt="" coords="179,63,253,89"/>
+<area shape="rect" id="node3" href="$class_p_h_p_mailer.html#ab3b2787c3d322ed943f863c6bf2e4bc8" title="setWordWrap" alt="" coords="303,5,405,32"/>
+<area shape="rect" id="node7" href="$class_p_h_p_mailer.html#aea5a3301763364fe9b62c36d06c08e5a" title="encodeHeader" alt="" coords="301,119,407,145"/>
+<area shape="rect" id="node4" href="$class_p_h_p_mailer.html#ad8d982cb84383c36585dab8ac1a01414" title="createBody" alt="" coords="603,24,691,51"/>
+<area shape="rect" id="node5" href="$class_p_h_p_mailer.html#a528cfdd34d79b053a812a735632593ea" title="preSend" alt="" coords="890,176,961,203"/>
+<area shape="rect" id="node6" href="$class_p_h_p_mailer.html#a12bcef5130168b80d3d52dc82213f19a" title="send" alt="" coords="1012,201,1063,228"/>
+<area shape="rect" id="node8" href="$class_p_h_p_mailer.html#a37e796debc19de7ab514da84ebe526c6" title="mailPassthru" alt="" coords="455,277,553,304"/>
+<area shape="rect" id="node11" href="$class_p_h_p_mailer.html#a9306048710347e893a743acd0f39bb45" title="addrFormat" alt="" coords="460,151,548,177"/>
+<area shape="rect" id="node13" href="$class_p_h_p_mailer.html#a0e6615e9843f58e99362166dd25a185b" title="createHeader" alt="" coords="740,125,839,152"/>
+<area shape="rect" id="node14" href="$class_p_h_p_mailer.html#ad5142fb4a879dbe9a4280772d255fff8" title="attachAll" alt="" coords="467,24,541,51"/>
+<area shape="rect" id="node9" href="$class_p_h_p_mailer.html#a9f43cac580fb8f33ef5e159f1eeb9148" title="mailSend" alt="" coords="609,277,685,304"/>
+<area shape="rect" id="node10" href="$class_p_h_p_mailer.html#aa2e32c2514a2f342c87509f9d9af34cb" title="postSend" alt="" coords="887,252,964,279"/>
+<area shape="rect" id="node12" href="$class_p_h_p_mailer.html#ab43217a9ec1bb4fe5a88d2f409fa7ae2" title="addrAppend" alt="" coords="601,176,692,203"/>
+</map>
