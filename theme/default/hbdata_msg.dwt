@@ -9,6 +9,8 @@
     <meta name="description" content="{$description}" />
     <meta name="generator" content="HbDataPHP v1.0" />
     <title>{$page_title}</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link href="theme/default/resources/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="theme/default/resources/js/jquery.min.js"></script>
     <script type="text/javascript" src="theme/default/resources/js/global.js"></script>
