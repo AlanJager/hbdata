@@ -41,17 +41,6 @@ if ($rec == 'default') {
     $smarty->display('theme.htm');
 }
 
-/**
- * 在线安装模板
- */
-if ($rec == 'install') {
-    $smarty->assign('ur_here', $_LANG['theme']);
-
-    $smarty->assign('get', urlencode(serialize($_GET)));
-    $smarty->assign('localsite', $hbdata->hbdata_localsite('theme'));
-
-    $smarty->display('theme.htm');
-}
 
 /**
  * 模板启用

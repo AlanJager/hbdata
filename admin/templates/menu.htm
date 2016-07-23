@@ -9,7 +9,7 @@
         <li{if $cur eq 'page'} class="cur"{/if}><a href="page.php"><i class="page"></i><em>{$lang.menu_page}</em></a></li>
         <li{if $cur eq 'category_manage'} class="cur"{/if}><a href="category_manage.php"><i class="category_manage"></i><em>{$lang.category_manage}</em></a> </li>
     </ul>
-     {if !$workspace.menu_column && !$workspace.menu_single} 如果没有模块则调用单页面菜单 
+     {if !$workspace.menu_column && !$workspace.menu_single}
      {foreach from=$workspace.menu_simple item=menu} 
     <ul>
         <li{if $cur eq $menu.unique_id} class="cur"{/if}><a href="page.php?rec=edit&id={$menu.id}"><i></i><em>{$menu.page_name}</em></a></li>

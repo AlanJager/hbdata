@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{$lang.home}{if $ur_here} - {$ur_here} {/if}</title>
     <meta name="Copyright" content="HbData Design." />
-    <link href="templates/public.css" rel="stylesheet" type="text/css">
+    <link href="./resources/css/public.css" rel="stylesheet" type="text/css">
     {include file="javascript.htm"}
 </head>
 <body>
@@ -14,7 +14,7 @@
     <div id="Main">
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
-            {if $rec eq 'default'} 分类列表
+            {if $rec eq 'default'}
             <h3><a href="{$action_link.href}" class="actionBtn add">{$action_link.text}</a>{$ur_here}</h3>
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                 <tr>
@@ -31,7 +31,7 @@
                 {/foreach}
             </table>
             {/if}
-            {if $rec eq 'add' || $rec eq 'edit'} 编辑分类或添加
+            {if $rec eq 'add' || $rec eq 'edit'}
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
             <form action="category_manage.php?rec={$form_action}" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">

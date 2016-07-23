@@ -1,6 +1,6 @@
 <div id="Head">
     <div id="head">
-        <div class="logo"><a href="index.php"><img src="images/hblogo.gif" alt="logo"></a></div>
+        <div class="logo"><a href="index.php"><img src="./resources/imgs/hblogo.gif" alt="logo"></a></div>
         <div class="nav">
             <ul>
                 <li class="M"><a href="JavaScript:void(0);" class="topAdd">{$lang.top_add}</a>
@@ -8,14 +8,11 @@
                 </li>
                 <li><a href="../index.php" target="_blank">{$lang.top_go_site}</a></li>
                 <li><a href="index.php?rec=clear_cache">{$lang.clear_cache}</a></li>
-                <li><a href="http://www.baidu.com" target="_blank">{$lang.top_help}</a></li>
-                <li class="noRight"><a href="module.php"{if $cur eq 'module'} class="cur"{/if}>{$lang.top_module}{if $unum.module}<span class="unum"><span>{$unum.module}</span></span>{/if}</a></li>
             </ul>
             <ul class="navRight">
                 <li class="M noLeft"><a href="JavaScript:void(0);">{$lang.top_welcome}{$user.user_name}</a>
                     <div class="drop mUser">
                         <a href="manager.php?rec=edit&id={$user.user_id}">{$lang.top_manager_edit}</a>
-                        <a href="cloud.php?rec=account">{$lang.cloud_account}</a>
                     </div>
                 </li>
                 <li class="noRight"><a href="login.php?rec=logout">{$lang.top_logout}</a></li>

@@ -356,7 +356,7 @@ select {
  padding: 0 15px;
 }
 #head .nav a.topAdd {
- background: url(../images/top_add.gif) no-repeat 15px top;
+ background: url(../imgs/top_add.gif) no-repeat 15px top;
  padding-left: 35px;
 }
 #head .nav a:hover, #head .nav a.cur {
@@ -364,7 +364,7 @@ select {
  color: #FFF;
 }
 #head .nav a.topAdd:hover {
- background: #60BBFF url(../images/top_add.gif) no-repeat 15px bottom;
+ background: #60BBFF url(../imgs/top_add.gif) no-repeat 15px bottom;
 }
 #head .nav .noLeft {
  border-left: 0;
@@ -381,7 +381,7 @@ select {
  color: #000;
 }
 #head .nav .active a.topAdd {
- background: #FFF url(../images/top_add.gif) no-repeat 15px top;
+ background: #FFF url(../imgs/top_add.gif) no-repeat 15px top;
 }
 #head .nav .drop {
  display: none;
@@ -457,7 +457,7 @@ select {
  overflow: hidden;
 }
 #menu li.cur {
- background: #60BBFF url(../images/menu_cur.gif) no-repeat right 50%;
+ background: #60BBFF url(../imgs/menu_cur.gif) no-repeat right 50%;
 }
 #menu li.cur a {
  color: #FFF;
@@ -468,14 +468,14 @@ select {
  line-height: 38px;
 }
 #menu li i {
- background: url(../images/icon_menu.png) no-repeat 13px 0;
+ background: url(../imgs/icon_menu.png) no-repeat 13px 0;
  float: left;
  display: block;
  width: 42px;
  height: 38px;
 }
 #menu li.cur i {
- background: url(../images/icon_menu_on.png) no-repeat 13px 0;
+ background: url(../imgs/icon_menu_on.png) no-repeat 13px 0;
 }
 #menu li em {
  float: left;
@@ -607,7 +607,7 @@ select {
  font-weight: bold;
 }
 .mainBox h3 .add {
- background: #28B779 url(../images/action_btn.gif) no-repeat 20px 50%;
+ background: #28B779 url(../imgs/action_btn.gif) no-repeat 20px 50%;
  padding-left: 40px;
 }
 .mainBox .filter {
@@ -675,7 +675,7 @@ select {
 }
 #index .indexBox .ipage a:hover {
  border: 1px dotted #FFFFFF;
- background: #60BBFF url(../images/icon_edit_white.png) no-repeat 12px 50%;
+ background: #60BBFF url(../imgs/icon_edit_white.png) no-repeat 12px 50%;
  color: #FFF;
 }
 /*- help -*/
@@ -798,7 +798,7 @@ select {
 }
 /*- handle -*/
 #cloud .handle h2 {
- background:url(../images/icon_cloud_handle.png) no-repeat left top;
+ background:url(../imgs/icon_cloud_handle.png) no-repeat left top;
  height:46px;
  padding-left:45px;
  font-size:18px;
@@ -814,7 +814,7 @@ select {
 }
 /*- order -*/
 #cloud .order h2 {
- background:url(../images/icon_cloud_order.png) no-repeat left top;
+ background:url(../imgs/icon_cloud_order.png) no-repeat left top;
  height:46px;
  padding-left:45px;
  font-size:18px;
@@ -848,7 +848,7 @@ select {
 }
 /*- account -*/
 #cloud .account {
- background: url(../images/icon_cloud_account.png) no-repeat center top;
+ background: url(../imgs/icon_cloud_account.png) no-repeat center top;
  text-align:center;
  padding-top:80px;
  margin-top:150px;
@@ -892,7 +892,7 @@ select {
  text-decoration:underline;
 }
 #module .uninstall .list h2 {
- background:url(../images/icon_cloud_uninstall.png) no-repeat left top;
+ background:url(../imgs/icon_cloud_uninstall.png) no-repeat left top;
  padding-left:40px;
  height:30px;
  color:#60BBFF;
@@ -1033,7 +1033,7 @@ select {
  margin-bottom:8px;
 }
 #subBox #sMenu h3 i.mobile {
- background: url(../images/icon_mobile.png) no-repeat center top;
+ background: url(../imgs/icon_mobile.png) no-repeat center top;
 }
 #subBox #sMenu li a {
  display:block;
@@ -1056,7 +1056,7 @@ select {
  overflow: hidden;
 }
 #login .dologo {
- background: url(../images/logo.gif) no-repeat 0 0;
+ background: url(../imgs/logo.gif) no-repeat 0 0;
  height: 50px;
  margin-bottom: 30px;
 }
@@ -1135,7 +1135,7 @@ select {
 ----------------------------------------------- */
 /*- hbdataMsg -*/
 #hbdataMsg {
- background: url(../images/icon_exc_small.gif) no-repeat left top;
+ background: url(../imgs/icon_exc_small.gif) no-repeat left top;
  padding: 27px 0 0 70px;
  margin-top: 30px;
 }
@@ -1145,7 +1145,7 @@ select {
  color: #0574C7;
 }
 #hbdataMsg dl {
- background: url(../images/icon_back_arrow.gif) no-repeat right bottom;
+ background: url(../imgs/icon_back_arrow.gif) no-repeat right bottom;
 }
 #hbdataMsg dt {
  padding: 10px 0 25px 0;
@@ -1162,7 +1162,7 @@ select {
 }
 /*- outMsg -*/
 #outMsg {
- background: url(../images/icon_exc.gif) no-repeat left top;
+ background: url(../imgs/icon_exc.gif) no-repeat left top;
  margin: 0px auto;
  width: 340px;
  padding: 30px 0 0 80px;
@@ -1179,7 +1179,7 @@ select {
  color: #666666;
 }
 #outMsg dd {
- background: url(../images/icon_back.gif) no-repeat left top;
+ background: url(../imgs/icon_back.gif) no-repeat left top;
  padding-left: 25px;
  font-size: 14px;
 }
@@ -1216,14 +1216,14 @@ select {
  z-index: 1;
 }
 #maskBox .maskBg i {
- background: url(../images/icon_picture_big.png) no-repeat;
+ background: url(../imgs/icon_picture_big.png) no-repeat;
 }
 #maskBox #mask {
  position: absolute;
  z-index: 2;
 }
 #maskBox #mask i {
- background: url(../images/icon_picture_big.png) no-repeat left bottom;
+ background: url(../imgs/icon_picture_big.png) no-repeat left bottom;
 }
 #maskBox #success {
  background: #60BBFF;
@@ -1261,7 +1261,7 @@ select {
  font-size:14px;
 }
 #hbdataFrame .frame h2 .close {
- background: url(../images/icon_fork.png) no-repeat;
+ background: url(../imgs/icon_fork.png) no-repeat;
  width:12px;
  height:12px;
  display:block;

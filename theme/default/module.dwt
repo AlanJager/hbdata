@@ -6,15 +6,15 @@
     <meta name="description" content="{$description}" />
     <meta name="generator" content="HbDataPHP v1.0" />
     <title>{$page_title}</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="images/jquery.min.js"></script>
-    <script type="text/javascript" src="images/global.js"></script>
+    <link href="theme/default/resources/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="theme/default/resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="theme/default/resources/js/global.js"></script>
 </head>
 <body>
-<div id="wrapper"> {include file="inc/header.tpl"}
+<div id="wrapper"> {include file="include/header.tpl"}
     <div class="wrap mb">
-        <div id="pageLeft"> {include file="inc/article_tree.tpl"} </div>
-        <div id="pageIn"> {include file="inc/ur_here.tpl"}
+        <div id="pageLeft"> {include file="include/article_tree.tpl"} </div>
+        <div id="pageIn"> {include file="include/ur_here.tpl"}
             <div id="module">
                 <h1>{$module.title}</h1>
                 <div class="info">{$lang.add_time}：{$module.add_time} {$lang.click}：{$article.click}
@@ -29,7 +29,7 @@
         </div>
         <div class="clear"></div>
     </div>
-    {include file="inc/online_service.tpl"}
-    {include file="inc/footer.tpl"} </div>
+    {include file="include/online_service.tpl"}
+    {include file="include/footer.tpl"} </div>
 </body>
 </html>

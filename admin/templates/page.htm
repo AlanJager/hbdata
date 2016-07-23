@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{$lang.home}{if $ur_here} - {$ur_here} {/if}</title>
     <meta name="Copyright" content="HbData Design." />
-    <link href="templates/public.css" rel="stylesheet" type="text/css">
+    <link href="./resources/css/public.css" rel="stylesheet" type="text/css">
     {include file="javascript.htm"}
 </head>
 <body>
@@ -15,7 +15,7 @@
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
-             {if $rec eq 'default'} 单页面列表
+             {if $rec eq 'default'}
             <div class="page">
                  {foreach from=$page_list item=page_list} 
                 <dl {if $page_list.level gt 0} class="child{$page_list.level}"{/if}>
@@ -25,7 +25,7 @@
                  {/foreach} 
             </div>
              {/if} 
-             {if $rec eq 'add' || $rec eq 'edit'} 单页面添加或编辑
+             {if $rec eq 'add' || $rec eq 'edit'}
                 {if $rec eq 'add'}
                     <form action="page.php?rec={$form_action}" method="post">
                 {/if}

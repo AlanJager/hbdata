@@ -9,9 +9,9 @@
     <meta name="description" content="{$description}" />
     <meta name="generator" content="HbDataPHP v1.0" />
     <title>{$page_title}</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="images/jquery.min.js"></script>
-    <script type="text/javascript" src="images/global.js"></script>
+    <link href="theme/default/resources/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="theme/default/resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="theme/default/resources/js/global.js"></script>
      {if !$url} 
     <script type="text/javascript">
         {literal}
@@ -24,14 +24,14 @@
      {/if} 
 </head>
 <body>
-<div id="wrapper"> {include file="inc/header.tpl"}
+<div id="wrapper"> {include file="include/header.tpl"}
     <div id="hbdataMsg" class="wrap">
         <dl>
             <dt>{$text}</dt>
             <dd>{$cue}<a href="{if $url}{$url}{else}javascript:history.go(-1);{/if}">{$lang.hbdata_msg_back}</a></dd>
         </dl>
     </div>
-    {include file="inc/online_service.tpl"}
-    {include file="inc/footer.tpl"} </div>
+    {include file="include/online_service.tpl"}
+    {include file="include/footer.tpl"} </div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <div class="incBox">
     <h3>{$index.about_name}</h3>
     <div class="about">
-        <p><img src="../images/img_company.jpg" /></p>
+        <p><img src="theme/default/resources/imgs/img_company.jpg" /></p>
         <dl>
             <dt>{$site.site_name}</dt>
             <dd>{$index.about_content|truncate:180:"..."}</dd>

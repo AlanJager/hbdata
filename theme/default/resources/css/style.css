@@ -187,7 +187,7 @@ label {
 }
 /* LEVEL ONE */
 #mainNav ul.wrap {
-    background: #E0E0E0 url(images/main_nav_right.gif) no-repeat right top;
+    background: #E0E0E0 url(../imgs/main_nav_right.gif) no-repeat right top;
     position: relative;
     z-index: 1000;
 }
@@ -215,18 +215,18 @@ label {
     color: #FFF;
 }
 #mainNav ul li .first {
-    background: #E0E0E0 url(images/main_nav_left.gif) no-repeat left top;
+    background: #E0E0E0 url(../imgs/main_nav_left.gif) no-repeat left top;
     width: 74px;
 }
 #mainNav ul li.hover .first, #mainNav ul li.cur .first {
-    background: #19B4EA url(images/main_nav_left.gif) no-repeat left bottom;
+    background: #19B4EA url(../imgs/main_nav_left.gif) no-repeat left bottom;
 }
 #mainNav ul li .last {
-    background: #E0E0E0 url(images/main_nav_right.gif) no-repeat right top;
+    background: #E0E0E0 url(../imgs/main_nav_right.gif) no-repeat right top;
     margin-right: -1px;
 }
 #mainNav ul li.hover .last, #mainNav ul li.cur .last {
-    background: #19B4EA url(images/main_nav_right.gif) no-repeat right bottom;
+    background: #19B4EA url(../imgs/main_nav_right.gif) no-repeat right bottom;
 }
 /* LEVEL TWO */
 #mainNav ul ul {
@@ -253,7 +253,7 @@ label {
     color: #FFF;
 }
 #mainNav ul li.hover ul a.parent {
-    background: url(images/icon_red.gif) no-repeat 100px 50%;
+    background: url(../imgs/icon_red.gif) no-repeat 100px 50%;
 }
 /* LEVEL THREE */
 #mainNav ul ul ul {
@@ -295,7 +295,7 @@ label {
 /* -- slideLoading -- */
 .slideShow .slideLoading {
     min-height: 50px;
-    background: url(images/slide_loader.gif) center center no-repeat #fff;
+    background: url(../imgs/slide_loader.gif) center center no-repeat #fff;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -351,7 +351,7 @@ label {
     *display: inline;
 }
 .slideShow .controlBox.controlDefault a {
-    background: url(images/inactive.png) no-repeat 50% 50%;
+    background: url(../imgs/inactive.png) no-repeat 50% 50%;
     text-indent: -9999px;
     overflow:hidden;
     width: 20px;
@@ -360,7 +360,7 @@ label {
     display: block;
 }
 .slideShow .controlBox.controlDefault a:hover, .slideShow .controlBox.controlDefault a.active {
-    background: url(images/active.png) no-repeat 50% 50%;
+    background: url(../imgs/active.png) no-repeat 50% 50%;
 }
 /* -- slideTitle -- */
 .slideShow .slideTitle {
@@ -417,7 +417,7 @@ label {
 }
 /* -- recommendArticle -- */
 .recommendArticle li {
-    background: url(images/icon_red.gif) no-repeat left 50%;
+    background: url(../imgs/icon_red.gif) no-repeat left 50%;
     border-bottom: 1px dotted #D1D1D1;
     line-height: 38px;
     padding-left: 15px;
@@ -485,7 +485,7 @@ label {
 }
 .contact dt {
     float:left;
-    background: url(images/icon_contact.png) no-repeat 0 0;
+    background: url(../imgs/icon_contact.png) no-repeat 0 0;
     width:30px;
     height: 30px;
     margin-right:17px;
@@ -636,7 +636,7 @@ label {
     margin-bottom: 40px;
 }
 #product .productInfo .btnBuy .addToCart {
-    background:#19B4EA url(images/btn_addtocart.png) no-repeat 20px 50%;
+    background:#19B4EA url(../imgs/btn_addtocart.png) no-repeat 20px 50%;
     color: #FFFFFF;
     padding: 8px 25px 8px 50px;
     text-decoration: none;
@@ -675,7 +675,7 @@ label {
 }
 #articleList dt {
     width: 620px;
-    background: url(images/icon_red.gif) no-repeat left 50%;
+    background: url(../imgs/icon_red.gif) no-repeat left 50%;
     padding-left: 15px;
     margin-bottom: 10px;
 }
@@ -941,7 +941,7 @@ label {
     color:transparent!important
 }
 .searchBox .btnSearch {
-    background: #E0E0E0 url(images/btn_search.gif) no-repeat;
+    background: #E0E0E0 url(../imgs/btn_search.gif) no-repeat;
     width: 28px;
     height: 28px;
     text-indent: -999px;
@@ -1058,7 +1058,7 @@ label {
     font-weight:normal;
 }
 #hbdataBox .boxFrame h2 .close {
-    background: url(images/icon_fork.png) no-repeat;
+    background: url(../imgs/icon_fork.png) no-repeat;
     width:12px;
     height:12px;
     display:block;
@@ -1067,7 +1067,7 @@ label {
     margin-top:8px;
 }
 #hbdataBox .boxFrame .boxCon {
-    background: url(images/icon_exclamation.png) no-repeat 15px 15px;
+    background: url(../imgs/icon_exclamation.png) no-repeat 15px 15px;
     padding:13px 10px 15px 70px;
     height:100px;
 }
@@ -1106,7 +1106,7 @@ label {
 #onlineService .onlineIcon {
     position: relative;
     cursor: pointer;
-    background: url(images/online_service.png) no-repeat;
+    background: url(../imgs/online_service.png) no-repeat;
     width: 34px;
     height: 110px;
     text-indent: -9999px;
@@ -1126,7 +1126,7 @@ label {
 }
 #onlineService .onlineQQ a {
     display: block;
-    background: url(images/online_service.png) no-repeat left -160px;
+    background: url(../imgs/online_service.png) no-repeat left -160px;
     color: #19B4EA;
     width: 82px;
     height: 24px;
@@ -1147,14 +1147,14 @@ label {
     color: #666;
 }
 #onlineService .service li {
-    background: url(images/online_service.png) no-repeat left -202px;
+    background: url(../imgs/online_service.png) no-repeat left -202px;
     padding-left: 8px;
 }
 #onlineService .goTop {
     display: none;
 }
 #onlineService .goTop .goBtn {
-    background: #F2F2F2 url(images/online_service.png) no-repeat left -120px;
+    background: #F2F2F2 url(../imgs/online_service.png) no-repeat left -120px;
     width: 34px;
     height: 34px;
     display: block;

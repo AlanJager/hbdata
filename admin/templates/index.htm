@@ -4,9 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{$lang.home}{if $ur_here} - {$ur_here} {/if}</title>
     <meta name="Copyright" content="HbData Design." />
-    <link href="templates/public.css" rel="stylesheet" type="text/css">
+    <link href="./resources/css/public.css" rel="stylesheet" type="text/css">
     {include file="javascript.htm"}
-    <script type="text/javascript">cloud_update_number('{$localsite}')</script>
+
 </head>
 <body>
 <div id="Wrap"> {include file="header.htm"}
@@ -17,7 +17,7 @@
             <div class="warning">{$warning}</div>
              {/foreach} 
             <div id="hbdataApi"></div>
-             {if $rec eq 'default'} 管理首页 
+             {if $rec eq 'default'}
             <div class="indexBox">
                 <div class="boxTitle">{$lang.title_page}</div>
                 <ul class="ipage">
@@ -109,29 +109,6 @@
                             <td valign="top">{$sys_info.gd}</td>
                             <td valign="top">{$lang.web_server}：</td>
                             <td valign="top">{$sys_info.web_server}</td>
-                        </tr>
-                    </table>
-                </ul>
-            </div>
-            <div class="indexBox">
-                <div class="boxTitle">{$lang.title_official}</div>
-                <ul>
-                    <table width="100%" border="0" cellspacing="0" cellpadding="7" class="tableBasic">
-                        <tr>
-                            <td width="120"> {$lang.about_site}： </td>
-                            <td><a href="http://www.baidu.com" target="_blank">http://www.baidu.com</a></td>
-                        </tr>
-                        <tr>
-                            <td> {$lang.about_bbs}： </td>
-                            <td><a href="http://www.zhihu.com" target="_blank">http://www.zhihu.com </a><em>（{$lang.about_bbs_a} {$lang.about_bbs_b} {$lang.about_bbs_c} {$lang.about_bbs_d}）</em></td>
-                        </tr>
-                        <tr>
-                            <td> {$lang.about_contributor}： </td>
-                            <td>Wooyun.org, Pany, Tea</td>
-                        </tr>
-                        <tr>
-                            <td> {$lang.about_license}： </td>
-                            <td><a href="https://opensource.org/licenses/MIT" target="_blank">https://opensource.org/licenses/MIT</a><em>（请随意！）</em></td>
                         </tr>
                     </table>
                 </ul>

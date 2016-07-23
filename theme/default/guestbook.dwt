@@ -6,14 +6,14 @@
     <meta name="description" content="{$description}" />
     <meta name="generator" content="HbDataPHP v1.0" />
     <title>{$page_title}</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link href="guestbook.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="images/jquery.min.js"></script>
-    <script type="text/javascript" src="images/global.js"></script>
+    <link href="theme/default/resources/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="theme/default/resources/css/guestbook.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="theme/default/resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="theme/default/resources/js/global.js"></script>
 </head>
 <body>
-<div id="wrapper"> {include file="inc/header.tpl"}
-    <div class="wrap mb"> {include file="inc/ur_here.tpl"}
+<div id="wrapper"> {include file="include/header.tpl"}
+    <div class="wrap mb"> {include file="include/ur_here.tpl"}
         <div id="guestBook">
              {if $guestbook} 
             <h2>{$lang.guestbook}</h2>
@@ -27,7 +27,7 @@
                      {/if} 
                 </dl>
                  {/foreach} 
-                {include file="inc/pager.tpl"} </div>
+                {include file="include/pager.tpl"} </div>
              {/if} 
             <h2>{$lang.guestbook_add}</h2>
             <div class="bookAdd">
@@ -83,6 +83,6 @@
         </div>
         <div class="clear"></div>
     </div>
-    {include file="inc/footer.tpl"} </div>
+    {include file="include/footer.tpl"} </div>
 </body>
 </html>

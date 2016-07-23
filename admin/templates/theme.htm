@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{$lang.home}{if $ur_here} - {$ur_here} {/if}</title>
     <meta name="Copyright" content="HbData Design." />
-    <link href="templates/public.css" rel="stylesheet" type="text/css">
+    <link href="./resources/css/public.css" rel="stylesheet" type="text/css">
     {include file="javascript.htm"}
 </head>
 <body>
@@ -17,7 +17,6 @@
             <h3>{$ur_here}</h3>
             <ul class="tab">
                 <li><a href="theme.php"{if $rec eq 'default'} class="selected"{/if}>{$lang.theme_list}</a></li>
-                <li><a href="theme.php?rec=install"{if $rec eq 'install'} class="selected"{/if}>{$lang.theme_install}{if $unum.theme}<span class="unum"><span>{$unum.theme}</span></span>{/if}</a></li>
             </ul>
              {if $rec eq 'default'} 
             <div class="enable">
@@ -41,14 +40,7 @@
                 </dl>
                  {/foreach} 
             </div>
-             {/if} 
-             {if $rec eq 'install'} 安装模板 
-            <div class="selector"></div>
-            <div class="cloudList themeList">
-            </div>
-            <script type="text/javascript">get_cloud_list('theme', '{$get}', '{$localsite}')</script>
-            <div class="pager"></div>
-             {/if} 
+             {/if}
         </div>
     </div>
     {include file="footer.htm"}

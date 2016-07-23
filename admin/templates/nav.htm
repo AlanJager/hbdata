@@ -4,9 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{$lang.home}{if $ur_here} - {$ur_here} {/if}</title>
     <meta name="Copyright" content="HbData Design." />
-    <link href="templates/public.css" rel="stylesheet" type="text/css">
+    <link href="./resources/css/public.css" rel="stylesheet" type="text/css">
     {include file="javascript.htm"}
-    <script type="text/javascript" src="images/jquery.tab.js"></script>
+    <script type="text/javascript" src="./resources/js/jquery.tab.js"></script>
 </head>
 <body>
 <div id="Wrap">
@@ -16,7 +16,7 @@
         {include file="ur_here.htm"}
         <div class="mainBox" style="{$workspace.height}">
             <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
-             {if $rec eq 'default'} 导航列表 
+             {if $rec eq 'default'}
             <div class="navList">
                 <ul class="tab">
                     <li><a href="nav.php"{if $type eq 'middle'} class="selected"{/if}>{$lang.nav_type_middle}</a></li>
@@ -41,7 +41,7 @@
                 </table>
             </div>
              {/if} 
-             {if $rec eq 'add'} 导航添加 
+             {if $rec eq 'add'}
             <script type="text/javascript">
                 {literal}
                 $(function(){ $(".idTabs").idTabs(); });
@@ -174,7 +174,7 @@
                 </div>
             </div>
              {/if} 
-             {if $rec eq 'edit'} 导航编辑 
+             {if $rec eq 'edit'}
             <form action="nav.php?rec=update" method="post">
                 <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
                     <tr>

@@ -453,7 +453,7 @@ class Action extends Common
      */
     function get_theme_info($unique_id, $is_mobile = false) {
         $theme_url = $is_mobile ? M_PATH.'/theme/' : 'theme/';
-        $content = file(ROOT_PATH . $theme_url . $unique_id . '/style.css');
+        $content = file(ROOT_PATH . $theme_url . $unique_id . '/resources/style.css');
         foreach ((array) $content as $line) {
             if (strpos($line, '/*') !== false) continue;
             if (strpos($line, '*/') !== false) break;
@@ -464,7 +464,7 @@ class Action extends Common
             $info[$key] = trim($arr[1]);
         }
         $info['unique_id'] = $unique_id;
-        $info['image'] = ROOT_URL . $theme_url . $unique_id . '/images/screenshot.png';
+        $info['image'] = ROOT_URL . $theme_url . $unique_id . '/resources/imgs/screenshot.png';
 
         return $info;
     }

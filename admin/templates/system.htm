@@ -4,9 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{$lang.home}{if $ur_here} - {$ur_here} {/if}</title>
     <meta name="Copyright" content="HbData Design." />
-    <link href="templates/public.css" rel="stylesheet" type="text/css">
+    <link href="./resources/css/public.css" rel="stylesheet" type="text/css">
     {include file="javascript.htm"}
-    <script type="text/javascript" src="images/jquery.tab.js"></script>
+    <script type="text/javascript" src="./resources/js/jquery.tab.js"></script>
 </head>
 <body>
 <div id="Wrap">
@@ -57,7 +57,7 @@
                                         </select>
                                          {elseif $cfg_list.type eq 'file'} 
                                         <input type="file" name="{$cfg_list.name}" size="18" />
-                                        {if $cfg_list.value}<a href="../{$cfg_list.value}" target="_blank"><img src="images/icon_yes.png"></a>{else}<img src="images/icon_no.png">{/if}
+                                        {if $cfg_list.value}<a href="../{$cfg_list.value}" target="_blank"><img src="./resources/imgs/icon_yes.png"></a>{else}<img src="./resources/imgs/icon_no.png">{/if}
                                          {elseif $cfg_list.type eq 'textarea'} 
                                         <textarea name="{$cfg_list.name}" cols="83" rows="8" class="textArea" />{$cfg_list.value}</textarea>
                                          {else} 

@@ -6,15 +6,15 @@
     <meta name="description" content="{$description}" />
     <meta name="generator" content="HbDataPHP v1.0" />
     <title>{$page_title}</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="images/jquery.min.js"></script>
-    <script type="text/javascript" src="images/global.js"></script>
+    <link href="theme/default/resources/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="theme/default/resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="theme/default/resources/js/global.js"></script>
 </head>
 <body>
-<div id="wrapper"> {include file="inc/header.tpl"}
+<div id="wrapper"> {include file="include/header.tpl"}
     <div class="wrap mb">
-        <div id="pageLeft"> {include file="inc/item_tree.tpl"} </div>
-        <div id="pageIn"> {include file="inc/ur_here.tpl"}
+        <div id="pageLeft"> {include file="include/item_tree.tpl"} </div>
+        <div id="pageIn"> {include file="include/ur_here.tpl"}
             {if $cur eq 'product'}
             <div id="product">
                 <div class="productImg"><a href="{$item.image}" target="_blank"><img src="{$item.image}" width="300" /></a></div>
@@ -37,7 +37,7 @@
                     {else}
                     <dl class="btnAsk">
                         <dt>{$lang.product_buy}：</dt>
-                        <dd> {foreach from=$site.qq name=qq item=qq}  {if $smarty.foreach.qq.first} <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={if is_array($qq)}{$qq.number}{else}{$qq}{/if}&amp;site=qq&amp;menu=yes" target="_blank"><img src="images/online_qq.jpg" /></a> {/if}  {/foreach}  <a href="mailto:{$site.email}"><img src="images/online_email.jpg" /></a></dd>
+                        <dd> {foreach from=$site.qq name=qq item=qq}  {if $smarty.foreach.qq.first} <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={if is_array($qq)}{$qq.number}{else}{$qq}{/if}&amp;site=qq&amp;menu=yes" target="_blank"><img src="resources/imgs/online_qq.jpg" /></a> {/if}  {/foreach}  <a href="mailto:{$site.email}"><img src="resources/imgs/online_email.jpg" /></a></dd>
                     </dl>
                     {/if}
                 </div>
@@ -67,7 +67,7 @@
         </div>
         <div class="clear"></div>
     </div>
-    {include file="inc/online_service.tpl"}
-    {include file="inc/footer.tpl"} </div>
+    {include file="include/online_service.tpl"}
+    {include file="include/footer.tpl"} </div>
 </body>
 </html>

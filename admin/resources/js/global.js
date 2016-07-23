@@ -52,56 +52,11 @@ function selectcheckbox(form) {
     }
 }
 
-/**
- +----------------------------------------------------------
- * 显示服务端扩展列表
- +----------------------------------------------------------
- */
-function get_cloud_list(unique_id, get, localsite) {
-    $.ajax({
-        type: 'GET',
-        url: 'http://cloud.TODO.com/extend&rec=client',
-        data: {'unique_id':unique_id, 'get':get, 'localsite':localsite},
-        dataType: 'jsonp',
-        jsonp: 'jsoncallback',
-        success: function(cloud) {
-            $('.selector').html(cloud.selector)
-            $('.cloudList').html(cloud.html)
-            $('.pager').html(cloud.pager)
-        }
-    });
-}
 
-/**
- +----------------------------------------------------------
- * 写入可更新数量
- +----------------------------------------------------------
- */
-function cloud_update_number(localsite) {
-    $.ajax({
-        type: 'GET',
-        url: 'http://cloud.TODO.com/extend&rec=cloud_update_number',
-        data: {'localsite':localsite},
-        dataType: 'jsonp',
-        jsonp: 'jsoncallback',
-        success: function(cloud) {
-            change_update_number(cloud.update, cloud.patch, cloud.module, cloud.plugin, cloud.theme, cloud.mobile)
-        }
-    });
-}
 
-/**
- +----------------------------------------------------------
- * 修改update_number值
- +----------------------------------------------------------
- */
-function change_update_number(update, patch, module, plugin, theme, mobile) {
-    $.ajax({
-        type: 'POST',
-        url: 'cloud.php?rec=update_number',
-        data: {'update':update, 'patch':patch, 'module':module, 'plugin':plugin, 'theme':theme}
-    });
-}
+
+
+
 
 /**
  +----------------------------------------------------------

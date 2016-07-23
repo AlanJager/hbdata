@@ -4,9 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{$lang.home}{if $ur_here} - {$ur_here} {/if}</title>
     <meta name="Copyright" content="HbData Design." />
-    <link href="templates/public.css" rel="stylesheet" type="text/css">
+    <link href="./resources/css/public.css" rel="stylesheet" type="text/css">
     {include file="javascript.htm"}
-    <script type="text/javascript" src="images/jquery.autotextarea.js"></script>
+    <script type="text/javascript" src="./resources/js/jquery.autotextarea.js"></script>
 </head>
 <body>
 <div id="Wrap">
@@ -82,7 +82,7 @@
                         {if $cur eq 'product'}
                         <td><a href="item.php?module={$cur}&rec=edit&id={$item.id}">{$item.name}</a></td>
                         {else}
-                        <td><a href="item.php?module={$cur}&rec=edit&id={$item.id}">{$item.title}</a> {if $item.image}  <a href="../{$item.image}" target="_blank"><img src="images/icon_picture.png" width="16" height="16" align="absMiddle"></a> {/if} </td>
+                        <td><a href="item.php?module={$cur}&rec=edit&id={$item.id}">{$item.title}</a> {if $item.image}  <a href="../{$item.image}" target="_blank"><img src="./resources/imgs/icon_picture.png" width="16" height="16" align="absMiddle"></a> {/if} </td>
                         {/if}
                         <td align="center"> {if $item.cat_name} <a href="item.php?module={$cur}&cat_id={$item.cat_id}">{$item.cat_name}</a> {else} {$lang.uncategorized} {/if} </td>
                         <td align="center">{$item.add_time}</td>
@@ -125,7 +125,7 @@
         <div class="clear"></div>
         {include file="pager.htm"}
          {/if} 
-         {if $rec eq 'add' || $rec eq 'edit'} 添加或编辑
+         {if $rec eq 'add' || $rec eq 'edit'}
         <h3><a href="{$action_link.href}" class="actionBtn">{$action_link.text}</a>{$ur_here}</h3>
         <form action="item.php?module={$cur}&rec={$form_action}" method="post" enctype="multipart/form-data">
             <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
@@ -198,7 +198,7 @@
                     <td align="right">{$lang.thumb}</td>
                     <td>
                         <input type="file" name="image" size="38" class="inpFlie" />
-                        {if $item.image}<a href="../{$item.image}" target="_blank"><img src="images/icon_yes.png"></a>{else}<img src="images/icon_no.png">{/if}</td>
+                        {if $item.image}<a href="../{$item.image}" target="_blank"><img src="./resources/imgs/icon_yes.png"></a>{else}<img src="./resources/imgs/icon_no.png">{/if}</td>
                 </tr>
                 <tr>
                     <td align="right">{$lang.keywords}</td>
@@ -256,7 +256,7 @@
 </div>
 {include file="footer.htm"}
 </div>
- {if $rec eq 'default'} {$cur}列表
+ {if $rec eq 'default'} {$cur}
 <script type="text/javascript">
     {literal}
     onload = function()
