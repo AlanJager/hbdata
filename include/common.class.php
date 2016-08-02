@@ -330,7 +330,14 @@ class Common extends DbMysql
             $item['id'] = $row['id'];
             if ($row['title']) $item['title'] = $row['title'];
             if ($row['name']) $item['name'] = $row['name'];
-            if (!empty($row['price'])) $item['price'] = $row['price'] > 0 ? $this->price_format($row['price']) : $GLOBALS['_LANG']['price_discuss'];
+            if(!empty($row['show_price'])){
+                if($row['show_price'] == true){
+                    if (!empty($row['price'])) $item['price'] = $row['price'] > 0 ? $this->price_format($row['price']) : $GLOBALS['_LANG']['price_discuss'];
+                }
+                else{
+                    $item['price'] = '';
+                }
+            }
             if ($row['click']) $item['click'] = $row['click'];
 
             $item['add_time'] = date("Y-m-d", $row['add_time']);
