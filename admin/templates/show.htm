@@ -43,7 +43,8 @@
                             </tr>
                             <tr>
                                 <td><b>{$lang.sort}</b>
-                                    <input type="text" name="sort" value="{if $show.sort}{$show.sort}{else}50{/if}" size="20" class="inpMain" />
+                                    <input type="text" name="sort" value="{if $show.sort}{$show.sort}{else}50{/if}" size="20" class="inpMain sortFomt" onkeyup="checkSort()" />
+                                    <span class="cue2" style="margin-left: 0;margin-top: 10px;"></span>
                                 </td>
                             </tr>
                             <tr>
@@ -54,7 +55,7 @@
                                     <input type="hidden" name="show_img" value="{$show.show_img}">
                                      {/if} 
                                     <input type="hidden" name="token" value="{$token}" />
-                                    <input name="submit" class="btn btnShow" type="submit" value="{$lang.btn_submit}" />
+                                    <input name="submit" class="btn btnShow btnCategory" type="submit" value="{$lang.btn_submit}" />
                                 </td>
                             </tr>
                         </table>

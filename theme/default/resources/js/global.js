@@ -1,4 +1,4 @@
-/**
+﻿/**
  +----------------------------------------------------------
  * 下拉菜单
  +----------------------------------------------------------
@@ -238,3 +238,102 @@ $(document).ready(function(e) {
         }
     })
 });
+
+/**
+ +----------------------------------------------------------
+ * 邮箱验证
+ +----------------------------------------------------------
+ */
+function checkMail(field) {
+    with(field) {
+        var apos=value.indexOf("@");
+        var dotpos=value.lastIndexOf(".");
+        if (apos < 1 || dotpos - apos < 2) {
+            return false;
+        } else {
+            return true;
+        }
+	}
+}
+
+/**
+ +----------------------------------------------------------
+ * 电话验证
+ +----------------------------------------------------------
+ */
+function checkPhone(field) {
+    var re1 = /^1\d{10}$/; //手机正则表达式
+    var re2 = /^0\d{2,3}-?\d{7,8}$/; //座机正则表达式
+    with(field) {
+        if(re1.test(value) || re2.test(value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+ 
+/**
+ +----------------------------------------------------------
+ * qq验证
+ +----------------------------------------------------------
+ */
+function checkQQ(field) {
+    var re = /^[1-9]\d{4,9}$/;
+    with(field) {
+        if(re.test(value)) {
+            return true;
+        } else {
+            return false;
+		}
+	}
+}
+
+/**
+ +----------------------------------------------------------
+ * 回复方式验证
+ +----------------------------------------------------------
+ */
+function checkContactType(who) {
+    var optValue = document.getElementById('contactType').value;
+    if(optValue == "email") {
+		if(checkMail(who) || who.value == "") {
+			document.getElementById('contact').innerHTML = "";
+            return true;
+        } else {
+            document.getElementById('contact').innerHTML = "邮箱格式不正确！";
+            return false;
+        }
+	} else if(optValue == "tel") {
+        if(checkPhone(who) || who.value == "") {
+		    document.getElementById('contact').innerHTML = "";
+            return true;
+		} else {
+            document.getElementById('contact').innerHTML = "电话格式不正确！";
+            return false;
+        }
+    } else if(optValue == "qq") {
+        if(checkQQ(who) || who.value == "") {
+		    document.getElementById('contact').innerHTML = "";
+            return true;
+		} else {
+            document.getElementById('contact').innerHTML = "qq格式不正确！";
+            return false;
+        }
+    } else {
+        document.getElementById('contact').innerHTML = "请选择回复方式";
+		return false;
+    }
+}
+
+/**
+ +----------------------------------------------------------
+ * 回复方式选框改变
+ +----------------------------------------------------------
+ */ 
+function changeType(who) {
+    var opt = who.value;
+    if(opt == "email" || opt == "tel" || opt == "qq") {
+        document.getElementById('contact').innerHTML = "";
+    }
+}

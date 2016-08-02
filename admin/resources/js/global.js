@@ -107,3 +107,101 @@ function hbdataRemove(target) {
 function change(id, choose) {
     document.getElementById(id).value = choose.options[choose.selectedIndex].title;
 }
+
+/**
+ +----------------------------------------------------------
+ * 角色名称检验
+ +----------------------------------------------------------
+ */
+function checkRoleName() {
+    var textLists = document.getElementsByClassName('roleName');
+    var cues = document.getElementsByClassName('cue');
+    var btns = document.getElementsByClassName('btnManager');
+    var reg1 = /^[a-zA-Z][a-zA-Z0-9_]*$/; //角色名称正则
+    for(var i = 0; i < textLists.length; i++) {
+        if(!reg1.test(textLists[i].value)) {
+            cues[i].style.display = "inline-block";
+            cues[i].innerHTML = "用户名不能为空，且只能以英文字母、数字、下划线组成（字母开头）";
+            btns[i].disabled = true;
+            btns[i].style.opacity = '.5';
+        } else {
+            cues[i].style.display = "none";
+            btns[i].disabled = false;
+            btns[i].style.opacity = '1';
+        }
+    }
+}
+
+/**
+ +----------------------------------------------------------
+ * 别名检验
+ +----------------------------------------------------------
+ */
+function checkUniqueId() {
+    var textLists = document.getElementsByClassName('uniqueId');
+    var cues = document.getElementsByClassName('cue');
+    var btns = document.getElementsByClassName('btnCategory');
+    var reg = /^[a-z0-9\-]+$/; //别名正则
+    for(var i = 0; i < textLists.length; i++) {
+        if(!reg.test(textLists[i].value)) {
+            cues[i].style.display = "inline-block";
+            cues[i].innerHTML = '别名不能为空，且只能以小写英文字母、数字、和"-"组成';
+            btns[i].disabled = true;
+            btns[i].style.opacity = '.5';
+        } else {
+            cues[i].style.display = "none";
+            btns[i].disabled = false;
+            btns[i].style.opacity = '1';
+            checkSort();
+        }
+    }
+}
+
+/**
+ +----------------------------------------------------------
+ * 分类管理别名检验
+ +----------------------------------------------------------
+ */
+function checkCateId() {
+    var textLists = document.getElementsByClassName('cateId');
+    var cues = document.getElementsByClassName('cue');
+    var btns = document.getElementsByClassName('btnCategory');
+    var reg1 = /^[a-zA-Z]+$/; //分类管理别名正则
+    for(var i = 0; i < textLists.length; i++) {
+        if(!reg1.test(textLists[i].value)) {
+            cues[i].style.display = "inline-block";
+            cues[i].innerHTML = '别名不能为空，且只能以英文字母组成';
+            btns[i].disabled = true;
+            btns[i].style.opacity = '.5';
+        } else {
+            cues[i].style.display = "none";
+            btns[i].disabled = false;
+            btns[i].style.opacity = '1';
+        }
+    }
+}
+
+/**
+ +----------------------------------------------------------
+ * 排序输入检验
+ +----------------------------------------------------------
+ */
+function checkSort() {
+    var textLists = document.getElementsByClassName('sortFomt');
+    var cues = document.getElementsByClassName('cue2');
+    var btns = document.getElementsByClassName('btnCategory');
+    var reg = /^[1-9]\d*$/; //排序正则
+    for(var i = 0; i < textLists.length; i++) {
+        if(!reg.test(textLists[i].value)) {
+            cues[i].style.display = "inline-block";
+            cues[i].innerHTML = '排序不能为空，且以正整数组成';
+            btns[i].disabled = true;
+            btns[i].style.opacity = '.5';
+        } else {
+            cues[i].style.display = "none";
+            btns[i].disabled = false;
+            btns[i].style.opacity = '1';
+            checkUniqueId();
+        }
+    }
+}

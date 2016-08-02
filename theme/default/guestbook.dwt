@@ -51,11 +51,11 @@
                     <dl>
                         <dt>{$lang.guestbook_contact_type}：</dt>
                         <dd>
-                            <select name="contact_type" class="select">
+                            <select id ="contactType" name="contact_type" class="select" onchange="changeType(this)">
                                 <option value="">{$lang.select}</option>
                                 {$option}
                             </select>
-                            <input type="text" name="contact" size="60" class="textInput" />
+                            <input type="text" name="contact" size="60" class="textInput" onblur="checkContactType(this)" />
                             <p id="contact" class="cue"></p>
                         </dd>
                     </dl>
@@ -78,7 +78,8 @@
                      {/if} 
                     <input type="hidden" name="token" value="{$token}" />
                     <dl class="submit">
-                        <input type="button" class="btn" value="{$lang.btn_submit}" onclick="hbdataSubmit('bookAdd')"/>
+                        <input type="button" class="btn" value="{$lang.btn_submit}" onclick="hbdataSubmit('bookAdd')" onsubmit="checkAllForm(this)"/>
+						<p id="formCue" class="cue"></p>
                     </dl>
                 </form>
             </div>

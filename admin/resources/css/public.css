@@ -1160,6 +1160,11 @@ select {
 #hbdataMsg dd a {
  color: #60BBFF;
 }
+.cue,.cue2{
+    margin-left: 30px;
+    color: red;
+}
+
 /*- outMsg -*/
 #outMsg {
  background: url(../imgs/icon_exc.gif) no-repeat left top;

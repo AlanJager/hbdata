@@ -46,7 +46,8 @@
                     <tr>
                         <td width="30" align="right">{$lang.sort}</td>
                         <td>
-                            <input type="text" name="sort" value="{$page.sort}" size="10" class="inpMain" />
+                            <input type="text" name="sort" value="{$page.sort}" size="10" class="inpMain sortFomt" onkeyup="checkSort()" />
+                            <span class="cue2"></span>
                         </td>
                     </tr>
                     <!--排序-->
@@ -54,7 +55,8 @@
                     <tr>
                         <td align="right">{$lang.unique}</td>
                         <td>
-                            <input type="text" name="unique_id" value="{$page.unique_id}" size="40" class="inpMain" />
+                            <input type="text" name="unique_id" value="{$page.unique_id}" size="40" class="inpMain uniqueId" onkeyup="checkUniqueId()" />
+                            <span class="cue"></span>
                         </td>
                     </tr>
                     <tr>
@@ -114,7 +116,7 @@
                             <input type="hidden" name="token" value="{$token}" />
                             <input type="hidden" name="id" value="{$page.id}"/>
                             <input type="hidden" name="old_unique_id" value="{$page.unique_id}"/>
-                            <input name="submit" class="btn" type="submit" value="{$lang.btn_submit}" />
+                            <input name="submit" class="btn btnCategory" type="submit" value="{$lang.btn_submit}" />
                         </td>
                     </tr>
                 </table>

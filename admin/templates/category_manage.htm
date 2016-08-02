@@ -47,7 +47,8 @@
                     <tr>
                         <td align="right">{$lang.unique}</td>
                         <td>
-                            <input type="text" name="unique_id" value="{$unique_id}" size="40" class="inpMain" />
+                            <input type="text" name="unique_id" value="{$unique_id}" size="40" class="inpMain cateId" onkeyup="checkCateId()" />
+                            <span class="cue"></span>
                         </td>
                     </tr>
                     {/if}

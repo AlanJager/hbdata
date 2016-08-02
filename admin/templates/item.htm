@@ -218,7 +218,8 @@
                 <tr>
                     <td align="right">{$lang.sort}</td>
                     <td>
-                        <input type="text" name="sort" value="{if $item.sort}{$item.sort}{else}0{/if}" size="5" class="inpMain" />
+                        <input type="text" name="sort" value="{if $item.sort}{$item.sort}{else}0{/if}" size="5" class="inpMain sortFomt" onkeyup="checkSort()"/>
+                        <span class="cue2"></span>
                     </td>
                 </tr>
                 {/if}
@@ -228,7 +229,7 @@
                         <input type="hidden" name="token" value="{$token}" />
                         <input type="hidden" name="image" value="{$item.image}">
                         <input type="hidden" name="id" value="{$item.id}">
-                        <input name="submit" class="btn btnProduct" type="submit" value="{$lang.btn_submit}" />
+                        <input name="submit" class="btn btnProduct btnCategory" type="submit" value="{$lang.btn_submit}" />
                     </td>
                 </tr>
             </table>
